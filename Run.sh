@@ -13,10 +13,10 @@ case $sel in
         echo -e "\n\n\n\nRelease Build completed.\n\n\n\n"
         ;;
     3)
-        ./bin/Debug-macosx-x86_64/Foundations/Foundations
+        ./Build/Debug-macosx-x86_64/Foundations/Foundations
         ;;
     4)
-      ./bin/Release-macosx-x86_64/Foundations/Foundations
+      ./Build/Release-macosx-x86_64/Foundations/Foundations
       ;;
     0)
         rm -rf bin
