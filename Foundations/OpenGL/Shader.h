@@ -20,47 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+
 #pragma once
 
-#include <algorithm>
-#include <array>
-#include <chrono>
-#include <cstdint>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <exception>
-#include <fstream>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <iterator>
-#include <locale>
-#include <map>
-#include <memory>
-#include <mutex>
-#include <condition_variable>
-#include <numeric>
-#include <list>
-#include <queue>
-#include <random>
-#include <sstream>
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdexcept>
-#include <string>
-#include <thread>
-#include <time.h>
-#include <tuple>
-#include <tuple>
-#include <unordered_map>
-#include <utility>
-#include <vector>
-#include <queue>
+class Shader {
 
-// ---------------------------------------------------------------------------------------------------------------------
-// External Includes ---------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------
+ private:
+  int id{0};
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+ public:
+  Shader(const char *vertex, const char *fragment);
+  virtual ~Shader();
+
+  inline void Bind() { glUseProgram(id); }
+
+};

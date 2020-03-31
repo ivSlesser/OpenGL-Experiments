@@ -20,47 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+
 #pragma once
 
-#include <algorithm>
-#include <array>
-#include <chrono>
-#include <cstdint>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <exception>
-#include <fstream>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <iterator>
-#include <locale>
-#include <map>
-#include <memory>
-#include <mutex>
-#include <condition_variable>
-#include <numeric>
-#include <list>
-#include <queue>
-#include <random>
-#include <sstream>
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdexcept>
-#include <string>
-#include <thread>
-#include <time.h>
-#include <tuple>
-#include <tuple>
-#include <unordered_map>
-#include <utility>
-#include <vector>
-#include <queue>
+class VertexArray {
 
-// ---------------------------------------------------------------------------------------------------------------------
-// External Includes ---------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------
+ private:
+  unsigned int id;
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+ public:
+  VertexArray();
+  virtual ~VertexArray();
+  void SetLayout();
+  void Bind();
+
+};
