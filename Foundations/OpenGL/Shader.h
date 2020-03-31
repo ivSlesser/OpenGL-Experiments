@@ -27,11 +27,30 @@ class Shader {
 
  private:
   int id{0};
+  std::map<const char *, int> uniform_locations;
 
  public:
   Shader() {}
-  void Init(const char *vertex, const char *fragment);
+  void Init(std::string vertex, std::string fragment);
   virtual ~Shader();
   inline void Bind() { glUseProgram(id); }
 
+  void Bool(const char *name, bool value);
+  void Int(const char *name, int value);
+  void Float(const char *name, float value);
+  void Double(const char *name, double value);
+  void Vec2(const char *name, const glm::vec2 &value);
+  void Vec2(const char *name, float x, float y);
+  void Vec3(const char *name, const glm::vec3 &value);
+  void Vec3(const char *name, float x, float y, float z);
+  void Vec4(const char *name, const glm::vec4 &value);
+  void Vec4s(const char *name, int size, const glm::vec4 value[]);
+  void Vec4(const char *name, float x, float y, float z, float w);
+  void Mat2(const char *name, const glm::mat2 &mat);
+  void Mat3(const char *name, const glm::mat3 &mat);
+  void Mat4(const char *name, const glm::mat4 &mat);
+
+ private:
+  virtual bool CompileShader(const char *filePath, int &id);
+  int UniformLocation(const char *name);
 };

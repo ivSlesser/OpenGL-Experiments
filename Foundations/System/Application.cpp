@@ -29,21 +29,8 @@
 
 void Application::Run() {
 
-  const char *vsSource = "#version 410 core\n"
-						 "layout (location = 0) in vec3 aPos;\n"
-						 "void main()\n"
-						 "{\n"
-						 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-						 "}\0";
-  const char *fsSource = "#version 410 core\n"
-						 "out vec4 FragColor;\n"
-						 "void main()\n"
-						 "{\n"
-						 "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-						 "}\n\0";
-
   gui.Init(window.GetWindow());
-  shader.Init(vsSource, fsSource);
+  shader.Init("Resources/basic.vertex.glsl", "Resources/basic.fragment.glsl");
 
   SwitchModule<TriangleModule>();
   module->OnInit();
@@ -54,6 +41,8 @@ void Application::Run() {
 	window.Begin();
 	shader.Bind();
 
+	shader.Vec3("pickedColor", pickedColor);
+
 	module->OnUpdate();
 
 	// GUI
@@ -62,10 +51,16 @@ void Application::Run() {
 	window.End();
   }
 
-
 }
 
 void Application::ModuleSelector(std::string name) {
+
+  ImGui::Begin("General");
+  {
+	ImGui::ColorEdit3("General Color", &pickedColor.x);
+  }
+  ImGui::End();
+
   ImGui::Begin(name.c_str());
   {
 	if (ImGui::Button("1. Triangle")) { SwitchModule<TriangleModule>(); }

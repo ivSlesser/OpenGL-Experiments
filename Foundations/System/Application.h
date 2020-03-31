@@ -37,6 +37,8 @@ class Application {
   Shader shader;
   Module *module{nullptr};
 
+  glm::vec3 pickedColor = glm::vec3(1.0f);
+
  public:
   void Run();
 
