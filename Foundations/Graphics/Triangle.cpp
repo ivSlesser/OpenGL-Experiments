@@ -22,20 +22,13 @@
 
 
 #include "PCHeader.h"
-#include "VertexBuffer.h"
+#include "Triangle.h"
 
-void VertexBuffer::Init(const std::vector<float> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), data.data(), GL_STATIC_DRAW);
+std::vector<float> Triangle::Vertices(float x, float y, float w, float h) {
+  std::vector<float> vertices = {
+	  x - w, y - h, 0.0f, // left
+	  x + w, y - h, 0.0f, // right
+	  x, y + h, 0.0f  // top
+  };
+  return vertices;
 }
-
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
-}
-
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
-
-}
-

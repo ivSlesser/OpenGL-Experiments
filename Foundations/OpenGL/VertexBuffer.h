@@ -29,7 +29,9 @@ class VertexBuffer {
   unsigned int id;
 
  public:
-  VertexBuffer(int count, void *data);
+  VertexBuffer() {}
+  void Init(const std::vector<float> &data);
+//  VertexBuffer(const std::vector<float> &data);
   virtual ~VertexBuffer();
   void Bind();
 

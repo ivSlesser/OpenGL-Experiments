@@ -22,20 +22,19 @@
 
 
 #include "PCHeader.h"
-#include "VertexBuffer.h"
+#include "TriangleModule.h"
+#include "../Graphics/Triangle.h"
 
-void VertexBuffer::Init(const std::vector<float> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), data.data(), GL_STATIC_DRAW);
+TriangleModule::TriangleModule() {
+  std::vector<float> vertices = Triangle::Vertices(0.0f, 0.0f, 1.0f, 1.0f);
+  VAO.Bind();
+  VBO.Init(vertices);
+  VAO.SetLayout();
 }
 
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
-}
+void TriangleModule::OnUpdate(double dt) {
 
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
+  VAO.Bind();
+  glDrawArrays(GL_TRIANGLES, 0, 3);
 
 }
-

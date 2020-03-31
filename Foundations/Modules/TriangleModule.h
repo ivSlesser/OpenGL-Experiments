@@ -21,21 +21,19 @@
 // SOFTWARE.
 
 
-#include "PCHeader.h"
-#include "VertexBuffer.h"
+#pragma once
 
-void VertexBuffer::Init(const std::vector<float> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), data.data(), GL_STATIC_DRAW);
-}
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
 
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
-}
+class TriangleModule {
+ private:
 
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
+  VertexArray VAO;
+  VertexBuffer VBO;
 
-}
+ public:
+  TriangleModule();
+  void OnUpdate(double dt = 1.0);
 
+};

@@ -419,4 +419,4 @@ add_executable(OpenGL_Platform
         Vendor/glm/glm/vec2.hpp
         Vendor/glm/glm/vec3.hpp
         Vendor/glm/glm/vec4.hpp
-        Vendor/glm/glm/vector_relational.hpp Foundations/System/Window.cpp Foundations/System/Window.h Foundations/OpenGL/Shader.cpp Foundations/OpenGL/Shader.h Foundations/OpenGL/VertexArray.cpp Foundations/OpenGL/VertexArray.h Foundations/OpenGL/VertexBuffer.cpp Foundations/OpenGL/VertexBuffer.h)
+        Vendor/glm/glm/vector_relational.hpp Foundations/System/Window.cpp Foundations/System/Window.h Foundations/OpenGL/Shader.cpp Foundations/OpenGL/Shader.h Foundations/OpenGL/VertexArray.cpp Foundations/OpenGL/VertexArray.h Foundations/OpenGL/VertexBuffer.cpp Foundations/OpenGL/VertexBuffer.h Foundations/Modules/TriangleModule.cpp Foundations/Modules/TriangleModule.h Foundations/Graphics/Triangle.cpp Foundations/Graphics/Triangle.h)
