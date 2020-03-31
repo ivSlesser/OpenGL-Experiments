@@ -21,21 +21,11 @@
 // SOFTWARE.
 
 
-#include "PCHeader.h"
-#include "VertexBuffer.h"
+#pragma once
 
-void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW);
-}
-
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
-}
-
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
-
-}
-
+class Module {
+ public:
+  virtual ~Module() {}
+  virtual void OnInit() = 0;
+  virtual void OnUpdate(double dt = 1.0) = 0;
+};

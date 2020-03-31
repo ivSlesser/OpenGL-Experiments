@@ -23,17 +23,21 @@
 
 #pragma once
 
+#include "../System/Module.h"
+
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"
 
-class TriangleModule {
+class TriangleModule : public Module {
  private:
 
   VertexArray VAO;
   VertexBuffer VBO;
 
  public:
-  TriangleModule();
-  void OnUpdate(double dt = 1.0);
+  TriangleModule() {}
+
+  virtual void OnInit() override;
+  virtual void OnUpdate(double dt = 1.0) override;
 
 };

@@ -20,21 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
 #include "PCHeader.h"
 #include "TriangleModule.h"
 #include "../Graphics/Triangle.h"
 
-TriangleModule::TriangleModule() {
-  std::vector<float> vertices = Triangle::Vertices(0.0f, 0.0f, 1.0f, 1.0f);
+void TriangleModule::OnInit() {
+  std::vector<Vertex> vertices = Triangle::Vertices();
   VAO.Bind();
   VBO.Init(vertices);
   VAO.SetLayout();
 }
 
 void TriangleModule::OnUpdate(double dt) {
-
   VAO.Bind();
-  glDrawArrays(GL_TRIANGLES, 0, 3);
-
+  glDrawArrays(GL_TRIANGLES, 0, Triangle::VertexCount());
 }

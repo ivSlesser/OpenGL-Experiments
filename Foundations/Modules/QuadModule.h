@@ -21,21 +21,25 @@
 // SOFTWARE.
 
 
-#include "PCHeader.h"
-#include "VertexBuffer.h"
+#pragma once
 
-void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW);
-}
+#include "../System/Module.h"
 
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
-}
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
 
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
+class QuadModule : public Module {
+ private:
 
-}
+  VertexArray VAO;
+  VertexBuffer VBO;
+  IndexBuffer IBO;
 
+ public:
+  QuadModule() {}
+
+  virtual void OnInit() override;
+  virtual void OnUpdate(double dt = 1.0) override;
+
+};

@@ -21,21 +21,34 @@
 // SOFTWARE.
 
 
-#include "PCHeader.h"
-#include "VertexBuffer.h"
+#pragma once
 
-void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW);
-}
+// Include: ImGUI
+#include "Externals/ImGUI.hpp"
+#include "../Window.h"
 
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
-}
+#if defined(_MSC_VER) && (_MSC_VER >= 1900) && !defined(IMGUI_DISABLE_WIN32_FUNCTIONS)
+#pragma comment(lib, "legacy_stdio_definitions")
+#endif
 
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
+// Encapsulate the debug GUI interface, based on ImGUI.
+// Allows display and adjustment of set variables.
+class GUILayer
+{
+ private:
+  std::vector<std::function<void()>> windows; // Display elements
+  ImGuiIO *io; // ImGUI context
+  GLFWwindow *window; // Rendering context
 
-}
+ public:
+  GUILayer() {};
+  virtual ~GUILayer();
 
+  void ConstantElements();
+  void AddElement(std::function<void()> window);
+  bool Init(GLFWwindow *_window);
+  void Render();
+
+  void Begin();
+  void End();
+};

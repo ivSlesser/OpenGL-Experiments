@@ -1,37 +1,7 @@
-
-#include "System/Window.h"
-#include "OpenGL/Shader.h"
-
-#include "Modules/TriangleModule.h"
-
-const char *vsSource = "#version 410 core\n"
-					   "layout (location = 0) in vec3 aPos;\n"
-					   "void main()\n"
-					   "{\n"
-					   "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-					   "}\0";
-const char *fsSource = "#version 410 core\n"
-					   "out vec4 FragColor;\n"
-					   "void main()\n"
-					   "{\n"
-					   "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-					   "}\n\0";
+#include "System/Application.h"
 
 int main(int argc, char const *argv[]) {
-
-  Window window;
-  Shader shader(vsSource, fsSource);
-  TriangleModule module;
-
-  while (window.WindowActive()) {
-	window.Begin();
-	shader.Bind();
-
-	module.OnUpdate();
-
-	window.End();
-  }
-
+  Application app;
+  app.Run();
   return 0;
 }
-

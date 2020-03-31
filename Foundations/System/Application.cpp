@@ -22,20 +22,55 @@
 
 
 #include "PCHeader.h"
-#include "VertexBuffer.h"
+#include "Application.h"
 
-void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW);
+#include "../Modules/TriangleModule.h"
+#include "../Modules/QuadModule.h"
+
+void Application::Run() {
+
+  const char *vsSource = "#version 410 core\n"
+						 "layout (location = 0) in vec3 aPos;\n"
+						 "void main()\n"
+						 "{\n"
+						 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+						 "}\0";
+  const char *fsSource = "#version 410 core\n"
+						 "out vec4 FragColor;\n"
+						 "void main()\n"
+						 "{\n"
+						 "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+						 "}\n\0";
+
+  gui.Init(window.GetWindow());
+  shader.Init(vsSource, fsSource);
+
+  SwitchModule<TriangleModule>();
+  module->OnInit();
+
+  gui.AddElement([this]() { ModuleSelector("Module selection:"); });
+
+  while (window.WindowActive()) {
+	window.Begin();
+	shader.Bind();
+
+	module->OnUpdate();
+
+	// GUI
+	gui.Render();
+
+	window.End();
+  }
+
+
 }
 
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
+void Application::ModuleSelector(std::string name) {
+  ImGui::Begin(name.c_str());
+  {
+	if (ImGui::Button("1. Triangle")) { SwitchModule<TriangleModule>(); }
+	if (ImGui::Button("2. Quad")) { SwitchModule<QuadModule>(); }
+
+  }
+  ImGui::End();
 }
-
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
-
-}
-

@@ -23,6 +23,8 @@
 
 #pragma once
 
+#include "../Graphics/Vertex.h"
+
 class VertexBuffer {
 
  private:
@@ -30,8 +32,7 @@ class VertexBuffer {
 
  public:
   VertexBuffer() {}
-  void Init(const std::vector<float> &data);
-//  VertexBuffer(const std::vector<float> &data);
+  void Init(const std::vector<Vertex> &data);
   virtual ~VertexBuffer();
   void Bind();
 

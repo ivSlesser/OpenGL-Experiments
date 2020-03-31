@@ -29,9 +29,9 @@ class Shader {
   int id{0};
 
  public:
-  Shader(const char *vertex, const char *fragment);
+  Shader() {}
+  void Init(const char *vertex, const char *fragment);
   virtual ~Shader();
-
   inline void Bind() { glUseProgram(id); }
 
 };

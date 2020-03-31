@@ -24,6 +24,8 @@
 #include "PCHeader.h"
 #include "VertexArray.h"
 
+#include "../Graphics/Vertex.h"
+
 VertexArray::VertexArray() {
   glGenVertexArrays(1, &id);
 }
@@ -33,7 +35,7 @@ VertexArray::~VertexArray() {
 }
 
 void VertexArray::SetLayout() {
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *) 0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *) 0);
   glEnableVertexAttribArray(0);
 }
 

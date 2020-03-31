@@ -12,13 +12,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Foundations/Graphics/Triangle.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Foundations/Graphics/Triangle.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Foundations/Modules/TriangleModule.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Foundations/Modules/TriangleModule.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/Graphics/Quad.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/Graphics/Quad.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/Graphics/Vertex.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/Graphics/Vertex.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/Modules/QuadModule.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/Modules/QuadModule.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/OpenGL/IndexBuffer.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/OpenGL/IndexBuffer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/System/Application.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/System/Application.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/System/GUI/GUILayer.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/System/GUI/GUILayer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Foundations/System/Module.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Graphics/Triangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/Graphics/Triangle.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Graphics/Triangle.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/Graphics/Triangle.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foundations/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/Main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Modules/TriangleModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/Modules/TriangleModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Modules/TriangleModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/Modules/TriangleModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/OpenGL/Shader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/OpenGL/Shader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/VertexArray.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/OpenGL/VertexArray.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/VertexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/OpenGL/VertexBuffer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/VertexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/OpenGL/VertexBuffer.h" afterDir="false" />
     </list>
@@ -92,5 +108,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Foundations/Graphics/Quad.cpp</url>
+          <line>35</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -23,9 +23,13 @@
 
 #pragma once
 
+#include "Vertex.h"
+
 class Triangle {
 
  public:
-  static std::vector<float> Vertices(float x = 0.0f, float y = 0.0f, float w = 0.5f, float h = 0.5f);
-
+  static std::vector<Vertex> Vertices(float x = 0.0f, float y = 0.0f, float w = 0.5f, float h = 0.5f);
+  static std::vector<unsigned> Indices();
+  static int VertexCount();
+  static int IndexCount();
 };

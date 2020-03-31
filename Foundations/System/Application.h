@@ -21,21 +21,35 @@
 // SOFTWARE.
 
 
-#include "PCHeader.h"
-#include "VertexBuffer.h"
+#pragma once
 
-void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW);
-}
+#include "System/Module.h"
+#include "System/Window.h"
+#include "System/GUI/GUILayer.h"
 
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
-}
+#include "OpenGL/Shader.h"
 
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
 
-}
+class Application {
+ private:
+  Window window;
+  GUILayer gui;
+  Shader shader;
+  Module *module{nullptr};
 
+ public:
+  void Run();
+
+ private:
+  void ModuleSelector(std::string name);
+
+  // Used to switch modules.
+  template <typename T>
+  void SwitchModule() {
+	if (module != nullptr) {
+	  delete module;
+	}
+	module = new T();
+	module->OnInit();
+  }
+};

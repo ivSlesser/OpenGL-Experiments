@@ -24,11 +24,26 @@
 #include "PCHeader.h"
 #include "Triangle.h"
 
-std::vector<float> Triangle::Vertices(float x, float y, float w, float h) {
-  std::vector<float> vertices = {
-	  x - w, y - h, 0.0f, // left
-	  x + w, y - h, 0.0f, // right
-	  x, y + h, 0.0f  // top
+std::vector<Vertex> Triangle::Vertices(float x, float y, float w, float h) {
+  std::vector<Vertex> vertices = {
+	  {x - w, y - h, 0.0f},        // Left
+	  {x + w, y - h, 0.0f},        // Right
+	  {x, y + h, 0.0f}            	   // Top
   };
   return vertices;
+}
+std::vector<unsigned> Triangle::Indices() {
+  std::vector<unsigned int> indices = {
+	  0, 1, 2
+  };
+
+  return indices;
+}
+
+int Triangle::VertexCount() {
+  return 3;
+}
+
+int Triangle::IndexCount() {
+  return 3;
 }

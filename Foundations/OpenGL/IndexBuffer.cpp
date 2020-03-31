@@ -22,20 +22,18 @@
 
 
 #include "PCHeader.h"
-#include "VertexBuffer.h"
+#include "IndexBuffer.h"
 
-void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW);
-}
-
-VertexBuffer::~VertexBuffer() {
+IndexBuffer::~IndexBuffer() {
   glDeleteBuffers(1, &id);
 }
 
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
-
+void IndexBuffer::Init(const std::vector<unsigned> &data) {
+  glGenBuffers(1, &id);
+  Bind();
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, data.size() * sizeof(unsigned), data.data(), GL_STATIC_DRAW);
 }
 
+void IndexBuffer::Bind() {
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
+}

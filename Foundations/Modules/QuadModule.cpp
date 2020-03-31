@@ -22,20 +22,24 @@
 
 
 #include "PCHeader.h"
-#include "VertexBuffer.h"
+#include "QuadModule.h"
 
-void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW);
+#include "../Graphics/Quad.h"
+#include "../Graphics/Triangle.h"
+
+void QuadModule::OnInit() {
+  std::vector<Vertex> vertices = Quad::Vertices();
+  VAO.Bind();
+  VBO.Init(vertices);
+  VAO.SetLayout();
+
+  std::vector<unsigned> indices = Quad::Indices();
+  IBO.Init(indices);
+
 }
 
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
+void QuadModule::OnUpdate(double dt) {
+  VAO.Bind();
+  IBO.Bind();
+  glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
 }
-
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
-
-}
-

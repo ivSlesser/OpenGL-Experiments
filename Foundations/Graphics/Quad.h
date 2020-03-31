@@ -21,21 +21,15 @@
 // SOFTWARE.
 
 
-#include "PCHeader.h"
-#include "VertexBuffer.h"
+#pragma once
 
-void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW);
-}
+#include "Vertex.h"
 
-VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
-}
+class Quad {
 
-void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
-
-}
-
+ public:
+  static std::vector<Vertex> Vertices(float x = 0.0f, float y = 0.0f, float w = 0.5f, float h = 0.5f);
+  static std::vector<unsigned> Indices();
+  static int VertexCount();
+  static int IndexCount();
+};

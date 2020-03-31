@@ -24,7 +24,7 @@
 #include "PCHeader.h"
 #include "Shader.h"
 
-Shader::Shader(const char *vertex, const char *fragment) {
+void Shader::Init(const char *vertex, const char *fragment) {
 
   // Compile vertex shader
   int vertexShader = glCreateShader(GL_VERTEX_SHADER);
