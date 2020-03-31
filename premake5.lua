@@ -16,8 +16,8 @@ project "Foundations"
     cppdialect "C++17"
     staticruntime "on"
 
-    targetdir ("bin/" .. out .. "/%{prj.name}")
-    objdir ("bin/int/" .. out .. "/%{prj.name}")
+    targetdir ("Build/" .. out .. "/%{prj.name}")
+    objdir ("Build/int/" .. out .. "/%{prj.name}")
 
     files
     {

@@ -31,5 +31,6 @@ case $sel in
         rm -rf **/Makefile
         rm -rf config
         rm -rf .vscode
+        rm -rf Build
         ;;
 esac

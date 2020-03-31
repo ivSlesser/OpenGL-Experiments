@@ -12,14 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Resources/basic.fragment.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/basic.vertex.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/OpenGL/Shader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/OpenGL/Shader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foundations/PCHeader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/PCHeader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foundations/System/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/System/Application.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foundations/System/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foundations/System/Application.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/premake5.lua" beforeDir="false" afterPath="$PROJECT_DIR$/premake5.lua" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
