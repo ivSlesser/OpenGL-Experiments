@@ -3,25 +3,16 @@ read -p "Enter selection :> " sel
 
 case $sel in
     1)
-        ./Vendor/bin/premake/mac/premake5 gmake2
-        make -j8 verbose=1 config=debug
-        echo -e "\n\n\n\nDebug Build completed.\n\n\n\n"
-        ;;
+      mkdir Build
+      cd Build
+      cmake ..
+      make -j8
+      cd ..
+      ;;
     2)
-        ./Vendor/bin/premake/mac/premake5 gmake2
-        make -j8 verbose=1 config=release
-        echo -e "\n\n\n\nRelease Build completed.\n\n\n\n"
-        ;;
-    3)
-        ./Build/Debug-macosx-x86_64/Foundations/Foundations
-        ;;
-    4)
-      ./Build/Release-macosx-x86_64/Foundations/Foundations
+      ./Build/Foundations
       ;;
     0)
-        rm -rf bin
-        rm -rf bin-int
-        rm -rf node_modules
         rm -rf .vs
         rm -rf **/*.xc*
         rm -rf *.xcworkspace

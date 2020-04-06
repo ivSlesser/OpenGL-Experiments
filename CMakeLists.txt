@@ -1,422 +1,48 @@
-cmake_minimum_required(VERSION 3.14)
-project(OpenGL_Platform)
+# Project definition
+cmake_minimum_required(VERSION 3.1)
+project(Foundations)
 
-set(CMAKE_CXX_STANDARD 14)
+# Source files
+set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Libraries")
+file(GLOB_RECURSE SOURCES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.hpp")
+#set(SOURCES "${SRC_DIR}/main.cpp")
 
-include_directories(Foundations)
-include_directories(Foundations/Externals)
-include_directories(Foundations/Externals/imgui)
-include_directories(Vendor/glad)
-include_directories(Vendor/glad/include)
-include_directories(Vendor/glad/include/glad)
-include_directories(Vendor/glad/include/KHR)
-include_directories(Vendor/glfw)
-include_directories(Vendor/glfw/include)
-include_directories(Vendor/glfw/include/GLFW)
-include_directories(Vendor/glm/glm)
-include_directories(Vendor/glm/glm/detail)
-include_directories(Vendor/glm/glm/ext)
-include_directories(Vendor/glm/glm/gtc)
-include_directories(Vendor/glm/glm/gtx)
-include_directories(Vendor/glm/glm/simd)
+# Executable definition and properties
+add_executable(${PROJECT_NAME} ${SOURCES})
+target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
-add_executable(OpenGL_Platform
-        Foundations/Externals/imgui/imconfig.h
-        Foundations/Externals/imgui/imgui.cpp
-        Foundations/Externals/imgui/imgui.h
-        Foundations/Externals/imgui/imgui_demo.cpp
-        Foundations/Externals/imgui/imgui_draw.cpp
-        Foundations/Externals/imgui/imgui_impl_glfw.cpp
-        Foundations/Externals/imgui/imgui_impl_glfw.h
-        Foundations/Externals/imgui/imgui_impl_opengl3.cpp
-        Foundations/Externals/imgui/imgui_impl_opengl3.h
-        Foundations/Externals/imgui/imgui_internal.h
-        Foundations/Externals/imgui/imgui_widgets.cpp
-        Foundations/Externals/imgui/imstb_rectpack.h
-        Foundations/Externals/imgui/imstb_textedit.h
-        Foundations/Externals/imgui/imstb_truetype.h
-        Foundations/Externals/glad.cpp
-        Foundations/Externals/ImGUI.hpp
-        Foundations/Externals/stb_image.cpp
-        Foundations/Externals/stb_image.h
-        Foundations/Main.cpp
-        Foundations/PCHeader.cpp
-        Foundations/PCHeader.h
-        Vendor/glad/include/glad/glad.h
-        Vendor/glad/include/KHR/khrplatform.h
-        Vendor/glfw/include/GLFW/glfw3.h
-        Vendor/glfw/include/GLFW/glfw3native.h
-        Vendor/glm/glm/detail/_features.hpp
-        Vendor/glm/glm/detail/_fixes.hpp
-        Vendor/glm/glm/detail/_noise.hpp
-        Vendor/glm/glm/detail/_swizzle.hpp
-        Vendor/glm/glm/detail/_swizzle_func.hpp
-        Vendor/glm/glm/detail/_vectorize.hpp
-        Vendor/glm/glm/detail/compute_common.hpp
-        Vendor/glm/glm/detail/compute_vector_relational.hpp
-        Vendor/glm/glm/detail/func_common.inl
-        Vendor/glm/glm/detail/func_common_simd.inl
-        Vendor/glm/glm/detail/func_exponential.inl
-        Vendor/glm/glm/detail/func_exponential_simd.inl
-        Vendor/glm/glm/detail/func_geometric.inl
-        Vendor/glm/glm/detail/func_geometric_simd.inl
-        Vendor/glm/glm/detail/func_integer.inl
-        Vendor/glm/glm/detail/func_integer_simd.inl
-        Vendor/glm/glm/detail/func_matrix.inl
-        Vendor/glm/glm/detail/func_matrix_simd.inl
-        Vendor/glm/glm/detail/func_packing.inl
-        Vendor/glm/glm/detail/func_packing_simd.inl
-        Vendor/glm/glm/detail/func_trigonometric.inl
-        Vendor/glm/glm/detail/func_trigonometric_simd.inl
-        Vendor/glm/glm/detail/func_vector_relational.inl
-        Vendor/glm/glm/detail/func_vector_relational_simd.inl
-        Vendor/glm/glm/detail/glm.cpp
-        Vendor/glm/glm/detail/qualifier.hpp
-        Vendor/glm/glm/detail/setup.hpp
-        Vendor/glm/glm/detail/type_float.hpp
-        Vendor/glm/glm/detail/type_half.hpp
-        Vendor/glm/glm/detail/type_half.inl
-        Vendor/glm/glm/detail/type_mat2x2.hpp
-        Vendor/glm/glm/detail/type_mat2x2.inl
-        Vendor/glm/glm/detail/type_mat2x3.hpp
-        Vendor/glm/glm/detail/type_mat2x3.inl
-        Vendor/glm/glm/detail/type_mat2x4.hpp
-        Vendor/glm/glm/detail/type_mat2x4.inl
-        Vendor/glm/glm/detail/type_mat3x2.hpp
-        Vendor/glm/glm/detail/type_mat3x2.inl
-        Vendor/glm/glm/detail/type_mat3x3.hpp
-        Vendor/glm/glm/detail/type_mat3x3.inl
-        Vendor/glm/glm/detail/type_mat3x4.hpp
-        Vendor/glm/glm/detail/type_mat3x4.inl
-        Vendor/glm/glm/detail/type_mat4x2.hpp
-        Vendor/glm/glm/detail/type_mat4x2.inl
-        Vendor/glm/glm/detail/type_mat4x3.hpp
-        Vendor/glm/glm/detail/type_mat4x3.inl
-        Vendor/glm/glm/detail/type_mat4x4.hpp
-        Vendor/glm/glm/detail/type_mat4x4.inl
-        Vendor/glm/glm/detail/type_mat4x4_simd.inl
-        Vendor/glm/glm/detail/type_quat.hpp
-        Vendor/glm/glm/detail/type_quat.inl
-        Vendor/glm/glm/detail/type_quat_simd.inl
-        Vendor/glm/glm/detail/type_vec1.hpp
-        Vendor/glm/glm/detail/type_vec1.inl
-        Vendor/glm/glm/detail/type_vec2.hpp
-        Vendor/glm/glm/detail/type_vec2.inl
-        Vendor/glm/glm/detail/type_vec3.hpp
-        Vendor/glm/glm/detail/type_vec3.inl
-        Vendor/glm/glm/detail/type_vec4.hpp
-        Vendor/glm/glm/detail/type_vec4.inl
-        Vendor/glm/glm/detail/type_vec4_simd.inl
-        Vendor/glm/glm/ext/matrix_clip_space.hpp
-        Vendor/glm/glm/ext/matrix_clip_space.inl
-        Vendor/glm/glm/ext/matrix_common.hpp
-        Vendor/glm/glm/ext/matrix_common.inl
-        Vendor/glm/glm/ext/matrix_double2x2.hpp
-        Vendor/glm/glm/ext/matrix_double2x2_precision.hpp
-        Vendor/glm/glm/ext/matrix_double2x3.hpp
-        Vendor/glm/glm/ext/matrix_double2x3_precision.hpp
-        Vendor/glm/glm/ext/matrix_double2x4.hpp
-        Vendor/glm/glm/ext/matrix_double2x4_precision.hpp
-        Vendor/glm/glm/ext/matrix_double3x2.hpp
-        Vendor/glm/glm/ext/matrix_double3x2_precision.hpp
-        Vendor/glm/glm/ext/matrix_double3x3.hpp
-        Vendor/glm/glm/ext/matrix_double3x3_precision.hpp
-        Vendor/glm/glm/ext/matrix_double3x4.hpp
-        Vendor/glm/glm/ext/matrix_double3x4_precision.hpp
-        Vendor/glm/glm/ext/matrix_double4x2.hpp
-        Vendor/glm/glm/ext/matrix_double4x2_precision.hpp
-        Vendor/glm/glm/ext/matrix_double4x3.hpp
-        Vendor/glm/glm/ext/matrix_double4x3_precision.hpp
-        Vendor/glm/glm/ext/matrix_double4x4.hpp
-        Vendor/glm/glm/ext/matrix_double4x4_precision.hpp
-        Vendor/glm/glm/ext/matrix_float2x2.hpp
-        Vendor/glm/glm/ext/matrix_float2x2_precision.hpp
-        Vendor/glm/glm/ext/matrix_float2x3.hpp
-        Vendor/glm/glm/ext/matrix_float2x3_precision.hpp
-        Vendor/glm/glm/ext/matrix_float2x4.hpp
-        Vendor/glm/glm/ext/matrix_float2x4_precision.hpp
-        Vendor/glm/glm/ext/matrix_float3x2.hpp
-        Vendor/glm/glm/ext/matrix_float3x2_precision.hpp
-        Vendor/glm/glm/ext/matrix_float3x3.hpp
-        Vendor/glm/glm/ext/matrix_float3x3_precision.hpp
-        Vendor/glm/glm/ext/matrix_float3x4.hpp
-        Vendor/glm/glm/ext/matrix_float3x4_precision.hpp
-        Vendor/glm/glm/ext/matrix_float4x2.hpp
-        Vendor/glm/glm/ext/matrix_float4x2_precision.hpp
-        Vendor/glm/glm/ext/matrix_float4x3.hpp
-        Vendor/glm/glm/ext/matrix_float4x3_precision.hpp
-        Vendor/glm/glm/ext/matrix_float4x4.hpp
-        Vendor/glm/glm/ext/matrix_float4x4_precision.hpp
-        Vendor/glm/glm/ext/matrix_projection.hpp
-        Vendor/glm/glm/ext/matrix_projection.inl
-        Vendor/glm/glm/ext/matrix_relational.hpp
-        Vendor/glm/glm/ext/matrix_relational.inl
-        Vendor/glm/glm/ext/matrix_transform.hpp
-        Vendor/glm/glm/ext/matrix_transform.inl
-        Vendor/glm/glm/ext/quaternion_common.hpp
-        Vendor/glm/glm/ext/quaternion_common.inl
-        Vendor/glm/glm/ext/quaternion_common_simd.inl
-        Vendor/glm/glm/ext/quaternion_double.hpp
-        Vendor/glm/glm/ext/quaternion_double_precision.hpp
-        Vendor/glm/glm/ext/quaternion_exponential.hpp
-        Vendor/glm/glm/ext/quaternion_exponential.inl
-        Vendor/glm/glm/ext/quaternion_float.hpp
-        Vendor/glm/glm/ext/quaternion_float_precision.hpp
-        Vendor/glm/glm/ext/quaternion_geometric.hpp
-        Vendor/glm/glm/ext/quaternion_geometric.inl
-        Vendor/glm/glm/ext/quaternion_relational.hpp
-        Vendor/glm/glm/ext/quaternion_relational.inl
-        Vendor/glm/glm/ext/quaternion_transform.hpp
-        Vendor/glm/glm/ext/quaternion_transform.inl
-        Vendor/glm/glm/ext/quaternion_trigonometric.hpp
-        Vendor/glm/glm/ext/quaternion_trigonometric.inl
-        Vendor/glm/glm/ext/scalar_common.hpp
-        Vendor/glm/glm/ext/scalar_common.inl
-        Vendor/glm/glm/ext/scalar_constants.hpp
-        Vendor/glm/glm/ext/scalar_constants.inl
-        Vendor/glm/glm/ext/scalar_int_sized.hpp
-        Vendor/glm/glm/ext/scalar_relational.hpp
-        Vendor/glm/glm/ext/scalar_relational.inl
-        Vendor/glm/glm/ext/scalar_uint_sized.hpp
-        Vendor/glm/glm/ext/scalar_ulp.hpp
-        Vendor/glm/glm/ext/scalar_ulp.inl
-        Vendor/glm/glm/ext/vector_bool1.hpp
-        Vendor/glm/glm/ext/vector_bool1_precision.hpp
-        Vendor/glm/glm/ext/vector_bool2.hpp
-        Vendor/glm/glm/ext/vector_bool2_precision.hpp
-        Vendor/glm/glm/ext/vector_bool3.hpp
-        Vendor/glm/glm/ext/vector_bool3_precision.hpp
-        Vendor/glm/glm/ext/vector_bool4.hpp
-        Vendor/glm/glm/ext/vector_bool4_precision.hpp
-        Vendor/glm/glm/ext/vector_common.hpp
-        Vendor/glm/glm/ext/vector_common.inl
-        Vendor/glm/glm/ext/vector_double1.hpp
-        Vendor/glm/glm/ext/vector_double1_precision.hpp
-        Vendor/glm/glm/ext/vector_double2.hpp
-        Vendor/glm/glm/ext/vector_double2_precision.hpp
-        Vendor/glm/glm/ext/vector_double3.hpp
-        Vendor/glm/glm/ext/vector_double3_precision.hpp
-        Vendor/glm/glm/ext/vector_double4.hpp
-        Vendor/glm/glm/ext/vector_double4_precision.hpp
-        Vendor/glm/glm/ext/vector_float1.hpp
-        Vendor/glm/glm/ext/vector_float1_precision.hpp
-        Vendor/glm/glm/ext/vector_float2.hpp
-        Vendor/glm/glm/ext/vector_float2_precision.hpp
-        Vendor/glm/glm/ext/vector_float3.hpp
-        Vendor/glm/glm/ext/vector_float3_precision.hpp
-        Vendor/glm/glm/ext/vector_float4.hpp
-        Vendor/glm/glm/ext/vector_float4_precision.hpp
-        Vendor/glm/glm/ext/vector_int1.hpp
-        Vendor/glm/glm/ext/vector_int1_precision.hpp
-        Vendor/glm/glm/ext/vector_int2.hpp
-        Vendor/glm/glm/ext/vector_int2_precision.hpp
-        Vendor/glm/glm/ext/vector_int3.hpp
-        Vendor/glm/glm/ext/vector_int3_precision.hpp
-        Vendor/glm/glm/ext/vector_int4.hpp
-        Vendor/glm/glm/ext/vector_int4_precision.hpp
-        Vendor/glm/glm/ext/vector_relational.hpp
-        Vendor/glm/glm/ext/vector_relational.inl
-        Vendor/glm/glm/ext/vector_uint1.hpp
-        Vendor/glm/glm/ext/vector_uint1_precision.hpp
-        Vendor/glm/glm/ext/vector_uint2.hpp
-        Vendor/glm/glm/ext/vector_uint2_precision.hpp
-        Vendor/glm/glm/ext/vector_uint3.hpp
-        Vendor/glm/glm/ext/vector_uint3_precision.hpp
-        Vendor/glm/glm/ext/vector_uint4.hpp
-        Vendor/glm/glm/ext/vector_uint4_precision.hpp
-        Vendor/glm/glm/ext/vector_ulp.hpp
-        Vendor/glm/glm/ext/vector_ulp.inl
-        Vendor/glm/glm/gtc/bitfield.hpp
-        Vendor/glm/glm/gtc/bitfield.inl
-        Vendor/glm/glm/gtc/color_space.hpp
-        Vendor/glm/glm/gtc/color_space.inl
-        Vendor/glm/glm/gtc/constants.hpp
-        Vendor/glm/glm/gtc/constants.inl
-        Vendor/glm/glm/gtc/epsilon.hpp
-        Vendor/glm/glm/gtc/epsilon.inl
-        Vendor/glm/glm/gtc/integer.hpp
-        Vendor/glm/glm/gtc/integer.inl
-        Vendor/glm/glm/gtc/matrix_access.hpp
-        Vendor/glm/glm/gtc/matrix_access.inl
-        Vendor/glm/glm/gtc/matrix_integer.hpp
-        Vendor/glm/glm/gtc/matrix_inverse.hpp
-        Vendor/glm/glm/gtc/matrix_inverse.inl
-        Vendor/glm/glm/gtc/matrix_transform.hpp
-        Vendor/glm/glm/gtc/matrix_transform.inl
-        Vendor/glm/glm/gtc/noise.hpp
-        Vendor/glm/glm/gtc/noise.inl
-        Vendor/glm/glm/gtc/packing.hpp
-        Vendor/glm/glm/gtc/packing.inl
-        Vendor/glm/glm/gtc/quaternion.hpp
-        Vendor/glm/glm/gtc/quaternion.inl
-        Vendor/glm/glm/gtc/quaternion_simd.inl
-        Vendor/glm/glm/gtc/random.hpp
-        Vendor/glm/glm/gtc/random.inl
-        Vendor/glm/glm/gtc/reciprocal.hpp
-        Vendor/glm/glm/gtc/reciprocal.inl
-        Vendor/glm/glm/gtc/round.hpp
-        Vendor/glm/glm/gtc/round.inl
-        Vendor/glm/glm/gtc/type_aligned.hpp
-        Vendor/glm/glm/gtc/type_precision.hpp
-        Vendor/glm/glm/gtc/type_precision.inl
-        Vendor/glm/glm/gtc/type_ptr.hpp
-        Vendor/glm/glm/gtc/type_ptr.inl
-        Vendor/glm/glm/gtc/ulp.hpp
-        Vendor/glm/glm/gtc/ulp.inl
-        Vendor/glm/glm/gtc/vec1.hpp
-        Vendor/glm/glm/gtx/associated_min_max.hpp
-        Vendor/glm/glm/gtx/associated_min_max.inl
-        Vendor/glm/glm/gtx/bit.hpp
-        Vendor/glm/glm/gtx/bit.inl
-        Vendor/glm/glm/gtx/closest_point.hpp
-        Vendor/glm/glm/gtx/closest_point.inl
-        Vendor/glm/glm/gtx/color_encoding.hpp
-        Vendor/glm/glm/gtx/color_encoding.inl
-        Vendor/glm/glm/gtx/color_space.hpp
-        Vendor/glm/glm/gtx/color_space.inl
-        Vendor/glm/glm/gtx/color_space_YCoCg.hpp
-        Vendor/glm/glm/gtx/color_space_YCoCg.inl
-        Vendor/glm/glm/gtx/common.hpp
-        Vendor/glm/glm/gtx/common.inl
-        Vendor/glm/glm/gtx/compatibility.hpp
-        Vendor/glm/glm/gtx/compatibility.inl
-        Vendor/glm/glm/gtx/component_wise.hpp
-        Vendor/glm/glm/gtx/component_wise.inl
-        Vendor/glm/glm/gtx/dual_quaternion.hpp
-        Vendor/glm/glm/gtx/dual_quaternion.inl
-        Vendor/glm/glm/gtx/easing.hpp
-        Vendor/glm/glm/gtx/easing.inl
-        Vendor/glm/glm/gtx/euler_angles.hpp
-        Vendor/glm/glm/gtx/euler_angles.inl
-        Vendor/glm/glm/gtx/extend.hpp
-        Vendor/glm/glm/gtx/extend.inl
-        Vendor/glm/glm/gtx/extended_min_max.hpp
-        Vendor/glm/glm/gtx/extended_min_max.inl
-        Vendor/glm/glm/gtx/exterior_product.hpp
-        Vendor/glm/glm/gtx/exterior_product.inl
-        Vendor/glm/glm/gtx/fast_exponential.hpp
-        Vendor/glm/glm/gtx/fast_exponential.inl
-        Vendor/glm/glm/gtx/fast_square_root.hpp
-        Vendor/glm/glm/gtx/fast_square_root.inl
-        Vendor/glm/glm/gtx/fast_trigonometry.hpp
-        Vendor/glm/glm/gtx/fast_trigonometry.inl
-        Vendor/glm/glm/gtx/float_notmalize.inl
-        Vendor/glm/glm/gtx/functions.hpp
-        Vendor/glm/glm/gtx/functions.inl
-        Vendor/glm/glm/gtx/gradient_paint.hpp
-        Vendor/glm/glm/gtx/gradient_paint.inl
-        Vendor/glm/glm/gtx/handed_coordinate_space.hpp
-        Vendor/glm/glm/gtx/handed_coordinate_space.inl
-        Vendor/glm/glm/gtx/hash.hpp
-        Vendor/glm/glm/gtx/hash.inl
-        Vendor/glm/glm/gtx/integer.hpp
-        Vendor/glm/glm/gtx/integer.inl
-        Vendor/glm/glm/gtx/intersect.hpp
-        Vendor/glm/glm/gtx/intersect.inl
-        Vendor/glm/glm/gtx/io.hpp
-        Vendor/glm/glm/gtx/io.inl
-        Vendor/glm/glm/gtx/log_base.hpp
-        Vendor/glm/glm/gtx/log_base.inl
-        Vendor/glm/glm/gtx/matrix_cross_product.hpp
-        Vendor/glm/glm/gtx/matrix_cross_product.inl
-        Vendor/glm/glm/gtx/matrix_decompose.hpp
-        Vendor/glm/glm/gtx/matrix_decompose.inl
-        Vendor/glm/glm/gtx/matrix_factorisation.hpp
-        Vendor/glm/glm/gtx/matrix_factorisation.inl
-        Vendor/glm/glm/gtx/matrix_interpolation.hpp
-        Vendor/glm/glm/gtx/matrix_interpolation.inl
-        Vendor/glm/glm/gtx/matrix_major_storage.hpp
-        Vendor/glm/glm/gtx/matrix_major_storage.inl
-        Vendor/glm/glm/gtx/matrix_operation.hpp
-        Vendor/glm/glm/gtx/matrix_operation.inl
-        Vendor/glm/glm/gtx/matrix_query.hpp
-        Vendor/glm/glm/gtx/matrix_query.inl
-        Vendor/glm/glm/gtx/matrix_transform_2d.hpp
-        Vendor/glm/glm/gtx/matrix_transform_2d.inl
-        Vendor/glm/glm/gtx/mixed_product.hpp
-        Vendor/glm/glm/gtx/mixed_product.inl
-        Vendor/glm/glm/gtx/norm.hpp
-        Vendor/glm/glm/gtx/norm.inl
-        Vendor/glm/glm/gtx/normal.hpp
-        Vendor/glm/glm/gtx/normal.inl
-        Vendor/glm/glm/gtx/normalize_dot.hpp
-        Vendor/glm/glm/gtx/normalize_dot.inl
-        Vendor/glm/glm/gtx/number_precision.hpp
-        Vendor/glm/glm/gtx/number_precision.inl
-        Vendor/glm/glm/gtx/optimum_pow.hpp
-        Vendor/glm/glm/gtx/optimum_pow.inl
-        Vendor/glm/glm/gtx/orthonormalize.hpp
-        Vendor/glm/glm/gtx/orthonormalize.inl
-        Vendor/glm/glm/gtx/perpendicular.hpp
-        Vendor/glm/glm/gtx/perpendicular.inl
-        Vendor/glm/glm/gtx/polar_coordinates.hpp
-        Vendor/glm/glm/gtx/polar_coordinates.inl
-        Vendor/glm/glm/gtx/projection.hpp
-        Vendor/glm/glm/gtx/projection.inl
-        Vendor/glm/glm/gtx/quaternion.hpp
-        Vendor/glm/glm/gtx/quaternion.inl
-        Vendor/glm/glm/gtx/range.hpp
-        Vendor/glm/glm/gtx/raw_data.hpp
-        Vendor/glm/glm/gtx/raw_data.inl
-        Vendor/glm/glm/gtx/rotate_normalized_axis.hpp
-        Vendor/glm/glm/gtx/rotate_normalized_axis.inl
-        Vendor/glm/glm/gtx/rotate_vector.hpp
-        Vendor/glm/glm/gtx/rotate_vector.inl
-        Vendor/glm/glm/gtx/scalar_multiplication.hpp
-        Vendor/glm/glm/gtx/scalar_relational.hpp
-        Vendor/glm/glm/gtx/scalar_relational.inl
-        Vendor/glm/glm/gtx/spline.hpp
-        Vendor/glm/glm/gtx/spline.inl
-        Vendor/glm/glm/gtx/std_based_type.hpp
-        Vendor/glm/glm/gtx/std_based_type.inl
-        Vendor/glm/glm/gtx/string_cast.hpp
-        Vendor/glm/glm/gtx/string_cast.inl
-        Vendor/glm/glm/gtx/texture.hpp
-        Vendor/glm/glm/gtx/texture.inl
-        Vendor/glm/glm/gtx/transform.hpp
-        Vendor/glm/glm/gtx/transform.inl
-        Vendor/glm/glm/gtx/transform2.hpp
-        Vendor/glm/glm/gtx/transform2.inl
-        Vendor/glm/glm/gtx/type_aligned.hpp
-        Vendor/glm/glm/gtx/type_aligned.inl
-        Vendor/glm/glm/gtx/type_trait.hpp
-        Vendor/glm/glm/gtx/type_trait.inl
-        Vendor/glm/glm/gtx/vec_swizzle.hpp
-        Vendor/glm/glm/gtx/vector_angle.hpp
-        Vendor/glm/glm/gtx/vector_angle.inl
-        Vendor/glm/glm/gtx/vector_query.hpp
-        Vendor/glm/glm/gtx/vector_query.inl
-        Vendor/glm/glm/gtx/wrap.hpp
-        Vendor/glm/glm/gtx/wrap.inl
-        Vendor/glm/glm/simd/common.h
-        Vendor/glm/glm/simd/exponential.h
-        Vendor/glm/glm/simd/geometric.h
-        Vendor/glm/glm/simd/integer.h
-        Vendor/glm/glm/simd/matrix.h
-        Vendor/glm/glm/simd/packing.h
-        Vendor/glm/glm/simd/platform.h
-        Vendor/glm/glm/simd/trigonometric.h
-        Vendor/glm/glm/simd/vector_relational.h
-        Vendor/glm/glm/common.hpp
-        Vendor/glm/glm/exponential.hpp
-        Vendor/glm/glm/ext.hpp
-        Vendor/glm/glm/fwd.hpp
-        Vendor/glm/glm/geometric.hpp
-        Vendor/glm/glm/glm.hpp
-        Vendor/glm/glm/integer.hpp
-        Vendor/glm/glm/mat2x2.hpp
-        Vendor/glm/glm/mat2x3.hpp
-        Vendor/glm/glm/mat2x4.hpp
-        Vendor/glm/glm/mat3x2.hpp
-        Vendor/glm/glm/mat3x3.hpp
-        Vendor/glm/glm/mat3x4.hpp
-        Vendor/glm/glm/mat4x2.hpp
-        Vendor/glm/glm/mat4x3.hpp
-        Vendor/glm/glm/mat4x4.hpp
-        Vendor/glm/glm/matrix.hpp
-        Vendor/glm/glm/packing.hpp
-        Vendor/glm/glm/trigonometric.hpp
-        Vendor/glm/glm/vec2.hpp
-        Vendor/glm/glm/vec3.hpp
-        Vendor/glm/glm/vec4.hpp
-        Vendor/glm/glm/vector_relational.hpp Foundations/System/Window.cpp Foundations/System/Window.h Foundations/OpenGL/Shader.cpp Foundations/OpenGL/Shader.h Foundations/OpenGL/VertexArray.cpp Foundations/OpenGL/VertexArray.h Foundations/OpenGL/VertexBuffer.cpp Foundations/OpenGL/VertexBuffer.h Foundations/Modules/TriangleModule.cpp Foundations/Modules/TriangleModule.h Foundations/Graphics/Triangle.cpp Foundations/Graphics/Triangle.h Foundations/System/GUI/GUILayer.cpp Foundations/System/GUI/GUILayer.h Foundations/System/Application.cpp Foundations/System/Application.h Foundations/System/Module.h Foundations/Graphics/Quad.cpp Foundations/Graphics/Quad.h Foundations/Modules/QuadModule.cpp Foundations/Modules/QuadModule.h Foundations/Graphics/Vertex.cpp Foundations/Graphics/Vertex.h Foundations/OpenGL/IndexBuffer.cpp Foundations/OpenGL/IndexBuffer.h)
+# GLFW
+set(GLFW_DIR "${LIB_DIR}/glfw")
+set(GLFW_BUILD_EXAMPLES OFF CACHE INTERNAL "Build the GLFW example programs")
+set(GLFW_BUILD_TESTS OFF CACHE INTERNAL "Build the GLFW test programs")
+set(GLFW_BUILD_DOCS OFF CACHE INTERNAL "Build the GLFW documentation")
+set(GLFW_INSTALL OFF CACHE INTERNAL "Generate installation target")
+add_subdirectory("${GLFW_DIR}")
+target_link_libraries(${PROJECT_NAME} "glfw" "${GLFW_LIBRARIES}")
+target_include_directories(${PROJECT_NAME} PRIVATE "${GLFW_DIR}/include")
+target_compile_definitions(${PROJECT_NAME} PRIVATE "GLFW_INCLUDE_NONE")
+
+# GLAD
+set(GLAD_DIR "${LIB_DIR}/glad")
+add_library("glad" "${GLAD_DIR}/src/glad.c")
+target_include_directories("glad" PRIVATE "${GLAD_DIR}/include")
+target_include_directories(${PROJECT_NAME} PRIVATE "${GLAD_DIR}/include")
+target_link_libraries(${PROJECT_NAME} "glad" "${CMAKE_DL_LIBS}")
+
+# GLM
+target_include_directories(${PROJECT_NAME} PRIVATE "Libraries/glm")
+
+# Libs
+if (APPLE)
+    INCLUDE_DIRECTORIES(/System/Library/Frameworks)
+    FIND_LIBRARY(COCOA_LIBRARY Cocoa)
+    FIND_LIBRARY(OpenGL_LIBRARY OpenGL)
+    FIND_LIBRARY(IOKit_LIBRARY IOKit)
+    FIND_LIBRARY(CoreVideo_LIBRARY CoreVideo)
+    MARK_AS_ADVANCED(COCOA_LIBRARY OpenGL_LIBRARY)
+    SET(APPLE_LIBS ${COCOA_LIBRARY} ${IOKit_LIBRARY} ${OpenGL_LIBRARY} ${CoreVideo_LIBRARY})
+    SET(APPLE_LIBS ${APPLE_LIBS} ${GLFW3_LIBRARY} ${ASSIMP_LIBRARY})
+    set(LIBS ${LIBS} ${APPLE_LIBS})
+endif (APPLE)

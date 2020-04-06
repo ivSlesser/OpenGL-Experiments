@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="OpenGL_Platform" targetName="OpenGL_Platform" />
+      <config projectName="OpenGL-Experiments" targetName="OpenGL-Experiments" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -12,9 +12,496 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Libraries/glfw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Debug-macosx-x86_64/Foundations/Foundations" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Application.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Application.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/GUILayer.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/GUILayer.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/IndexBuffer.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/IndexBuffer.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Main.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Main.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/PCHeader.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/PCHeader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/PCHeader.h.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/PCHeader.h.gch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/PCHeader.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Quad.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Quad.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/QuadModule.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/QuadModule.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Shader.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Shader.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Triangle.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Triangle.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/TriangleModule.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/TriangleModule.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Vertex.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Vertex.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/VertexArray.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/VertexArray.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/VertexBuffer.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/VertexBuffer.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Window.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/Window.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/glad.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/glad.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_demo.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_demo.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_draw.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_draw.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_impl_glfw.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_impl_glfw.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_impl_opengl3.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_impl_opengl3.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_widgets.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/imgui_widgets.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/stb_image.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/int/Debug-macosx-x86_64/Foundations/stb_image.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/ImGUI.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/glad.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imconfig.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui_demo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui_draw.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui_impl_glfw.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui_impl_glfw.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui_impl_opengl3.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui_impl_opengl3.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui_internal.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imgui_widgets.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imstb_rectpack.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imstb_textedit.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/imgui/imstb_truetype.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/stb_image.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Externals/stb_image.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Graphics/Quad.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Graphics/Quad.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Graphics/Triangle.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Graphics/Triangle.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Graphics/Vertex.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Graphics/Vertex.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Modules/QuadModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Modules/QuadModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Modules/TriangleModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/Modules/TriangleModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/IndexBuffer.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/IndexBuffer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/Shader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/Shader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/VertexArray.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/VertexArray.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/VertexBuffer.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/OpenGL/VertexBuffer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/PCHeader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Common.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/PCHeader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/System/Application.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/System/Application.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/System/GUI/GUILayer.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/System/GUI/GUILayer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/System/Module.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/System/Window.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foundations/System/Window.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/premake5.lua" beforeDir="false" afterPath="$PROJECT_DIR$/premake5.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/bin/premake/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/bin/premake/mac/premake5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/bin/premake/win/premake5.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glad/include/KHR/khrplatform.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glad/include/glad/glad.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glfw/include/GLFW/glfw3.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glfw/include/GLFW/glfw3native.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glfw/lib/glfw3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glfw/lib/glfw3.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glfw/lib/glfw3dll.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glfw/lib/libglfw3.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/_features.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/_fixes.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/_noise.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/_swizzle.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/_swizzle_func.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/_vectorize.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/compute_common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/compute_vector_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_common.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_common_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_exponential.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_exponential_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_geometric.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_geometric_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_integer.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_integer_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_matrix.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_matrix_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_packing.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_packing_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_trigonometric.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_trigonometric_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_vector_relational.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/func_vector_relational_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/glm.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/qualifier.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/setup.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_float.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_half.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_half.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat2x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat2x2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat2x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat2x3.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat2x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat2x4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat3x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat3x2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat3x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat3x3.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat3x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat3x4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat4x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat4x2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat4x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat4x3.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat4x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat4x4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_mat4x4_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_quat.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_quat.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_quat_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_vec1.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_vec1.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_vec2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_vec2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_vec3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_vec3.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_vec4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_vec4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/detail/type_vec4_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/exponential.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_clip_space.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_clip_space.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_common.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double2x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double2x2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double2x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double2x3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double2x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double2x4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double3x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double3x2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double3x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double3x3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double3x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double3x4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double4x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double4x2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double4x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double4x3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double4x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_double4x4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float2x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float2x2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float2x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float2x3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float2x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float2x4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float3x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float3x2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float3x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float3x3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float3x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float3x4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float4x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float4x2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float4x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float4x3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float4x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_float4x4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_projection.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_projection.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_relational.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_transform.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/matrix_transform.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_common.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_common_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_double.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_double_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_exponential.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_exponential.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_float.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_float_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_geometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_geometric.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_relational.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_transform.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_transform.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_trigonometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/quaternion_trigonometric.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_common.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_constants.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_constants.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_int_sized.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_relational.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_uint_sized.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_ulp.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/scalar_ulp.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_bool1.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_bool1_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_bool2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_bool2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_bool3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_bool3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_bool4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_bool4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_common.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_double1.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_double1_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_double2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_double2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_double3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_double3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_double4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_double4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_float1.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_float1_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_float2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_float2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_float3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_float3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_float4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_float4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_int1.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_int1_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_int2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_int2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_int3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_int3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_int4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_int4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_relational.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_uint1.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_uint1_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_uint2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_uint2_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_uint3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_uint3_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_uint4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_uint4_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_ulp.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/ext/vector_ulp.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/fwd.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/geometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/glm.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/bitfield.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/bitfield.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/color_space.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/color_space.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/constants.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/constants.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/epsilon.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/epsilon.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/integer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/integer.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/matrix_access.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/matrix_access.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/matrix_integer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/matrix_inverse.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/matrix_inverse.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/matrix_transform.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/matrix_transform.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/noise.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/noise.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/packing.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/packing.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/quaternion.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/quaternion.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/quaternion_simd.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/random.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/random.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/reciprocal.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/reciprocal.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/round.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/round.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/type_aligned.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/type_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/type_precision.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/type_ptr.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/type_ptr.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/ulp.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/ulp.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtc/vec1.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/associated_min_max.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/associated_min_max.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/bit.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/bit.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/closest_point.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/closest_point.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/color_encoding.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/color_encoding.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/color_space.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/color_space.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/color_space_YCoCg.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/color_space_YCoCg.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/common.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/compatibility.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/compatibility.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/component_wise.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/component_wise.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/dual_quaternion.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/dual_quaternion.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/easing.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/easing.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/euler_angles.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/euler_angles.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/extend.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/extend.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/extended_min_max.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/extended_min_max.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/exterior_product.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/exterior_product.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/fast_exponential.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/fast_exponential.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/fast_square_root.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/fast_square_root.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/fast_trigonometry.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/fast_trigonometry.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/float_notmalize.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/functions.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/functions.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/gradient_paint.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/gradient_paint.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/handed_coordinate_space.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/handed_coordinate_space.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/hash.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/hash.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/integer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/integer.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/intersect.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/intersect.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/io.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/io.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/log_base.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/log_base.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_cross_product.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_cross_product.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_decompose.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_decompose.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_factorisation.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_factorisation.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_interpolation.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_interpolation.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_major_storage.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_major_storage.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_operation.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_operation.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_query.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_query.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_transform_2d.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/matrix_transform_2d.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/mixed_product.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/mixed_product.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/norm.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/norm.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/normal.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/normal.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/normalize_dot.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/normalize_dot.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/number_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/number_precision.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/optimum_pow.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/optimum_pow.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/orthonormalize.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/orthonormalize.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/perpendicular.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/perpendicular.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/polar_coordinates.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/polar_coordinates.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/projection.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/projection.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/quaternion.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/quaternion.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/range.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/raw_data.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/raw_data.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/rotate_normalized_axis.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/rotate_normalized_axis.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/rotate_vector.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/rotate_vector.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/scalar_multiplication.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/scalar_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/scalar_relational.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/spline.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/spline.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/std_based_type.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/std_based_type.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/string_cast.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/string_cast.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/texture.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/texture.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/transform.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/transform.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/transform2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/transform2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/type_aligned.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/type_aligned.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/type_trait.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/type_trait.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/vec_swizzle.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/vector_angle.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/vector_angle.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/vector_query.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/vector_query.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/wrap.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/gtx/wrap.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/integer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/mat2x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/mat2x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/mat2x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/mat3x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/mat3x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/mat3x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/mat4x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/mat4x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/mat4x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/matrix.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/packing.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/simd/common.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/simd/exponential.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/simd/geometric.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/simd/integer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/simd/matrix.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/simd/packing.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/simd/platform.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/simd/trigonometric.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/simd/vector_relational.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/trigonometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/vec2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/vec3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/vec4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vendor/glm/glm/vector_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/premake5.lua" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +525,9 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RunDashboard">
@@ -53,10 +542,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="OpenGL_Platform" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OpenGL_Platform" TARGET_NAME="OpenGL_Platform" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/bin/Debug-macosx-x86_64/Foundations/Foundations">
-      <method v="2" />
+  <component name="RunManager" selected="CMake Application.OpenGL_Platform">
+    <configuration name="OpenGL-Experiments" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OpenGL-Experiments" TARGET_NAME="OpenGL-Experiments" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="OpenGL-Experiments" RUN_TARGET_NAME="OpenGL-Experiments">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
     </configuration>
+    <configuration name="OpenGL_Platform" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OpenGL-Experiments" TARGET_NAME="OpenGL-Experiments" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="OpenGL-Experiments" RUN_TARGET_NAME="OpenGL-Experiments">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.OpenGL_Platform" />
+      <item itemvalue="CMake Application.OpenGL-Experiments" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -69,6 +569,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585641003199</updated>
       <workItem from="1585641005139" duration="2909000" />
+      <workItem from="1586159108623" duration="3779000" />
     </task>
     <servers />
   </component>
