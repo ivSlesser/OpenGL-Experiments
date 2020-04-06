@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_opengl3.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_widgets.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Externals/stb_image.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Graphics/Properties/Transform.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Graphics/Quad.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Graphics/Triangle.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Graphics/Vertex.cpp.o"

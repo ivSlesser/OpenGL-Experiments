@@ -21,42 +21,24 @@
 // SOFTWARE.
 
 
-#pragma once
+#include "Transform.h"
 
-#include "Common.h"
+Transform::Transform(const glm::vec3 &_t, const glm::vec3 &_s, const glm::vec3 &_r)
+    : t(_t), s(_s), r(_r) {
+  // As we are creating a non-default transform, we need to set Model matrix.
+  tf = glm::translate(glm::mat4(1.0f), t) *
+      glm::eulerAngleYXZ(r.y, r.x, r.z) *
+      glm::scale(glm::mat4(1.0f), s);
+}
 
-#include "System/Module.h"
-#include "System/Window.h"
-#include "System/GUI/GUILayer.h"
-#include "OpenGL/Shader.h"
-
-#include "Graphics/Properties/Transform.h"
-
-
-class Application {
- private:
-  Window window;
-  GUILayer gui;
-  Shader shader;
-  Module *module{nullptr};
-  Transform transform;
-
-  glm::vec3 pickedColor = glm::vec3(1.0f);
-
- public:
-  void Run();
-
- private:
-  void ModuleSelector(std::string name);
-
-  // Used to switch modules.
-  template <typename T>
-  void SwitchModule() {
-	if (module != nullptr) {
-	  delete module;
-	}
-	transform = Transform();
-	module = new T();
-	module->OnInit();
+const glm::mat4 &Transform::Transformation() {
+  // Only need to update if the bit is set.
+  if (update) {
+    tf = glm::translate(glm::mat4(1.0f), t) *
+        glm::eulerAngleYXZ(glm::radians(r.y), glm::radians(r.x), glm::radians(r.z)) *
+        glm::scale(glm::mat4(1.0f), s);
+      update = false;
   }
-};
+  // Always return from cache.
+  return tf;
+}

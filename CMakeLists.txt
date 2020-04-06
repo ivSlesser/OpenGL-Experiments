@@ -6,7 +6,6 @@ project(Foundations)
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Libraries")
 file(GLOB_RECURSE SOURCES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.hpp")
-#set(SOURCES "${SRC_DIR}/main.cpp")
 
 # Executable definition and properties
 add_executable(${PROJECT_NAME} ${SOURCES})

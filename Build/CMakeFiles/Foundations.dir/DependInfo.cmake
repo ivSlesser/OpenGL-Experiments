@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Externals/imgui/imgui_impl_opengl3.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_opengl3.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Externals/imgui/imgui_widgets.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_widgets.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Externals/stb_image.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Externals/stb_image.cpp.o"
+  "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Properties/Transform.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Graphics/Properties/Transform.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Quad.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Graphics/Quad.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Triangle.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Graphics/Triangle.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Graphics/Vertex.cpp.o"

@@ -39,7 +39,8 @@ void Application::Run() {
 	window.Begin();
 	shader.Bind();
 
-	shader.Vec3("pickedColor", pickedColor);
+	shader.Vec3("u_PickedColor", pickedColor);
+	shader.Mat4("u_Model", transform.Transformation());
 
 	module->OnUpdate();
 
@@ -56,6 +57,25 @@ void Application::ModuleSelector(std::string name) {
   ImGui::Begin("General");
   {
 	ImGui::ColorEdit3("General Color", &pickedColor.x);
+  }
+  ImGui::End();
+
+  ImGui::Begin("Transform");
+  {
+    // Translation ---------------------------------------------------------------
+    glm::vec3 translation = transform.GetTranslate();
+    ImGui::SliderFloat3("Translation", &translation.x, -10.0f, 10.0f);
+    transform.SetTranslate(translation);
+
+    // Rotation ------------------------------------------------------------------
+    glm::vec3 rotation = transform.GetRotate();
+    ImGui::SliderFloat3("Rotation", &rotation.x, 0.0f, 360.0f);
+    transform.SetRotate(rotation);
+
+    // Scale ---------------------------------------------------------------------
+    glm::vec3 scale = transform.GetScale();
+    ImGui::SliderFloat3("Scale", &scale.x, 0.0f, 10.0f);
+    transform.SetScale(scale);
   }
   ImGui::End();
 
