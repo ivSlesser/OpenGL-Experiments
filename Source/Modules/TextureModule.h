@@ -21,33 +21,28 @@
 // SOFTWARE.
 
 
-#include "QuadModule.h"
+#pragma once
 
-#include "../Graphics/Quad.h"
+#include "Common.h"
 
-void QuadModule::OnInit() {
+#include "../System/Module.h"
 
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
+#include "OpenGL/Texture.h"
 
-  // Create vertices
-  std::vector<Vertex> vertices = Quad::Vertices(color);
-  VAO.Bind();
-  VBO.Init(vertices);
-  VAO.SetLayout();
+class TextureModule : public Module {
+ private:
 
-  // Create indices
-  std::vector<unsigned> indices = Quad::Indices();
-  IBO.Init(indices);
+  VertexArray VAO;
+  VertexBuffer VBO;
+  IndexBuffer IBO;
 
-}
+ public:
+  TextureModule() {}
 
-void QuadModule::OnUpdate(double dt) {
-  VAO.Bind();
-  IBO.Bind();
-  glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
-}
+  virtual void OnInit() override;
+  virtual void OnUpdate(double dt = 1.0) override;
+
+};

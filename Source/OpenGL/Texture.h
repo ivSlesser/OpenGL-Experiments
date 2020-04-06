@@ -21,33 +21,29 @@
 // SOFTWARE.
 
 
-#include "QuadModule.h"
+#pragma once
 
-#include "../Graphics/Quad.h"
+#include "Common.h"
 
-void QuadModule::OnInit() {
+class Texture {
 
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
+ private:
+  static unsigned int slot_incrementor;
 
-  // Create vertices
-  std::vector<Vertex> vertices = Quad::Vertices(color);
-  VAO.Bind();
-  VBO.Init(vertices);
-  VAO.SetLayout();
+ private:
+  unsigned int id;
+  unsigned int slot;
 
-  // Create indices
-  std::vector<unsigned> indices = Quad::Indices();
-  IBO.Init(indices);
 
-}
+ public:
+  Texture();
+  Texture(const char *file);
+  virtual ~Texture();
 
-void QuadModule::OnUpdate(double dt) {
-  VAO.Bind();
-  IBO.Bind();
-  glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
-}
+  void Bind();
+
+  inline const unsigned int GetSlot() const { return slot; }
+
+ private:
+    GLenum SlotIntToEnum();
+};

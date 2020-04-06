@@ -29,9 +29,9 @@
 #include "System/Window.h"
 #include "System/GUI/GUILayer.h"
 #include "OpenGL/Shader.h"
+#include "OpenGL/Texture.h"
 
 #include "Graphics/Properties/Transform.h"
-
 
 class Application {
  private:
@@ -40,6 +40,10 @@ class Application {
   Shader shader;
   Module *module{nullptr};
   Transform transform;
+
+  bool use_texture = false;
+  Texture white_texture;
+  Texture cat_texture = Texture("Resources/Textures/cat.jpg");
 
  public:
   void Run();

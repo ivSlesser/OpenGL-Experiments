@@ -2,7 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="OpenGL-Experiments" targetName="OpenGL-Experiments" />
+      <config projectName="Foundations" targetName="glfw" />
+      <config projectName="Foundations" targetName="glad" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -12,7 +13,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Modules/TextureModule.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Modules/TextureModule.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/OpenGL/Texture.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/OpenGL/Texture.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/C Header File.h" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fileTemplates/internal/C Header File.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/C++ Class Header.h" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fileTemplates/internal/C++ Class Header.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/VertexArray.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/VertexArray.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/basic.fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/basic.fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/basic.vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/basic.vertex.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/QuadModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/QuadModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/OpenGL/VertexArray.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/VertexArray.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Application.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Application.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Module.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Module.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +66,7 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1ZswFFEwWaNU3nDsdydGM8cuhlA" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
@@ -40,7 +74,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -54,10 +88,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Foundations" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OpenGL-Experiments" TARGET_NAME="OpenGL-Experiments" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/Build/Foundations">
+  <component name="RunManager" selected="CMake Application.Foundations">
+    <configuration name="Foundations" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Foundations" TARGET_NAME="Foundations" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/Build/Foundations">
       <method v="2" />
     </configuration>
+    <configuration name="glad" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Foundations" TARGET_NAME="glad" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="glfw" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Foundations" TARGET_NAME="glfw" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Foundations" />
+      <item itemvalue="CMake Application.glad" />
+      <item itemvalue="CMake Application.glfw" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -70,7 +119,9 @@
       <option name="presentableId" value="Default" />
       <updated>1585641003199</updated>
       <workItem from="1585641005139" duration="2909000" />
-      <workItem from="1586159108623" duration="7269000" />
+      <workItem from="1586159108623" duration="7291000" />
+      <workItem from="1586175052308" duration="560000" />
+      <workItem from="1586175655001" duration="5034000" />
     </task>
     <servers />
   </component>
@@ -100,8 +151,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/Modules/QuadModule.cpp</url>
-          <line>35</line>
+          <line>34</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Source/OpenGL/Texture.cpp</url>
+          <line>46</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

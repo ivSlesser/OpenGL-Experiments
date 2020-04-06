@@ -44,12 +44,12 @@ void VertexArray::SetLayout() {
   count += 3;
 
   // Color
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
+  glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
   glEnableVertexAttribArray(i++);
-  count += 3;
+  count += 4;
 
   // Texture Coordinates
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
+  glVertexAttribPointer(i, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
   glEnableVertexAttribArray(i++);
   count += 2;
 }

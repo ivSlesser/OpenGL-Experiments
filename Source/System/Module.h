@@ -23,9 +23,12 @@
 
 #pragma once
 
+#include "OpenGL/Texture.h"
+
 class Module {
  public:
   virtual ~Module() {}
   virtual void OnInit() = 0;
   virtual void OnUpdate(double dt = 1.0) = 0;
+  virtual unsigned int GetTextureSlot() { return 0; }
 };

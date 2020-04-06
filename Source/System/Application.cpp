@@ -25,10 +25,14 @@
 #include "../Modules/TriangleModule.h"
 #include "../Modules/QuadModule.h"
 
+#include "Externals/stb_image.h"
+
+
 void Application::Run() {
 
   gui.Init(window.GetWindow());
   shader.Init("Resources/basic.vertex.glsl", "Resources/basic.fragment.glsl");
+  shader.Int("u_Texture0", 0);
 
   SwitchModule<TriangleModule>();
   module->OnInit();
@@ -38,6 +42,12 @@ void Application::Run() {
   while (window.WindowActive()) {
 	window.Begin();
 	shader.Bind();
+
+	if (use_texture) {
+      cat_texture.Bind();
+	} else {
+	  white_texture.Bind();
+	}
 
 	shader.Mat4("u_Model", transform.Transformation());
 
@@ -52,6 +62,13 @@ void Application::Run() {
 }
 
 void Application::ModuleSelector(std::string name) {
+
+  ImGui::Begin("General");
+  {
+    // Texture --------------------------------------------------------------------
+    ImGui::Checkbox("Use texture?", &use_texture);
+  }
+  ImGui::End();
 
   ImGui::Begin("Transform");
   {

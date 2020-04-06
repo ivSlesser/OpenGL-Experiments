@@ -21,11 +21,11 @@
 // SOFTWARE.
 
 
-#include "QuadModule.h"
+#include "TextureModule.h"
 
 #include "../Graphics/Quad.h"
 
-void QuadModule::OnInit() {
+void TextureModule::OnInit() {
 
   // Create a random color
   glm::vec4 color;
@@ -43,10 +43,9 @@ void QuadModule::OnInit() {
   // Create indices
   std::vector<unsigned> indices = Quad::Indices();
   IBO.Init(indices);
-
 }
 
-void QuadModule::OnUpdate(double dt) {
+void TextureModule::OnUpdate(double dt) {
   VAO.Bind();
   IBO.Bind();
   glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
