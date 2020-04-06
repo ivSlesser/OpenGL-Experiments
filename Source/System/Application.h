@@ -41,8 +41,6 @@ class Application {
   Module *module{nullptr};
   Transform transform;
 
-  glm::vec3 pickedColor = glm::vec3(1.0f);
-
  public:
   void Run();
 

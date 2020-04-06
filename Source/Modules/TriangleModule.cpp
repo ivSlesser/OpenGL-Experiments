@@ -24,7 +24,16 @@
 #include "../Graphics/Triangle.h"
 
 void TriangleModule::OnInit() {
-  std::vector<Vertex> vertices = Triangle::Vertices();
+
+  // Create a random color
+  glm::vec4 color;
+  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.a = 1.0f;
+
+  // Create vertices
+  std::vector<Vertex> vertices = Triangle::Vertices(color);
   VAO.Bind();
   VBO.Init(vertices);
   VAO.SetLayout();

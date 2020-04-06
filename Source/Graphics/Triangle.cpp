@@ -23,11 +23,16 @@
 
 #include "Triangle.h"
 
-std::vector<Vertex> Triangle::Vertices(float x, float y, float w, float h) {
+std::vector<Vertex> Triangle::Vertices(glm::vec4 color) {
+  return Triangle::Vertices(0.0f, 0.0f, 0.5f, 0.5f, color);
+}
+
+std::vector<Vertex> Triangle::Vertices(float x, float y, float w, float h, glm::vec4 color) {
+
   std::vector<Vertex> vertices = {
-	  {x - w, y - h, 0.0f},        // Left
-	  {x + w, y - h, 0.0f},        // Right
-	  {x, y + h, 0.0f}            	   // Top
+      {{x - w, y - h, 0.0f}, color, {0.0f, 0.0f}},        // Left
+      {{x + w, y - h, 0.0f}, color, {1.0f, 0.0f}},        // Right
+      {{x    , y + h, 0.0f}, color, {0.5f, 1.0f}}         // Top
   };
   return vertices;
 }

@@ -34,8 +34,24 @@ VertexArray::~VertexArray() {
 }
 
 void VertexArray::SetLayout() {
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *) 0);
-  glEnableVertexAttribArray(0);
+  size_t sf = sizeof(float);
+  int count = 0;
+  int i = 0;
+
+  // Position
+  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
+  glEnableVertexAttribArray(i++);
+  count += 3;
+
+  // Color
+  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
+  glEnableVertexAttribArray(i++);
+  count += 3;
+
+  // Texture Coordinates
+  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
+  glEnableVertexAttribArray(i++);
+  count += 2;
 }
 
 void VertexArray::Bind() {

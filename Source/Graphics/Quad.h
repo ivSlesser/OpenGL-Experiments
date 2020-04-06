@@ -28,7 +28,8 @@
 class Quad {
 
  public:
-  static std::vector<Vertex> Vertices(float x = 0.0f, float y = 0.0f, float w = 0.5f, float h = 0.5f);
+  static std::vector<Vertex> Vertices(glm::vec4 color);
+  static std::vector<Vertex> Vertices(float x = 0.0f, float y = 0.0f, float w = 0.5f, float h = 0.5f, glm::vec4 color = glm::vec4(1.0f));
   static std::vector<unsigned> Indices();
   static int VertexCount();
   static int IndexCount();

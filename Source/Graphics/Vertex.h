@@ -26,7 +26,7 @@
 #include "Common.h"
 
 struct Vertex {
-  float x;
-  float y;
-  float z{0.0f};
+  glm::vec3 position;
+  glm::vec4 color = glm::vec4(1.0f);
+  glm::vec2 tex_coordinates = glm::vec4(0.0f);
 };

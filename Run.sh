@@ -5,7 +5,7 @@ case $sel in
     1)
       mkdir Build
       cd Build
-      cmake ..
+      cmake -DCMAKE_BUILD_TYPE=Debug ..
       make -j8
       cd ..
       ;;

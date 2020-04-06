@@ -23,13 +23,17 @@
 
 #include "Quad.h"
 
-std::vector<Vertex> Quad::Vertices(float x, float y, float w, float h) {
+std::vector<Vertex> Quad::Vertices(glm::vec4 color) {
+  return Quad::Vertices(0.0f, 0.0f, 0.5f, 0.5f, color);
+}
+
+std::vector<Vertex> Quad::Vertices(float x, float y, float w, float h, glm::vec4 color) {
   std::vector<Vertex> vertices = {
 
-	  {x + w, y + h, 0.0f},   // TR
-	  {x + w, y - h, 0.0f},   // BR
-	  {x - w, y - h, 0.0f},   // BL
-	  {x - w, y + h, 0.0f},   // TL
+      {{x + w, y + h, 0.0f}, color, {1.0f, 1.0f}},   // TR
+      {{x + w, y - h, 0.0f}, color, {1.0f, 0.0f}},   // BR
+      {{x - w, y - h, 0.0f}, color, {0.0f, 0.0f}},   // BL
+      {{x - w, y + h, 0.0f}, color, {0.0f, 1.0f}},   // TL
   };
 
   return vertices;

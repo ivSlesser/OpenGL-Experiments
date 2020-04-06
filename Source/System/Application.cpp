@@ -39,7 +39,6 @@ void Application::Run() {
 	window.Begin();
 	shader.Bind();
 
-	shader.Vec3("u_PickedColor", pickedColor);
 	shader.Mat4("u_Model", transform.Transformation());
 
 	module->OnUpdate();
@@ -53,12 +52,6 @@ void Application::Run() {
 }
 
 void Application::ModuleSelector(std::string name) {
-
-  ImGui::Begin("General");
-  {
-	ImGui::ColorEdit3("General Color", &pickedColor.x);
-  }
-  ImGui::End();
 
   ImGui::Begin("Transform");
   {
