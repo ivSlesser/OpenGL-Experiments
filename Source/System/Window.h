@@ -29,6 +29,8 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 class Window {
+ public:
+  static GLFWwindow *s_Window;
 
  private:
   GLFWwindow *window{nullptr};

@@ -41,6 +41,9 @@ void Application::Run() {
 
   while (window.WindowActive()) {
 	window.Begin();
+
+	camera.Update(1.0);
+
 	shader.Bind();
 
 	if (use_texture) {
@@ -50,8 +53,9 @@ void Application::Run() {
 	}
 
 	shader.Mat4("u_Model", transform.Transformation());
+    shader.Mat4("u_ViewProjection", camera.GetProjectionView());
 
-	module->OnUpdate();
+    module->OnUpdate();
 
 	// GUI
 	gui.Render();

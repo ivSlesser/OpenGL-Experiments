@@ -23,45 +23,19 @@
 
 #pragma once
 
-#include "Common.h"
+#include "Camera.h"
 
-#include "System/Module.h"
-#include "System/Window.h"
-#include "System/GUI/GUILayer.h"
-#include "OpenGL/Shader.h"
-#include "OpenGL/Texture.h"
-#include "Graphics/Camera/PerspectiveCamera.h"
+class PerspectiveCamera : public Camera {
 
-#include "Graphics/Properties/Transform.h"
-
-class Application {
  private:
-  Window window;
-  GUILayer gui;
-  Shader shader;
-  Module *module{nullptr};
-  Transform transform;
-  PerspectiveCamera camera;
+  float fov = 45.0f;
+  float near = 0.1f;
+  float far = 10000.0f;
 
-
-  bool use_texture = false;
-  Texture white_texture;
-  Texture cat_texture = Texture("Resources/Textures/cat.jpg");
+  // -------------------------------------------------------------------------------------------------------------------
 
  public:
-  void Run();
-
- private:
-  void ModuleSelector(std::string name);
-
-  // Used to switch modules.
-  template <typename T>
-  void SwitchModule() {
-	if (module != nullptr) {
-	  delete module;
-	}
-	transform = Transform();
-	module = new T();
-	module->OnInit();
-  }
+  PerspectiveCamera() { UpdateProjectionView(); }
+  virtual bool OnInput(double dt = 1.0) override;
+  virtual void UpdateProjectionView() override;
 };

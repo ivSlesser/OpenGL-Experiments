@@ -21,47 +21,40 @@
 // SOFTWARE.
 
 
-#pragma once
-
-#include "Common.h"
-
-#include "System/Module.h"
+#include "OrthographicCamera.h"
 #include "System/Window.h"
-#include "System/GUI/GUILayer.h"
-#include "OpenGL/Shader.h"
-#include "OpenGL/Texture.h"
-#include "Graphics/Camera/PerspectiveCamera.h"
-
-#include "Graphics/Properties/Transform.h"
-
-class Application {
- private:
-  Window window;
-  GUILayer gui;
-  Shader shader;
-  Module *module{nullptr};
-  Transform transform;
-  PerspectiveCamera camera;
 
 
-  bool use_texture = false;
-  Texture white_texture;
-  Texture cat_texture = Texture("Resources/Textures/cat.jpg");
+bool OrthographicCamera::OnInput(double dt) {
+  bool needRecalc = false;
 
- public:
-  void Run();
-
- private:
-  void ModuleSelector(std::string name);
-
-  // Used to switch modules.
-  template <typename T>
-  void SwitchModule() {
-	if (module != nullptr) {
-	  delete module;
-	}
-	transform = Transform();
-	module = new T();
-	module->OnInit();
+  if (glfwGetKey(Window::s_Window, GLFW_KEY_W) == GLFW_PRESS) {
+	AddPosition(-up * (float) dt);
+	needRecalc = true;
+  } else if (glfwGetKey(Window::s_Window, GLFW_KEY_S) == GLFW_PRESS) {
+	AddPosition(up * (float) dt);
+	needRecalc = true;
   }
-};
+
+  if (glfwGetKey(Window::s_Window, GLFW_KEY_A) == GLFW_PRESS) {
+	AddPosition(-glm::normalize(glm::cross(front, up)) * (float) dt);
+	needRecalc = true;
+  } else if (glfwGetKey(Window::s_Window, GLFW_KEY_D) == GLFW_PRESS) {
+	AddPosition(glm::normalize(glm::cross(front, up)) * (float) dt);
+	needRecalc = true;
+  }
+
+  return needRecalc;
+}
+
+void OrthographicCamera::UpdateProjectionView() {
+  const glm::vec2 &dimensions = glm::vec2(800.0f, 600.0f);
+  float aspect = dimensions.x / dimensions.y;
+
+  // TODO: Zoom
+  float zoom = 1.0f;
+
+  glm::mat4 view = glm::lookAt(position, position + front, up);
+  glm::mat4 projection = glm::ortho(-aspect * zoom, aspect * zoom, -zoom, zoom, -1.0f, 1.0f);
+  projection_view = projection * view;
+}

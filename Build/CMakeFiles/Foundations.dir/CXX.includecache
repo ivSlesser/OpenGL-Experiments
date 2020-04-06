@@ -1640,6 +1640,14 @@ intrin.h
 arm_neon.h
 -
 
+../Source/Graphics/Camera/Camera.h
+Common.h
+../Source/Graphics/Camera/Common.h
+
+../Source/Graphics/Camera/PerspectiveCamera.h
+Camera.h
+../Source/Graphics/Camera/Camera.h
+
 ../Source/Graphics/Properties/Transform.h
 Common.h
 ../Source/Graphics/Properties/Common.h
@@ -1682,6 +1690,34 @@ OpenGL/Texture.h
 Common.h
 ../Source/System/Common.h
 
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.cpp
+Camera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.h
+
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.h
+Common.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Common.h
+
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/OrthographicCamera.cpp
+OrthographicCamera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/OrthographicCamera.h
+System/Window.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/System/Window.h
+
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/OrthographicCamera.h
+Camera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.h
+
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/PerspectiveCamera.cpp
+PerspectiveCamera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/PerspectiveCamera.h
+System/Window.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/System/Window.h
+
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/PerspectiveCamera.h
+Camera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.h
+
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.h
 ../System/Module.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
@@ -1723,6 +1759,8 @@ OpenGL/Shader.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/OpenGL/Shader.h
 OpenGL/Texture.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/OpenGL/Texture.h
+Graphics/Camera/PerspectiveCamera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Graphics/Camera/PerspectiveCamera.h
 Graphics/Properties/Transform.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Graphics/Properties/Transform.h
 

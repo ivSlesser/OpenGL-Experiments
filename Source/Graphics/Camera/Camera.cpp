@@ -19,49 +19,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+#include "Camera.h"
 
-
-#pragma once
-
-#include "Common.h"
-
-#include "System/Module.h"
-#include "System/Window.h"
-#include "System/GUI/GUILayer.h"
-#include "OpenGL/Shader.h"
-#include "OpenGL/Texture.h"
-#include "Graphics/Camera/PerspectiveCamera.h"
-
-#include "Graphics/Properties/Transform.h"
-
-class Application {
- private:
-  Window window;
-  GUILayer gui;
-  Shader shader;
-  Module *module{nullptr};
-  Transform transform;
-  PerspectiveCamera camera;
-
-
-  bool use_texture = false;
-  Texture white_texture;
-  Texture cat_texture = Texture("Resources/Textures/cat.jpg");
-
- public:
-  void Run();
-
- private:
-  void ModuleSelector(std::string name);
-
-  // Used to switch modules.
-  template <typename T>
-  void SwitchModule() {
-	if (module != nullptr) {
-	  delete module;
-	}
-	transform = Transform();
-	module = new T();
-	module->OnInit();
+void Camera::Update(double dt) {
+  if (OnInput(dt)) {
+	UpdateProjectionView();
   }
-};
+}
+
+void Camera::SetRotation(const glm::vec3 &values) {
+  rotation = values;
+
+  if (rotation.x > 89.0f) rotation.x = 89.0f;
+  if (rotation.x < -89.0f) rotation.x = -89.0f;
+}
+
+void Camera::AddRotation(const glm::vec3 &values) {
+  rotation += (values * sensitivity);
+
+  if (rotation.x > 89.0f) rotation.x = 89.0f;
+  if (rotation.x < -89.0f) rotation.x = -89.0f;
+}
