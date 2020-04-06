@@ -21,45 +21,26 @@
 // SOFTWARE.
 
 
-#include "VertexArray.h"
+#pragma once
 
-#include "../Graphics/Vertex.h"
+#include "Common.h"
 
-VertexArray::VertexArray() {
-  glGenVertexArrays(1, &id);
-}
+#include "../System/Module.h"
 
-VertexArray::~VertexArray() {
-  glDeleteVertexArrays(1, &id);
-}
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
 
-void VertexArray::SetLayout() {
-  size_t sf = sizeof(float);
-  int count = 0;
-  int i = 0;
+class CubeModule : public Module {
+ private:
 
-  // Position
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 3;
+  VertexArray VAO;
+  VertexBuffer VBO;
 
-  // Color
-  glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 4;
+ public:
+  CubeModule() {}
 
-  // Texture Coordinates
-  glVertexAttribPointer(i, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 2;
-
-  // Normals
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 3;
-}
-
-void VertexArray::Bind() {
-  glBindVertexArray(id);
-}
-
+  virtual void OnInit() override;
+  virtual void OnUpdate(double dt = 1.0) override;
+  virtual void OnDraw(const Shader &shader, const Camera &camera) override;
+};

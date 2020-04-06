@@ -21,45 +21,23 @@
 // SOFTWARE.
 
 
-#include "VertexArray.h"
+#pragma once
 
-#include "../Graphics/Vertex.h"
+#include "Common.h"
+#include "Vertex.h"
 
-VertexArray::VertexArray() {
-  glGenVertexArrays(1, &id);
-}
+class Cube {
 
-VertexArray::~VertexArray() {
-  glDeleteVertexArrays(1, &id);
-}
-
-void VertexArray::SetLayout() {
-  size_t sf = sizeof(float);
-  int count = 0;
-  int i = 0;
-
-  // Position
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 3;
-
-  // Color
-  glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 4;
-
-  // Texture Coordinates
-  glVertexAttribPointer(i, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 2;
-
-  // Normals
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 3;
-}
-
-void VertexArray::Bind() {
-  glBindVertexArray(id);
-}
-
+ public:
+  static std::vector<Vertex> Vertices(glm::vec4 color);
+  static std::vector<Vertex> Vertices(float x = 0.0f,
+                                      float y = 0.0f,
+                                      float z = 0.0f,
+                                      float w = 0.5f,
+                                      float h = 0.5f,
+                                      float d = 0.5f,
+                                      glm::vec4 color = glm::vec4(1.0f));
+  static std::vector<unsigned> Indices();
+  static int VertexCount();
+  static int IndexCount();
+};

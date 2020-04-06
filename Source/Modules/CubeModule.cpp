@@ -21,45 +21,30 @@
 // SOFTWARE.
 
 
-#include "VertexArray.h"
+#include "CubeModule.h"
 
-#include "../Graphics/Vertex.h"
+#include "../Graphics/Cube.h"
 
-VertexArray::VertexArray() {
-  glGenVertexArrays(1, &id);
+
+void CubeModule::OnInit() {
+  // Create a random color
+  glm::vec4 color;
+  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.a = 1.0f;
+
+  // Create vertices
+  std::vector<Vertex> vertices = Cube::Vertices(color);
+  VAO.Bind();
+  VBO.Init(vertices);
+  VAO.SetLayout();
 }
 
-VertexArray::~VertexArray() {
-  glDeleteVertexArrays(1, &id);
+void CubeModule::OnUpdate(double dt) {
 }
 
-void VertexArray::SetLayout() {
-  size_t sf = sizeof(float);
-  int count = 0;
-  int i = 0;
-
-  // Position
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 3;
-
-  // Color
-  glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 4;
-
-  // Texture Coordinates
-  glVertexAttribPointer(i, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 2;
-
-  // Normals
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 3;
+void CubeModule::OnDraw(const Shader &shader, const Camera &camera) {
+  VAO.Bind();
+  glDrawArrays(GL_TRIANGLES, 0, Cube::VertexCount());
 }
-
-void VertexArray::Bind() {
-  glBindVertexArray(id);
-}
-

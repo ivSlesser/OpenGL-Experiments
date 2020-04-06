@@ -24,6 +24,7 @@
 
 #include "../Modules/TriangleModule.h"
 #include "../Modules/QuadModule.h"
+#include "../Modules/CubeModule.h"
 
 #include "Externals/stb_image.h"
 
@@ -103,7 +104,7 @@ void Application::ModuleSelector(std::string name) {
   {
 	if (ImGui::Button("1. Triangle")) { SwitchModule<TriangleModule>(); }
 	if (ImGui::Button("2. Quad")) { SwitchModule<QuadModule>(); }
-
+    if (ImGui::Button("2. Cube")) { SwitchModule<CubeModule>(); }
   }
   ImGui::End();
 }
