@@ -40,11 +40,15 @@ void Application::Run() {
   gui.AddElement([this]() { ModuleSelector("Module selection:"); });
 
   while (window.WindowActive()) {
-	window.Begin();
+
+    // Begin -----------------------------------------------------------------------------------------------------------
+    window.Begin();
 
 	camera.Update(1.0);
+    module->OnUpdate();
 
-	shader.Bind();
+    // Draw ------------------------------------------------------------------------------------------------------------
+    shader.Bind();
 
 	if (use_texture) {
       cat_texture.Bind();
@@ -55,11 +59,13 @@ void Application::Run() {
 	shader.Mat4("u_Model", transform.Transformation());
     shader.Mat4("u_ViewProjection", camera.GetProjectionView());
 
-    module->OnUpdate();
+    module->OnDraw(shader, camera);
 
 	// GUI
 	gui.Render();
 
+
+    // End ------------------------------------------------------------------------------------------------------------
 	window.End();
   }
 

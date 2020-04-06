@@ -41,5 +41,5 @@ class QuadModule : public Module {
 
   virtual void OnInit() override;
   virtual void OnUpdate(double dt = 1.0) override;
-
+  virtual void OnDraw(const Shader &shader, const Camera &camera) override;
 };

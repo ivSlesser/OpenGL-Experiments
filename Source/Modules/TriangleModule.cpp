@@ -40,6 +40,10 @@ void TriangleModule::OnInit() {
 }
 
 void TriangleModule::OnUpdate(double dt) {
+
+}
+
+void TriangleModule::OnDraw(const Shader &shader, const Camera &camera) {
   VAO.Bind();
   glDrawArrays(GL_TRIANGLES, 0, Triangle::VertexCount());
 }

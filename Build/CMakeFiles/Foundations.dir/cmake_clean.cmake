@@ -15,7 +15,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Graphics/Triangle.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Graphics/Vertex.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o"
-  "CMakeFiles/Foundations.dir/Source/Modules/TextureModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/IndexBuffer.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o"

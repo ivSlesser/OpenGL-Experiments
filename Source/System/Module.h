@@ -23,12 +23,16 @@
 
 #pragma once
 
+#include "OpenGL/Shader.h"
 #include "OpenGL/Texture.h"
+
+#include "Graphics/Camera/Camera.h"
 
 class Module {
  public:
   virtual ~Module() {}
   virtual void OnInit() = 0;
   virtual void OnUpdate(double dt = 1.0) = 0;
+  virtual void OnDraw(const Shader &shader, const Camera &camera) = 0;
   virtual unsigned int GetTextureSlot() { return 0; }
 };

@@ -42,8 +42,6 @@ class Application {
   Module *module{nullptr};
   Transform transform;
   PerspectiveCamera camera;
-
-
   bool use_texture = false;
   Texture white_texture;
   Texture cat_texture = Texture("Resources/Textures/cat.jpg");

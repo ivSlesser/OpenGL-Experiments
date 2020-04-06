@@ -16,8 +16,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
@@ -25,12 +26,17 @@
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/basic.vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/basic.vertex.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/QuadModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/QuadModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/QuadModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/QuadModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/TextureModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/TextureModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/TriangleModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/TriangleModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/TriangleModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/TriangleModule.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/System/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Application.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/System/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Application.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Module.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Module.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +111,7 @@
       <workItem from="1585641005139" duration="2909000" />
       <workItem from="1586159108623" duration="7291000" />
       <workItem from="1586175052308" duration="560000" />
-      <workItem from="1586175655001" duration="5965000" />
+      <workItem from="1586175655001" duration="6434000" />
     </task>
     <servers />
   </component>
@@ -132,11 +138,6 @@
           <url>file://$PROJECT_DIR$/Foundations/Graphics/Quad.cpp</url>
           <line>35</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/Modules/QuadModule.cpp</url>
-          <line>34</line>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/OpenGL/Texture.cpp</url>

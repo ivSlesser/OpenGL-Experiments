@@ -47,6 +47,9 @@ void QuadModule::OnInit() {
 }
 
 void QuadModule::OnUpdate(double dt) {
+}
+
+void QuadModule::OnDraw(const Shader &shader, const Camera &camera) {
   VAO.Bind();
   IBO.Bind();
   glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);

@@ -24,7 +24,6 @@
 #include "OrthographicCamera.h"
 #include "System/Window.h"
 
-
 bool OrthographicCamera::OnInput(double dt) {
   bool needRecalc = false;
 
@@ -51,7 +50,6 @@ void OrthographicCamera::UpdateProjectionView() {
   const glm::vec2 &dimensions = glm::vec2(800.0f, 600.0f);
   float aspect = dimensions.x / dimensions.y;
 
-  // TODO: Zoom
   float zoom = 1.0f;
 
   glm::mat4 view = glm::lookAt(position, position + front, up);

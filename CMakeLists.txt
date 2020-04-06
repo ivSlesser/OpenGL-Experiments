@@ -9,7 +9,7 @@ file(GLOB_RECURSE SOURCES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.hpp")
 
 # Executable definition and properties
 #add_executable(${PROJECT_NAME} ${SOURCES})
-add_executable(${PROJECT_NAME} ${SOURCES} Source/Modules/TextureModule.cpp Source/Modules/TextureModule.h)
+add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 

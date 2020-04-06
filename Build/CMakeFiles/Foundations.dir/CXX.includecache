@@ -1683,40 +1683,34 @@ Externals/ImGUI.hpp
 ../Source/System/Window.h
 
 ../Source/System/Module.h
+OpenGL/Shader.h
+../Source/System/OpenGL/Shader.h
 OpenGL/Texture.h
 ../Source/System/OpenGL/Texture.h
+Graphics/Camera/Camera.h
+../Source/System/Graphics/Camera/Camera.h
 
 ../Source/System/Window.h
 Common.h
 ../Source/System/Common.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.cpp
-Camera.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Quad.h
+Vertex.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Triangle.h
+Vertex.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
+
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
 Common.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Common.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Common.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/OrthographicCamera.cpp
-OrthographicCamera.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/OrthographicCamera.h
-System/Window.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/System/Window.h
-
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/OrthographicCamera.h
-Camera.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.h
-
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/PerspectiveCamera.cpp
-PerspectiveCamera.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/PerspectiveCamera.h
-System/Window.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/System/Window.h
-
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/PerspectiveCamera.h
-Camera.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Camera/Camera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.cpp
+QuadModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.h
+../Graphics/Quad.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Quad.h
 
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.h
 ../System/Module.h
@@ -1727,6 +1721,12 @@ OpenGL/VertexBuffer.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexBuffer.h
 OpenGL/IndexBuffer.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/IndexBuffer.h
+
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.cpp
+TriangleModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.h
+../Graphics/Triangle.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Triangle.h
 
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.h
 ../System/Module.h
@@ -1765,8 +1765,12 @@ Graphics/Properties/Transform.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Graphics/Properties/Transform.h
 
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
+OpenGL/Shader.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/OpenGL/Shader.h
 OpenGL/Texture.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/OpenGL/Texture.h
+Graphics/Camera/Camera.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Graphics/Camera/Camera.h
 
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/main.cpp
 System/Application.h
