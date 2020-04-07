@@ -26,48 +26,65 @@
 #include "../Modules/QuadModule.h"
 #include "../Modules/CubeModule.h"
 #include "../Modules/PlaneModule.h"
+#include "../Modules/ModelModule.h"
 
 #include "Externals/stb_image.h"
 
-
-void Application::Run() {
-
+void Application::Init() {
+  // Window ------------------------------------------------------------------------------------------------------------
   gui.Init(window.GetWindow());
-  shader.Init("Resources/basic.vertex.glsl", "Resources/basic.fragment.glsl");
-  shader.Int("u_Texture0", 0);
 
+  // Unlit Shader ------------------------------------------------------------------------------------------------------
+  unlit_shader.Init("Resources/unlit.basic.vertex.glsl", "Resources/unlit.basic.fragment.glsl");
+  unlit_shader.Int("u_Texture0", 0);
+
+  // Lit Shader --------------------------------------------------------------------------------------------------------
+  lit_shader.Init("Resources/lit.basic.vertex.glsl", "Resources/lit.basic.fragment.glsl");
+  lit_shader.Int("u_Texture0", 0);
+
+  // Module ------------------------------------------------------------------------------------------------------------
   SwitchModule<TriangleModule>();
   module->OnInit(camera);
 
+  // GUI ---------------------------------------------------------------------------------------------------------------
   gui.AddElement([this]() { ModuleSelector("Module selection:"); });
+}
+
+void Application::Run() {
+
+  Init();
 
   while (window.WindowActive()) {
 
-    // Begin -----------------------------------------------------------------------------------------------------------
-    window.Begin();
+	// Begin -----------------------------------------------------------------------------------------------------------
+	window.Begin();
 
 	camera.Update(1.0);
-    module->OnUpdate();
+	module->OnUpdate();
 
-    // Draw ------------------------------------------------------------------------------------------------------------
-    shader.Bind();
+	// Draw ------------------------------------------------------------------------------------------------------------
+	if (use_lighting) {
+	  lit_shader.Bind();
+	  lit_shader.Mat4("u_Model", transform.Transformation());
+	  lit_shader.Mat4("u_ViewProjection", camera.GetProjectionView());
+	} else {
+	  unlit_shader.Bind();
+	  unlit_shader.Mat4("u_Model", transform.Transformation());
+	  unlit_shader.Mat4("u_ViewProjection", camera.GetProjectionView());
+	}
 
 	if (use_texture) {
-      cat_texture.Bind();
+	  cat_texture.Bind();
 	} else {
 	  white_texture.Bind();
 	}
 
-	shader.Mat4("u_Model", transform.Transformation());
-    shader.Mat4("u_ViewProjection", camera.GetProjectionView());
-
-    module->OnDraw(shader, camera);
+	module->OnDraw(use_lighting ? lit_shader : unlit_shader, camera);
 
 	// GUI
 	gui.Render();
 
-
-    // End ------------------------------------------------------------------------------------------------------------
+	// End ------------------------------------------------------------------------------------------------------------
 	window.End();
   }
 
@@ -77,27 +94,30 @@ void Application::ModuleSelector(std::string name) {
 
   ImGui::Begin("General");
   {
-    // Texture --------------------------------------------------------------------
-    ImGui::Checkbox("Use texture?", &use_texture);
+	// Texture --------------------------------------------------------------------
+	ImGui::Checkbox("Use texture?", &use_texture);
+	// Shader --------------------------------------------------------------------
+	ImGui::Checkbox("Use lit shader?", &use_lighting);
+
   }
   ImGui::End();
 
   ImGui::Begin("Transform");
   {
-    // Translation ---------------------------------------------------------------
-    glm::vec3 translation = transform.GetTranslate();
-    ImGui::SliderFloat3("Translation", &translation.x, -10.0f, 10.0f);
-    transform.SetTranslate(translation);
+	// Translation ---------------------------------------------------------------
+	glm::vec3 translation = transform.GetTranslate();
+	ImGui::SliderFloat3("Translation", &translation.x, -10.0f, 10.0f);
+	transform.SetTranslate(translation);
 
-    // Rotation ------------------------------------------------------------------
-    glm::vec3 rotation = transform.GetRotate();
-    ImGui::SliderFloat3("Rotation", &rotation.x, 0.0f, 360.0f);
-    transform.SetRotate(rotation);
+	// Rotation ------------------------------------------------------------------
+	glm::vec3 rotation = transform.GetRotate();
+	ImGui::SliderFloat3("Rotation", &rotation.x, 0.0f, 360.0f);
+	transform.SetRotate(rotation);
 
-    // Scale ---------------------------------------------------------------------
-    glm::vec3 scale = transform.GetScale();
-    ImGui::SliderFloat3("Scale", &scale.x, 0.0f, 10.0f);
-    transform.SetScale(scale);
+	// Scale ---------------------------------------------------------------------
+	glm::vec3 scale = transform.GetScale();
+	ImGui::SliderFloat3("Scale", &scale.x, 0.0f, 10.0f);
+	transform.SetScale(scale);
   }
   ImGui::End();
 
@@ -105,10 +125,11 @@ void Application::ModuleSelector(std::string name) {
   {
 	if (ImGui::Button("1. Shape: Triangle")) { SwitchModule<TriangleModule>(); }
 	if (ImGui::Button("2. Shape: Quad")) { SwitchModule<QuadModule>(); }
-    if (ImGui::Button("3. Shape: Cube")) { SwitchModule<CubeModule>(); }
+	if (ImGui::Button("3. Shape: Cube")) { SwitchModule<CubeModule>(); }
 	if (ImGui::Button("4. Shape: Plane")) { SwitchModule<PlaneModule>(); }
-  }
+	if (ImGui::Button("4. Shape: Model")) { SwitchModule<ModelModule>(); }  }
   ImGui::End();
 
   module->OnGUI();
 }
+

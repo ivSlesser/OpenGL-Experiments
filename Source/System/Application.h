@@ -38,18 +38,25 @@ class Application {
  private:
   Window window;
   GUILayer gui;
-  Shader shader;
   Module *module{nullptr};
   Transform transform;
   PerspectiveCamera camera;
+
+  // Texture Related ---------------------------------------------------------------------------------------------------
   bool use_texture = false;
   Texture white_texture;
   Texture cat_texture = Texture("Resources/Textures/cat.jpg");
+
+  // Shader Related ----------------------------------------------------------------------------------------------------
+  bool use_lighting = false;
+  Shader lit_shader;
+  Shader unlit_shader;
 
  public:
   void Run();
 
  private:
+  void Init();
   void ModuleSelector(std::string name);
 
   // Used to switch modules.
