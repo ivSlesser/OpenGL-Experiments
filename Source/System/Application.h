@@ -51,6 +51,8 @@ class Application {
   bool use_lighting = false;
   Shader lit_shader;
   Shader unlit_shader;
+  glm::vec3 light_color = glm::vec3(1.0f);
+  glm::vec3 light_position = glm::vec3(0.0f, 100.0f, 100.0f);
 
  public:
   void Run();

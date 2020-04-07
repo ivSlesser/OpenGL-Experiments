@@ -67,6 +67,9 @@ void Application::Run() {
 	  lit_shader.Bind();
 	  lit_shader.Mat4("u_Model", transform.Transformation());
 	  lit_shader.Mat4("u_ViewProjection", camera.GetProjectionView());
+	  lit_shader.Vec3("u_LightPosition", light_position);
+	  lit_shader.Vec3("u_LightColor", light_color);
+	  lit_shader.Vec3("u_CameraPosition", camera.GetPosition());
 	} else {
 	  unlit_shader.Bind();
 	  unlit_shader.Mat4("u_Model", transform.Transformation());
@@ -99,6 +102,11 @@ void Application::ModuleSelector(std::string name) {
 	// Shader --------------------------------------------------------------------
 	ImGui::Checkbox("Use lit shader?", &use_lighting);
 
+	if (use_lighting) {
+	  ImGui::ColorEdit3("Light Color", &light_color.x);
+	  ImGui::SliderFloat3("Light Position", &light_position.x, -100.0f, 100.0f);
+	}
+
   }
   ImGui::End();
 
@@ -115,8 +123,11 @@ void Application::ModuleSelector(std::string name) {
 	transform.SetRotate(rotation);
 
 	// Scale ---------------------------------------------------------------------
-	glm::vec3 scale = transform.GetScale();
-	ImGui::SliderFloat3("Scale", &scale.x, 0.0f, 10.0f);
+//	glm::vec3 scale = transform.GetScale();
+	//ImGui::SliderFloat3("Scale", &scale.x, 0.0f, 10.0f);
+	float scale_float = transform.GetScale().x;
+	ImGui::SliderFloat("Scale (XYZ)", &scale_float, 1.0f, 10.0f);
+	glm::vec3 scale = glm::vec3(scale_float);
 	transform.SetScale(scale);
   }
   ImGui::End();
@@ -127,7 +138,8 @@ void Application::ModuleSelector(std::string name) {
 	if (ImGui::Button("2. Shape: Quad")) { SwitchModule<QuadModule>(); }
 	if (ImGui::Button("3. Shape: Cube")) { SwitchModule<CubeModule>(); }
 	if (ImGui::Button("4. Shape: Plane")) { SwitchModule<PlaneModule>(); }
-	if (ImGui::Button("4. Shape: Model")) { SwitchModule<ModelModule>(); }  }
+	if (ImGui::Button("4. Shape: Model")) { SwitchModule<ModelModule>(); }
+  }
   ImGui::End();
 
   module->OnGUI();

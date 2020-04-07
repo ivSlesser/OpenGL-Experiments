@@ -1710,20 +1710,6 @@ Graphics/Camera/Camera.h
 Common.h
 ../Source/System/Common.h
 
-/Users/ivs/Projects/Public/OpenGL-Platform/Source/Graphics/Model.cpp
-Model.h
-/Users/ivs/Projects/Public/OpenGL-Platform/Source/Graphics/Model.h
-
-/Users/ivs/Projects/Public/OpenGL-Platform/Source/Graphics/Model.h
-Common.h
-/Users/ivs/Projects/Public/OpenGL-Platform/Source/Graphics/Common.h
-OpenGL/VertexArray.h
-/Users/ivs/Projects/Public/OpenGL-Platform/Source/Graphics/OpenGL/VertexArray.h
-OpenGL/VertexBuffer.h
-/Users/ivs/Projects/Public/OpenGL-Platform/Source/Graphics/OpenGL/VertexBuffer.h
-OpenGL/IndexBuffer.h
-/Users/ivs/Projects/Public/OpenGL-Platform/Source/Graphics/OpenGL/IndexBuffer.h
-
 /Users/ivs/Projects/Public/OpenGL-Platform/Source/Modules/CubeModule.h
 Common.h
 /Users/ivs/Projects/Public/OpenGL-Platform/Source/Modules/Common.h
@@ -1735,10 +1721,6 @@ OpenGL/VertexBuffer.h
 /Users/ivs/Projects/Public/OpenGL-Platform/Source/Modules/OpenGL/VertexBuffer.h
 OpenGL/IndexBuffer.h
 /Users/ivs/Projects/Public/OpenGL-Platform/Source/Modules/OpenGL/IndexBuffer.h
-
-/Users/ivs/Projects/Public/OpenGL-Platform/Source/Modules/ModelModule.cpp
-ModelModule.h
-/Users/ivs/Projects/Public/OpenGL-Platform/Source/Modules/ModelModule.h
 
 /Users/ivs/Projects/Public/OpenGL-Platform/Source/Modules/ModelModule.h
 Common.h
