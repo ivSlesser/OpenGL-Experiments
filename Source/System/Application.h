@@ -60,6 +60,6 @@ class Application {
 	}
 	transform = Transform();
 	module = new T();
-	module->OnInit();
+	module->OnInit(camera);
   }
 };

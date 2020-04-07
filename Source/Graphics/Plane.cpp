@@ -21,38 +21,37 @@
 // SOFTWARE.
 
 
-#include "QuadModule.h"
+#include "Plane.h"
 
-#include "../Graphics/Quad.h"
+Plane::Plane(glm::vec4 color, const glm::vec3 &pos,
+	const glm::vec2 &size, float resolution) {
 
-void QuadModule::OnInit(Camera &camera) {
+  const float uvX = 1.0f / size.x;
+  const float uvZ = 1.0f / size.y;
 
-  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
-
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
-
-  // Create vertices
-  std::vector<Vertex> vertices = Quad::Vertices(color);
-  VAO.Bind();
-  VBO.Init(vertices);
-  VAO.SetLayout();
+  // Create the base vertices.
+  unsigned vertex = 0;
+  for (unsigned z = 0; z < size.y; ++z) {
+	for (unsigned x = 0; x < size.x; ++x) {
+	  float xp = pos.x + x * resolution;
+	  float zp = pos.z + z * resolution;
+	  vertices.push_back({{xp, pos.y, zp}, color, {z * uvZ, x * uvX}, {0.0f, 1.0f, 0.0f}});
+	}
+  }
 
   // Create indices
-  std::vector<unsigned> indices = Quad::Indices();
-  IBO.Init(indices);
+  unsigned offset = 0;
+  for (unsigned z = 0; z < size.y - 1; ++z) {
+	unsigned Z = z * (size.x);
+	unsigned ZN = (z + 1) * (size.x);
+	for (unsigned x = 0; x < size.x - 1; ++x) {
+	  indices.push_back(Z + x); // A
+	  indices.push_back(ZN + x + 1); // C
+	  indices.push_back(ZN + x); // D
 
-}
-
-void QuadModule::OnUpdate(double dt) {
-}
-
-void QuadModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
-  IBO.Bind();
-  glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
+	  indices.push_back(ZN + x + 1); // C
+	  indices.push_back(Z + x); // A
+	  indices.push_back(Z + x + 1); // B
+	}
+  }
 }

@@ -23,7 +23,9 @@
 #include "TriangleModule.h"
 #include "../Graphics/Triangle.h"
 
-void TriangleModule::OnInit() {
+void TriangleModule::OnInit(Camera &camera) {
+
+  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
 
   // Create a random color
   glm::vec4 color;

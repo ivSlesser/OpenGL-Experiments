@@ -25,6 +25,7 @@
 #include "../Modules/TriangleModule.h"
 #include "../Modules/QuadModule.h"
 #include "../Modules/CubeModule.h"
+#include "../Modules/PlaneModule.h"
 
 #include "Externals/stb_image.h"
 
@@ -36,7 +37,7 @@ void Application::Run() {
   shader.Int("u_Texture0", 0);
 
   SwitchModule<TriangleModule>();
-  module->OnInit();
+  module->OnInit(camera);
 
   gui.AddElement([this]() { ModuleSelector("Module selection:"); });
 
@@ -102,9 +103,12 @@ void Application::ModuleSelector(std::string name) {
 
   ImGui::Begin(name.c_str());
   {
-	if (ImGui::Button("1. Triangle")) { SwitchModule<TriangleModule>(); }
-	if (ImGui::Button("2. Quad")) { SwitchModule<QuadModule>(); }
-    if (ImGui::Button("2. Cube")) { SwitchModule<CubeModule>(); }
+	if (ImGui::Button("1. Shape: Triangle")) { SwitchModule<TriangleModule>(); }
+	if (ImGui::Button("2. Shape: Quad")) { SwitchModule<QuadModule>(); }
+    if (ImGui::Button("3. Shape: Cube")) { SwitchModule<CubeModule>(); }
+	if (ImGui::Button("4. Shape: Plane")) { SwitchModule<PlaneModule>(); }
   }
   ImGui::End();
+
+  module->OnGUI();
 }

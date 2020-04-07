@@ -21,13 +21,11 @@
 // SOFTWARE.
 
 
-#include "QuadModule.h"
+#include "PlaneModule.h"
 
-#include "../Graphics/Quad.h"
+void PlaneModule::OnInit(Camera &camera) {
 
-void QuadModule::OnInit(Camera &camera) {
-
-  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
+  camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
 
   // Create a random color
   glm::vec4 color;
@@ -36,23 +34,25 @@ void QuadModule::OnInit(Camera &camera) {
   color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
   color.a = 1.0f;
 
+  plane = Plane(color);
+
   // Create vertices
-  std::vector<Vertex> vertices = Quad::Vertices(color);
   VAO.Bind();
-  VBO.Init(vertices);
+  VBO.Init(plane.Vertices());
   VAO.SetLayout();
 
   // Create indices
-  std::vector<unsigned> indices = Quad::Indices();
-  IBO.Init(indices);
+  IBO.Init(plane.Indices());
 
 }
 
-void QuadModule::OnUpdate(double dt) {
+void PlaneModule::OnUpdate(double dt) {
+
 }
 
-void QuadModule::OnDraw(const Shader &shader, const Camera &camera) {
+void PlaneModule::OnDraw(const Shader &shader, const Camera &camera) {
   VAO.Bind();
   IBO.Bind();
-  glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
+  glDrawElements(GL_TRIANGLES, plane.IndexCount(), GL_UNSIGNED_INT, 0);
 }
+

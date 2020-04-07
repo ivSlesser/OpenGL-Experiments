@@ -25,7 +25,7 @@
 
 class Camera {
  protected:
-  glm::vec3 position{0.0f, 0.0f, 5.0f}; /**< Camera position. */
+  glm::vec3 position{0.0f, 0.0f, 3.0f}; /**< Camera position. */
   glm::vec3 front{0.0f, 0.0f, -1.0f}; /**< Camera front direction. */
   glm::vec3 right; /**< Camera right direction. */
   glm::vec3 up{0.0f, 1.0f, 0.0f};  /**< Camera up direction. */
@@ -52,6 +52,7 @@ class Camera {
   inline const glm::vec3 &GetPosition() const { return position; }
   inline void SetPosition(float to) { position = glm::vec3(to); }
   inline void SetPosition(const glm::vec3 &to) { position = to; }
+  inline void SetAndUpdatePosition(const glm::vec3 &to) { position = to; UpdateProjectionView(); }
   inline void AddPosition(float value) { position += (value * speed); }
   inline void AddPosition(const glm::vec3 &values) { position += (values * speed); }
 

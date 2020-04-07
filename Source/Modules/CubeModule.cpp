@@ -26,7 +26,10 @@
 #include "../Graphics/Cube.h"
 
 
-void CubeModule::OnInit() {
+void CubeModule::OnInit(Camera &camera) {
+
+  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
+
   // Create a random color
   glm::vec4 color;
   color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));

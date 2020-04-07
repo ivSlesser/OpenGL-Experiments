@@ -31,8 +31,8 @@
 class Module {
  public:
   virtual ~Module() {}
-  virtual void OnInit() = 0;
+  virtual void OnInit(Camera &camera) = 0;
   virtual void OnUpdate(double dt = 1.0) = 0;
+  virtual void OnGUI() {}
   virtual void OnDraw(const Shader &shader, const Camera &camera) = 0;
-  virtual unsigned int GetTextureSlot() { return 0; }
 };
