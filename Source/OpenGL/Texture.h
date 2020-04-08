@@ -33,7 +33,7 @@ class Texture {
  private:
   unsigned int id;
   unsigned int slot;
-
+  bool transparency;
 
  public:
   Texture();
@@ -43,6 +43,7 @@ class Texture {
   void Bind();
 
   inline const unsigned int GetSlot() const { return slot; }
+  inline const bool HasTransparency() const { return  transparency; }
 
  private:
     GLenum SlotIntToEnum();

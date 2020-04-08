@@ -58,7 +58,12 @@ Texture::Texture(const char *file) {
   unsigned char *data = stbi_load(file, &width, &height, &nrChannels, 0);
   if (data)
   {
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    // Check if transparency ( channel )
+    GLenum format = nrChannels == 3 ? GL_RGB : GL_RGBA;
+    transparency = nrChannels == 3;
+
+    // Create texture
+    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);
 
   }

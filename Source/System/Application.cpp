@@ -77,9 +77,20 @@ void Application::Run() {
 	}
 
 	if (use_texture) {
+
 	  cat_texture.Bind();
+	  if (cat_texture.HasTransparency())
+	    window.EnableTransparency();
+	  else
+	    window.DisableTransparency();
+
 	} else {
 	  white_texture.Bind();
+	  if (white_texture.HasTransparency())
+	    window.EnableTransparency();
+	  else
+	    window.DisableTransparency();
+
 	}
 
 	module->OnDraw(use_lighting ? lit_shader : unlit_shader, camera);

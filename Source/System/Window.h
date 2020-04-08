@@ -34,6 +34,9 @@ class Window {
 
  private:
   GLFWwindow *window{nullptr};
+  bool is_transparency_enabled = false;
+
+  // -------------------------------------------------------------------------------------------------------------------
 
  public:
   Window();
@@ -42,13 +45,29 @@ class Window {
   void Begin();
   void End();
 
-  void ProcessInput(GLFWwindow *window);
-
   inline bool WindowActive() { return !glfwWindowShouldClose(window); }
   inline GLFWwindow *GetWindow() { return window; }
 
+  // Transparency ------------------------------------------------------------------------------------------------------
+  inline const bool IsTransparencyEnabled() const { return is_transparency_enabled; }
+
+  // Enables transparency if it is not already enabled.
+  inline void EnableTransparency() {
+    if (!is_transparency_enabled) {
+	  glEnable(GL_BLEND);
+	  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    }
+  }
+
+  // Disables transparency if it is not already disabled.
+  inline void DisableTransparency() {
+    if (is_transparency_enabled) {
+      glDisable(GL_BLEND);
+    }
+  }
+
+  // Callbacks ---------------------------------------------------------------------------------------------------------
+  void ProcessInput(GLFWwindow *window);
   static void OnResize(GLFWwindow *window, int width, int height);
-
-
 };
 

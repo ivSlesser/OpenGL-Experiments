@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Foundations" targetName="glfw" />
       <config projectName="Foundations" targetName="Foundations" />
       <config projectName="Foundations" targetName="glad" />
+      <config projectName="Foundations" targetName="glfw" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -17,12 +17,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/lit.basic.fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/lit.basic.fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/lit.basic.vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/lit.basic.vertex.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Texture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Texture.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Texture.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Texture.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/System/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Application.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Application.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -99,7 +101,8 @@
       <workItem from="1586159108623" duration="7291000" />
       <workItem from="1586175052308" duration="560000" />
       <workItem from="1586175655001" duration="8351000" />
-      <workItem from="1586256198079" duration="5361000" />
+      <workItem from="1586256198079" duration="5465000" />
+      <workItem from="1586344448706" duration="810000" />
     </task>
     <servers />
   </component>
