@@ -28,18 +28,18 @@ bool OrthographicCamera::OnInput(double dt) {
   bool needRecalc = false;
 
   if (glfwGetKey(Window::s_Window, GLFW_KEY_W) == GLFW_PRESS) {
-	AddPosition(-up * (float) dt);
+	AddPosition(-up * speed * (float) dt);
 	needRecalc = true;
   } else if (glfwGetKey(Window::s_Window, GLFW_KEY_S) == GLFW_PRESS) {
-	AddPosition(up * (float) dt);
+	AddPosition(up * speed *  (float) dt);
 	needRecalc = true;
   }
 
   if (glfwGetKey(Window::s_Window, GLFW_KEY_A) == GLFW_PRESS) {
-	AddPosition(-glm::normalize(glm::cross(front, up)) * (float) dt);
+	AddPosition(-glm::normalize(glm::cross(front, up)) * speed *  (float) dt);
 	needRecalc = true;
   } else if (glfwGetKey(Window::s_Window, GLFW_KEY_D) == GLFW_PRESS) {
-	AddPosition(glm::normalize(glm::cross(front, up)) * (float) dt);
+	AddPosition(glm::normalize(glm::cross(front, up)) * speed *  (float) dt);
 	needRecalc = true;
   }
 
@@ -47,7 +47,7 @@ bool OrthographicCamera::OnInput(double dt) {
 }
 
 void OrthographicCamera::UpdateProjectionView() {
-  const glm::vec2 &dimensions = glm::vec2(800.0f, 600.0f);
+  const glm::vec2 &dimensions = Window::GetDimensions();
   float aspect = dimensions.x / dimensions.y;
 
   float zoom = 1.0f;

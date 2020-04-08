@@ -25,16 +25,26 @@
 
 #include "Common.h"
 
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
 
 class Window {
  public:
   static GLFWwindow *s_Window;
 
  private:
+  static Window *s_Instance;
   GLFWwindow *window{nullptr};
   bool is_transparency_enabled = false;
+  bool is_left_mouse_held = false;
+  bool is_right_mouse_held = false;
+
+  struct WindowConfig {
+	unsigned int width = 1366;
+	unsigned int height = 768;
+	const char *title = "OpenGL Experiments";
+	int major = 4;
+	int minor = 1;
+  } config;
+
 
   // -------------------------------------------------------------------------------------------------------------------
 
@@ -47,6 +57,8 @@ class Window {
 
   inline bool WindowActive() { return !glfwWindowShouldClose(window); }
   inline GLFWwindow *GetWindow() { return window; }
+
+  inline static glm::vec2 GetDimensions() { return glm::vec2(s_Instance->config.width, s_Instance->config.height); }
 
   // Transparency ------------------------------------------------------------------------------------------------------
   inline const bool IsTransparencyEnabled() const { return is_transparency_enabled; }
@@ -69,5 +81,8 @@ class Window {
   // Callbacks ---------------------------------------------------------------------------------------------------------
   void ProcessInput(GLFWwindow *window);
   static void OnResize(GLFWwindow *window, int width, int height);
+  static void OnMouseMove(GLFWwindow* window, double xpos, double ypos);
+  static void OnMouseButton(GLFWwindow *m, int button, int action, int mods);
+
 };
 

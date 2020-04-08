@@ -5265,6 +5265,14 @@ CMakeFiles/Foundations.dir/Source/System/Window.cpp.o
  ../Libraries/glm/glm/vec4.hpp
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
+ ../Source/Graphics/Camera/Camera.h
+ ../Source/Graphics/Camera/PerspectiveCamera.h
+ ../Source/Graphics/Properties/Transform.h
+ ../Source/OpenGL/Renderer.h
+ ../Source/OpenGL/Shader.h
+ ../Source/OpenGL/Texture.h
+ ../Source/System/Module.h
+ ../Source/System/Window.h
  /Users/ivs/Projects/Public/OpenGL-Platform/Source/System/Window.cpp
  /Users/ivs/Projects/Public/OpenGL-Platform/Source/System/Window.h
 CMakeFiles/Foundations.dir/Source/main.cpp.o

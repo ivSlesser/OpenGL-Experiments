@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Foundations" targetName="glfw" />
       <config projectName="Foundations" targetName="Foundations" />
       <config projectName="Foundations" targetName="glad" />
+      <config projectName="Foundations" targetName="glfw" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -15,7 +15,24 @@
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Renderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +109,8 @@
       <workItem from="1586175052308" duration="560000" />
       <workItem from="1586175655001" duration="8351000" />
       <workItem from="1586256198079" duration="5465000" />
-      <workItem from="1586344448706" duration="3191000" />
+      <workItem from="1586344448706" duration="3220000" />
+      <workItem from="1586349603643" duration="1563000" />
     </task>
     <servers />
   </component>

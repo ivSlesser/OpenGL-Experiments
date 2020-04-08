@@ -23,20 +23,26 @@
 
 #include "Window.h"
 
+#include "OpenGL/Renderer.h"
+#include "Graphics/Camera/PerspectiveCamera.h"
+
 GLFWwindow *Window::s_Window = nullptr;
+Window *Window::s_Instance = nullptr;
 
 Window::Window() {
 
+  Window::s_Instance = this;
+
   glfwInit();
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, config.major);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, config.minor);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 #ifdef __APPLE__
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-  window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL-Experiments", NULL, NULL);
+  window = glfwCreateWindow(config.width, config.height, config.title, NULL, NULL);
   if (window == NULL) {
 	std::cout << "Failed to create GLFW window" << std::endl;
 	glfwTerminate();
@@ -44,8 +50,10 @@ Window::Window() {
   }
   glfwMakeContextCurrent(window);
   glfwSetFramebufferSizeCallback(window, Window::OnResize);
+  glfwSetCursorPosCallback(window, Window::OnMouseMove);
+  glfwSetMouseButtonCallback(window, Window::OnMouseButton);
 
-  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+  if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
 	std::cout << "Failed to initialize GLAD" << std::endl;
 	std::abort();
   }
@@ -76,6 +84,48 @@ void Window::ProcessInput(GLFWwindow *window) {
 }
 
 void Window::OnResize(GLFWwindow *window, int width, int height) {
+  Window::s_Instance->config.width = width;
+  Window::s_Instance->config.height = height;
   glViewport(0, 0, width, height);
+}
+
+void Window::OnMouseMove(GLFWwindow *window, double xpos, double ypos) {
+  static float prevX = 0.0f;
+  static float prevY = 0.0f;
+
+  static bool firstMouse = true;
+  if (s_Instance->is_right_mouse_held) {
+	if (firstMouse) {
+	  prevX = xpos;
+	  prevY = ypos;
+	  firstMouse = false;
+	}
+
+	float xoffset = xpos - prevX;
+	float yoffset = prevY - ypos;
+
+	prevX = xpos;
+	prevY = ypos;
+
+	Renderer::GetCamera().AddAndUpdateRotation(glm::vec3(yoffset, xoffset, 0.0f));
+  } else {
+	firstMouse = true;
+  }
+}
+
+void Window::OnMouseButton(GLFWwindow *m, int button, int action, int mods) {
+  if (button == GLFW_MOUSE_BUTTON_LEFT) {
+	if (action == GLFW_PRESS)
+	  s_Instance->is_left_mouse_held = true;
+	else if (action == GLFW_RELEASE)
+	  s_Instance->is_left_mouse_held = false;
+  }
+
+  if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+	if (action == GLFW_PRESS)
+	  s_Instance->is_right_mouse_held = true;
+	else if (action == GLFW_RELEASE)
+	  s_Instance->is_right_mouse_held = false;
+  }
 }
 

@@ -35,7 +35,7 @@
 class Renderer {
 
  private:
-  static Renderer *instance;
+  static Renderer *s_Instance;
 
   PerspectiveCamera camera;
 

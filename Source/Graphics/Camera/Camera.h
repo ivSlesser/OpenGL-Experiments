@@ -33,7 +33,7 @@ class Camera {
   glm::mat4 projection_view; /**< Calculated View-Projection matrix. */
   glm::vec3 rotation{0.0f, -90.0f, 0.0f}; /**< Rotations in degrees X: Pitch, Y: Yaw, Z: Roll */
 
-  float speed = 1.0f; /**< Camera movement speed. */
+  float speed = 0.5f; /**< Camera movement speed. */
   float sensitivity = 0.3f; /**< Camera rotational sensitivity. */
 
  public:
@@ -60,6 +60,7 @@ class Camera {
   inline const glm::vec3 &GetRotation() const { return rotation; }
   void SetRotation(const glm::vec3 &values);
   void AddRotation(const glm::vec3 &values);
+  void AddAndUpdateRotation(const glm::vec3 &values);
 
   // Other -------------------------------------------------------------------------------------------------------------
   inline const glm::vec3 &GetFront() const { return front; }

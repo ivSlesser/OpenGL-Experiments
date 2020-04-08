@@ -40,3 +40,21 @@ void Camera::AddRotation(const glm::vec3 &values) {
   if (rotation.x > 89.0f) rotation.x = 89.0f;
   if (rotation.x < -89.0f) rotation.x = -89.0f;
 }
+
+void Camera::AddAndUpdateRotation(const glm::vec3 &values) {
+  rotation += (values * sensitivity);
+
+  if (rotation.x > 89.0f) rotation.x = 89.0f;
+  if (rotation.x < -89.0f) rotation.x = -89.0f;
+
+  glm::vec3 _front;
+  _front.x = cos(glm::radians(rotation.y)) * cos(glm::radians(rotation.x));
+  _front.y = sin(glm::radians(rotation.x));
+  _front.z = sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x));
+  front = glm::normalize(_front);
+
+  right = glm::normalize(glm::cross(front, worldUp));
+  up = glm::normalize(glm::cross(right, front));
+
+  UpdateProjectionView();
+}

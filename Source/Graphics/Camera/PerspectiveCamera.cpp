@@ -28,51 +28,37 @@
 bool PerspectiveCamera::OnInput(double dt) {
   bool needRecalc = false;
 
-  if (glfwGetKey(Window::s_Window, GLFW_KEY_W) == GLFW_PRESS)
-  {
-	AddPosition(front * (float)dt);
+  if (glfwGetKey(Window::s_Window, GLFW_KEY_W) == GLFW_PRESS) {
+	AddPosition(front * speed * (float) dt);
 	needRecalc = true;
-  }
-  else if (glfwGetKey(Window::s_Window, GLFW_KEY_S) == GLFW_PRESS)
-  {
-	AddPosition(-front * (float)dt);
+  } else if (glfwGetKey(Window::s_Window, GLFW_KEY_S) == GLFW_PRESS) {
+	AddPosition(-front * speed * (float) dt);
 	needRecalc = true;
   }
 
-  if (glfwGetKey(Window::s_Window, GLFW_KEY_A) == GLFW_PRESS)
-  {
-	AddPosition(-glm::normalize(glm::cross(front, up)) * (float)dt);
+  if (glfwGetKey(Window::s_Window, GLFW_KEY_Q) == GLFW_PRESS) {
+	AddPosition(up * speed * (float) dt);
 	needRecalc = true;
-  }
-  else if (glfwGetKey(Window::s_Window, GLFW_KEY_D) == GLFW_PRESS)
-  {
-	AddPosition(glm::normalize(glm::cross(front, up)) * (float)dt);
+  } else if (glfwGetKey(Window::s_Window, GLFW_KEY_E) == GLFW_PRESS) {
+	AddPosition(-up * speed * (float) dt);
 	needRecalc = true;
   }
 
-//  if (App::Input->MouseMoved() && App::Input->Held(Mouse::MOUSE_RIGHT))
-//  {
-//	Vec2 offsets = App::Input->MouseOffsets();
-//	AddRotation({offsets.x, offsets.y, 0.0f});
-//	needRecalc = true;
-//  }
-//
-//  if (needRecalc) {
-//    glm::vec3 _front;
-//    _front.x = Math::Cos(rotation.y * Math::DEG2RAD) * Math::Cos(rotation.x * Math::DEG2RAD);
-//    _front.y = Math::Sin(rotation.x * Math::DEG2RAD);
-//    _front.z = Math::Sin(rotation.y * Math::DEG2RAD) * Math::Cos(rotation.x * Math::DEG2RAD);
-//    front = glm::normalize(_front);
-//
-//    right = glm::normalize(glm::cross(front, worldUp));
-//    up = glm::normalize(glm::cross(right, front));
-//  }
+  if (glfwGetKey(Window::s_Window, GLFW_KEY_A) == GLFW_PRESS) {
+	AddPosition(-glm::normalize(glm::cross(front, up)) * speed *  (float) dt);
+	needRecalc = true;
+  } else if (glfwGetKey(Window::s_Window, GLFW_KEY_D) == GLFW_PRESS) {
+	AddPosition(glm::normalize(glm::cross(front, up)) * speed *  (float) dt);
+	needRecalc = true;
+  }
 
   return needRecalc;
 }
 
 void PerspectiveCamera::UpdateProjectionView() {
-  float aspect = 800 / 600;
+  const glm::vec2 &dimensions = Window::GetDimensions();
+  float aspect = dimensions.x / dimensions.y;
+
   glm::mat4 view = glm::lookAt(position, position + front, up);
   glm::mat4 projection = glm::perspective(glm::radians(fov), aspect, near, far);
   projection_view = projection * view;

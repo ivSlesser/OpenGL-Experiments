@@ -16,3 +16,16 @@ While a short list, each module supports, through the application:
 - Transform modification
 - Textured & untextured modes
 - Lit & unlit shaders
+
+## Controls
+
+### General
+
+* **Escape:** Exit application
+
+### Camera
+
+* **W** / **S**: Forward / backward
+* **A** / **D**: Strafe left / right
+* **Q** / **E**: Ascend / descend
+* **RMB + Mouse Move**: Look around

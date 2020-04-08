@@ -24,15 +24,15 @@
 #include "Renderer.h"
 #include "System/GUI/GUILayer.h"
 
-Renderer *Renderer::instance = nullptr;
+Renderer *Renderer::s_Instance = nullptr;
 
 Renderer *Renderer::Access() {
 
-  if (instance == nullptr) {
-	instance = new Renderer();
+  if (s_Instance == nullptr) {
+	s_Instance = new Renderer();
   }
 
-  return instance;
+  return s_Instance;
 }
 
 Renderer::Renderer() {
