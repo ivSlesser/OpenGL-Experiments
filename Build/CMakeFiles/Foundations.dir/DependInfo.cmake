@@ -28,6 +28,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/ivs/Projects/Public/OpenGL-Platform/Source/Modules/QuadModule.cpp" "/Users/ivs/Projects/Public/OpenGL-Platform/Build/CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o"
   "/Users/ivs/Projects/Public/OpenGL-Platform/Source/Modules/TriangleModule.cpp" "/Users/ivs/Projects/Public/OpenGL-Platform/Build/CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o"
   "/Users/ivs/Projects/Public/OpenGL-Platform/Source/OpenGL/IndexBuffer.cpp" "/Users/ivs/Projects/Public/OpenGL-Platform/Build/CMakeFiles/Foundations.dir/Source/OpenGL/IndexBuffer.cpp.o"
+  "/Users/ivs/Projects/Public/OpenGL-Platform/Source/OpenGL/Renderer.cpp" "/Users/ivs/Projects/Public/OpenGL-Platform/Build/CMakeFiles/Foundations.dir/Source/OpenGL/Renderer.cpp.o"
   "/Users/ivs/Projects/Public/OpenGL-Platform/Source/OpenGL/Shader.cpp" "/Users/ivs/Projects/Public/OpenGL-Platform/Build/CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o"
   "/Users/ivs/Projects/Public/OpenGL-Platform/Source/OpenGL/Texture.cpp" "/Users/ivs/Projects/Public/OpenGL-Platform/Build/CMakeFiles/Foundations.dir/Source/OpenGL/Texture.cpp.o"
   "/Users/ivs/Projects/Public/OpenGL-Platform/Source/OpenGL/VertexArray.cpp" "/Users/ivs/Projects/Public/OpenGL-Platform/Build/CMakeFiles/Foundations.dir/Source/OpenGL/VertexArray.cpp.o"

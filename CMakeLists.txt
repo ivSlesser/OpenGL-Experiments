@@ -9,7 +9,7 @@ file(GLOB_RECURSE SOURCES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.hpp")
 
 # Executable definition and properties
 #add_executable(${PROJECT_NAME} ${SOURCES})
-add_executable(${PROJECT_NAME} ${SOURCES} Source/Graphics/Cube.cpp Source/Graphics/Cube.h Source/Modules/CubeModule.cpp Source/Modules/CubeModule.h Source/Graphics/Plane.cpp Source/Graphics/Plane.h Source/Modules/PlaneModule.cpp Source/Modules/PlaneModule.h Source/Graphics/Model.cpp Source/Graphics/Model.h Source/Modules/ModelModule.cpp Source/Modules/ModelModule.h)
+add_executable(${PROJECT_NAME} ${SOURCES} Source/Graphics/Cube.cpp Source/Graphics/Cube.h Source/Modules/CubeModule.cpp Source/Modules/CubeModule.h Source/Graphics/Plane.cpp Source/Graphics/Plane.h Source/Modules/PlaneModule.cpp Source/Modules/PlaneModule.h Source/Graphics/Model.cpp Source/Graphics/Model.h Source/Modules/ModelModule.cpp Source/Modules/ModelModule.h Source/OpenGL/Renderer.cpp Source/OpenGL/Renderer.h)
 target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 

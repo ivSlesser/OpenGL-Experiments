@@ -23,6 +23,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/IndexBuffer.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/OpenGL/Renderer.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/Texture.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/VertexArray.cpp.o"

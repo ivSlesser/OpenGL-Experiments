@@ -34,17 +34,9 @@ void Application::Init() {
   // Window ------------------------------------------------------------------------------------------------------------
   gui.Init(window.GetWindow());
 
-  // Unlit Shader ------------------------------------------------------------------------------------------------------
-  unlit_shader.Init("Resources/unlit.basic.vertex.glsl", "Resources/unlit.basic.fragment.glsl");
-  unlit_shader.Int("u_Texture0", 0);
-
-  // Lit Shader --------------------------------------------------------------------------------------------------------
-  lit_shader.Init("Resources/lit.basic.vertex.glsl", "Resources/lit.basic.fragment.glsl");
-  lit_shader.Int("u_Texture0", 0);
-
   // Module ------------------------------------------------------------------------------------------------------------
   SwitchModule<TriangleModule>();
-  module->OnInit(camera);
+  module->OnInit(Renderer::GetCamera());
 
   // GUI ---------------------------------------------------------------------------------------------------------------
   gui.AddElement([this]() { ModuleSelector("Module selection:"); });
@@ -54,51 +46,13 @@ void Application::Run() {
 
   Init();
 
+  double dt = 1.0;
   while (window.WindowActive()) {
-
-	// Begin -----------------------------------------------------------------------------------------------------------
 	window.Begin();
-
-	camera.Update(1.0);
-	module->OnUpdate();
-
-	// Draw ------------------------------------------------------------------------------------------------------------
-	if (use_lighting) {
-	  lit_shader.Bind();
-	  lit_shader.Mat4("u_Model", transform.Transformation());
-	  lit_shader.Mat4("u_ViewProjection", camera.GetProjectionView());
-	  lit_shader.Vec3("u_LightPosition", light_position);
-	  lit_shader.Vec3("u_LightColor", light_color);
-	  lit_shader.Vec3("u_CameraPosition", camera.GetPosition());
-	} else {
-	  unlit_shader.Bind();
-	  unlit_shader.Mat4("u_Model", transform.Transformation());
-	  unlit_shader.Mat4("u_ViewProjection", camera.GetProjectionView());
-	}
-
-	if (use_texture) {
-
-	  cat_texture.Bind();
-	  if (cat_texture.HasTransparency())
-	    window.EnableTransparency();
-	  else
-	    window.DisableTransparency();
-
-	} else {
-	  white_texture.Bind();
-	  if (white_texture.HasTransparency())
-	    window.EnableTransparency();
-	  else
-	    window.DisableTransparency();
-
-	}
-
-	module->OnDraw(use_lighting ? lit_shader : unlit_shader, camera);
-
-	// GUI
+	Renderer::Update(dt);
+	module->OnUpdate(dt);
+	Renderer::Draw(window, transform, module);
 	gui.Render();
-
-	// End ------------------------------------------------------------------------------------------------------------
 	window.End();
   }
 
@@ -106,20 +60,9 @@ void Application::Run() {
 
 void Application::ModuleSelector(std::string name) {
 
-  ImGui::Begin("General");
-  {
-	// Texture --------------------------------------------------------------------
-	ImGui::Checkbox("Use texture?", &use_texture);
-	// Shader --------------------------------------------------------------------
-	ImGui::Checkbox("Use lit shader?", &use_lighting);
+  Renderer::OnGUI();
 
-	if (use_lighting) {
-	  ImGui::ColorEdit3("Light Color", &light_color.x);
-	  ImGui::SliderFloat3("Light Position", &light_position.x, -100.0f, 100.0f);
-	}
-
-  }
-  ImGui::End();
+  // ------
 
   ImGui::Begin("Transform");
   {
@@ -142,6 +85,8 @@ void Application::ModuleSelector(std::string name) {
 	transform.SetScale(scale);
   }
   ImGui::End();
+
+  // ------
 
   ImGui::Begin(name.c_str());
   {

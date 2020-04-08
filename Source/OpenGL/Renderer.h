@@ -27,32 +27,41 @@
 
 #include "System/Module.h"
 #include "System/Window.h"
-#include "System/GUI/GUILayer.h"
 #include "Graphics/Properties/Transform.h"
-#include "OpenGL/Renderer.h"
+#include "OpenGL/Texture.h"
+#include "Graphics/Camera/PerspectiveCamera.h"
+#include "Shader.h"
 
-class Application {
+class Renderer {
+
  private:
-  Window window;
-  GUILayer gui;
-  Module *module{nullptr};
-  Transform transform;
+  static Renderer *instance;
+
+  PerspectiveCamera camera;
+
+  // Texture Related ---------------------------------------------------------------------------------------------------
+  bool use_texture = false;
+  Texture white_texture;
+  Texture cat_texture = Texture("Resources/Textures/cat.jpg");
+
+  // Shader Related ----------------------------------------------------------------------------------------------------
+  bool use_lighting = false;
+  Shader lit_shader;
+  Shader unlit_shader;
+  glm::vec3 light_color = glm::vec3(1.0f);
+  glm::vec3 light_position = glm::vec3(0.0f, 100.0f, 100.0f);
+
+  // -------------------------------------------------------------------------------------------------------------------
 
  public:
-  void Run();
+  static Renderer *Access();
+  static void Update(double dt = 1.0);
+  static void Draw(Window &window, Transform &transform, Module *module);
+  static void OnGUI();
+
+  inline static Camera &GetCamera() { return Renderer::Access()->camera; }
 
  private:
-  void Init();
-  void ModuleSelector(std::string name);
+  Renderer();
 
-  // Used to switch modules.
-  template <typename T>
-  void SwitchModule() {
-	if (module != nullptr) {
-	  delete module;
-	}
-	transform = Transform();
-	module = new T();
-	module->OnInit(Renderer::GetCamera());
-  }
 };
