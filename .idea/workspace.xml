@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
+      <config projectName="Foundations" targetName="glfw" />
       <config projectName="Foundations" targetName="Foundations" />
       <config projectName="Foundations" targetName="glad" />
-      <config projectName="Foundations" targetName="glfw" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,24 +14,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/Elements/Terrain.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Elements/Terrain.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Modules/TerrainModule.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Modules/TerrainModule.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Application.cpp.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Renderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Renderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Plane.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Plane.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/PlaneModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/PlaneModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,6 +64,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Source" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -111,6 +119,7 @@
       <workItem from="1586256198079" duration="5465000" />
       <workItem from="1586344448706" duration="3220000" />
       <workItem from="1586349603643" duration="1563000" />
+      <workItem from="1586503504608" duration="1795000" />
     </task>
     <servers />
   </component>

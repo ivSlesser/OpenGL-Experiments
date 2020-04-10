@@ -20,38 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#include "Random.h"
 
-#include "PlaneModule.h"
-
-void PlaneModule::OnInit(Camera &camera) {
-
-  camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
-
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
-
-  plane = Plane(color);
-
-  // Create vertices
-  VAO.Bind();
-  VBO.Init(plane.Vertices());
-  VAO.SetLayout();
-
-  // Create indices
-  IBO.Init(plane.Indices());
+float Random::ZeroToOne() {
+  return static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
 }
 
-void PlaneModule::OnUpdate(double dt) {
-
+float Random::ZeroToN(float n) {
+  return static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / n));
 }
 
-void PlaneModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
-  IBO.Bind();
-  glDrawElements(GL_TRIANGLES, plane.IndexCount(), GL_UNSIGNED_INT, 0);
+float Random::RandomRange(float low, float high) {
+  return low + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (high - low)));
 }
-

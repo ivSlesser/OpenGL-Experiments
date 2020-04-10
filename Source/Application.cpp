@@ -22,11 +22,12 @@
 
 #include "Application.h"
 
-#include "../Modules/TriangleModule.h"
-#include "../Modules/QuadModule.h"
-#include "../Modules/CubeModule.h"
-#include "../Modules/PlaneModule.h"
-#include "../Modules/ModelModule.h"
+#include "Modules/TriangleModule.h"
+#include "Modules/QuadModule.h"
+#include "Modules/CubeModule.h"
+#include "Modules/PlaneModule.h"
+#include "Modules/ModelModule.h"
+#include "Modules/TerrainModule.h"
 
 #include "Externals/stb_image.h"
 
@@ -95,6 +96,7 @@ void Application::ModuleSelector(std::string name) {
 	if (ImGui::Button("3. Shape: Cube")) { SwitchModule<CubeModule>(); }
 	if (ImGui::Button("4. Shape: Plane")) { SwitchModule<PlaneModule>(); }
 	if (ImGui::Button("4. Shape: Model")) { SwitchModule<ModelModule>(); }
+	if (ImGui::Button("5. Terrain (Perlin)")) { SwitchModule<TerrainModule>(); }
   }
   ImGui::End();
 

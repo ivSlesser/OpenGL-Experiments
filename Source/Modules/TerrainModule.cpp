@@ -21,10 +21,9 @@
 // SOFTWARE.
 
 
-#include "PlaneModule.h"
+#include "TerrainModule.h"
 
-void PlaneModule::OnInit(Camera &camera) {
-
+void TerrainModule::OnInit(Camera &camera) {
   camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
 
   // Create a random color
@@ -34,24 +33,23 @@ void PlaneModule::OnInit(Camera &camera) {
   color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
   color.a = 1.0f;
 
-  plane = Plane(color);
+  terrain = Terrain(color, glm::vec3(0.0f), glm::vec2(100.0f), 1);
 
   // Create vertices
   VAO.Bind();
-  VBO.Init(plane.Vertices());
+  VBO.Init(terrain.Vertices());
   VAO.SetLayout();
 
   // Create indices
-  IBO.Init(plane.Indices());
+  IBO.Init(terrain.Indices());
 }
 
-void PlaneModule::OnUpdate(double dt) {
+void TerrainModule::OnUpdate(double dt) {
 
 }
 
-void PlaneModule::OnDraw(const Shader &shader, const Camera &camera) {
+void TerrainModule::OnDraw(const Shader &shader, const Camera &camera) {
   VAO.Bind();
   IBO.Bind();
-  glDrawElements(GL_TRIANGLES, plane.IndexCount(), GL_UNSIGNED_INT, 0);
+  glDrawElements(GL_TRIANGLES, terrain.IndexCount(), GL_UNSIGNED_INT, 0);
 }
-

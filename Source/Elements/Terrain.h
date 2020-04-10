@@ -21,37 +21,27 @@
 // SOFTWARE.
 
 
-#include "PlaneModule.h"
+#pragma once
 
-void PlaneModule::OnInit(Camera &camera) {
+#include "Common.h"
+#include "Graphics/Vertex.h"
 
-  camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
+class Terrain {
 
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
+ private:
+  std::vector<Vertex> vertices;
+  std::vector<unsigned> indices;
 
-  plane = Plane(color);
 
-  // Create vertices
-  VAO.Bind();
-  VBO.Init(plane.Vertices());
-  VAO.SetLayout();
+ public:
+  Terrain(glm::vec4 color = glm::vec4(1.0f),
+  const glm::vec3 &pos = glm::vec3(0.0f),
+  const glm::vec2 &size = glm::vec2(10.0f),
+  float resolution = 5);
 
-  // Create indices
-  IBO.Init(plane.Indices());
-}
-
-void PlaneModule::OnUpdate(double dt) {
-
-}
-
-void PlaneModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
-  IBO.Bind();
-  glDrawElements(GL_TRIANGLES, plane.IndexCount(), GL_UNSIGNED_INT, 0);
-}
+  inline std::vector<Vertex> &Vertices() { return vertices; }
+  inline std::vector<unsigned> &Indices() { return indices; };
+  inline const int VertexCount() const { return vertices.size(); };
+  inline const int IndexCount() const { return indices.size(); }
+};
 

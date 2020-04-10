@@ -21,37 +21,29 @@
 // SOFTWARE.
 
 
-#include "PlaneModule.h"
+#pragma once
 
-void PlaneModule::OnInit(Camera &camera) {
+#include "Common.h"
 
-  camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
+#include "../System/Module.h"
 
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
+#include "Elements/Terrain.h"
 
-  plane = Plane(color);
+class TerrainModule : public Module {
+ private:
+  VertexArray VAO;
+  VertexBuffer VBO;
+  IndexBuffer IBO;
 
-  // Create vertices
-  VAO.Bind();
-  VBO.Init(plane.Vertices());
-  VAO.SetLayout();
+  Terrain terrain;
 
-  // Create indices
-  IBO.Init(plane.Indices());
-}
+ public:
+  TerrainModule() {}
 
-void PlaneModule::OnUpdate(double dt) {
-
-}
-
-void PlaneModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
-  IBO.Bind();
-  glDrawElements(GL_TRIANGLES, plane.IndexCount(), GL_UNSIGNED_INT, 0);
-}
-
+  virtual void OnInit(Camera &camera) override;
+  virtual void OnUpdate(double dt = 1.0) override;
+  virtual void OnDraw(const Shader &shader, const Camera &camera) override;
+};

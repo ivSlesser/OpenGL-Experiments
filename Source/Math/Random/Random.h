@@ -21,37 +21,15 @@
 // SOFTWARE.
 
 
-#include "PlaneModule.h"
+#pragma once
 
-void PlaneModule::OnInit(Camera &camera) {
+#include "Common.h"
 
-  camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
-
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
-
-  plane = Plane(color);
-
-  // Create vertices
-  VAO.Bind();
-  VBO.Init(plane.Vertices());
-  VAO.SetLayout();
-
-  // Create indices
-  IBO.Init(plane.Indices());
-}
-
-void PlaneModule::OnUpdate(double dt) {
-
-}
-
-void PlaneModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
-  IBO.Bind();
-  glDrawElements(GL_TRIANGLES, plane.IndexCount(), GL_UNSIGNED_INT, 0);
-}
+class Random {
+ private:
+ public:
+  static float ZeroToOne();
+  static float ZeroToN(float n);
+  static float RandomRange(float low, float high);
+};
 
