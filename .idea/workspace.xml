@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Foundations" targetName="glfw" />
       <config projectName="Foundations" targetName="Foundations" />
       <config projectName="Foundations" targetName="glad" />
+      <config projectName="Foundations" targetName="glfw" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,7 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/OpenGL/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Module.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Module.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +92,8 @@
       <workItem from="1586159108623" duration="7291000" />
       <workItem from="1586175052308" duration="560000" />
       <workItem from="1586175655001" duration="8351000" />
-      <workItem from="1587108937579" duration="2178000" />
+      <workItem from="1587108937579" duration="2302000" />
+      <workItem from="1587115269686" duration="412000" />
     </task>
     <servers />
   </component>

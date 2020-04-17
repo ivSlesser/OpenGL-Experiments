@@ -29,10 +29,17 @@
 #include "Graphics/Camera/Camera.h"
 
 class Module {
+ private:
+  bool m_Overrides[1] = {false}; // 0: Shader
+
  public:
   virtual ~Module() {}
   virtual void OnInit(Camera &camera) = 0;
   virtual void OnUpdate(double dt = 1.0) = 0;
   virtual void OnGUI() {}
+
   virtual void OnDraw(const Shader &shader, const Camera &camera) = 0;
+  virtual void OnDraw(const Camera &camera) {} // Called when overriding renderer's shader.
+
+  inline const bool OverridesShader() const { return m_Overrides[0]; }
 };

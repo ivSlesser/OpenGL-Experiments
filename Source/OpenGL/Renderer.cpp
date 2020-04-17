@@ -57,33 +57,38 @@ void Renderer::Draw(Window &window, Transform &transform, Module *module) {
 
   Renderer *ptr = Renderer::Access();
 
-  // Draw ------------------------------------------------------------------------------------------------------------
-  if (ptr->use_lighting) {
-	ptr->lit_shader.Bind();
-	ptr->lit_shader.Mat4("u_Model", transform.Transformation());
-	ptr->lit_shader.Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
-	ptr->lit_shader.Vec3("u_LightPosition", ptr->light_position);
-	ptr->lit_shader.Vec3("u_LightColor", ptr->light_color);
-	ptr->lit_shader.Vec3("u_CameraPosition", ptr->camera.GetPosition());
+  // Draw --------------------------------------------------------------------------------------------------------------
+
+  if (module->OverridesShader()) {
+    module->OnDraw(ptr->camera);
   } else {
-	ptr->unlit_shader.Bind();
-	ptr->unlit_shader.Mat4("u_Model", transform.Transformation());
-	ptr->unlit_shader.Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
+    if (ptr->use_lighting) {
+      ptr->lit_shader.Bind();
+      ptr->lit_shader.Mat4("u_Model", transform.Transformation());
+      ptr->lit_shader.Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
+      ptr->lit_shader.Vec3("u_LightPosition", ptr->light_position);
+      ptr->lit_shader.Vec3("u_LightColor", ptr->light_color);
+      ptr->lit_shader.Vec3("u_CameraPosition", ptr->camera.GetPosition());
+    } else {
+      ptr->unlit_shader.Bind();
+      ptr->unlit_shader.Mat4("u_Model", transform.Transformation());
+      ptr->unlit_shader.Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
+    }
+
+    if (ptr->use_texture) {
+      ptr->cat_texture.Bind();
+      if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
+  //    ptr->ref_texture.Bind();
+  //    if (ptr->ref_texture.HasTransparency()) window.EnableTransparency();
+      else window.DisableTransparency();
+    } else {
+      ptr->white_texture.Bind();
+      if (ptr->white_texture.HasTransparency()) window.EnableTransparency();
+      else window.DisableTransparency();
+    }
+    module->OnDraw(ptr->use_lighting ? ptr->lit_shader : ptr->unlit_shader, ptr->camera);
   }
 
-  if (ptr->use_texture) {
-	ptr->cat_texture.Bind();
-	if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
-//    ptr->ref_texture.Bind();
-//    if (ptr->ref_texture.HasTransparency()) window.EnableTransparency();
-	else window.DisableTransparency();
-  } else {
-	ptr->white_texture.Bind();
-	if (ptr->white_texture.HasTransparency()) window.EnableTransparency();
-	else window.DisableTransparency();
-  }
-
-  module->OnDraw(ptr->use_lighting ? ptr->lit_shader : ptr->unlit_shader, ptr->camera);
 }
 
 void Renderer::OnGUI() {
