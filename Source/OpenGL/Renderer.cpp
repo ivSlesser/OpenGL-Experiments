@@ -72,10 +72,10 @@ void Renderer::Draw(Window &window, Transform &transform, Module *module) {
   }
 
   if (ptr->use_texture) {
-//	ptr->cat_texture.Bind();
-//	if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
-    ptr->ref_texture.Bind();
-    if (ptr->ref_texture.HasTransparency()) window.EnableTransparency();
+	ptr->cat_texture.Bind();
+	if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
+//    ptr->ref_texture.Bind();
+//    if (ptr->ref_texture.HasTransparency()) window.EnableTransparency();
 	else window.DisableTransparency();
   } else {
 	ptr->white_texture.Bind();
