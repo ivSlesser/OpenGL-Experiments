@@ -39,7 +39,7 @@ void GeometryQuadModule::OnInit(Camera &p_Camera) {
   // Create vertices
   float n = 10.0f;
 
-  for (int i = 0; i < 100; ++i) {
+  for (int i = 0; i < 50; ++i) {
     m_Vertices.push_back({{
                               Random::RandomRange(-n, n),
                               Random::RandomRange(-n, n),
