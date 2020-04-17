@@ -24,15 +24,24 @@
 #pragma once
 
 #include "Common.h"
-#include "../System/Module.h"
-#include "Graphics/Model.h"
 
-class ModelModule : public Module {
+#include "System/Module.h"
+
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
+#include "Elements/Terrain.h"
+
+class TerrainModule : public Module {
  private:
-  Model model;
+  VertexArray VAO;
+  VertexBuffer VBO;
+  IndexBuffer IBO;
+
+  Terrain terrain;
 
  public:
-  ModelModule() {}
+  TerrainModule() {}
 
   virtual void OnInit(Camera &camera) override;
   virtual void OnUpdate(double dt = 1.0) override;

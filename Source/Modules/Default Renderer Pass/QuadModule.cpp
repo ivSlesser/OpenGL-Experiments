@@ -21,12 +21,11 @@
 // SOFTWARE.
 
 
-#include "CubeModule.h"
+#include "QuadModule.h"
 
-#include "../Graphics/Cube.h"
+#include "Graphics/Quad.h"
 
-
-void CubeModule::OnInit(Camera &camera) {
+void QuadModule::OnInit(Camera &camera) {
 
   camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
 
@@ -38,16 +37,22 @@ void CubeModule::OnInit(Camera &camera) {
   color.a = 1.0f;
 
   // Create vertices
-  std::vector<Vertex> vertices = Cube::Vertices(color);
+  std::vector<Vertex> vertices = Quad::Vertices(color);
   VAO.Bind();
   VBO.Init(vertices);
   VAO.SetLayout();
+
+  // Create indices
+  std::vector<unsigned> indices = Quad::Indices();
+  IBO.Init(indices);
+
 }
 
-void CubeModule::OnUpdate(double dt) {
+void QuadModule::OnUpdate(double dt) {
 }
 
-void CubeModule::OnDraw(const Shader &shader, const Camera &camera) {
+void QuadModule::OnDraw(const Shader &shader, const Camera &camera) {
   VAO.Bind();
-  glDrawArrays(GL_TRIANGLES, 0, Cube::VertexCount());
+  IBO.Bind();
+  glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
 }

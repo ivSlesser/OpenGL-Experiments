@@ -25,7 +25,7 @@
 
 #include "Common.h"
 
-#include "../System/Module.h"
+#include "System/Module.h"
 
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"

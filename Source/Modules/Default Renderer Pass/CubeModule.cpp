@@ -21,24 +21,33 @@
 // SOFTWARE.
 
 
-#pragma once
+#include "CubeModule.h"
 
-#include "../System/Module.h"
+#include "Graphics/Cube.h"
 
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
 
-class TriangleModule : public Module {
- private:
+void CubeModule::OnInit(Camera &camera) {
 
-  VertexArray VAO;
-  VertexBuffer VBO;
+  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
 
- public:
-  TriangleModule() {}
+  // Create a random color
+  glm::vec4 color;
+  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.a = 1.0f;
 
-  virtual void OnInit(Camera &camera) override;
-  virtual void OnUpdate(double dt = 1.0) override;
-  virtual void OnDraw(const Shader &shader, const Camera &camera) override;
+  // Create vertices
+  std::vector<Vertex> vertices = Cube::Vertices(color);
+  VAO.Bind();
+  VBO.Init(vertices);
+  VAO.SetLayout();
+}
 
-};
+void CubeModule::OnUpdate(double dt) {
+}
+
+void CubeModule::OnDraw(const Shader &shader, const Camera &camera) {
+  VAO.Bind();
+  glDrawArrays(GL_TRIANGLES, 0, Cube::VertexCount());
+}

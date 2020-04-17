@@ -21,38 +21,25 @@
 // SOFTWARE.
 
 
-#include "QuadModule.h"
+#pragma once
 
-#include "../Graphics/Quad.h"
+#include "System/Module.h"
 
-void QuadModule::OnInit(Camera &camera) {
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
 
-  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
+class QuadModule : public Module {
+ private:
 
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
+  VertexArray VAO;
+  VertexBuffer VBO;
+  IndexBuffer IBO;
 
-  // Create vertices
-  std::vector<Vertex> vertices = Quad::Vertices(color);
-  VAO.Bind();
-  VBO.Init(vertices);
-  VAO.SetLayout();
+ public:
+  QuadModule() {}
 
-  // Create indices
-  std::vector<unsigned> indices = Quad::Indices();
-  IBO.Init(indices);
-
-}
-
-void QuadModule::OnUpdate(double dt) {
-}
-
-void QuadModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
-  IBO.Bind();
-  glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
-}
+  virtual void OnInit(Camera &camera) override;
+  virtual void OnUpdate(double dt = 1.0) override;
+  virtual void OnDraw(const Shader &shader, const Camera &camera) override;
+};

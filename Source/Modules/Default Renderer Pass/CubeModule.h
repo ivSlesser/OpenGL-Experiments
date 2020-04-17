@@ -25,23 +25,19 @@
 
 #include "Common.h"
 
-#include "../System/Module.h"
+#include "System/Module.h"
 
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"
 #include "OpenGL/IndexBuffer.h"
-#include "Elements/Terrain.h"
 
-class TerrainModule : public Module {
+class CubeModule : public Module {
  private:
   VertexArray VAO;
   VertexBuffer VBO;
-  IndexBuffer IBO;
-
-  Terrain terrain;
 
  public:
-  TerrainModule() {}
+  CubeModule() {}
 
   virtual void OnInit(Camera &camera) override;
   virtual void OnUpdate(double dt = 1.0) override;

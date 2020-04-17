@@ -20,26 +20,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#include "TriangleModule.h"
+#include "Graphics/Triangle.h"
 
-#pragma once
+void TriangleModule::OnInit(Camera &camera) {
 
-#include "Common.h"
+  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
 
-#include "../System/Module.h"
+  // Create a random color
+  glm::vec4 color;
+  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.a = 1.0f;
 
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
-#include "OpenGL/IndexBuffer.h"
+  // Create vertices
+  std::vector<Vertex> vertices = Triangle::Vertices(color);
+  VAO.Bind();
+  VBO.Init(vertices);
+  VAO.SetLayout();
+}
 
-class CubeModule : public Module {
- private:
-  VertexArray VAO;
-  VertexBuffer VBO;
+void TriangleModule::OnUpdate(double dt) {
 
- public:
-  CubeModule() {}
+}
 
-  virtual void OnInit(Camera &camera) override;
-  virtual void OnUpdate(double dt = 1.0) override;
-  virtual void OnDraw(const Shader &shader, const Camera &camera) override;
-};
+void TriangleModule::OnDraw(const Shader &shader, const Camera &camera) {
+  VAO.Bind();
+  glDrawArrays(GL_TRIANGLES, 0, Triangle::VertexCount());
+}

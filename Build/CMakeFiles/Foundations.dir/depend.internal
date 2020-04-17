@@ -232,12 +232,12 @@ CMakeFiles/Foundations.dir/Source/Application.cpp.o
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Common.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Externals/stb_image.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Properties/Transform.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/CubeModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/ModelModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/PlaneModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TerrainModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/CubeModule.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/ModelModule.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/PlaneModule.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/QuadModule.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TerrainModule.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TriangleModule.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/Renderer.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/Shader.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/GUI/GUILayer.h
@@ -3071,7 +3071,7 @@ CMakeFiles/Foundations.dir/Source/Math/Random/Random.cpp.o
  ../Source/Common.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Math/Random/Random.cpp
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Math/Random/Random.h
-CMakeFiles/Foundations.dir/Source/Modules/CubeModule.cpp.o
+CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/CubeModule.cpp.o
  ../Libraries/glad/include/KHR/khrplatform.h
  ../Libraries/glad/include/glad/glad.h
  ../Libraries/glfw/include/GLFW/glfw3.h
@@ -3283,18 +3283,17 @@ CMakeFiles/Foundations.dir/Source/Modules/CubeModule.cpp.o
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
  ../Source/Graphics/Camera/Camera.h
+ ../Source/Graphics/Cube.h
  ../Source/Graphics/Vertex.h
  ../Source/OpenGL/IndexBuffer.h
  ../Source/OpenGL/Shader.h
  ../Source/OpenGL/Texture.h
  ../Source/OpenGL/VertexArray.h
  ../Source/OpenGL/VertexBuffer.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Cube.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/CubeModule.cpp
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/CubeModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
-CMakeFiles/Foundations.dir/Source/Modules/ModelModule.cpp.o
+ ../Source/System/Module.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/CubeModule.cpp
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/CubeModule.h
+CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/ModelModule.cpp.o
  ../Libraries/glad/include/KHR/khrplatform.h
  ../Libraries/glad/include/glad/glad.h
  ../Libraries/glfw/include/GLFW/glfw3.h
@@ -3513,10 +3512,10 @@ CMakeFiles/Foundations.dir/Source/Modules/ModelModule.cpp.o
  ../Source/OpenGL/Texture.h
  ../Source/OpenGL/VertexArray.h
  ../Source/OpenGL/VertexBuffer.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/ModelModule.cpp
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/ModelModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
-CMakeFiles/Foundations.dir/Source/Modules/PlaneModule.cpp.o
+ ../Source/System/Module.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/ModelModule.cpp
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/ModelModule.h
+CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/PlaneModule.cpp.o
  ../Libraries/glad/include/KHR/khrplatform.h
  ../Libraries/glad/include/glad/glad.h
  ../Libraries/glfw/include/GLFW/glfw3.h
@@ -3735,10 +3734,10 @@ CMakeFiles/Foundations.dir/Source/Modules/PlaneModule.cpp.o
  ../Source/OpenGL/Texture.h
  ../Source/OpenGL/VertexArray.h
  ../Source/OpenGL/VertexBuffer.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/PlaneModule.cpp
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/PlaneModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
-CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o
+ ../Source/System/Module.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/PlaneModule.cpp
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/PlaneModule.h
+CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/QuadModule.cpp.o
  ../Libraries/glad/include/KHR/khrplatform.h
  ../Libraries/glad/include/glad/glad.h
  ../Libraries/glfw/include/GLFW/glfw3.h
@@ -3950,18 +3949,17 @@ CMakeFiles/Foundations.dir/Source/Modules/QuadModule.cpp.o
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
  ../Source/Graphics/Camera/Camera.h
+ ../Source/Graphics/Quad.h
  ../Source/Graphics/Vertex.h
  ../Source/OpenGL/IndexBuffer.h
  ../Source/OpenGL/Shader.h
  ../Source/OpenGL/Texture.h
  ../Source/OpenGL/VertexArray.h
  ../Source/OpenGL/VertexBuffer.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Quad.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.cpp
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
-CMakeFiles/Foundations.dir/Source/Modules/TerrainModule.cpp.o
+ ../Source/System/Module.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/QuadModule.cpp
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/QuadModule.h
+CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/TerrainModule.cpp.o
  ../Libraries/glad/include/KHR/khrplatform.h
  ../Libraries/glad/include/glad/glad.h
  ../Libraries/glfw/include/GLFW/glfw3.h
@@ -4180,10 +4178,10 @@ CMakeFiles/Foundations.dir/Source/Modules/TerrainModule.cpp.o
  ../Source/OpenGL/Texture.h
  ../Source/OpenGL/VertexArray.h
  ../Source/OpenGL/VertexBuffer.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TerrainModule.cpp
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TerrainModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
-CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o
+ ../Source/System/Module.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TerrainModule.cpp
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TerrainModule.h
+CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/TriangleModule.cpp.o
  ../Libraries/glad/include/KHR/khrplatform.h
  ../Libraries/glad/include/glad/glad.h
  ../Libraries/glfw/include/GLFW/glfw3.h
@@ -4395,16 +4393,15 @@ CMakeFiles/Foundations.dir/Source/Modules/TriangleModule.cpp.o
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
  ../Source/Graphics/Camera/Camera.h
+ ../Source/Graphics/Triangle.h
  ../Source/Graphics/Vertex.h
  ../Source/OpenGL/Shader.h
  ../Source/OpenGL/Texture.h
  ../Source/OpenGL/VertexArray.h
  ../Source/OpenGL/VertexBuffer.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Triangle.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.cpp
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.h
- /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
+ ../Source/System/Module.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TriangleModule.cpp
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TriangleModule.h
 CMakeFiles/Foundations.dir/Source/OpenGL/IndexBuffer.cpp.o
  ../Libraries/glad/include/KHR/khrplatform.h
  ../Libraries/glad/include/glad/glad.h

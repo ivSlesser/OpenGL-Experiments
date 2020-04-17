@@ -1622,6 +1622,12 @@ Common.h
 Camera.h
 ../Source/Graphics/Camera/Camera.h
 
+../Source/Graphics/Cube.h
+Common.h
+../Source/Graphics/Common.h
+Vertex.h
+../Source/Graphics/Vertex.h
+
 ../Source/Graphics/Model.h
 Common.h
 ../Source/Graphics/Common.h
@@ -1638,9 +1644,13 @@ Common.h
 Vertex.h
 ../Source/Graphics/Vertex.h
 
-../Source/Graphics/Properties/Transform.h
-Common.h
-../Source/Graphics/Properties/Common.h
+../Source/Graphics/Quad.h
+Vertex.h
+../Source/Graphics/Vertex.h
+
+../Source/Graphics/Triangle.h
+Vertex.h
+../Source/Graphics/Vertex.h
 
 ../Source/Graphics/Vertex.h
 Common.h
@@ -1649,22 +1659,6 @@ Common.h
 ../Source/OpenGL/IndexBuffer.h
 Common.h
 ../Source/OpenGL/Common.h
-
-../Source/OpenGL/Renderer.h
-Common.h
-../Source/OpenGL/Common.h
-System/Module.h
-../Source/OpenGL/System/Module.h
-System/Window.h
-../Source/OpenGL/System/Window.h
-Graphics/Properties/Transform.h
-../Source/OpenGL/Graphics/Properties/Transform.h
-OpenGL/Texture.h
-../Source/OpenGL/OpenGL/Texture.h
-Graphics/Camera/PerspectiveCamera.h
-../Source/OpenGL/Graphics/Camera/PerspectiveCamera.h
-Shader.h
-../Source/OpenGL/Shader.h
 
 ../Source/OpenGL/Shader.h
 Common.h
@@ -1680,14 +1674,6 @@ Common.h
 ../Graphics/Vertex.h
 ../Source/Graphics/Vertex.h
 
-../Source/System/GUI/GUILayer.h
-vector
--
-Externals/ImGUI.hpp
-../Source/System/GUI/Externals/ImGUI.hpp
-../Window.h
-../Source/System/Window.h
-
 ../Source/System/Module.h
 OpenGL/Shader.h
 ../Source/System/OpenGL/Shader.h
@@ -1696,25 +1682,21 @@ OpenGL/Texture.h
 Graphics/Camera/Camera.h
 ../Source/System/Graphics/Camera/Camera.h
 
-../Source/System/Window.h
-Common.h
-../Source/System/Common.h
-
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Application.cpp
 Application.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Application.h
-Modules/TriangleModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.h
-Modules/QuadModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.h
-Modules/CubeModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/CubeModule.h
-Modules/PlaneModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/PlaneModule.h
-Modules/ModelModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/ModelModule.h
-Modules/TerrainModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TerrainModule.h
+Modules/Default Renderer Pass/TriangleModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TriangleModule.h
+Modules/Default Renderer Pass/QuadModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/QuadModule.h
+Modules/Default Renderer Pass/CubeModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/CubeModule.h
+Modules/Default Renderer Pass/PlaneModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/PlaneModule.h
+Modules/Default Renderer Pass/ModelModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/ModelModule.h
+Modules/Default Renderer Pass/TerrainModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TerrainModule.h
 Externals/stb_image.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Externals/stb_image.h
 
@@ -1850,129 +1832,105 @@ intrin.h
 arm_neon.h
 -
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Cube.h
-Common.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Common.h
-Vertex.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
-
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Properties/Transform.h
 Common.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Properties/Common.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Quad.h
-Vertex.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
-
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Triangle.h
-Vertex.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
-
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Vertex.h
-Common.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Common.h
-
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/CubeModule.cpp
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/CubeModule.cpp
 CubeModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/CubeModule.h
-../Graphics/Cube.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Cube.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/CubeModule.h
+Graphics/Cube.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Graphics/Cube.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/CubeModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/CubeModule.h
 Common.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Common.h
-../System/Module.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Common.h
+System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/System/Module.h
 OpenGL/VertexArray.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexArray.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexArray.h
 OpenGL/VertexBuffer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexBuffer.h
 OpenGL/IndexBuffer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/IndexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/IndexBuffer.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/ModelModule.cpp
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/ModelModule.cpp
 ModelModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/ModelModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/ModelModule.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/ModelModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/ModelModule.h
 Common.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Common.h
-../System/Module.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Common.h
+System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/System/Module.h
 Graphics/Model.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Graphics/Model.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Graphics/Model.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/PlaneModule.cpp
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/PlaneModule.cpp
 PlaneModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/PlaneModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/PlaneModule.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/PlaneModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/PlaneModule.h
 Common.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Common.h
-../System/Module.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Common.h
+System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/System/Module.h
 OpenGL/VertexArray.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexArray.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexArray.h
 OpenGL/VertexBuffer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexBuffer.h
 OpenGL/IndexBuffer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/IndexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/IndexBuffer.h
 Graphics/Plane.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Graphics/Plane.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Graphics/Plane.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.cpp
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/QuadModule.cpp
 QuadModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.h
-../Graphics/Quad.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Quad.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/QuadModule.h
+Graphics/Quad.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Graphics/Quad.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/QuadModule.h
-../System/Module.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/QuadModule.h
+System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/System/Module.h
 OpenGL/VertexArray.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexArray.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexArray.h
 OpenGL/VertexBuffer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexBuffer.h
 OpenGL/IndexBuffer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/IndexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/IndexBuffer.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TerrainModule.cpp
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TerrainModule.cpp
 TerrainModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TerrainModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TerrainModule.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TerrainModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TerrainModule.h
 Common.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Common.h
-../System/Module.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Common.h
+System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/System/Module.h
 OpenGL/VertexArray.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexArray.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexArray.h
 OpenGL/VertexBuffer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexBuffer.h
 OpenGL/IndexBuffer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/IndexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/IndexBuffer.h
 Elements/Terrain.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Elements/Terrain.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Elements/Terrain.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.cpp
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TriangleModule.cpp
 TriangleModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.h
-../Graphics/Triangle.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/Triangle.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TriangleModule.h
+Graphics/Triangle.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Graphics/Triangle.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/TriangleModule.h
-../System/Module.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/TriangleModule.h
+System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/System/Module.h
 OpenGL/VertexArray.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexArray.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexArray.h
 OpenGL/VertexBuffer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/OpenGL/VertexBuffer.h
-
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/Renderer.cpp
-Renderer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/Renderer.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/System/GUI/GUILayer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexBuffer.h
 
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/Renderer.h
 Common.h
@@ -2010,19 +1968,7 @@ OpenGL/Texture.h
 Graphics/Camera/Camera.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Graphics/Camera/Camera.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Window.cpp
-Window.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Window.h
-OpenGL/Renderer.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/OpenGL/Renderer.h
-Graphics/Camera/PerspectiveCamera.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Graphics/Camera/PerspectiveCamera.h
-
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Window.h
 Common.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/System/Common.h
-
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/main.cpp
-Application.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Application.h
 

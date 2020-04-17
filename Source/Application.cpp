@@ -22,12 +22,12 @@
 
 #include "Application.h"
 
-#include "Modules/TriangleModule.h"
-#include "Modules/QuadModule.h"
-#include "Modules/CubeModule.h"
-#include "Modules/PlaneModule.h"
-#include "Modules/ModelModule.h"
-#include "Modules/TerrainModule.h"
+#include "Modules/Default Renderer Pass/TriangleModule.h"
+#include "Modules/Default Renderer Pass/QuadModule.h"
+#include "Modules/Default Renderer Pass/CubeModule.h"
+#include "Modules/Default Renderer Pass/PlaneModule.h"
+#include "Modules/Default Renderer Pass/ModelModule.h"
+#include "Modules/Default Renderer Pass/TerrainModule.h"
 
 #include "Externals/stb_image.h"
 
