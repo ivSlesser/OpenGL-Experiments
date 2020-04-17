@@ -26,9 +26,9 @@
 #include "Graphics/Cube.h"
 
 
-void CubeModule::OnInit(Camera &camera) {
+void CubeModule::OnInit(Camera &p_Camera) {
 
-  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
+  p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
 
   // Create a random color
   glm::vec4 color;
@@ -39,15 +39,15 @@ void CubeModule::OnInit(Camera &camera) {
 
   // Create vertices
   std::vector<Vertex> vertices = Cube::Vertices(color);
-  VAO.Bind();
-  VBO.Init(vertices);
-  VAO.SetLayout();
+  m_VAO.Bind();
+  m_VBO.Init(vertices);
+  m_VAO.SetLayout();
 }
 
 void CubeModule::OnUpdate(double dt) {
 }
 
-void CubeModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
+void CubeModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
+  m_VAO.Bind();
   glDrawArrays(GL_TRIANGLES, 0, Cube::VertexCount());
 }

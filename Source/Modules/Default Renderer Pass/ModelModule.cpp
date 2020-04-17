@@ -23,17 +23,17 @@
 
 #include "ModelModule.h"
 
-void ModelModule::OnInit(Camera &camera) {
-  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
-  model.Load("Resources/Models/dragon.obj");
+void ModelModule::OnInit(Camera &p_Camera) {
+  p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
+  m_Model.Load("Resources/Models/dragon.obj");
 }
 
 void ModelModule::OnUpdate(double dt) {
 
 }
 
-void ModelModule::OnDraw(const Shader &shader, const Camera &camera) {
-	model.Bind();
-  	glDrawElements(GL_TRIANGLES, model.IndexCount(), GL_UNSIGNED_INT, 0);
+void ModelModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
+	m_Model.Bind();
+  	glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
 
 }

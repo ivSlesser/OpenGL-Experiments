@@ -23,8 +23,8 @@
 
 #include "TerrainModule.h"
 
-void TerrainModule::OnInit(Camera &camera) {
-  camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
+void TerrainModule::OnInit(Camera &p_Camera) {
+  p_Camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
 
   // Create a random color
   glm::vec4 color;
@@ -33,23 +33,23 @@ void TerrainModule::OnInit(Camera &camera) {
   color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
   color.a = 1.0f;
 
-  terrain = Terrain(color, glm::vec3(0.0f), glm::vec2(100.0f), 1);
+  m_Terrain = Terrain(color, glm::vec3(0.0f), glm::vec2(100.0f), 1);
 
   // Create vertices
-  VAO.Bind();
-  VBO.Init(terrain.Vertices());
-  VAO.SetLayout();
+  m_VAO.Bind();
+  m_VBO.Init(m_Terrain.Vertices());
+  m_VAO.SetLayout();
 
   // Create indices
-  IBO.Init(terrain.Indices());
+  m_IBO.Init(m_Terrain.Indices());
 }
 
 void TerrainModule::OnUpdate(double dt) {
 
 }
 
-void TerrainModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
-  IBO.Bind();
-  glDrawElements(GL_TRIANGLES, terrain.IndexCount(), GL_UNSIGNED_INT, 0);
+void TerrainModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
+  m_VAO.Bind();
+  m_IBO.Bind();
+  glDrawElements(GL_TRIANGLES, m_Terrain.IndexCount(), GL_UNSIGNED_INT, 0);
 }

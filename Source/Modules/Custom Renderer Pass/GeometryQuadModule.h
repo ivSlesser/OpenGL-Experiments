@@ -27,18 +27,22 @@
 
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
+#include "OpenGL/Shader.h"
 
-class TriangleModule : public Module {
+class GeometryQuadModule : public Module {
  private:
-
   VertexArray m_VAO;
   VertexBuffer m_VBO;
 
+  Shader m_Shader;
+
+  std::vector<Vertex> m_Vertices;
+
  public:
-  TriangleModule() {}
+  GeometryQuadModule() {}
 
   virtual void OnInit(Camera &p_Camera) override;
   virtual void OnUpdate(double dt = 1.0) override;
-  virtual void OnDraw(const Shader &p_Shader, const Camera &p_Camera) override;
-
+  virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
 };

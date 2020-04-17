@@ -43,7 +43,7 @@ class Renderer {
   bool use_texture = false;
   Texture white_texture;
   Texture cat_texture = Texture("Resources/Textures/cat.jpg");
-  Texture ref_texture = Texture("Resources/Textures/ReferenceTexture.png");
+  Texture ref_texture = Texture("Resources/Textures/Debug.png");
 
   // Shader Related ----------------------------------------------------------------------------------------------------
   bool use_lighting = false;

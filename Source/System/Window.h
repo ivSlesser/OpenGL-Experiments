@@ -79,7 +79,7 @@ class Window {
   }
 
   // Callbacks ---------------------------------------------------------------------------------------------------------
-  void ProcessInput(GLFWwindow *window);
+  void ProcessInput();
   static void OnResize(GLFWwindow *window, int width, int height);
   static void OnMouseMove(GLFWwindow* window, double xpos, double ypos);
   static void OnMouseButton(GLFWwindow *m, int button, int action, int mods);

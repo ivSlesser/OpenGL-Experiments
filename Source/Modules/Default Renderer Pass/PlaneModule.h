@@ -35,16 +35,16 @@
 class PlaneModule : public Module {
 
  private:
-  VertexArray VAO;
-  VertexBuffer VBO;
-  IndexBuffer IBO;
+  VertexArray m_VAO;
+  VertexBuffer m_VBO;
+  IndexBuffer m_IBO;
 
   Plane plane;
 
  public:
   PlaneModule() {}
 
-  virtual void OnInit(Camera &camera) override;
+  virtual void OnInit(Camera &p_Camera) override;
   virtual void OnUpdate(double dt = 1.0) override;
-  virtual void OnDraw(const Shader &shader, const Camera &camera) override;
+  virtual void OnDraw(const Shader &p_Shader, const Camera &p_Camera) override;
 };

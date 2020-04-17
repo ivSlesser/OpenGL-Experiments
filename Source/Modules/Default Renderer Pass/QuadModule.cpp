@@ -25,9 +25,9 @@
 
 #include "Graphics/Quad.h"
 
-void QuadModule::OnInit(Camera &camera) {
+void QuadModule::OnInit(Camera &p_Camera) {
 
-  camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
+  p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
 
   // Create a random color
   glm::vec4 color;
@@ -38,21 +38,21 @@ void QuadModule::OnInit(Camera &camera) {
 
   // Create vertices
   std::vector<Vertex> vertices = Quad::Vertices(color);
-  VAO.Bind();
-  VBO.Init(vertices);
-  VAO.SetLayout();
+  m_VAO.Bind();
+  m_VBO.Init(vertices);
+  m_VAO.SetLayout();
 
   // Create indices
   std::vector<unsigned> indices = Quad::Indices();
-  IBO.Init(indices);
+  m_IBO.Init(indices);
 
 }
 
 void QuadModule::OnUpdate(double dt) {
 }
 
-void QuadModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
-  IBO.Bind();
+void QuadModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
+  m_VAO.Bind();
+  m_IBO.Bind();
   glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
 }

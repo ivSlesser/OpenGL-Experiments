@@ -49,6 +49,9 @@ Window::Window() {
 	std::abort();
   }
   glfwMakeContextCurrent(window);
+
+  glfwSwapInterval( 0 );
+
   glfwSetFramebufferSizeCallback(window, Window::OnResize);
   glfwSetCursorPosCallback(window, Window::OnMouseMove);
   glfwSetMouseButtonCallback(window, Window::OnMouseButton);
@@ -68,17 +71,17 @@ Window::~Window() {
 }
 
 void Window::Begin() {
-  ProcessInput(window);
   glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Window::End() {
   glfwSwapBuffers(window);
-  glfwPollEvents();
 }
 
-void Window::ProcessInput(GLFWwindow *window) {
+void Window::ProcessInput() {
+  glfwPollEvents();
+
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	glfwSetWindowShouldClose(window, true);
 }

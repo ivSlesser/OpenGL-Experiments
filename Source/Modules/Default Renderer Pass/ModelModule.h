@@ -29,12 +29,12 @@
 
 class ModelModule : public Module {
  private:
-  Model model;
+  Model m_Model;
 
  public:
   ModelModule() {}
 
-  virtual void OnInit(Camera &camera) override;
+  virtual void OnInit(Camera &p_Camera) override;
   virtual void OnUpdate(double dt = 1.0) override;
-  virtual void OnDraw(const Shader &shader, const Camera &camera) override;
+  virtual void OnDraw(const Shader &p_Shader, const Camera &p_Camera) override;
 };

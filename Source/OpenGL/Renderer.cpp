@@ -60,7 +60,10 @@ void Renderer::Draw(Window &window, Transform &transform, Module *module) {
   // Draw --------------------------------------------------------------------------------------------------------------
 
   if (module->OverridesShader()) {
-    module->OnDraw(ptr->camera);
+
+    window.EnableTransparency();
+    module->OnDraw(transform, ptr->camera);
+
   } else {
     if (ptr->use_lighting) {
       ptr->lit_shader.Bind();
@@ -76,10 +79,10 @@ void Renderer::Draw(Window &window, Transform &transform, Module *module) {
     }
 
     if (ptr->use_texture) {
-      ptr->cat_texture.Bind();
-      if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
-  //    ptr->ref_texture.Bind();
-  //    if (ptr->ref_texture.HasTransparency()) window.EnableTransparency();
+//      ptr->cat_texture.Bind();
+//      if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
+      ptr->ref_texture.Bind();
+      if (ptr->ref_texture.HasTransparency()) window.EnableTransparency();
       else window.DisableTransparency();
     } else {
       ptr->white_texture.Bind();

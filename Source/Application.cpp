@@ -22,12 +22,15 @@
 
 #include "Application.h"
 
+// Default Renderer Pass Modules
 #include "Modules/Default Renderer Pass/TriangleModule.h"
 #include "Modules/Default Renderer Pass/QuadModule.h"
 #include "Modules/Default Renderer Pass/CubeModule.h"
 #include "Modules/Default Renderer Pass/PlaneModule.h"
 #include "Modules/Default Renderer Pass/ModelModule.h"
 #include "Modules/Default Renderer Pass/TerrainModule.h"
+// Custom Renderer Pass Modules
+#include "Modules/Custom Renderer Pass/GeometryQuadModule.h"
 
 #include "Externals/stb_image.h"
 
@@ -49,9 +52,10 @@ void Application::Run() {
 
   double dt = 1.0;
   while (window.WindowActive()) {
-	window.Begin();
+    window.ProcessInput();
 	Renderer::Update(dt);
 	module->OnUpdate(dt);
+	window.Begin();
 	Renderer::Draw(window, transform, module);
 	gui.Render();
 	window.End();
@@ -97,6 +101,8 @@ void Application::ModuleSelector(std::string name) {
 	if (ImGui::Button("4. Shape: Plane")) { SwitchModule<PlaneModule>(); }
 	if (ImGui::Button("4. Shape: Model")) { SwitchModule<ModelModule>(); }
 	if (ImGui::Button("5. Terrain (Perlin)")) { SwitchModule<TerrainModule>(); }
+    if (ImGui::Button("6. Geometry Shader Quads")) { SwitchModule<GeometryQuadModule>(); }
+
   }
   ImGui::End();
 

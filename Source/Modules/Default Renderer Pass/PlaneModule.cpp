@@ -23,9 +23,9 @@
 
 #include "PlaneModule.h"
 
-void PlaneModule::OnInit(Camera &camera) {
+void PlaneModule::OnInit(Camera &p_Camera) {
 
-  camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
+  p_Camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
 
   // Create a random color
   glm::vec4 color;
@@ -37,21 +37,21 @@ void PlaneModule::OnInit(Camera &camera) {
   plane = Plane(color);
 
   // Create vertices
-  VAO.Bind();
-  VBO.Init(plane.Vertices());
-  VAO.SetLayout();
+  m_VAO.Bind();
+  m_VBO.Init(plane.Vertices());
+  m_VAO.SetLayout();
 
   // Create indices
-  IBO.Init(plane.Indices());
+  m_IBO.Init(plane.Indices());
 }
 
 void PlaneModule::OnUpdate(double dt) {
 
 }
 
-void PlaneModule::OnDraw(const Shader &shader, const Camera &camera) {
-  VAO.Bind();
-  IBO.Bind();
+void PlaneModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
+  m_VAO.Bind();
+  m_IBO.Bind();
   glDrawElements(GL_TRIANGLES, plane.IndexCount(), GL_UNSIGNED_INT, 0);
 }
 

@@ -21,6 +21,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Graphics/Vertex.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Math/Random/Perlin.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Math/Random/Random.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/GeometryQuadModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/CubeModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/ModelModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/PlaneModule.cpp.o"
