@@ -63,20 +63,27 @@ std::vector<Vertex> Cube::Vertices(float x, float y, float z, float w, float h, 
   vertices[23] = {{x + w, y + h, z + d},color,  {0.0f, 1.0f}, {1.0f, 0.0f, 0.0f}}; // TL
 
   // Bottom
-  vertices[24] = {{x + -w, y + -h, z + -d},color,  {1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // TR
+//  vertices[24] = {{x + -w, y + -h, z + -d},color,  {1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // TR
+//  vertices[25] = {{x + w, y + -h, z + -d},color,  {0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // BL
+//  vertices[26] = {{x + w, y + -h, z + d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // BR
+//  vertices[27] = {{x + w, y + -h, z + d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // BR
+//  vertices[28] = {{x + -w, y + -h, z + d},color,  {1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // TR
+//  vertices[29] = {{x + -w, y + -h, z + -d},color,  {1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // TL
+
+  vertices[24] = {{x + -w, y + -h, z + -d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // TR
   vertices[25] = {{x + w, y + -h, z + -d},color,  {0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // BL
-  vertices[26] = {{x + w, y + -h, z + d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // BR
-  vertices[27] = {{x + w, y + -h, z + d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // BR
-  vertices[28] = {{x + -w, y + -h, z + d},color,  {1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // TR
-  vertices[29] = {{x + -w, y + -h, z + -d},color,  {1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // TL
+  vertices[26] = {{x + w, y + -h, z + d},color,  {1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // BR
+  vertices[27] = {{x + w, y + -h, z + d},color,  {0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // BR
+  vertices[28] = {{x + -w, y + -h, z + d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // TR
+  vertices[29] = {{x + -w, y + -h, z + -d},color,  {1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // TL
 
   // Top
-  vertices[30] = {{x + -w, y + h, z + -d}, color, {0.0f, 1.0f}, {0.0f, -1.0f, 0.0f}}; // BR
-  vertices[31] = {{x + w, y + h, z + -d},color,  {1.0f, 1.0f}, {0.0f, -1.0f, 0.0f}}; // BL
-  vertices[32] = {{x + w, y + h, z + d},color,  {1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}}; // TL
-  vertices[33] = {{x + w, y + h, z + d},color,  {1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}}; // TL
-  vertices[34] = {{x + -w, y + h, z + d}, color, {0.0f, 0.0f}, {0.0f, -1.0f, 0.0f}}; // TR
-  vertices[35] = {{x + -w, y + h, z + -d}, color,  {0.0f, 1.0f}, {0.0f, -1.0f, 0.0f}}; // BR
+  vertices[30] = {{x + -w, y + h, z + -d}, color, {0.0f, 0.0f}, {0.0f, -1.0f, 0.0f}}; // BR
+  vertices[31] = {{x + w, y + h, z + -d},color,  {0.0f, 1.0f}, {0.0f, -1.0f, 0.0f}}; // BL
+  vertices[32] = {{x + w, y + h, z + d},color,  {1.0f, 1.0f}, {0.0f, -1.0f, 0.0f}}; // TL
+  vertices[33] = {{x + w, y + h, z + d},color,  {1.0f, 1.0f}, {0.0f, -1.0f, 0.0f}}; // TL
+  vertices[34] = {{x + -w, y + h, z + d}, color, {1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}}; // TR
+  vertices[35] = {{x + -w, y + h, z + -d}, color,  {0.0f, 0.0f}, {0.0f, -1.0f, 0.0f}}; // BR
 
   return vertices;
 }

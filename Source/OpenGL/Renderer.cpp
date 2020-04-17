@@ -37,11 +37,15 @@ Renderer *Renderer::Access() {
 
 Renderer::Renderer() {
   // Unlit Shader ------------------------------------------------------------------------------------------------------
-  unlit_shader.Init("Resources/unlit.basic.vertex.glsl", "Resources/unlit.basic.fragment.glsl");
+  unlit_shader.AddStage(GL_VERTEX_SHADER, "Resources/unlit.basic.vertex.glsl");
+  unlit_shader.AddStage(GL_FRAGMENT_SHADER, "Resources/unlit.basic.fragment.glsl");
+  unlit_shader.Compile();
   unlit_shader.Int("u_Texture0", 0);
 
   // Lit Shader --------------------------------------------------------------------------------------------------------
-  lit_shader.Init("Resources/lit.basic.vertex.glsl", "Resources/lit.basic.fragment.glsl");
+  lit_shader.AddStage(GL_VERTEX_SHADER, "Resources/lit.basic.vertex.glsl");
+  lit_shader.AddStage(GL_FRAGMENT_SHADER, "Resources/lit.basic.fragment.glsl");
+  lit_shader.Compile();
   lit_shader.Int("u_Texture0", 0);
 }
 
@@ -68,8 +72,10 @@ void Renderer::Draw(Window &window, Transform &transform, Module *module) {
   }
 
   if (ptr->use_texture) {
-	ptr->cat_texture.Bind();
-	if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
+//	ptr->cat_texture.Bind();
+//	if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
+    ptr->ref_texture.Bind();
+    if (ptr->ref_texture.HasTransparency()) window.EnableTransparency();
 	else window.DisableTransparency();
   } else {
 	ptr->white_texture.Bind();
@@ -88,7 +94,7 @@ void Renderer::OnGUI() {
 	ImGui::Checkbox("Use texture?", &ptr->use_texture);
 
 	// Shader --------------------------------------------------------------------
-	ImGui::Checkbox("Use lit shader?", &ptr->use_lighting);
+	ImGui::Checkbox("Use Phong shading?", &ptr->use_lighting);
 
 	if (ptr->use_lighting) {
 	  ImGui::ColorEdit3("Light Color", &ptr->light_color.x);

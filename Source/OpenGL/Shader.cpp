@@ -23,22 +23,27 @@
 
 #include "Shader.h"
 
-void Shader::Init(std::string vertex, std::string fragment) {
 
-  int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-  if (!CompileShader(vertex.c_str(), vertexShader)) {
-	std::abort();
-  }
+/**
+ * Compiles generated shaders into a program, there must be at least 2 shader stages added before
+ * compilation will occur.
+ *
+ * @return True if compilation was successful.
+ */
+bool Shader::Compile() {
 
-  int fragmentShader = 0;
-  fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-  if (!CompileShader(fragment.c_str(), fragmentShader)) {
-	std::abort();
+  // At a minimum we need a vertex & fragment stage, broadly we're checking size < 3 here,
+  // but future work could check to see the stage type added.
+  if (m_Stages.size() < 2) {
+    std::cout << "Shader::Init - Error: At a minimum requires Vertex & Fragment stage to be added" << std::endl;
+    return false;
   }
 
   id = glCreateProgram();
-  glAttachShader(id, vertexShader);
-  glAttachShader(id, fragmentShader);
+
+  for(int stage : m_Stages) {
+    glAttachShader(id, stage);
+  }
 
   glLinkProgram(id);
 
@@ -49,13 +54,46 @@ void Shader::Init(std::string vertex, std::string fragment) {
   if (!success) {
 	glGetProgramInfoLog(id, 512, NULL, infolog);
 	std::cout << infolog << std::endl;
-	std::abort();
+    return false;
   }
 
-  glDeleteShader(vertexShader);
-  glDeleteShader(fragmentShader);
+
+  RemoveStoredStages();
 
   printf("Program created with id: %d", id);
+
+  return true;
+}
+
+/**
+ * Adds a shader stage to the shader lists ready for program compilation,
+ * checks that the type is supported and that a vertex shader is or has been added,
+ * the generates and compiles the actual shader.
+ *
+ * @param p_Type Type of shader being added.
+ * @param p_Path Path to shader file.
+ */
+void Shader::AddStage(GLenum p_Type, std::string p_Path) {
+  // Check to ensure p_Type is supported.
+  if (p_Type != GL_VERTEX_SHADER && p_Type != GL_FRAGMENT_SHADER && p_Type != GL_GEOMETRY_SHADER) {
+    std::cout << "Shader::AddStage - Error: Stage unsupported" << std::endl;
+    std::abort();
+  }
+
+  // Check to ensure we have a vertex shader at element 0.
+  if (p_Type != GL_VERTEX_SHADER && m_Stages.size() == 0) {
+    std::cout << "Shader::AddStage - Error: Vertex stage must be added first." << std::endl;
+    std::abort();
+  }
+
+  // Generate and attempt to compile.
+  int shaderID = glCreateShader(p_Type);
+  if (!CompileShader(p_Path.c_str(), shaderID)) {
+    std::abort();
+  }
+
+  // Add to our stages list.
+  m_Stages.push_back(shaderID);
 }
 
 Shader::~Shader() {
@@ -161,5 +199,17 @@ void Shader::Mat3(const char *name, const glm::mat3 &mat) {
 
 void Shader::Mat4(const char *name, const glm::mat4 &mat) {
   glUniformMatrix4fv(UniformLocation(name), 1, GL_FALSE, &mat[0][0]);
+}
+
+/**
+ * Removes the stored stages, deleting the shader via the API
+ * and then clearing the list.
+ */
+void Shader::RemoveStoredStages() {
+  for(int stage : m_Stages) {
+    glDeleteShader(stage);
+  }
+
+  m_Stages.clear();
 }
 

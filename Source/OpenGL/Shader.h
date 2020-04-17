@@ -30,12 +30,20 @@ class Shader {
  private:
   int id{0};
   std::map<const char *, int> uniform_locations;
+  std::vector<int> m_Stages;
 
  public:
   Shader() {}
-  void Init(std::string vertex, std::string fragment);
+  bool Compile();
   virtual ~Shader();
   inline void Bind() { glUseProgram(id); }
+
+  void AddStage(GLenum p_Type, std::string p_Path);
+
+
+
+
+
 
   void Bool(const char *name, bool value);
   void Int(const char *name, int value);
@@ -55,4 +63,5 @@ class Shader {
  private:
   virtual bool CompileShader(const char *filePath, int &id);
   int UniformLocation(const char *name);
+  void RemoveStoredStages();
 };
