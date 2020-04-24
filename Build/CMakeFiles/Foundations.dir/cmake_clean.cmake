@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Application.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Elements/Marching_Cubes/Marcher.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Elements/Terrain.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Externals/glad.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui.cpp.o"
@@ -23,6 +24,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Math/Random/Random.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/GeometryQuadModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/CubeModule.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/MarchingCubesModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/ModelModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/PlaneModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/QuadModule.cpp.o"

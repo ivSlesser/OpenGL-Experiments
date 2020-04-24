@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Application.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Application.cpp.o"
+  "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Marcher.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Elements/Marching_Cubes/Marcher.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Terrain.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Elements/Terrain.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Externals/glad.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Externals/glad.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Externals/imgui/imgui.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui.cpp.o"
@@ -28,6 +29,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Math/Random/Random.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Math/Random/Random.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/GeometryQuadModule.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/GeometryQuadModule.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/CubeModule.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/CubeModule.cpp.o"
+  "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/MarchingCubesModule.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/MarchingCubesModule.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/ModelModule.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/ModelModule.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/PlaneModule.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/PlaneModule.cpp.o"
   "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/QuadModule.cpp" "/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/QuadModule.cpp.o"

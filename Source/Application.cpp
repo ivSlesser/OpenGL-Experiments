@@ -29,6 +29,7 @@
 #include "Modules/Default Renderer Pass/PlaneModule.h"
 #include "Modules/Default Renderer Pass/ModelModule.h"
 #include "Modules/Default Renderer Pass/TerrainModule.h"
+#include "Modules/Default Renderer Pass/MarchingCubesModule.h"
 // Custom Renderer Pass Modules
 #include "Modules/Custom Renderer Pass/GeometryQuadModule.h"
 
@@ -102,6 +103,7 @@ void Application::ModuleSelector(std::string name) {
 	if (ImGui::Button("4. Shape: Model")) { SwitchModule<ModelModule>(); }
 	if (ImGui::Button("5. Terrain (Perlin)")) { SwitchModule<TerrainModule>(); }
     if (ImGui::Button("6. Geometry Shader Quads")) { SwitchModule<GeometryQuadModule>(); }
+    if (ImGui::Button("7. Marching Cubes [WIP]")) { SwitchModule<MarchingCubesModule>(); }
 
   }
   ImGui::End();

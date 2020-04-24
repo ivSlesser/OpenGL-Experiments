@@ -109,6 +109,5 @@ bool Model::Load(const char *file) {
   index_count = indices.size();
   IBO.Init(indices);
 
-
-
+  return true;
 }
