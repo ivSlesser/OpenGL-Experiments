@@ -23,38 +23,36 @@
 
 #include "Marcher.h"
 #include "Elements/Marching Cubes/Tables.h"
+#include "System/GUI/GUILayer.h"
 
 Marcher::Marcher(const glm::vec2 &pDimensions)
     : m_Dimensions(pDimensions) {
 }
 
-void Marcher::March(float pThreshold) {
-
-  m_Threshold = pThreshold;
+void Marcher::March() {
 
   m_Data.clear();
   m_Vertices.clear();
   m_Indices.clear();
 
   // Generate the data
-  double zoff = 0.0;
   for (int z = 0; z < m_Dimensions.x + 1; ++z) {
-    for (int x = 0; x < m_Dimensions.x + 1; ++x) {
-      for (int y = 0; y < m_Dimensions.y + 1; ++y) {
-        float height = 3.0f * (float) m_Perlin.Noise(
-            2, 0.6,
-            x / 16.0 * 0.1 + 0.001,
-            y / 16.0 * 0.1 + 0.001,
-            z / 16.0 * 0.1 + 0.001);
-          m_Data.push_back(y - height);
+    for (int y = 0; y < m_Dimensions.y + 1; ++y) {
+      for (int x = 0; x < m_Dimensions.x + 1; ++x) {
+        float height = m_Amplitude * (float) m_Perlin.Noise(
+            m_Octaves, m_Persistence,
+            x / m_Frequency * m_FrequencyScale.x + m_Scale.x,
+            y / m_Frequency * m_FrequencyScale.y + m_Scale.y,
+            z / m_Frequency * m_FrequencyScale.z + m_Scale.z) + m_Surface;
+        m_Data.push_back((float) y - height);
       }
     }
   }
 
   // Loop through each segment in our chunk.
-  for (int x = 0; x < m_Dimensions.x; ++x) {
+  for (int z = 0; z < m_Dimensions.x; ++z) {
     for (int y = 0; y < m_Dimensions.y; ++y) {
-      for (int z = 0; z < m_Dimensions.x; ++z) {
+      for (int x = 0; x < m_Dimensions.x; ++x) {
 
         // Create an array of floats representing each corner of a cube and get the value from our data grid.
         float cube[8];
@@ -87,7 +85,7 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
     // TRIANGLE
     int triangle[3];
     for (int p = 0; p < 3; p++) {
-      // Get the current indice. We increment triangleIndex through each loop.
+      // Get the current index.
       int indice = Tables::Triangles[configIndex][edgeIndex];
 
       // If the current edgeIndex is -1, there are no more indices and we can exit the function.
@@ -102,7 +100,7 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
       glm::vec3 vertPosition = (vert1 + vert2) / 2.0f;
 
       // Add to our vertices and triangles list and incremement the edgeIndex.
-      m_Vertices.push_back({vertPosition});
+      m_Vertices.push_back({vertPosition, glm::vec4(0.5f, 0.5f, 1.0f, 1.0f)});
       m_Indices.push_back(m_Vertices.size() - 1);
       triangle[p] = m_Vertices.size() - 1;
       edgeIndex++;
@@ -125,7 +123,7 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
 int Marcher::GetCubeConfiguration(float *cube) {
   int configurationIndex = 0;
   for (int i = 0; i < 8; i++) {
-      if (cube[i] < m_Threshold) {
+    if (cube[i] > m_Threshold) {
       configurationIndex |= 1 << i;
     }
   }
@@ -181,6 +179,20 @@ void Marcher::March(int pConfigIndex) {
     m_Vertices[triangle[1]].normals = normal;
     m_Vertices[triangle[2]].normals = normal;
   }
+}
+
+
+void Marcher::OnGUI() {
+  ImGui::DragFloat("Threshold", &m_Threshold, 0.01f, -1.0f, 1.0f);
+  ImGui::DragInt("Octaves", &m_Octaves, 1, 1, 10);
+  ImGui::DragFloat("Persistence", &m_Persistence, 0.01f, 0.01f, 3.0f);
+
+  ImGui::DragFloat("Frequency", &m_Frequency, 0.1f, -128.0f, 128.0f);
+  ImGui::DragFloat("Amplitude", &m_Amplitude, 0.1f, -128.0f, 128.0f);
+  ImGui::DragFloat("Surface", &m_Surface, 1.0f, 0.0f, 12.0f);
+
+  ImGui::DragFloat3("Frequency Scale", &m_FrequencyScale.x, 0.01f, 0.01f, 1.5f);
+  ImGui::DragFloat3("Scale", &m_Scale.x, 0.001f, 0.001f, 3.0f);
 }
 
 

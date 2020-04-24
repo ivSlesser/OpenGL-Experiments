@@ -40,9 +40,6 @@ class MarchingCubesModule : public Module {
   VertexBuffer m_VBO;
   IndexBuffer m_IBO;
 
-  float m_Threshold;
-  float m_PrevThresold;
-
  public:
   MarchingCubesModule() {}
 

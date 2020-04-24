@@ -459,8 +459,15 @@ CMakeFiles/Foundations.dir/Source/Elements/Marching_Cubes/Marcher.cpp.o
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
  ../Source/Elements/Marching Cubes/Tables.h
+ ../Source/Externals/ImGUI.hpp
+ ../Source/Externals/imgui/imconfig.h
+ ../Source/Externals/imgui/imgui.h
+ ../Source/Externals/imgui/imgui_impl_glfw.h
+ ../Source/Externals/imgui/imgui_impl_opengl3.h
  ../Source/Graphics/Vertex.h
  ../Source/Math/Random/Perlin.h
+ ../Source/System/GUI/GUILayer.h
+ ../Source/System/Window.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Marcher.cpp
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Marcher.h
 CMakeFiles/Foundations.dir/Source/Elements/Terrain.cpp.o

@@ -37,12 +37,20 @@ class Marcher {
   std::vector<Vertex> m_Vertices;
   std::vector<unsigned> m_Indices;
 
-  float m_Threshold;
+  float m_Threshold = 0.5;
+
+  int m_Octaves = 3;
+  float m_Persistence = 0.6f;
+  float m_Frequency = 16.0f;
+  float m_Amplitude = 4.0f;
+  float m_Surface = 6.0f;
+  glm::vec3 m_FrequencyScale = glm::vec3(1.5f, 1.5f, 1.5f);
+  glm::vec3 m_Scale = glm::vec3(0.001f, 0.001f, 0.001f);
 
  public:
   Marcher(const glm::vec2 &pDimensions);
 
-  void March(float pThreshold = 0.1f);
+  void March();
   void March(int pConfigIndex);
 
   inline std::vector<Vertex> Vertices() { return m_Vertices; }
@@ -50,12 +58,16 @@ class Marcher {
   inline int VertexCount() { return m_Vertices.size(); }
   inline int IndexCount() { return m_Indices.size(); }
 
+  void OnGUI();
+
  private:
   void CellOperation(float pCube[], const glm::vec3 &pPosition);
   int GetCubeConfiguration(float cube[]);
 
   // Indexes
   inline int I2D(int x, int z) { return x + z * m_Dimensions.x + 1; };
-  inline int I3D(int x, int y, int z) { return (z * (m_Dimensions.x + 1) * (m_Dimensions.y + 1)) + (y * (m_Dimensions.x + 1)) + x;}
+  inline int I3D(int x, int y, int z) {
+    return z * (m_Dimensions.y + 1) * (m_Dimensions.x + 1) + y * (m_Dimensions.x + 1) + x;
+    return (z * (m_Dimensions.x + 1) * (m_Dimensions.y + 1)) + (y * (m_Dimensions.x + 1)) + x;}
 
 };
