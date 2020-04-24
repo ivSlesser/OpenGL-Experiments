@@ -43,6 +43,7 @@ class Marcher {
   Marcher(const glm::vec2 &pDimensions);
 
   void March(float pThreshold = 0.1f);
+  void March(int pConfigIndex);
 
   inline std::vector<Vertex> Vertices() { return m_Vertices; }
   inline std::vector<unsigned> Indices() { return m_Indices; }

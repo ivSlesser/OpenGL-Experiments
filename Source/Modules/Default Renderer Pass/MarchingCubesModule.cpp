@@ -20,22 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
 #include "MarchingCubesModule.h"
 #include "System/GUI/GUILayer.h"
 
 void MarchingCubesModule::OnInit(Camera &p_Camera) {
-  p_Camera.SetAndUpdatePosition({0.0f, 50.0f, 50.0f});
+  p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 2.0f});
   m_Threshold = m_PrevThresold = 0.01f;
   m_Marcher = new Marcher(glm::vec2(32.0f, 16.0f));
   InternalMarchGrid();
 }
 
 void MarchingCubesModule::OnUpdate(double dt) {
-  if (m_Threshold != m_PrevThresold) {
-    InternalMarchGrid();
-    m_PrevThresold = m_Threshold;
-  }
+//  if (m_Threshold != m_PrevThresold) {
+//    InternalMarchGrid();
+//    m_PrevThresold = m_Threshold;
+//  }
 }
 
 void MarchingCubesModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
@@ -47,13 +46,20 @@ void MarchingCubesModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera)
 void MarchingCubesModule::OnGUI() {
   ImGui::Begin("Marching Cubes Module");
   {
-    ImGui::DragFloat("Threshold", &m_Threshold, 0.01f, -1.0f, 1.0f);
+    //ImGui::DragFloat("Threshold", &m_Threshold, 0.01f, -1.0f, 1.0f);
+
+    if (ImGui::Button("Config Index++")) {
+      m_Index++;
+      InternalMarchGrid();
+    }
+
   }
   ImGui::End();
 }
 
 void MarchingCubesModule::InternalMarchGrid() {
-  m_Marcher->March(m_Threshold);
+//  m_Marcher->March(m_Threshold);
+  m_Marcher->March(m_Index);
 
   auto vertices = m_Marcher->Vertices();
   auto indices = m_Marcher->Indices();
@@ -63,4 +69,5 @@ void MarchingCubesModule::InternalMarchGrid() {
   m_VAO.SetLayout();
 
   m_IBO.Init(indices);
+
 }

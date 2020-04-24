@@ -119,7 +119,6 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
     m_Vertices[triangle[0]].normals = normal;
     m_Vertices[triangle[1]].normals = normal;
     m_Vertices[triangle[2]].normals = normal;
-
   }
 }
 
@@ -131,6 +130,57 @@ int Marcher::GetCubeConfiguration(float *cube) {
     }
   }
   return configurationIndex;
+}
+
+void Marcher::March(int pConfigIndex) {
+  m_Data.clear();
+  m_Vertices.clear();
+  m_Indices.clear();
+
+  // If the configuration of this cube is 0 or 255 (completely inside the terrain or completely outside of it) we don't need to do anything.
+  if (pConfigIndex == 0 || pConfigIndex == 255)
+    return;
+
+  // Loop through the triangles. There are never more than 5 triangles to a cube and only three vertices to a triangle.
+  int edgeIndex = 0;
+  for (int i = 0; i < 5; i++) {
+
+    // TRIANGLE
+    int triangle[3];
+    for (int p = 0; p < 3; p++) {
+      // Get the current indice. We increment triangleIndex through each loop.
+      int indice = Tables::Triangles[pConfigIndex][edgeIndex];
+
+      // If the current edgeIndex is -1, there are no more indices and we can exit the function.
+      if (indice == -1)
+        return;
+
+      // Get the vertices for the start and end of this edge.
+      glm::vec3 vert1 = Tables::Corners[Tables::Edges[indice][0]];
+      glm::vec3 vert2 = Tables::Corners[Tables::Edges[indice][1]];
+
+      // Get the midpoint of this edge.
+      glm::vec3 vertPosition = (vert1 + vert2) / 2.0f;
+
+      // Add to our vertices and triangles list and incremement the edgeIndex.
+      m_Vertices.push_back({vertPosition});
+      m_Indices.push_back(m_Vertices.size() - 1);
+      triangle[p] = m_Vertices.size() - 1;
+      edgeIndex++;
+    }
+
+    // NORMALS (PER FACE)
+    Vertex v1, v2, v3;
+    v1 = m_Vertices[triangle[0]];
+    v2 = m_Vertices[triangle[1]];
+    v3 = m_Vertices[triangle[2]];
+
+    glm::vec3 normal = glm::normalize(glm::cross((v2.position - v1.position), (v3.position - v1.position)));
+
+    m_Vertices[triangle[0]].normals = normal;
+    m_Vertices[triangle[1]].normals = normal;
+    m_Vertices[triangle[2]].normals = normal;
+  }
 }
 
 

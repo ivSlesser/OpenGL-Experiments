@@ -1576,9 +1576,53 @@ glm/gtc/random.hpp
 glm/gtx/euler_angles.hpp
 ../Source/glm/gtx/euler_angles.hpp
 
-../Source/Elements/Marching Cubes/Tables.h
+../Source/Elements/Marching Cubes/Marcher.h
 Common.h
 ../Source/Elements/Marching Cubes/Common.h
+Graphics/Vertex.h
+../Source/Elements/Marching Cubes/Graphics/Vertex.h
+Math/Random/Perlin.h
+../Source/Elements/Marching Cubes/Math/Random/Perlin.h
+
+../Source/Externals/ImGUI.hpp
+imgui/imgui.h
+../Source/Externals/imgui/imgui.h
+imgui/imgui_impl_opengl3.h
+../Source/Externals/imgui/imgui_impl_opengl3.h
+imgui/imgui_impl_glfw.h
+../Source/Externals/imgui/imgui_impl_glfw.h
+
+../Source/Externals/imgui/imconfig.h
+
+../Source/Externals/imgui/imgui.h
+imconfig.h
+../Source/Externals/imgui/imconfig.h
+float.h
+-
+stdarg.h
+-
+stddef.h
+-
+string.h
+-
+assert.h
+-
+stdint.h
+-
+imgui_user.h
+../Source/Externals/imgui/imgui_user.h
+
+../Source/Externals/imgui/imgui_impl_glfw.h
+
+../Source/Externals/imgui/imgui_impl_opengl3.h
+
+../Source/Graphics/Camera/Camera.h
+Common.h
+../Source/Graphics/Camera/Common.h
+
+../Source/Graphics/Properties/Transform.h
+Common.h
+../Source/Graphics/Properties/Common.h
 
 ../Source/Graphics/Vertex.h
 Common.h
@@ -1588,17 +1632,63 @@ Common.h
 Common.h
 ../Source/Math/Random/Common.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Marcher.cpp
-Marcher.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Marcher.h
-Elements/Marching Cubes/Tables.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Elements/Marching Cubes/Tables.h
-
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Marcher.h
+../Source/OpenGL/IndexBuffer.h
 Common.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Common.h
-Graphics/Vertex.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Graphics/Vertex.h
-Math/Random/Perlin.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Elements/Marching Cubes/Math/Random/Perlin.h
+../Source/OpenGL/Common.h
+
+../Source/OpenGL/Shader.h
+Common.h
+../Source/OpenGL/Common.h
+
+../Source/OpenGL/Texture.h
+Common.h
+../Source/OpenGL/Common.h
+
+../Source/OpenGL/VertexArray.h
+
+../Source/OpenGL/VertexBuffer.h
+../Graphics/Vertex.h
+../Source/Graphics/Vertex.h
+
+../Source/System/GUI/GUILayer.h
+vector
+-
+Externals/ImGUI.hpp
+../Source/System/GUI/Externals/ImGUI.hpp
+../Window.h
+../Source/System/Window.h
+
+../Source/System/Module.h
+OpenGL/Shader.h
+../Source/System/OpenGL/Shader.h
+OpenGL/Texture.h
+../Source/System/OpenGL/Texture.h
+Graphics/Properties/Transform.h
+../Source/System/Graphics/Properties/Transform.h
+Graphics/Camera/Camera.h
+../Source/System/Graphics/Camera/Camera.h
+
+../Source/System/Window.h
+Common.h
+../Source/System/Common.h
+
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/MarchingCubesModule.cpp
+MarchingCubesModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/MarchingCubesModule.h
+System/GUI/GUILayer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/System/GUI/GUILayer.h
+
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/MarchingCubesModule.h
+Common.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Common.h
+System/Module.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/System/Module.h
+Elements/Marching Cubes/Marcher.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/Elements/Marching Cubes/Marcher.h
+OpenGL/VertexArray.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexArray.h
+OpenGL/VertexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/VertexBuffer.h
+OpenGL/IndexBuffer.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Default Renderer Pass/OpenGL/IndexBuffer.h
 

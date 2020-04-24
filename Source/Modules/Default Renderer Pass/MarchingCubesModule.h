@@ -34,6 +34,7 @@
 class MarchingCubesModule : public Module {
  private:
   Marcher *m_Marcher;
+  int m_Index = 0;
 
   VertexArray m_VAO;
   VertexBuffer m_VBO;
