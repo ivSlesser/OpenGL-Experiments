@@ -62,6 +62,9 @@ class Renderer {
 
   inline static Camera &GetCamera() { return Renderer::Access()->camera; }
 
+  const glm::vec3 &GetLightColor() const { return light_color; }
+  const glm::vec3 &GetLightPosition() const { return light_position; }
+
  private:
   Renderer();
 

@@ -27,21 +27,30 @@
 
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
 #include "OpenGL/Shader.h"
+#include "Graphics/Plane.h"
 
-class GeometryQuadModule : public Module {
+class GerstnerWaveModule : public Module {
  private:
   VertexArray m_VAO;
   VertexBuffer m_VBO;
+  IndexBuffer m_IBO;
+
+  Plane plane;
+
+  glm::vec4 m_Wave0 = glm::vec4(0.09f, 0.71f, 0.06f, 85.0f);
+  glm::vec4 m_Wave1 = glm::vec4(-0.01f, 0.45f, 0.03f, 30.0f);
+  glm::vec4 m_Wave2 = glm::vec4(0.18f, 0.32f, 0.06f, 40.0f);
+  glm::vec4 m_Wave3 = glm::vec4(-0.18f, -0.32f, 1.06f, 25.0f);
 
   Shader m_Shader;
 
-  std::vector<Vertex> m_Vertices;
-
  public:
-  GeometryQuadModule() {}
+  GerstnerWaveModule() {}
 
   virtual void OnInit(Camera &p_Camera) override;
   virtual void OnUpdate(double dt = 1.0) override;
+  virtual void OnGUI() override;
   virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
 };
