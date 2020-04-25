@@ -24,29 +24,19 @@
 #pragma once
 
 #include "Common.h"
+#include "Vertex.h"
 
-#include "System/Module.h"
-
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
-#include "OpenGL/IndexBuffer.h"
-
-class CubeModule : public Module {
- private:
-  VertexArray m_VAO;
-  VertexBuffer m_VBO;
-  IndexBuffer m_IBO;
-
-  bool m_UseFlat = true;
-
+class FlatCube {
  public:
-  CubeModule() {}
-
-  virtual void OnInit(Camera &p_Camera) override;
-  virtual void OnUpdate(double dt = 1.0) override;
-  virtual void OnGUI() override;
-  virtual void OnDraw(const Shader &p_Shader, const Camera &p_Camera) override;
-
-  private:
-  	void GenerateMesh();
+  static std::vector<Vertex> Vertices(glm::vec4 color);
+  static std::vector<Vertex> Vertices(float x = 0.0f,
+									  float y = 0.0f,
+									  float z = 0.0f,
+									  float w = 0.5f,
+									  float h = 0.5f,
+									  float d = 0.5f,
+									  glm::vec4 color = glm::vec4(1.0f));
+  static std::vector<unsigned> Indices();
+  static int VertexCount();
+  static int IndexCount();
 };

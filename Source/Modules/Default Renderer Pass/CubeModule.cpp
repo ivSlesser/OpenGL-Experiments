@@ -24,24 +24,14 @@
 #include "CubeModule.h"
 
 #include "Graphics/Cube.h"
+#include "Graphics/FlatCube.h"
 
+#include "System/GUI/GUILayer.h"
 
 void CubeModule::OnInit(Camera &p_Camera) {
 
   p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
-
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
-
-  // Create vertices
-  std::vector<Vertex> vertices = Cube::Vertices(color);
-  m_VAO.Bind();
-  m_VBO.Init(vertices);
-  m_VAO.SetLayout();
+  GenerateMesh();
 }
 
 void CubeModule::OnUpdate(double dt) {
@@ -49,5 +39,41 @@ void CubeModule::OnUpdate(double dt) {
 
 void CubeModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
   m_VAO.Bind();
-  glDrawArrays(GL_TRIANGLES, 0, Cube::VertexCount());
+
+  if (m_UseFlat) {
+	glDrawArrays(GL_TRIANGLES, 0, FlatCube::VertexCount());
+  } else {
+	m_IBO.Bind();
+	glDrawElements(GL_TRIANGLES, Cube::IndexCount(), GL_UNSIGNED_INT, 0);
+  }
+}
+
+void CubeModule::OnGUI() {
+  if (ImGui::Button("Toggle Cube / Flat Cube")) {
+	m_UseFlat = !m_UseFlat;
+	GenerateMesh();
+  }
+}
+
+void CubeModule::GenerateMesh() {
+  // Create a random color
+  glm::vec4 color;
+  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.a = 1.0f;
+
+  std::vector<Vertex> vertices;
+
+  if (m_UseFlat) {
+	vertices = FlatCube::Vertices(color);
+  } else {
+	vertices = Cube::Vertices(color);
+	std::vector<unsigned> indices = Cube::Indices();
+	m_IBO.Init(indices);
+  }
+
+  m_VAO.Bind();
+  m_VBO.Init(vertices);
+  m_VAO.SetLayout();
 }

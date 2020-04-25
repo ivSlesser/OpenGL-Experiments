@@ -28,75 +28,36 @@ std::vector<Vertex> Cube::Vertices(glm::vec4 color) {
 }
 
 std::vector<Vertex> Cube::Vertices(float x, float y, float z, float w, float h, float d, glm::vec4 color) {
-  std::vector<Vertex> vertices(36);
+  std::vector<Vertex> vertices(8);
 
-  // Front
-  vertices[0] = {{x - w, y - h, z - d}, color, {1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}}; // BL
-  vertices[1] = {{x + w, y - h, z - d}, color, {0.0f, 0.0f}, {0.0f, 0.0f, -1.0f}}; // TL
-  vertices[2] = {{x + w, y + h, z - d}, color, {0.0f, 1.0f}, {0.0f, 0.0f, -1.0f}}; // TR
-  vertices[3] = {{x + w, y + h, z - d}, color, {0.0f, 1.0f}, {0.0f, 0.0f, -1.0f}}; // TR
-  vertices[4] = {{x - w, y + h, z - d},color,  {1.0f, 1.0f}, {0.0f, 0.0f, -1.0f}}; // BR
-  vertices[5] = {{x - w, y - h, z - d},color,  {1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}}; // BL
+  vertices[0] = {{x - w, y - h, z - d}, color, {1.0f, 0.0f}, {-0.5f, -0.5f, -0.5f}};
+  vertices[1] = {{x + w, y - h, z - d}, color, {0.0f, 0.0f}, { 0.5f, -0.5f, -0.5f}};
+  vertices[2] = {{x + w, y + h, z - d}, color, {0.0f, 1.0f}, { 0.5f,  0.5f, -0.5f}};
+  vertices[3] = {{x - w, y + h, z - d}, color, {1.0f, 1.0f}, {-0.5f,  0.5f, -0.5f}};
 
-  // Back
-  vertices[6] = {{x - w, y - h, z + d}, color, {0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}}; // BL
-  vertices[7] = {{x + w, y - h, z + d},color,  {1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}}; // BR
-  vertices[8] = {{x + w, y + h, z + d}, color, {1.0f, 1.0f}, {0.0f, 0.0f, 1.0f}}; // TR
-  vertices[9] = {{x + w, y + h, z + d},color,  {1.0f, 1.0f}, {0.0f, 0.0f, 1.0f}}; // TR
-  vertices[10] = {{x - w, y + h, z + d},color,  {0.0f, 1.0f}, {0.0f, 0.0f, 1.0f}}; // TL
-  vertices[11] = {{x - w, y - h, z + d},color,  {0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}}; // BL
-
-  // Right
-  vertices[12] = {{x + -w, y + h, z + d},color,  {1.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}}; // TR
-  vertices[13] = {{x + -w, y + h, z + -d},color,  {0.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}}; // TL
-  vertices[14] = {{x + -w, y + -h, z + -d},color,  {0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}}; // BL
-  vertices[15] = {{x + -w, y + -h, z + -d},color,  {0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}}; // BL
-  vertices[16] = {{x + -w, y + -h, z + d},color,  {1.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}}; // BR
-  vertices[17] = {{x + -w, y + h, z + d},color,  {1.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}}; // TR
-
-  // Left
-  vertices[18] = {{x + w, y + h, z + d},color,  {0.0f, 1.0f}, {1.0f, 0.0f, 0.0f}}; // TL
-  vertices[19] = {{x + w, y + h, z + -d},color,  {1.0f, 1.0f}, {1.0f, 0.0f, 0.0f}}; // TR
-  vertices[20] = {{x + w, y + -h, z + -d},color,  {1.0f, 0.0f}, {1.0f, 0.0f, 0.0f}}; // BR
-  vertices[21] = {{x + w, y + -h, z + -d},color,  {1.0f, 0.0f}, {1.0f, 0.0f, 0.0f}}; // BR
-  vertices[22] = {{x + w, y + -h, z + d},color,  {0.0f, 0.0f}, {1.0f, 0.0f, 0.0f}}; // BL
-  vertices[23] = {{x + w, y + h, z + d},color,  {0.0f, 1.0f}, {1.0f, 0.0f, 0.0f}}; // TL
-
-  // Bottom
-//  vertices[24] = {{x + -w, y + -h, z + -d},color,  {1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // TR
-//  vertices[25] = {{x + w, y + -h, z + -d},color,  {0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // BL
-//  vertices[26] = {{x + w, y + -h, z + d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // BR
-//  vertices[27] = {{x + w, y + -h, z + d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // BR
-//  vertices[28] = {{x + -w, y + -h, z + d},color,  {1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // TR
-//  vertices[29] = {{x + -w, y + -h, z + -d},color,  {1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // TL
-
-  vertices[24] = {{x + -w, y + -h, z + -d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // TR
-  vertices[25] = {{x + w, y + -h, z + -d},color,  {0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // BL
-  vertices[26] = {{x + w, y + -h, z + d},color,  {1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // BR
-  vertices[27] = {{x + w, y + -h, z + d},color,  {0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}; // BR
-  vertices[28] = {{x + -w, y + -h, z + d},color,  {0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // TR
-  vertices[29] = {{x + -w, y + -h, z + -d},color,  {1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}}; // TL
-
-  // Top
-  vertices[30] = {{x + -w, y + h, z + -d}, color, {0.0f, 0.0f}, {0.0f, -1.0f, 0.0f}}; // BR
-  vertices[31] = {{x + w, y + h, z + -d},color,  {0.0f, 1.0f}, {0.0f, -1.0f, 0.0f}}; // BL
-  vertices[32] = {{x + w, y + h, z + d},color,  {1.0f, 1.0f}, {0.0f, -1.0f, 0.0f}}; // TL
-  vertices[33] = {{x + w, y + h, z + d},color,  {1.0f, 1.0f}, {0.0f, -1.0f, 0.0f}}; // TL
-  vertices[34] = {{x + -w, y + h, z + d}, color, {1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}}; // TR
-  vertices[35] = {{x + -w, y + h, z + -d}, color,  {0.0f, 0.0f}, {0.0f, -1.0f, 0.0f}}; // BR
+  vertices[4] = {{x - w, y - h, z + d}, color, {0.0f, 0.0f}, {-0.5f, -0.5f,  0.5f}};
+  vertices[5] = {{x + w, y - h, z + d}, color, {1.0f, 0.0f}, { 0.5f, -0.5f,  0.5f}};
+  vertices[6] = {{x + w, y + h, z + d}, color, {1.0f, 1.0f}, { 0.5f,  0.5f,  0.5f}};
+  vertices[7] = {{x - w, y + h, z + d}, color, {0.0f, 1.0f}, {-0.5f,  0.5f,  0.5f}};
 
   return vertices;
 }
 
 std::vector<unsigned> Cube::Indices() {
-  std::vector<unsigned int> indices = {};
+  std::vector<unsigned int> indices = {
+	  0, 1, 3, 3, 1, 2,
+	  1, 5, 2, 2, 5, 6,
+	  5, 4, 6, 6, 4, 7,
+	  4, 0, 7, 7, 0, 3,
+	  3, 2, 7, 7, 2, 6,
+	  4, 5, 0, 0, 5, 1};
   return indices;
 }
 
 int Cube::VertexCount() {
-  return 36;
+  return 8;
 }
 
 int Cube::IndexCount() {
-  return 0;
+  return 36;
 }

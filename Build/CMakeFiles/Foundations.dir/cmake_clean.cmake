@@ -14,6 +14,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Graphics/Camera/OrthographicCamera.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Graphics/Camera/PerspectiveCamera.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Graphics/Cube.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Graphics/FlatCube.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Graphics/Model.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Graphics/Plane.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Graphics/Properties/Transform.cpp.o"
