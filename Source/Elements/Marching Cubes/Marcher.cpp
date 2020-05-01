@@ -96,13 +96,43 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
       glm::vec3 vert1 = pPosition + Tables::Corners[Tables::Edges[indice][0]];
       glm::vec3 vert2 = pPosition + Tables::Corners[Tables::Edges[indice][1]];
 
-      // Get the midpoint of this edge.
-      glm::vec3 vertPosition = (vert1 + vert2) / 2.0f;
+      glm::vec3 vertPosition;
+      if (m_Smoothing) {
+        // Get the terrain values at either end of our current edge from the cube array created above.
+        float vert1Sample = pCube[Tables::Edges[indice][0]];
+        float vert2Sample = pCube[Tables::Edges[indice][1]];
+
+        // Calculate the difference between the terrain values.
+        float difference = vert2Sample - vert1Sample;
+
+        // If the difference is 0, then the terrain passes through the middle.
+        if (difference == 0)
+          difference = m_Threshold;
+        else
+          difference = (m_Threshold - vert1Sample) / difference;
+
+        // Calculate the point along the edge that passes through.
+        vertPosition = vert1 + ((vert2 - vert1) * difference);
+      } else {
+        // Get the midpoint of this edge.
+        vertPosition = (vert1 + vert2) / 2.0f;
+      }
+
+//      // Add to our vertices and triangles list and incremement the edgeIndex.
+//      m_Vertices.push_back({vertPosition});
+//      m_Indices.push_back(m_Vertices.size() - 1);
+//      triangle[p] = m_Vertices.size() - 1;
 
       // Add to our vertices and triangles list and incremement the edgeIndex.
-      m_Vertices.push_back({vertPosition, glm::vec4(0.5f, 0.5f, 1.0f, 1.0f)});
-      m_Indices.push_back(m_Vertices.size() - 1);
-      triangle[p] = m_Vertices.size() - 1;
+      if (m_FlatShading) {
+        m_Vertices.push_back({vertPosition});
+        m_Indices.push_back(m_Vertices.size() - 1);
+        triangle[p] = m_Vertices.size() - 1;
+      } else {
+        m_Indices.push_back(VertForIndice(vertPosition));
+        triangle[p] = m_Indices.back();
+      }
+
       edgeIndex++;
     }
 
@@ -118,6 +148,22 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
     m_Vertices[triangle[1]].normals = normal;
     m_Vertices[triangle[2]].normals = normal;
   }
+}
+
+int Marcher::VertForIndice(glm::vec3 vert) {
+
+  // Loop through all the vertices currently in the vertices list.
+  for (int i = 0; i < m_Vertices.size(); i++) {
+
+    // If we find a vert that matches ours, then simply return this index.
+    if (m_Vertices[i].position == vert)
+      return i;
+  }
+
+  // If we didn't find a match, add this vert to the list and return last index.
+  m_Vertices.push_back({vert});
+  return m_Vertices.size() - 1;
+
 }
 
 int Marcher::GetCubeConfiguration(float *cube) {
@@ -183,6 +229,10 @@ void Marcher::March(int pConfigIndex) {
 
 
 void Marcher::OnGUI() {
+
+  ImGui::Checkbox("Smoothing?", &m_Smoothing);
+  ImGui::Checkbox("Flat Shading?", &m_FlatShading);
+
   ImGui::DragFloat("Threshold", &m_Threshold, 0.01f, -1.0f, 1.0f);
   ImGui::DragInt("Octaves", &m_Octaves, 1, 1, 10);
   ImGui::DragFloat("Persistence", &m_Persistence, 0.01f, 0.01f, 3.0f);

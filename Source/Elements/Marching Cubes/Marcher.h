@@ -38,6 +38,8 @@ class Marcher {
   std::vector<unsigned> m_Indices;
 
   float m_Threshold = 0.5;
+  bool m_Smoothing = false;
+  bool m_FlatShading = false;
 
   int m_Octaves = 3;
   float m_Persistence = 0.6f;
@@ -57,6 +59,8 @@ class Marcher {
   inline std::vector<unsigned> Indices() { return m_Indices; }
   inline int VertexCount() { return m_Vertices.size(); }
   inline int IndexCount() { return m_Indices.size(); }
+
+  int VertForIndice (glm::vec3 vert);
 
   void OnGUI();
 
