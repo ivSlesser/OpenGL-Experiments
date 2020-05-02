@@ -60,10 +60,9 @@ void GerstnerWaveModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) 
   m_Shader.Mat4("u_ViewProjection", p_Camera.GetProjectionView());
 
   m_Shader.Float("u_Time", (float) glfwGetTime());
-  m_Shader.Vec4("m_Wave0", m_Wave0);
+  m_Shader.Vec4("u_Wave0", m_Wave0);
   m_Shader.Vec4("u_Wave1", m_Wave1);
   m_Shader.Vec4("u_Wave2", m_Wave2);
-  m_Shader.Vec4("u_Wave3", m_Wave3);
 
   m_Shader.Vec3("u_LightPosition", ptr->GetLightPosition());
   m_Shader.Vec3("u_CameraPosition", Renderer::GetCamera().GetPosition());
@@ -88,9 +87,4 @@ void GerstnerWaveModule::OnGUI() {
   ImGui::DragFloat2("Direction 2", &m_Wave2.x, 0.1f, -1.0f, 1.0f, "%.2f");
   ImGui::DragFloat("Wavelength 2", &m_Wave2.w, 0.1f, 0.0f, 100.0f, "%.2f");
   ImGui::DragFloat("Steepness 2", &m_Wave2.z, 0.01f, 0.0f, 1.0f, "%.3f");
-
-  ImGui::Text("Wave 3");
-  ImGui::DragFloat2("Direction 3", &m_Wave3.x, 0.1f, -1.0f, 1.0f, "%.2f");
-  ImGui::DragFloat("Wavelength 3", &m_Wave3.w, 0.1f, 0.0f, 100.0f, "%.2f");
-  ImGui::DragFloat("Steepness 3", &m_Wave3.z, 0.01f, 0.0f, 1.0f, "%.3f");
 }

@@ -28,15 +28,16 @@ void main() {
 
     EndPrimitive();
 
-    g_Color = v_Color[0];
 }
 
 void CreateVertex(vec4 offset) {
     gl_Position = u_ViewProjection * u_Model * (gl_in[0].gl_Position + offset);
+    g_Color = v_Color[0];
     EmitVertex();
 }
 
 void CreateBillboard(vec4 offset) {
     gl_Position = u_ViewProjection * u_Model * gl_in[0].gl_Position + offset;
+    g_Color = v_Color[0];
     EmitVertex();
 }

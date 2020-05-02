@@ -42,7 +42,6 @@ class GerstnerWaveModule : public Module {
   glm::vec4 m_Wave0 = glm::vec4(0.09f, 0.71f, 0.06f, 85.0f);
   glm::vec4 m_Wave1 = glm::vec4(-0.01f, 0.45f, 0.03f, 30.0f);
   glm::vec4 m_Wave2 = glm::vec4(0.18f, 0.32f, 0.06f, 40.0f);
-  glm::vec4 m_Wave3 = glm::vec4(-0.18f, -0.32f, 1.06f, 25.0f);
 
   Shader m_Shader;
 

@@ -44,16 +44,13 @@ void MarchingCubesModule::OnGUI() {
     if (ImGui::Button("Generate")) {
       InternalMarchGrid();
     }
-
     m_Marcher->OnGUI();
-
   }
   ImGui::End();
 }
 
 void MarchingCubesModule::InternalMarchGrid() {
   m_Marcher->March();
-//  m_Marcher->March(m_Index);
 
   auto vertices = m_Marcher->Vertices();
   auto indices = m_Marcher->Indices();
