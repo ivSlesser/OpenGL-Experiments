@@ -59,7 +59,7 @@ void PerspectiveCamera::UpdateProjectionView() {
   const glm::vec2 &dimensions = Window::GetDimensions();
   float aspect = dimensions.x / dimensions.y;
 
-  glm::mat4 view = glm::lookAt(position, position + front, up);
-  glm::mat4 projection = glm::perspective(glm::radians(fov), aspect, near, far);
+  view = glm::lookAt(position, position + front, up);
+  projection = glm::perspective(glm::radians(fov), aspect, near, far);
   projection_view = projection * view;
 }

@@ -21,38 +21,36 @@
 // SOFTWARE.
 
 
-#include "OrthographicCamera.h"
-#include "System/Window.h"
+#pragma once
 
-bool OrthographicCamera::OnInput(double dt) {
-  bool needRecalc = false;
+#include "Common.h"
 
-  if (glfwGetKey(Window::s_Window, GLFW_KEY_W) == GLFW_PRESS) {
-	AddPosition(-up * speed * (float) dt);
-	needRecalc = true;
-  } else if (glfwGetKey(Window::s_Window, GLFW_KEY_S) == GLFW_PRESS) {
-	AddPosition(up * speed *  (float) dt);
-	needRecalc = true;
-  }
+#include "System/Module.h"
 
-  if (glfwGetKey(Window::s_Window, GLFW_KEY_A) == GLFW_PRESS) {
-	AddPosition(-glm::normalize(glm::cross(front, up)) * speed *  (float) dt);
-	needRecalc = true;
-  } else if (glfwGetKey(Window::s_Window, GLFW_KEY_D) == GLFW_PRESS) {
-	AddPosition(glm::normalize(glm::cross(front, up)) * speed *  (float) dt);
-	needRecalc = true;
-  }
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
+#include "OpenGL/Shader.h"
 
-  return needRecalc;
-}
+#include "Graphics/Plane.h"
+#include "Graphics/Model.h"
 
-void OrthographicCamera::UpdateProjectionView() {
-  const glm::vec2 &dimensions = Window::GetDimensions();
-  float aspect = dimensions.x / dimensions.y;
+class FogModule : public Module {
+ private:
+  Model m_Model;
 
-  float zoom = 1.0f;
+  Shader m_Shader;
 
-  view = glm::lookAt(position, position + front, up);
-  projection = glm::ortho(-aspect * zoom, aspect * zoom, -zoom, zoom, -1.0f, 1.0f);
-  projection_view = projection * view;
-}
+  float m_Density = 0.0035f;
+  float m_Gradient = 5.0f;
+  glm::vec4 m_SkyColor = glm::vec4(0.3f, 0.2f, 0.8f, 1.0f);
+
+ public:
+  FogModule() {}
+
+  virtual void OnInit(Camera &p_Camera) override;
+  virtual void OnUpdate(double dt = 1.0) override;
+  virtual void OnGUI() override;
+  virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
+
+};

@@ -30,7 +30,11 @@ class Camera {
   glm::vec3 right; /**< Camera right direction. */
   glm::vec3 up{0.0f, 1.0f, 0.0f};  /**< Camera up direction. */
   glm::vec3 worldUp{0.0f, 1.0f, 0.0f}; /**< World up direction. */
-  glm::mat4 projection_view; /**< Calculated View-Projection matrix. */
+
+  glm::mat4 projection_view;
+  glm::mat4 projection;
+  glm::mat4 view;
+
   glm::vec3 rotation{0.0f, -90.0f, 0.0f}; /**< Rotations in degrees X: Pitch, Y: Yaw, Z: Roll */
 
   float speed = 0.5f; /**< Camera movement speed. */
@@ -45,6 +49,8 @@ class Camera {
   virtual bool OnInput(double dt = 1.0) { return false; }
 
   // Matrices ----------------------------------------------------------------------------------------------------------
+  inline const glm::mat4 &GetView() const { return view; }
+  inline const glm::mat4 &GetProjection() const { return projection; }
   inline const glm::mat4 &GetProjectionView() const { return projection_view; }
   virtual void UpdateProjectionView() {};
 

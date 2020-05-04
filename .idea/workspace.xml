@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
+      <config projectName="Foundations" targetName="glfw" />
       <config projectName="Foundations" targetName="Foundations" />
       <config projectName="Foundations" targetName="glad" />
-      <config projectName="Foundations" targetName="glfw" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,17 +14,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/FogModule.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/FogModule.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/Gerstner/gerstner.vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/Gerstner/gerstner.vertex.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/geoquad.geometry.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/geoquad.geometry.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/MarchingCubesModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/MarchingCubesModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,17 +58,18 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/Shaders/Gerstner" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/Shaders/Fog" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Source/Modules/Default Renderer Pass" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/Shaders/Fog" />
       <recent name="$PROJECT_DIR$/Resources/Shaders/Gerstner" />
       <recent name="$PROJECT_DIR$/Resources/Shaders" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Source/Modules/Default Renderer Pass" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -117,6 +125,7 @@
       <workItem from="1587801652063" duration="4440000" />
       <workItem from="1588336960999" duration="564000" />
       <workItem from="1588404606201" duration="2140000" />
+      <workItem from="1588591541735" duration="2387000" />
     </task>
     <servers />
   </component>
