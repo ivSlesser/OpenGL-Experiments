@@ -36,6 +36,7 @@
 #include "Modules/Custom Renderer Pass/GeometryQuadModule.h"
 #include "Modules/Custom Renderer Pass/GerstnerWaveModule.h"
 #include "Modules/Custom Renderer Pass/FogModule.h"
+#include "Modules/Custom Renderer Pass/RayMarchingModule.h"
 
 
 #include "Externals/stb_image.h"
@@ -111,6 +112,7 @@ void Application::ModuleSelector(std::string name) {
     if (ImGui::Button("7. Marching Cubes")) { SwitchModule<MarchingCubesModule>(); }
 	if (ImGui::Button("8. Gerstner Waves (Ocean)")) { SwitchModule<GerstnerWaveModule>(); }
     if (ImGui::Button("9. Fog")) { SwitchModule<FogModule>(); }
+    if (ImGui::Button("9. Ray Marching")) { SwitchModule<RayMarchingModule>(); }
 
   }
   ImGui::End();

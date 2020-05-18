@@ -26,6 +26,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/FogModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/GeometryQuadModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/GerstnerWaveModule.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/RayMarchingModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/CubeModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/MarchingCubesModule.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Modules/Default_Renderer_Pass/ModelModule.cpp.o"
