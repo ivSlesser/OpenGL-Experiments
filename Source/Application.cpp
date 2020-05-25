@@ -85,7 +85,7 @@ void Application::ModuleSelector(std::string name) {
 
 	// Rotation ------------------------------------------------------------------
 	glm::vec3 rotation = transform.GetRotate();
-	ImGui::SliderFloat3("Rotation", &rotation.x, 0.0f, 360.0f);
+	ImGui::SliderFloat3("Rotation", &rotation.x, -360.0f, 360.0f);
 	transform.SetRotate(rotation);
 
 	// Scale ---------------------------------------------------------------------
