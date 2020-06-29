@@ -24,15 +24,15 @@
 #include "Plane.h"
 
 Plane::Plane(glm::vec4 color, const glm::vec3 &pos,
-	const glm::vec2 &size, float resolution) {
+			 const glm::vec2 &size, float resolution) {
 
-  const float uvX = 1.0f / size.x;
-  const float uvZ = 1.0f / size.y;
+  const float uvX = 1.0f / (size.x - 1);
+  const float uvZ = 1.0f / (size.y - 1);
 
   // Create the base vertices.
   unsigned vertex = 0;
-  for (unsigned z = 0; z < size.y; ++z) {
-	for (unsigned x = 0; x < size.x; ++x) {
+  for (unsigned x = 0; x < size.x; ++x) {
+	for (unsigned z = 0; z < size.y; ++z) {
 	  float xp = pos.x + x * resolution;
 	  float zp = pos.z + z * resolution;
 	  vertices.push_back({{xp, pos.y, zp}, color, {z * uvZ, x * uvX}, {0.0f, 1.0f, 0.0f}});

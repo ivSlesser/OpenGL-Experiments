@@ -35,7 +35,7 @@ const glm::mat4 &Transform::Transformation() {
   // Only need to update if the bit is set.
   if (update) {
     tf = glm::translate(glm::mat4(1.0f), t) *
-        glm::eulerAngleYXZ(glm::radians(r.y), glm::radians(r.x), glm::radians(r.z)) *
+        glm::eulerAngleYXZ(glm::radians(r.y), glm::radians(-r.x), glm::radians(-r.z)) *
         glm::scale(glm::mat4(1.0f), s);
       update = false;
   }

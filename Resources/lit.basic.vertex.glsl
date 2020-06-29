@@ -20,5 +20,5 @@ void main()
     v_FragmentPosition = worldPosition.xyz;
     v_Color = a_Color;
     v_TexCoords = a_TexCoords;
-    v_Normals = a_Normals;
+    v_Normals = (u_Model * vec4(a_Normals, 1.0)).xyz;
 }
