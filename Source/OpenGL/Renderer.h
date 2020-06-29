@@ -62,8 +62,12 @@ class Renderer {
 
   inline static Camera &GetCamera() { return Renderer::Access()->camera; }
 
-  const glm::vec3 &GetLightColor() const { return light_color; }
-  const glm::vec3 &GetLightPosition() const { return light_position; }
+  inline const glm::vec3 &GetLightColor() const { return light_color; }
+  inline const glm::vec3 &GetLightPosition() const { return light_position; }
+  inline Shader &GetLitShader() { return lit_shader; }
+  inline Shader &GetUnlitShader() { return lit_shader; }
+
+  static void CheckGLError() { std::cout << glGetError() << std::endl; }
 
  private:
   Renderer();

@@ -37,6 +37,7 @@
 #include "Modules/Custom Renderer Pass/GerstnerWaveModule.h"
 #include "Modules/Custom Renderer Pass/FogModule.h"
 #include "Modules/Custom Renderer Pass/RayMarchingModule.h"
+#include "Modules/Custom Renderer Pass/WaterModule.h"
 
 
 #include "Externals/stb_image.h"
@@ -89,8 +90,6 @@ void Application::ModuleSelector(std::string name) {
 	transform.SetRotate(rotation);
 
 	// Scale ---------------------------------------------------------------------
-//	glm::vec3 scale = transform.GetScale();
-	//ImGui::SliderFloat3("Scale", &scale.x, 0.0f, 10.0f);
 	float scale_float = transform.GetScale().x;
 	ImGui::SliderFloat("Scale (XYZ)", &scale_float, 1.0f, 10.0f);
 	glm::vec3 scale = glm::vec3(scale_float);
@@ -113,7 +112,7 @@ void Application::ModuleSelector(std::string name) {
 	if (ImGui::Button("8. Gerstner Waves (Ocean)")) { SwitchModule<GerstnerWaveModule>(); }
     if (ImGui::Button("9. Fog")) { SwitchModule<FogModule>(); }
     if (ImGui::Button("9. Ray Marching")) { SwitchModule<RayMarchingModule>(); }
-
+    if (ImGui::Button("9. Water")) { SwitchModule<WaterModule>(); }
   }
   ImGui::End();
 

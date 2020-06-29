@@ -56,6 +56,7 @@ class Camera {
 
   // Position ----------------------------------------------------------------------------------------------------------
   inline const glm::vec3 &GetPosition() const { return position; }
+  inline glm::vec3 &GetPosition() { return position; }
   inline void SetPosition(float to) { position = glm::vec3(to); }
   inline void SetPosition(const glm::vec3 &to) { position = to; }
   inline void SetAndUpdatePosition(const glm::vec3 &to) { position = to; UpdateProjectionView(); }
@@ -64,6 +65,7 @@ class Camera {
 
   // Rotation ----------------------------------------------------------------------------------------------------------
   inline const glm::vec3 &GetRotation() const { return rotation; }
+  inline glm::vec3 &GetRotation() { return rotation; }
   void SetRotation(const glm::vec3 &values);
   void AddRotation(const glm::vec3 &values);
   void AddAndUpdateRotation(const glm::vec3 &values);

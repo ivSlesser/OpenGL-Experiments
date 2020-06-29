@@ -89,6 +89,7 @@ void Renderer::Draw(Window &window, Transform &transform, Module *module) {
       if (ptr->white_texture.HasTransparency()) window.EnableTransparency();
       else window.DisableTransparency();
     }
+
     module->OnDraw(ptr->use_lighting ? ptr->lit_shader : ptr->unlit_shader, ptr->camera);
   }
 
@@ -101,13 +102,18 @@ void Renderer::OnGUI() {
 	// Texture --------------------------------------------------------------------
 	ImGui::Checkbox("Use texture?", &ptr->use_texture);
 
-	// Shader --------------------------------------------------------------------
+	// Shader ---------------------------------------------------------------------
 	ImGui::Checkbox("Use Phong shading?", &ptr->use_lighting);
 
 	if (ptr->use_lighting) {
 	  ImGui::ColorEdit3("Light Color", &ptr->light_color.x);
 	  ImGui::SliderFloat3("Light Position", &ptr->light_position.x, -100.0f, 100.0f);
 	}
+
+    // Camera ---------------------------------------------------------------------
+    ImGui::DragFloat3("Camera Position", &ptr->camera.GetPosition().x, -1000.0f, 1000.0f);
+    ImGui::DragFloat3("Camera Rotation", &ptr->camera.GetRotation().x, -360.0f, 360.0f);
+
   }
   ImGui::End();
 }

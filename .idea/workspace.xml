@@ -14,12 +14,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/RayMarchingModule.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/RayMarchingModule.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/WaterModule.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/WaterModule.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" afterDir="false" />
@@ -30,6 +33,11 @@
       <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Renderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Shader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Shader.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -126,6 +134,9 @@
       <workItem from="1588404606201" duration="2140000" />
       <workItem from="1588591541735" duration="2387000" />
       <workItem from="1589800047648" duration="1152000" />
+      <workItem from="1593094993128" duration="598000" />
+      <workItem from="1593347399566" duration="38000" />
+      <workItem from="1593424788536" duration="4178000" />
     </task>
     <servers />
   </component>
@@ -154,9 +165,9 @@
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.cpp</url>
-          <line>30</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/Source/OpenGL/Shader.cpp</url>
+          <line>36</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

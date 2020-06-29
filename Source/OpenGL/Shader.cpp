@@ -60,7 +60,7 @@ bool Shader::Compile() {
 
   RemoveStoredStages();
 
-  printf("Program created with id: %d", id);
+  printf("Program created with id: %d\n", id);
 
   return true;
 }

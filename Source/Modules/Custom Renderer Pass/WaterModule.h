@@ -25,38 +25,34 @@
 
 #include "Common.h"
 
-class Shader {
+#include "System/Module.h"
+
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
+#include "OpenGL/Shader.h"
+
+#include "Graphics/Plane.h"
+#include "Graphics/Model.h"
+
+class WaterModule : public Module {
 
  private:
-  int id{0};
-  std::map<const char *, int> uniform_locations;
-  std::vector<int> m_Stages;
+  VertexArray m_VAO;
+  VertexBuffer m_VBO;
+  IndexBuffer m_IBO;
+
+  Plane m_Plane;
+  Shader m_Shader;
+
+  Model m_Model;
 
  public:
-  Shader() {}
-  bool Compile();
-  virtual ~Shader();
-  inline void Bind() { glUseProgram(id); }
+  WaterModule() {}
 
-  void AddStage(GLenum p_Type, std::string p_Path);
+  virtual void OnInit(Camera &p_Camera) override;
+  virtual void OnUpdate(double dt = 1.0) override;
+  virtual void OnGUI() override;
+  virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
 
-  void Bool(const char *name, bool value);
-  void Int(const char *name, int value);
-  void Float(const char *name, float value);
-  void Double(const char *name, double value);
-  void Vec2(const char *name, const glm::vec2 &value);
-  void Vec2(const char *name, float x, float y);
-  void Vec3(const char *name, const glm::vec3 &value);
-  void Vec3(const char *name, float x, float y, float z);
-  void Vec4(const char *name, const glm::vec4 &value);
-  void Vec4s(const char *name, int size, const glm::vec4 value[]);
-  void Vec4(const char *name, float x, float y, float z, float w);
-  void Mat2(const char *name, const glm::mat2 &mat);
-  void Mat3(const char *name, const glm::mat3 &mat);
-  void Mat4(const char *name, const glm::mat4 &mat);
-
- private:
-  virtual bool CompileShader(const char *filePath, int &id);
-  int UniformLocation(const char *name);
-  void RemoveStoredStages();
 };
