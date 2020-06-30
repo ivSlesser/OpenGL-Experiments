@@ -61,6 +61,8 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
 
   Renderer *ptr = Renderer::Access();
 
+  m_FBO.Bind();
+
   Renderer::SetupDefaultTexture(*Window::s_Instance);
 
   m_Shader.Bind();
@@ -86,6 +88,9 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
 
   // Water
+
+  m_FBO.Unbind();
+  m_FBO.BindColorAttachment();
   m_Shader.Mat4("u_Model", p_Transform.Transformation());
 
   m_VAO.Bind();

@@ -21,10 +21,11 @@
 // SOFTWARE.
 
 
+#include <System/Window.h>
 #include "FrameBuffer.h"
 
 FrameBuffer::FrameBuffer(unsigned W, unsigned H) {
-  Generate();
+  Resize(W, H);
 }
 
 FrameBuffer::~FrameBuffer() {
@@ -63,15 +64,23 @@ void FrameBuffer::Generate() {
 }
 
 void FrameBuffer::Resize(unsigned W, unsigned H) {
-  width = W;
-  height = H;
+  width = W * 2;
+  height = H * 2;
   Generate();
 }
 
 void FrameBuffer::Bind() {
   glBindFramebuffer(GL_FRAMEBUFFER, id);
+  glViewport(0, 0, width, height);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glEnable(GL_DEPTH_TEST);
 }
 
 void FrameBuffer::Unbind() {
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  int w, h;
+  glfwGetWindowSize(Window::s_Window, &w, &h);
+  glViewport(0, 0, w, h);
+  glClear(GL_COLOR_BUFFER_BIT);
+  glDisable(GL_DEPTH_TEST);
 }

@@ -6453,6 +6453,7 @@ CMakeFiles/Foundations.dir/Source/OpenGL/FrameBuffer.cpp.o
  ../Libraries/glm/glm/vec4.hpp
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
+ ../Source/System/Window.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/FrameBuffer.cpp
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/FrameBuffer.h
 CMakeFiles/Foundations.dir/Source/OpenGL/IndexBuffer.cpp.o
