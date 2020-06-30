@@ -222,10 +222,12 @@ CMakeFiles/Foundations.dir/Source/Application.cpp.o
  ../Source/Graphics/Camera/PerspectiveCamera.h
  ../Source/Graphics/Model.h
  ../Source/Graphics/Plane.h
+ ../Source/Graphics/Quad.h
  ../Source/Graphics/Vertex.h
  ../Source/Math/Random/Perlin.h
  ../Source/OpenGL/FrameBuffer.h
  ../Source/OpenGL/IndexBuffer.h
+ ../Source/OpenGL/Renderer.h
  ../Source/OpenGL/Shader.h
  ../Source/OpenGL/Texture.h
  ../Source/OpenGL/VertexArray.h
@@ -4652,6 +4654,7 @@ CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/WaterModule.cpp.o
  ../Source/Graphics/Model.h
  ../Source/Graphics/Plane.h
  ../Source/Graphics/Properties/Transform.h
+ ../Source/Graphics/Quad.h
  ../Source/Graphics/Vertex.h
  ../Source/Math/Random/Random.h
  ../Source/OpenGL/FrameBuffer.h
@@ -6453,9 +6456,17 @@ CMakeFiles/Foundations.dir/Source/OpenGL/FrameBuffer.cpp.o
  ../Libraries/glm/glm/vec4.hpp
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
+ ../Source/Graphics/Camera/Camera.h
+ ../Source/Graphics/Camera/PerspectiveCamera.h
+ ../Source/Graphics/Properties/Transform.h
+ ../Source/OpenGL/Shader.h
+ ../Source/OpenGL/Texture.h
+ ../Source/System/Module.h
  ../Source/System/Window.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/FrameBuffer.cpp
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/FrameBuffer.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/Renderer.h
+ /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/OpenGL/Shader.h
 CMakeFiles/Foundations.dir/Source/OpenGL/IndexBuffer.cpp.o
  ../Libraries/glad/include/KHR/khrplatform.h
  ../Libraries/glad/include/glad/glad.h

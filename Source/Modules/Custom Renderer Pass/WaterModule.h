@@ -34,6 +34,7 @@
 #include "OpenGL/Shader.h"
 
 #include "Graphics/Plane.h"
+#include "Graphics/Quad.h"
 #include "Graphics/Model.h"
 
 class WaterModule : public Module {
@@ -44,10 +45,15 @@ class WaterModule : public Module {
   IndexBuffer m_IBO;
   FrameBuffer m_FBO;
 
+  Quad m_Quad;
   Plane m_Plane;
   Shader m_Shader;
 
   Model m_Model;
+
+  VertexArray m_QVAO;
+  VertexBuffer m_QVBO;
+  IndexBuffer m_QIBO;
 
  public:
   WaterModule() {}

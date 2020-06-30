@@ -35,6 +35,6 @@ void main()
 
     vec4 Lighting = vec4(Ambient + Diffuse + Specular, 1.0f);
 
-    FragColor = texture(u_Texture0, v_TexCoords) * Lighting * v_Color;
+    FragColor = texture(u_Texture0, v_TexCoords) * Lighting;
 
 }

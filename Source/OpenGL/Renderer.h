@@ -67,7 +67,20 @@ class Renderer {
   inline Shader &GetLitShader() { return lit_shader; }
   inline Shader &GetUnlitShader() { return lit_shader; }
 
-  static void CheckGLError() { std::cout << glGetError() << std::endl; }
+  static void ClearGLError() {
+    unsigned errorCode;
+    while ((errorCode = glGetError()) != GL_NO_ERROR) {
+    }
+  }
+
+  static void CheckGLError(std::string msg = "") {
+    auto res = glGetError();
+
+    if (res != 0) {
+      std::cout << msg << " -> " << res << std::endl;
+    }
+
+  }
 
   inline static void SetupDefaultTexture(Window &window) {
     Renderer::Access()->white_texture.Bind();

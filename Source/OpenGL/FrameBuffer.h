@@ -24,6 +24,7 @@
 #pragma once
 
 #include "Common.h"
+#include "Renderer.h"
 
 class FrameBuffer {
 
@@ -39,12 +40,16 @@ class FrameBuffer {
   virtual ~FrameBuffer();
 
   void Generate();
-  void Resize(unsigned W, unsigned H);
 
   void Bind();
   void Unbind();
 
-  inline void BindColorAttachment() { glBindTexture(GL_TEXTURE_2D, aColor); }
-  inline void BindDepthAttachment() { glBindTexture(GL_TEXTURE_2D, aDepth); }
+  inline unsigned GetID() { return id; }
+
+  inline void BindColorAttachment() {
+    Renderer::ClearGLError();
+    glBindTexture(GL_TEXTURE_2D, aColor);
+    Renderer::CheckGLError("BindColorAttachment");
+  }
 
 };

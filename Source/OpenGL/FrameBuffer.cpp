@@ -23,61 +23,79 @@
 
 #include <System/Window.h>
 #include "FrameBuffer.h"
+#include "Renderer.h"
 
 FrameBuffer::FrameBuffer(unsigned W, unsigned H) {
-  Resize(W, H);
+  width = W;
+  height = H;
+  Generate();
 }
 
 FrameBuffer::~FrameBuffer() {
   glDeleteFramebuffers(1, &id);
   glDeleteTextures(1, &aColor);
-  glDeleteTextures(1, &aDepth);
+  glDeleteRenderbuffers(1, &aDepth);
 }
 
 void FrameBuffer::Generate() {
-  if (id) {
-    glDeleteFramebuffers(1, &id);
-    glDeleteTextures(1, &aColor);
-    glDeleteTextures(1, &aDepth);
-  }
-
-  glGenFramebuffers(1, &id);
+  Renderer::ClearGLError();
+  glGenFramebuffers((unsigned)1, &id);
+  Renderer::CheckGLError("glGenFramebuffers");
   glBindFramebuffer(GL_FRAMEBUFFER, id);
+  Renderer::CheckGLError("glBindFramebuffer");
 
   // Create a colour attachment
+  int numberOfChannels = 3;
+  GLuint internalFormat = GL_RGB8;
+  GLuint format = GL_RGB;
+
+  unsigned char* texels = new unsigned char[width * height * numberOfChannels];
+
   glGenTextures(1, &aColor);
   glBindTexture(GL_TEXTURE_2D, aColor);
-  // GL_RGBA16F or GL_RGBA32F would be for HDR
+
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+
+  glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, texels);
+
+  delete[] texels;
+  texels = NULL;
 
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, aColor, 0);
 
-  // Depth attachment
-  glGenTextures(1, &aDepth);
-  glBindTexture(GL_TEXTURE_2D, aDepth);
-  glTexStorage2D(GL_TEXTURE_2D, 1, GL_DEPTH24_STENCIL8, width, height);
-  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, aDepth, 0);
+  glGenRenderbuffers(1, &aDepth);
+  glBindRenderbuffer(GL_RENDERBUFFER, aDepth);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
+
+  glFramebufferRenderbuffer(
+      GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, aDepth
+  );
+
+  if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+    std::cout << "Help!" << std::endl;
+  }
 
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void FrameBuffer::Resize(unsigned W, unsigned H) {
-  width = W * 2;
-  height = H * 2;
-  Generate();
-}
-
 void FrameBuffer::Bind() {
+  Renderer::ClearGLError();
   glBindFramebuffer(GL_FRAMEBUFFER, id);
+  Renderer::CheckGLError("Bind");
+
   glViewport(0, 0, width, height);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glEnable(GL_DEPTH_TEST);
 }
 
 void FrameBuffer::Unbind() {
+  Renderer::ClearGLError();
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  Renderer::CheckGLError("Unbind");
+
   int w, h;
   glfwGetWindowSize(Window::s_Window, &w, &h);
   glViewport(0, 0, w, h);

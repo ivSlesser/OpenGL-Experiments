@@ -52,6 +52,24 @@ void WaterModule::OnInit(Camera &p_Camera) {
   int width, height;
   glfwGetWindowSize(Window::s_Window, &width, &height);
   m_FBO = FrameBuffer(width, height);
+//  m_FBO = FrameBuffer(800, 600);
+
+  // Quad
+
+  // Create a random color
+  glm::vec4 color2;
+  color2.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color2.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color2.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color2.a = 1.0f;
+
+  // Create vertices
+  m_QVAO.Bind();
+  m_QVBO.Init(Quad::Vertices(10.0f, 10.0f, 20.0f, 20.0f, color2));
+  m_QVAO.SetLayout();
+
+  // Create indices
+  m_QIBO.Init(Quad::Indices());
 }
 
 void WaterModule::OnUpdate(double dt) {
@@ -68,7 +86,6 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_Shader.Bind();
 
   m_Shader.Mat4("u_ViewProjection", p_Camera.GetProjectionView());
-
   m_Shader.Vec3("u_LightColor", ptr->GetLightColor());
   m_Shader.Vec3("u_LightPosition", ptr->GetLightPosition());
   m_Shader.Vec3("u_CameraPosition", Renderer::GetCamera().GetPosition());
@@ -88,14 +105,18 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
 
   // Water
-
-  m_FBO.Unbind();
-  m_FBO.BindColorAttachment();
   m_Shader.Mat4("u_Model", p_Transform.Transformation());
 
   m_VAO.Bind();
   m_IBO.Bind();
   glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
+
+  m_FBO.Unbind();
+
+  m_FBO.BindColorAttachment();
+  m_QVAO.Bind();
+  m_QIBO.Bind();
+  glDrawElements(GL_TRIANGLES, m_Quad.IndexCount(), GL_UNSIGNED_INT, 0);
 }
 
 void WaterModule::OnGUI() {
