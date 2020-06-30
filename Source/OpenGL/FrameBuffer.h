@@ -34,6 +34,7 @@ class FrameBuffer {
   unsigned aDepth = 0;
 
  public:
+  FrameBuffer() {}
   FrameBuffer(unsigned W, unsigned H);
   virtual ~FrameBuffer();
 

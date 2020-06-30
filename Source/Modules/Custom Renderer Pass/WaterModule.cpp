@@ -48,6 +48,10 @@ void WaterModule::OnInit(Camera &p_Camera) {
   m_Shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/Water/water.vertex.glsl");
   m_Shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Water/water.fragment.glsl");
   m_Shader.Compile();
+
+  int width, height;
+  glfwGetWindowSize(Window::s_Window, &width, &height);
+  m_FBO = FrameBuffer(width, height);
 }
 
 void WaterModule::OnUpdate(double dt) {
@@ -56,6 +60,8 @@ void WaterModule::OnUpdate(double dt) {
 void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
 
   Renderer *ptr = Renderer::Access();
+
+  Renderer::SetupDefaultTexture(*Window::s_Instance);
 
   m_Shader.Bind();
 

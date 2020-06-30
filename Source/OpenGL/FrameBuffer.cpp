@@ -40,24 +40,23 @@ void FrameBuffer::Generate() {
     glDeleteTextures(1, &aDepth);
   }
 
-  glCreateFramebuffers(1, &id);
+  glGenFramebuffers(1, &id);
   glBindFramebuffer(GL_FRAMEBUFFER, id);
 
   // Create a colour attachment
-  glCreateTextures(GL_TEXTURE_2D, 1, &aColor);
+  glGenTextures(1, &aColor);
   glBindTexture(GL_TEXTURE_2D, aColor);
   // GL_RGBA16F or GL_RGBA32F would be for HDR
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, aColor, 0);
 
   // Depth attachment
-  glCreateTextures(GL_TEXTURE_2D, 1, &aDepth);
+  glGenTextures(1, &aDepth);
   glBindTexture(GL_TEXTURE_2D, aDepth);
   glTexStorage2D(GL_TEXTURE_2D, 1, GL_DEPTH24_STENCIL8, width, height);
-
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, aDepth, 0);
 
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -71,7 +70,6 @@ void FrameBuffer::Resize(unsigned W, unsigned H) {
 
 void FrameBuffer::Bind() {
   glBindFramebuffer(GL_FRAMEBUFFER, id);
-  glViewport(0, 0, width, height);
 }
 
 void FrameBuffer::Unbind() {

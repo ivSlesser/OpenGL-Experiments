@@ -29,9 +29,9 @@
 class Window {
  public:
   static GLFWwindow *s_Window;
+  static Window *s_Instance;
 
  private:
-  static Window *s_Instance;
   GLFWwindow *window{nullptr};
   bool is_transparency_enabled = false;
   bool is_left_mouse_held = false;

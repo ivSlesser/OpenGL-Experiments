@@ -30,6 +30,7 @@
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"
 #include "OpenGL/IndexBuffer.h"
+#include "OpenGL/FrameBuffer.h"
 #include "OpenGL/Shader.h"
 
 #include "Graphics/Plane.h"
@@ -41,6 +42,7 @@ class WaterModule : public Module {
   VertexArray m_VAO;
   VertexBuffer m_VBO;
   IndexBuffer m_IBO;
+  FrameBuffer m_FBO;
 
   Plane m_Plane;
   Shader m_Shader;
