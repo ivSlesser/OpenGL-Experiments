@@ -85,9 +85,7 @@ void Renderer::Draw(Window &window, Transform &transform, Module *module) {
       if (ptr->ref_texture.HasTransparency()) window.EnableTransparency();
       else window.DisableTransparency();
     } else {
-      ptr->white_texture.Bind();
-      if (ptr->white_texture.HasTransparency()) window.EnableTransparency();
-      else window.DisableTransparency();
+      Renderer::SetupDefaultTexture(window);
     }
 
     module->OnDraw(ptr->use_lighting ? ptr->lit_shader : ptr->unlit_shader, ptr->camera);

@@ -69,6 +69,12 @@ class Renderer {
 
   static void CheckGLError() { std::cout << glGetError() << std::endl; }
 
+  inline static void SetupDefaultTexture(Window &window) {
+    Renderer::Access()->white_texture.Bind();
+    if (Renderer::Access()->white_texture.HasTransparency()) window.EnableTransparency();
+    else window.DisableTransparency();
+  }
+
  private:
   Renderer();
 

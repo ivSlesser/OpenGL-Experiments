@@ -32,7 +32,8 @@ void WaterModule::OnInit(Camera &p_Camera) {
   p_Camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
 
   glm::vec4 color = glm::vec4(0.21f, 0.55f, 0.77f, 1.0f);
-  m_Plane = Plane(color, glm::vec3(0.0f), glm::vec3(50.0f));
+//  m_Plane = Plane(color, glm::vec3(0.0f), glm::vec3(50.0f));
+  m_Plane = Plane(color);
 
   // Create vertices
   m_VAO.Bind();
@@ -42,7 +43,7 @@ void WaterModule::OnInit(Camera &p_Camera) {
   // Create indices
   m_IBO.Init(m_Plane.Indices());
 
-//  m_Model.Load("Resources/Models/dragon.obj");
+  m_Model.Load("Resources/Models/dragon.obj");
 
   m_Shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/Water/water.vertex.glsl");
   m_Shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Water/water.fragment.glsl");
@@ -58,19 +59,32 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
 
   m_Shader.Bind();
 
-  m_Shader.Mat4("u_Model", p_Transform.Transformation());
   m_Shader.Mat4("u_ViewProjection", p_Camera.GetProjectionView());
 
   m_Shader.Vec3("u_LightColor", ptr->GetLightColor());
   m_Shader.Vec3("u_LightPosition", ptr->GetLightPosition());
   m_Shader.Vec3("u_CameraPosition", Renderer::GetCamera().GetPosition());
 
+  // Above Water
+  m_Model.Bind();
+  Transform modelTF;
+  modelTF.SetScale(glm::vec3(0.5f));
+  modelTF.SetTranslate(glm::vec3(5.0f, 1.0f, 5.0f));
+  m_Shader.Mat4("u_Model", modelTF.Transformation());
+  glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
+
+  // Under Water
+  modelTF.SetScale(glm::vec3(0.5f));
+  modelTF.SetTranslate(glm::vec3(40.0f, -10.0f, 40.0f));
+  m_Shader.Mat4("u_Model", modelTF.Transformation());
+  glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
+
+  // Water
+  m_Shader.Mat4("u_Model", p_Transform.Transformation());
+
   m_VAO.Bind();
   m_IBO.Bind();
   glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
-
-//  m_Model.Bind();
-//  glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
 }
 
 void WaterModule::OnGUI() {
