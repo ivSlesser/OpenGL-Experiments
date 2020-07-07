@@ -74,6 +74,9 @@ void FrameBuffer::Generate() {
       GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, aDepth
   );
 
+//  GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
+//  glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers
+
   if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
     std::cout << "Help!" << std::endl;
   }

@@ -51,8 +51,33 @@ void WaterModule::OnInit(Camera &p_Camera) {
 
   int width, height;
   glfwGetWindowSize(Window::s_Window, &width, &height);
-  m_FBO = FrameBuffer(width, height);
+//  m_FBO = FrameBuffer(width, height);
 //  m_FBO = FrameBuffer(800, 600);
+
+  glGenFramebuffers(1, &FramebufferName);
+  glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
+
+  glGenTextures(1, &renderedTexture);
+
+  glBindTexture(GL_TEXTURE_2D, renderedTexture);
+
+  glTexImage2D(GL_TEXTURE_2D, 0,GL_RGB, width, height, 0,GL_RGB, GL_UNSIGNED_BYTE, 0);
+
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+  glGenRenderbuffers(1, &depthrenderbuffer);
+  glBindRenderbuffer(GL_RENDERBUFFER, depthrenderbuffer);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthrenderbuffer);
+
+  glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, renderedTexture, 0);
+
+  GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
+  glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers
+
+  if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+    std::cout << "Help!" << std::endl;
 
   // Quad
 
@@ -79,7 +104,14 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
 
   Renderer *ptr = Renderer::Access();
 
-  m_FBO.Bind();
+  int w, h;
+  glfwGetWindowSize(Window::s_Window, &w, &h);
+
+//  m_FBO.Bind();
+  glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
+  glViewport(0,0,w,h);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glEnable(GL_DEPTH_TEST);
 
   Renderer::SetupDefaultTexture(*Window::s_Instance);
 
@@ -111,9 +143,15 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_IBO.Bind();
   glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
 
-  m_FBO.Unbind();
+//  m_FBO.Unbind();
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-  m_FBO.BindColorAttachment();
+  glViewport(0, 0, w, h);
+  glClear(GL_COLOR_BUFFER_BIT);
+  glDisable(GL_DEPTH_TEST);
+
+//  m_FBO.BindColorAttachment();
+  glBindTexture(GL_TEXTURE_2D, renderedTexture);
   m_QVAO.Bind();
   m_QIBO.Bind();
   glDrawElements(GL_TRIANGLES, m_Quad.IndexCount(), GL_UNSIGNED_INT, 0);

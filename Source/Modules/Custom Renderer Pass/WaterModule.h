@@ -55,6 +55,10 @@ class WaterModule : public Module {
   VertexBuffer m_QVBO;
   IndexBuffer m_QIBO;
 
+  GLuint FramebufferName = 0;
+  GLuint renderedTexture;
+  GLuint depthrenderbuffer;
+
  public:
   WaterModule() {}
 
