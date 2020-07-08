@@ -32,7 +32,6 @@ void WaterModule::OnInit(Camera &p_Camera) {
   p_Camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
 
   glm::vec4 color = glm::vec4(0.21f, 0.55f, 0.77f, 1.0f);
-//  m_Plane = Plane(color, glm::vec3(0.0f), glm::vec3(50.0f));
   m_Plane = Plane(color);
 
   // Create vertices
@@ -51,11 +50,13 @@ void WaterModule::OnInit(Camera &p_Camera) {
 
   auto dims = Window::GetDimensions();
   int width, height;
-  width = dims.x * 4;
-  height = dims.y * 4;
-//  glfwGetWindowSize(Window::s_Window, &width, &height);
+
+#ifdef __APPLE__
+  width = dims.x * 2;
+  height = dims.y * 2;
+#endif
+
 //  m_FBO = FrameBuffer(width, height);
-//  m_FBO = FrameBuffer(800, 600);
 
   glGenFramebuffers(1, &FramebufferName);
   glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
@@ -77,7 +78,7 @@ void WaterModule::OnInit(Camera &p_Camera) {
   glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, renderedTexture, 0);
 
   GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
-  glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers
+  glDrawBuffers(1, DrawBuffers);
 
   if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
     std::cout << "Help!" << std::endl;
@@ -87,20 +88,9 @@ void WaterModule::OnInit(Camera &p_Camera) {
   Window::ToggleFramebufferUsage(true);
 
   // Quad
-
-  // Create a random color
-  glm::vec4 color2;
-  color2.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color2.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color2.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color2.a = 1.0f;
-
-  // Create vertices
   m_QVAO.Bind();
-  m_QVBO.Init(Quad::Vertices(0.0f, 0.0f, 50.0f, 50.0f, color2));
+  m_QVBO.Init(Quad::Vertices(0.0f, 0.0f, 10.0f, 10.0f, glm::vec4(1.0f)));
   m_QVAO.SetLayout();
-
-  // Create indices
   m_QIBO.Init(Quad::Indices());
 }
 
@@ -113,8 +103,13 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
 
   auto dims = Window::GetDimensions();
   int w, h;
-  w = dims.x * 4;
-  h = dims.y * 4;
+  w = dims.x;
+  h = dims.y;
+
+#ifdef __APPLE__
+  w *= 2;
+  h *= 2;
+#endif
 
   glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
   glViewport(0, 0, w, h);
@@ -130,7 +125,7 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_Shader.Vec3("u_LightPosition", ptr->GetLightPosition());
   m_Shader.Vec3("u_CameraPosition", Renderer::GetCamera().GetPosition());
 
-//  // Above Water
+  // Above Water
   m_Model.Bind();
   Transform modelTF;
   modelTF.SetScale(glm::vec3(0.5f));
@@ -138,18 +133,18 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_Shader.Mat4("u_Model", modelTF.Transformation());
   glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
 
-//  // Under Water
-//  modelTF.SetScale(glm::vec3(0.5f));
-//  modelTF.SetTranslate(glm::vec3(40.0f, -10.0f, 40.0f));
-//  m_Shader.Mat4("u_Model", modelTF.Transformation());
-//  glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
-//
-//  // Water
-//  m_Shader.Mat4("u_Model", p_Transform.Transformation());
-//  m_VAO.Bind();
-//  m_IBO.Bind();
-//  glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
-//
+  // Under Water
+  modelTF.SetScale(glm::vec3(0.5f));
+  modelTF.SetTranslate(glm::vec3(40.0f, -10.0f, 40.0f));
+  m_Shader.Mat4("u_Model", modelTF.Transformation());
+  glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
+
+  // Water
+  m_Shader.Mat4("u_Model", p_Transform.Transformation());
+  m_VAO.Bind();
+  m_IBO.Bind();
+  glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
+
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glViewport(0, 0, w, h);
   glClear(GL_COLOR_BUFFER_BIT);
