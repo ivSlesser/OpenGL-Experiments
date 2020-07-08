@@ -43,21 +43,22 @@ class WaterModule : public Module {
   VertexArray m_VAO;
   VertexBuffer m_VBO;
   IndexBuffer m_IBO;
-  FrameBuffer *m_FBO;
+  FrameBuffer *m_FBOReflection;
+  FrameBuffer *m_FBORefraction;
 
-  Quad m_Quad;
   Plane m_Plane;
   Shader m_Shader;
+  Shader m_GUIShader;
 
   Model m_Model;
 
-  VertexArray m_QVAO;
-  VertexBuffer m_QVBO;
-  IndexBuffer m_QIBO;
+  VertexArray m_QVAOA;
+  VertexBuffer m_QVBOA;
+  IndexBuffer m_QIBOA;
 
-  GLuint FramebufferName = 0;
-  GLuint renderedTexture;
-  GLuint depthrenderbuffer;
+  VertexArray m_QVAOB;
+  VertexBuffer m_QVBOB;
+  IndexBuffer m_QIBOB;
 
  public:
   WaterModule() {}
@@ -68,4 +69,7 @@ class WaterModule : public Module {
   virtual void OnGUI() override;
   virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
 
+ private:
+  void PrimaryRenderPass(Transform &p_Transform, const Camera &p_Camera);
+  void GUIRenderPass(Transform &p_Transform, const Camera &p_Camera, FrameBuffer *p_FBO, bool pReflection);
 };

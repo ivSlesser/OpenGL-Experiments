@@ -21,28 +21,25 @@
 // SOFTWARE.
 
 
-#include <System/Window.h>
 #include "FrameBuffer.h"
+#include "System/Window.h"
 #include "Renderer.h"
 
-FrameBuffer::FrameBuffer(unsigned int W, unsigned int H) {
-  width = W;
-  height = H;
-
+FrameBuffer::FrameBuffer(unsigned int pWidth, unsigned int pHeight) {
   glGenFramebuffers(1, &m_ID);
   glBindFramebuffer(GL_FRAMEBUFFER, m_ID);
 
   // Create a colour attachment
   glGenTextures(1, &aColor);
   glBindTexture(GL_TEXTURE_2D, aColor);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, pWidth, pHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
 
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
   glGenRenderbuffers(1, &aDepth);
   glBindRenderbuffer(GL_RENDERBUFFER, aDepth);
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, pWidth, pHeight);
   glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, aDepth);
 
   glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, aColor, 0);
@@ -58,7 +55,6 @@ FrameBuffer::FrameBuffer(unsigned int W, unsigned int H) {
 }
 
 FrameBuffer::~FrameBuffer() {
-
   if (m_ID != 0) {
     glDeleteFramebuffers(1, &m_ID);
     glDeleteTextures(1, &aColor);
@@ -66,10 +62,14 @@ FrameBuffer::~FrameBuffer() {
   }
 }
 
-void FrameBuffer::Bind() {
+void FrameBuffer::Bind(unsigned int pWidth, unsigned int pHeight) {
   glBindFramebuffer(GL_FRAMEBUFFER, m_ID);
+  glViewport(0, 0, pWidth, pHeight);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void FrameBuffer::Unbind() {
-  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+void FrameBuffer::Bind(GLuint pID, unsigned int pWidth, unsigned int pHeight) {
+  glBindFramebuffer(GL_FRAMEBUFFER, pID);
+  glViewport(0, 0, pWidth, pHeight);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

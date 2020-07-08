@@ -48,6 +48,10 @@ void WaterModule::OnInit(Camera &p_Camera) {
   m_Shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Water/water.fragment.glsl");
   m_Shader.Compile();
 
+  m_GUIShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/GUI/gui.vertex.glsl");
+  m_GUIShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/GUI/gui.fragment.glsl");
+  m_GUIShader.Compile();
+
   auto dims = Window::GetDimensions();
   int width, height;
 
@@ -56,15 +60,21 @@ void WaterModule::OnInit(Camera &p_Camera) {
   height = dims.y * 2;
 #endif
 
-  m_FBO = new FrameBuffer(width, height);
+  m_FBOReflection = new FrameBuffer(width, height);
+  m_FBORefraction = new FrameBuffer(width, height);
 
   Window::ToggleFramebufferUsage(true);
 
-  // Quad
-  m_QVAO.Bind();
-  m_QVBO.Init(Quad::Vertices(0.0f, 0.0f, 10.0f, 10.0f, glm::vec4(1.0f)));
-  m_QVAO.SetLayout();
-  m_QIBO.Init(Quad::Indices());
+  // Quad (GUI)
+  m_QVAOA.Bind();
+  m_QVBOA.Init(Quad::Vertices(-0.9f, 0.9f, 0.1f, 0.1f, glm::vec4(1.0f)));
+  m_QVAOA.SetLayout();
+  m_QIBOA.Init(Quad::Indices());
+
+  m_QVAOB.Bind();
+  m_QVBOB.Init(Quad::Vertices(-0.9f, 0.7f, 0.1f, 0.1f, glm::vec4(1.0f)));
+  m_QVAOB.SetLayout();
+  m_QIBOB.Init(Quad::Indices());
 }
 
 void WaterModule::OnUpdate(double dt) {
@@ -84,10 +94,33 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   h *= 2;
 #endif
 
-  m_FBO->Bind();
-  glViewport(0, 0, w, h);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  m_FBOReflection->Bind(w, h);
+  PrimaryRenderPass(p_Transform, p_Camera);
+  m_FBORefraction->Bind(w, h);
+  PrimaryRenderPass(p_Transform, p_Camera);
+  m_FBOReflection->Bind(0, w, h);
+
+  PrimaryRenderPass(p_Transform, p_Camera);
+  GUIRenderPass(p_Transform, p_Camera, m_FBOReflection, true);
+  GUIRenderPass(p_Transform, p_Camera, m_FBORefraction, false);
+}
+
+void WaterModule::OnGUI() {
+  ImGui::Image((void *) (intptr_t) m_FBOReflection->GetColorAttachmentID(), ImVec2(256.0f, 256.0f));
+  ImGui::Image((void *) (intptr_t) m_FBORefraction->GetColorAttachmentID(), ImVec2(256.0f, 256.0f));
+}
+
+void WaterModule::OnDestroy() {
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glEnable(GL_DEPTH_TEST);
+  auto dims = Window::GetDimensions();
+  glViewport(0, 0, dims.x, dims.y);
+  Window::ToggleFramebufferUsage(false);
+}
+
+void WaterModule::PrimaryRenderPass(Transform &p_Transform, const Camera &p_Camera) {
+
+  Renderer *ptr = Renderer::Access();
 
   Renderer::SetupDefaultTexture(*Window::s_Instance);
 
@@ -117,29 +150,23 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_VAO.Bind();
   m_IBO.Bind();
   glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
-
-  m_FBO->Unbind();
-  glViewport(0, 0, w, h);
-  glClear(GL_COLOR_BUFFER_BIT);
-  glDisable(GL_DEPTH_TEST);
-
-  m_FBO->BindColorAttachment();
-
-  m_Shader.Mat4("u_Model", p_Transform.Transformation());
-  m_QVAO.Bind();
-  m_QIBO.Bind();
-  glDrawElements(GL_TRIANGLES, m_Quad.IndexCount(), GL_UNSIGNED_INT, 0);
 }
 
-void WaterModule::OnGUI() {
-  ImGui::Image((void*)(intptr_t)m_FBO->GetColorAttachmentID(), ImVec2(256.0f, 256.0f));
-}
+void WaterModule::GUIRenderPass(Transform &p_Transform, const Camera &p_Camera, FrameBuffer *p_FBO, bool pReflection) {
+  Renderer *ptr = Renderer::Access();
+  Renderer::SetupDefaultTexture(*Window::s_Instance);
+  m_GUIShader.Bind();
 
-void WaterModule::OnDestroy() {
-  glBindFramebuffer(GL_FRAMEBUFFER, 0);
-  glEnable(GL_DEPTH_TEST);
-  auto dims = Window::GetDimensions();
-  glViewport(0, 0, dims.x, dims.y);
-  Window::ToggleFramebufferUsage(false);
+  p_FBO->BindColorAttachment();
+
+  if (pReflection) {
+    m_QVAOA.Bind();
+    m_QIBOA.Bind();
+  } else {
+    m_QVAOB.Bind();
+    m_QIBOB.Bind();
+  }
+
+  glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
 }
 

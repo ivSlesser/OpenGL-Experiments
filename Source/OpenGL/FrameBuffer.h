@@ -29,17 +29,16 @@
 class FrameBuffer {
 
  private:
-  unsigned int width, height;
   GLuint m_ID = 0;
   GLuint aColor;
   GLuint aDepth;
 
  public:
-  FrameBuffer(unsigned int W, unsigned int H);
+  FrameBuffer(unsigned int pWidth, unsigned int pHeight);
   virtual ~FrameBuffer();
 
-  void Bind();
-  void Unbind();
+  void Bind(unsigned int pWidth, unsigned int pHeight);
+  void Bind(GLuint pID, unsigned int pWidth, unsigned int pHeight);
 
   inline GLuint GetID() { return m_ID; }
   inline void SetID(GLuint to) { m_ID = to; }
