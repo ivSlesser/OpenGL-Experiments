@@ -30,21 +30,22 @@ class FrameBuffer {
 
  private:
   unsigned int width, height;
-  unsigned int m_ID = 0;
-  unsigned int aColor;
-  unsigned int aDepth;
+  GLuint m_ID = 0;
+  GLuint aColor;
+  GLuint aDepth;
 
  public:
   FrameBuffer() {}
-  FrameBuffer(unsigned W, unsigned H);
+  FrameBuffer(unsigned int W, unsigned int H);
   virtual ~FrameBuffer();
-
-  void Generate();
 
   void Bind();
   void Unbind();
 
-  inline unsigned GetID() { return m_ID; }
+  inline GLuint GetID() { return m_ID; }
+  inline void SetID(GLuint to) { m_ID = to; }
+  inline GLuint GetColorAttachmentID() { return aColor; }
+  inline void SetColorAttachmentID(GLuint to) { aColor = to; }
 
   inline void BindColorAttachment() {
     Renderer::ClearGLError();

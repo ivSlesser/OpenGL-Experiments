@@ -56,16 +56,15 @@ void WaterModule::OnInit(Camera &p_Camera) {
   height = dims.y * 2;
 #endif
 
-//  m_FBO = FrameBuffer(width, height);
+  m_FBO = FrameBuffer(width, height);
 
   glGenFramebuffers(1, &FramebufferName);
   glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
 
   glGenTextures(1, &renderedTexture);
-
   glBindTexture(GL_TEXTURE_2D, renderedTexture);
 
-  glTexImage2D(GL_TEXTURE_2D, 0,GL_RGB, width, height, 0,GL_RGB, GL_UNSIGNED_BYTE, 0);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
 
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -111,11 +110,14 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   h *= 2;
 #endif
 
-  glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
-  glViewport(0, 0, w, h);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glEnable(GL_DEPTH_TEST);
-//
+//  glBindFramebuffer(GL_FRAMEBUFFER, m_FBO.GetID());
+//  glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
+
+  m_FBO.Bind();
+//  glViewport(0, 0, w, h);
+//  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//  glEnable(GL_DEPTH_TEST);
+
   Renderer::SetupDefaultTexture(*Window::s_Instance);
 
   m_Shader.Bind();
@@ -145,12 +147,16 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_IBO.Bind();
   glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
 
-  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  m_FBO.Unbind();
+//  glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glViewport(0, 0, w, h);
   glClear(GL_COLOR_BUFFER_BIT);
   glDisable(GL_DEPTH_TEST);
+//  glBindTexture(GL_TEXTURE_2D, renderedTexture);
 
-  glBindTexture(GL_TEXTURE_2D, renderedTexture);
+  m_FBO.BindColorAttachment();
+//  glBindTexture(GL_TEXTURE_2D, m_FBO.GetColorAttachmentID());
+
   m_Shader.Mat4("u_Model", p_Transform.Transformation());
   m_QVAO.Bind();
   m_QIBO.Bind();
@@ -158,7 +164,9 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
 }
 
 void WaterModule::OnGUI() {
+  ImGui::Image((void*)(intptr_t)m_FBO.GetColorAttachmentID(), ImVec2(256.0f, 256.0f));
 }
+
 void WaterModule::OnDestroy() {
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glEnable(GL_DEPTH_TEST);

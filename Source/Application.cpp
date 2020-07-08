@@ -112,7 +112,7 @@ void Application::ModuleSelector(std::string name) {
 	if (ImGui::Button("8. Gerstner Waves (Ocean)")) { SwitchModule<GerstnerWaveModule>(); }
     if (ImGui::Button("9. Fog")) { SwitchModule<FogModule>(); }
     if (ImGui::Button("9. Ray Marching")) { SwitchModule<RayMarchingModule>(); }
-    if (ImGui::Button("9. Water")) { SwitchModule<WaterModule>(); }
+    if (ImGui::Button("10. Water")) { SwitchModule<WaterModule>(); }
   }
   ImGui::End();
 
