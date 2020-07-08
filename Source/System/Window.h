@@ -43,6 +43,7 @@ class Window {
 	const char *title = "OpenGL Experiments";
 	int major = 4;
 	int minor = 1;
+	bool usingFramebuffer = false;
   } config;
 
 
@@ -58,6 +59,7 @@ class Window {
   inline bool WindowActive() { return !glfwWindowShouldClose(window); }
   inline GLFWwindow *GetWindow() { return window; }
 
+  inline static void ToggleFramebufferUsage(bool to) { s_Instance->config.usingFramebuffer = to; }
   inline static glm::vec2 GetDimensions() { return glm::vec2(s_Instance->config.width, s_Instance->config.height); }
 
   // Transparency ------------------------------------------------------------------------------------------------------

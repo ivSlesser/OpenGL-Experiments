@@ -29,10 +29,10 @@
 class FrameBuffer {
 
  private:
-  unsigned width, height;
-  unsigned id = 0;
-  unsigned aColor = 0;
-  unsigned aDepth = 0;
+  unsigned int width, height;
+  unsigned int m_ID = 0;
+  unsigned int aColor;
+  unsigned int aDepth;
 
  public:
   FrameBuffer() {}
@@ -44,7 +44,7 @@ class FrameBuffer {
   void Bind();
   void Unbind();
 
-  inline unsigned GetID() { return id; }
+  inline unsigned GetID() { return m_ID; }
 
   inline void BindColorAttachment() {
     Renderer::ClearGLError();

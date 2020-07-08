@@ -49,8 +49,11 @@ void WaterModule::OnInit(Camera &p_Camera) {
   m_Shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Water/water.fragment.glsl");
   m_Shader.Compile();
 
+  auto dims = Window::GetDimensions();
   int width, height;
-  glfwGetWindowSize(Window::s_Window, &width, &height);
+  width = dims.x * 4;
+  height = dims.y * 4;
+//  glfwGetWindowSize(Window::s_Window, &width, &height);
 //  m_FBO = FrameBuffer(width, height);
 //  m_FBO = FrameBuffer(800, 600);
 
@@ -79,6 +82,10 @@ void WaterModule::OnInit(Camera &p_Camera) {
   if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
     std::cout << "Help!" << std::endl;
 
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+  Window::ToggleFramebufferUsage(true);
+
   // Quad
 
   // Create a random color
@@ -90,7 +97,7 @@ void WaterModule::OnInit(Camera &p_Camera) {
 
   // Create vertices
   m_QVAO.Bind();
-  m_QVBO.Init(Quad::Vertices(10.0f, 10.0f, 20.0f, 20.0f, color2));
+  m_QVBO.Init(Quad::Vertices(0.0f, 0.0f, 50.0f, 50.0f, color2));
   m_QVAO.SetLayout();
 
   // Create indices
@@ -104,15 +111,16 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
 
   Renderer *ptr = Renderer::Access();
 
+  auto dims = Window::GetDimensions();
   int w, h;
-  glfwGetWindowSize(Window::s_Window, &w, &h);
+  w = dims.x * 4;
+  h = dims.y * 4;
 
-//  m_FBO.Bind();
   glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
-  glViewport(0,0,w,h);
+  glViewport(0, 0, w, h);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glEnable(GL_DEPTH_TEST);
-
+//
   Renderer::SetupDefaultTexture(*Window::s_Instance);
 
   m_Shader.Bind();
@@ -122,7 +130,7 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_Shader.Vec3("u_LightPosition", ptr->GetLightPosition());
   m_Shader.Vec3("u_CameraPosition", Renderer::GetCamera().GetPosition());
 
-  // Above Water
+//  // Above Water
   m_Model.Bind();
   Transform modelTF;
   modelTF.SetScale(glm::vec3(0.5f));
@@ -130,33 +138,37 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_Shader.Mat4("u_Model", modelTF.Transformation());
   glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
 
-  // Under Water
-  modelTF.SetScale(glm::vec3(0.5f));
-  modelTF.SetTranslate(glm::vec3(40.0f, -10.0f, 40.0f));
-  m_Shader.Mat4("u_Model", modelTF.Transformation());
-  glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
-
-  // Water
-  m_Shader.Mat4("u_Model", p_Transform.Transformation());
-
-  m_VAO.Bind();
-  m_IBO.Bind();
-  glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
-
-//  m_FBO.Unbind();
+//  // Under Water
+//  modelTF.SetScale(glm::vec3(0.5f));
+//  modelTF.SetTranslate(glm::vec3(40.0f, -10.0f, 40.0f));
+//  m_Shader.Mat4("u_Model", modelTF.Transformation());
+//  glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
+//
+//  // Water
+//  m_Shader.Mat4("u_Model", p_Transform.Transformation());
+//  m_VAO.Bind();
+//  m_IBO.Bind();
+//  glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
+//
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
   glViewport(0, 0, w, h);
   glClear(GL_COLOR_BUFFER_BIT);
   glDisable(GL_DEPTH_TEST);
 
-//  m_FBO.BindColorAttachment();
   glBindTexture(GL_TEXTURE_2D, renderedTexture);
+  m_Shader.Mat4("u_Model", p_Transform.Transformation());
   m_QVAO.Bind();
   m_QIBO.Bind();
   glDrawElements(GL_TRIANGLES, m_Quad.IndexCount(), GL_UNSIGNED_INT, 0);
 }
 
 void WaterModule::OnGUI() {
+}
+void WaterModule::OnDestroy() {
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  glEnable(GL_DEPTH_TEST);
+  auto dims = Window::GetDimensions();
+  glViewport(0, 0, dims.x, dims.y);
+  Window::ToggleFramebufferUsage(false);
 }
 

@@ -38,6 +38,7 @@ class Module {
   virtual ~Module() {}
   virtual void OnInit(Camera &p_Camera) = 0;
   virtual void OnUpdate(double dt = 1.0) = 0;
+  virtual void OnDestroy() {}
   virtual void OnGUI() {}
 
   virtual void OnDraw(const Shader &p_Shader, const Camera &p_Camera) {}

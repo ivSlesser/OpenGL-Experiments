@@ -90,7 +90,10 @@ void Window::ProcessInput() {
 void Window::OnResize(GLFWwindow *window, int width, int height) {
   Window::s_Instance->config.width = width;
   Window::s_Instance->config.height = height;
-  glViewport(0, 0, width, height);
+
+  if (!Window::s_Instance->config.usingFramebuffer) {
+    glViewport(0, 0, width, height);
+  }
 }
 
 void Window::OnMouseMove(GLFWwindow *window, double xpos, double ypos) {

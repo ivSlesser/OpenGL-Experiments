@@ -49,6 +49,7 @@ class Application {
   template <typename T>
   void SwitchModule() {
 	if (module != nullptr) {
+	  module->OnDestroy();
 	  delete module;
 	}
 	transform = Transform();

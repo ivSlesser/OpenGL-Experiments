@@ -32,76 +32,43 @@ FrameBuffer::FrameBuffer(unsigned W, unsigned H) {
 }
 
 FrameBuffer::~FrameBuffer() {
-  glDeleteFramebuffers(1, &id);
+  glDeleteFramebuffers(1, &m_ID);
   glDeleteTextures(1, &aColor);
   glDeleteRenderbuffers(1, &aDepth);
 }
 
 void FrameBuffer::Generate() {
-  Renderer::ClearGLError();
-  glGenFramebuffers((unsigned)1, &id);
-  Renderer::CheckGLError("glGenFramebuffers");
-  glBindFramebuffer(GL_FRAMEBUFFER, id);
-  Renderer::CheckGLError("glBindFramebuffer");
+  glGenFramebuffers((unsigned)1, &m_ID);
+  glBindFramebuffer(GL_FRAMEBUFFER, m_ID);
 
   // Create a colour attachment
-  int numberOfChannels = 3;
-  GLuint internalFormat = GL_RGB8;
-  GLuint format = GL_RGB;
-
-  unsigned char* texels = new unsigned char[width * height * numberOfChannels];
-
   glGenTextures(1, &aColor);
   glBindTexture(GL_TEXTURE_2D, aColor);
-
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-  glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, texels);
-
-  delete[] texels;
-  texels = NULL;
-
-  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, aColor, 0);
+  glTexImage2D(GL_TEXTURE_2D, 0,GL_RGB, width, height, 0,GL_RGB, GL_UNSIGNED_BYTE, 0);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
   glGenRenderbuffers(1, &aDepth);
   glBindRenderbuffer(GL_RENDERBUFFER, aDepth);
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, aDepth);
 
-  glFramebufferRenderbuffer(
-      GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, aDepth
-  );
+  glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, aColor, 0);
 
-//  GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
-//  glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers
+  GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
+  glDrawBuffers(1, DrawBuffers);
 
   if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
     std::cout << "Help!" << std::endl;
   }
-
-  glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 void FrameBuffer::Bind() {
-  Renderer::ClearGLError();
-  glBindFramebuffer(GL_FRAMEBUFFER, id);
+  glBindFramebuffer(GL_FRAMEBUFFER, m_ID);
   Renderer::CheckGLError("Bind");
-
-  glViewport(0, 0, width, height);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glEnable(GL_DEPTH_TEST);
 }
 
 void FrameBuffer::Unbind() {
   Renderer::ClearGLError();
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
-  Renderer::CheckGLError("Unbind");
-
-  int w, h;
-  glfwGetWindowSize(Window::s_Window, &w, &h);
-  glViewport(0, 0, w, h);
-  glClear(GL_COLOR_BUFFER_BIT);
-  glDisable(GL_DEPTH_TEST);
 }

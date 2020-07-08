@@ -64,6 +64,7 @@ class WaterModule : public Module {
 
   virtual void OnInit(Camera &p_Camera) override;
   virtual void OnUpdate(double dt = 1.0) override;
+  void OnDestroy() override;
   virtual void OnGUI() override;
   virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
 
