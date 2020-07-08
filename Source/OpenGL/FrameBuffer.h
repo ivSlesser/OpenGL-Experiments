@@ -35,7 +35,6 @@ class FrameBuffer {
   GLuint aDepth;
 
  public:
-  FrameBuffer() {}
   FrameBuffer(unsigned int W, unsigned int H);
   virtual ~FrameBuffer();
 

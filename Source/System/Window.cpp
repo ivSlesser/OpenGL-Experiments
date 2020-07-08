@@ -37,7 +37,7 @@ Window::Window() {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, config.major);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, config.minor);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  glfwWindowHint(GLFW_SAMPLES, 0);
+//  glfwWindowHint(GLFW_SAMPLES, 0);
 
 #ifdef __APPLE__
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);

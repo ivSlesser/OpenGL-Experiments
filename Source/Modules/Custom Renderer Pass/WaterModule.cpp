@@ -56,33 +56,7 @@ void WaterModule::OnInit(Camera &p_Camera) {
   height = dims.y * 2;
 #endif
 
-  m_FBO = FrameBuffer(width, height);
-
-  glGenFramebuffers(1, &FramebufferName);
-  glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
-
-  glGenTextures(1, &renderedTexture);
-  glBindTexture(GL_TEXTURE_2D, renderedTexture);
-
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
-
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-  glGenRenderbuffers(1, &depthrenderbuffer);
-  glBindRenderbuffer(GL_RENDERBUFFER, depthrenderbuffer);
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
-  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthrenderbuffer);
-
-  glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, renderedTexture, 0);
-
-  GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
-  glDrawBuffers(1, DrawBuffers);
-
-  if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-    std::cout << "Help!" << std::endl;
-
-  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  m_FBO = new FrameBuffer(width, height);
 
   Window::ToggleFramebufferUsage(true);
 
@@ -110,13 +84,10 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   h *= 2;
 #endif
 
-//  glBindFramebuffer(GL_FRAMEBUFFER, m_FBO.GetID());
-//  glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
-
-  m_FBO.Bind();
-//  glViewport(0, 0, w, h);
-//  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-//  glEnable(GL_DEPTH_TEST);
+  m_FBO->Bind();
+  glViewport(0, 0, w, h);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glEnable(GL_DEPTH_TEST);
 
   Renderer::SetupDefaultTexture(*Window::s_Instance);
 
@@ -147,15 +118,12 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_IBO.Bind();
   glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
 
-  m_FBO.Unbind();
-//  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  m_FBO->Unbind();
   glViewport(0, 0, w, h);
   glClear(GL_COLOR_BUFFER_BIT);
   glDisable(GL_DEPTH_TEST);
-//  glBindTexture(GL_TEXTURE_2D, renderedTexture);
 
-  m_FBO.BindColorAttachment();
-//  glBindTexture(GL_TEXTURE_2D, m_FBO.GetColorAttachmentID());
+  m_FBO->BindColorAttachment();
 
   m_Shader.Mat4("u_Model", p_Transform.Transformation());
   m_QVAO.Bind();
@@ -164,7 +132,7 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
 }
 
 void WaterModule::OnGUI() {
-  ImGui::Image((void*)(intptr_t)m_FBO.GetColorAttachmentID(), ImVec2(256.0f, 256.0f));
+  ImGui::Image((void*)(intptr_t)m_FBO->GetColorAttachmentID(), ImVec2(256.0f, 256.0f));
 }
 
 void WaterModule::OnDestroy() {

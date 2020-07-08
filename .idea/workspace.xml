@@ -16,13 +16,16 @@
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/WaterModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/WaterModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/WaterModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/WaterModule.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/OpenGL/FrameBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/FrameBuffer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/OpenGL/FrameBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/FrameBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -128,7 +131,7 @@
       <workItem from="1593520924032" duration="2836000" />
       <workItem from="1594127466187" duration="791000" />
       <workItem from="1594202739813" duration="3017000" />
-      <workItem from="1594221074985" duration="3492000" />
+      <workItem from="1594221074985" duration="4329000" />
     </task>
     <servers />
   </component>
@@ -160,11 +163,6 @@
           <url>file://$PROJECT_DIR$/Source/System/Window.cpp</url>
           <line>90</line>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/OpenGL/FrameBuffer.cpp</url>
-          <line>65</line>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

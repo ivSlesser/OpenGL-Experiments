@@ -43,7 +43,7 @@ class WaterModule : public Module {
   VertexArray m_VAO;
   VertexBuffer m_VBO;
   IndexBuffer m_IBO;
-  FrameBuffer m_FBO;
+  FrameBuffer *m_FBO;
 
   Quad m_Quad;
   Plane m_Plane;
