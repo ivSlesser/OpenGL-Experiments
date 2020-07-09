@@ -58,10 +58,23 @@ class Camera {
   inline const glm::vec3 &GetPosition() const { return position; }
   inline glm::vec3 &GetPosition() { return position; }
   inline void SetPosition(float to) { position = glm::vec3(to); }
+
+  inline void SetPositionX(float to) { position.x = to; }
+  inline void SetPositionY(float to) { position.y = to; }
+  inline void SetPositionZ(float to) { position.z = to; }
+
   inline void SetPosition(const glm::vec3 &to) { position = to; }
   inline void SetAndUpdatePosition(const glm::vec3 &to) { position = to; UpdateProjectionView(); }
   inline void AddPosition(float value) { position += (value * speed); }
   inline void AddPosition(const glm::vec3 &values) { position += (values * speed); }
+
+  inline void AddPositionX(float by) { position.x += by; }
+  inline void AddPositionY(float by) { position.y += by; }
+  inline void AddPositionZ(float by) { position.z += by; }
+
+  inline void InvertPitch() { rotation.x *= -1.0f; }
+  inline void InvertYaw() { rotation.y *= -1.0f; }
+  inline void InvertRoll() { rotation.z *= -1.0f; }
 
   // Rotation ----------------------------------------------------------------------------------------------------------
   inline const glm::vec3 &GetRotation() const { return rotation; }

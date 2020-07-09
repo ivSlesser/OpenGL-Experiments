@@ -32,7 +32,7 @@ void WaterModule::OnInit(Camera &p_Camera) {
   p_Camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
 
   glm::vec4 color = glm::vec4(0.21f, 0.55f, 0.77f, 1.0f);
-  m_Plane = Plane(color);
+  m_Plane = Plane(color, glm::vec3(0.0f, m_WaterHeight, 0.0f));
 
   // Create vertices
   m_VAO.Bind();
@@ -47,6 +47,12 @@ void WaterModule::OnInit(Camera &p_Camera) {
   m_Shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/Water/water.vertex.glsl");
   m_Shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Water/water.fragment.glsl");
   m_Shader.Compile();
+  m_Shader.Int("u_ReflectionTexture", 0);
+  m_Shader.Int("u_RefractionTexture", 1);
+
+  m_SceneShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/Water/scene.vertex.glsl");
+  m_SceneShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Water/scene.fragment.glsl");
+  m_SceneShader.Compile();
 
   m_GUIShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/GUI/gui.vertex.glsl");
   m_GUIShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/GUI/gui.fragment.glsl");
@@ -75,6 +81,8 @@ void WaterModule::OnInit(Camera &p_Camera) {
   m_QVBOB.Init(Quad::Vertices(-0.9f, 0.7f, 0.1f, 0.1f, glm::vec4(1.0f)));
   m_QVAOB.SetLayout();
   m_QIBOB.Init(Quad::Indices());
+
+
 }
 
 void WaterModule::OnUpdate(double dt) {
@@ -94,12 +102,33 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   h *= 2;
 #endif
 
+  Camera &camera = ptr->GetCamera();
+
+  glEnable(GL_CLIP_DISTANCE0);
+
+  // Reflection --------------------------------------------------------------------------------------------------------
+  float distance = 2.0f * (camera.GetPosition().y - m_WaterHeight);
+  camera.AddPositionY(-distance);
+  camera.InvertPitch();
+  camera.UpdateProjectionView();
+
   m_FBOReflection->Bind(w, h);
-  PrimaryRenderPass(p_Transform, p_Camera);
+  SecondaryRenderPass(p_Transform, camera, glm::vec4(0.0f, 1.0f, 0.0f, -m_WaterHeight));
+
+  // Refraction --------------------------------------------------------------------------------------------------------
+  camera.AddPositionY(distance);
+  camera.InvertPitch();
+  camera.UpdateProjectionView();
+
   m_FBORefraction->Bind(w, h);
-  PrimaryRenderPass(p_Transform, p_Camera);
+  SecondaryRenderPass(p_Transform, camera, glm::vec4(0.0f, -1.0f, 0.0f, m_WaterHeight));
   m_FBOReflection->Bind(0, w, h);
 
+  glDisable(GL_CLIP_DISTANCE0);
+
+  // Pass in a high clip plane to account for differing implementations in drivers (some have clip distances on regardless
+  // of flag.
+  SecondaryRenderPass(p_Transform, p_Camera, glm::vec4(0.0f, -1.0f, 0.0f, 1e9));
   PrimaryRenderPass(p_Transform, p_Camera);
   GUIRenderPass(p_Transform, p_Camera, m_FBOReflection, true);
   GUIRenderPass(p_Transform, p_Camera, m_FBORefraction, false);
@@ -116,10 +145,12 @@ void WaterModule::OnDestroy() {
   auto dims = Window::GetDimensions();
   glViewport(0, 0, dims.x, dims.y);
   Window::ToggleFramebufferUsage(false);
+
+  glDisable(GL_CLIP_DISTANCE0);
+
 }
 
 void WaterModule::PrimaryRenderPass(Transform &p_Transform, const Camera &p_Camera) {
-
   Renderer *ptr = Renderer::Access();
 
   Renderer::SetupDefaultTexture(*Window::s_Instance);
@@ -130,6 +161,32 @@ void WaterModule::PrimaryRenderPass(Transform &p_Transform, const Camera &p_Came
   m_Shader.Vec3("u_LightColor", ptr->GetLightColor());
   m_Shader.Vec3("u_LightPosition", ptr->GetLightPosition());
   m_Shader.Vec3("u_CameraPosition", Renderer::GetCamera().GetPosition());
+
+  glActiveTexture(GL_TEXTURE0);
+  m_FBOReflection->BindColorAttachment();
+  glActiveTexture(GL_TEXTURE1);
+  m_FBORefraction->BindColorAttachment();
+
+  // Water
+  m_Shader.Mat4("u_Model", p_Transform.Transformation());
+  m_VAO.Bind();
+  m_IBO.Bind();
+  glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
+}
+
+void WaterModule::SecondaryRenderPass(Transform &p_Transform, const Camera &p_Camera, const glm::vec4 &p_ClipPlane) {
+
+  Renderer *ptr = Renderer::Access();
+
+  Renderer::SetupDefaultTexture(*Window::s_Instance);
+
+  m_SceneShader.Bind();
+
+  m_SceneShader.Mat4("u_ViewProjection", p_Camera.GetProjectionView());
+  m_SceneShader.Vec3("u_LightColor", ptr->GetLightColor());
+  m_SceneShader.Vec3("u_LightPosition", ptr->GetLightPosition());
+  m_SceneShader.Vec3("u_CameraPosition", Renderer::GetCamera().GetPosition());
+  m_SceneShader.Vec4("u_ClipPlane", p_ClipPlane);
 
   // Above Water
   m_Model.Bind();
@@ -142,14 +199,14 @@ void WaterModule::PrimaryRenderPass(Transform &p_Transform, const Camera &p_Came
   // Under Water
   modelTF.SetScale(glm::vec3(0.5f));
   modelTF.SetTranslate(glm::vec3(40.0f, -10.0f, 40.0f));
-  m_Shader.Mat4("u_Model", modelTF.Transformation());
+  m_SceneShader.Mat4("u_Model", modelTF.Transformation());
   glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
 
-  // Water
-  m_Shader.Mat4("u_Model", p_Transform.Transformation());
-  m_VAO.Bind();
-  m_IBO.Bind();
-  glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
+//  // Water
+//  m_SceneShader.Mat4("u_Model", p_Transform.Transformation());
+//  m_VAO.Bind();
+//  m_IBO.Bind();
+//  glDrawElements(GL_TRIANGLES, m_Plane.IndexCount(), GL_UNSIGNED_INT, 0);
 }
 
 void WaterModule::GUIRenderPass(Transform &p_Transform, const Camera &p_Camera, FrameBuffer *p_FBO, bool pReflection) {
@@ -169,4 +226,5 @@ void WaterModule::GUIRenderPass(Transform &p_Transform, const Camera &p_Camera, 
 
   glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
 }
+
 

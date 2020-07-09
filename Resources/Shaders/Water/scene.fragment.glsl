@@ -3,7 +3,6 @@
 out vec4 FragColor;
 
 in vec3 v_FragmentPosition;
-in vec4 v_ClipSpace;
 in vec4 v_Color;
 in vec2 v_TexCoords;
 in vec3 v_Normals;
@@ -12,23 +11,13 @@ in vec3 v_Normals;
 uniform vec3 u_LightPosition;
 uniform vec3 u_LightColor;
 uniform vec3 u_CameraPosition;
-
-uniform sampler2D u_ReflectionTexture;
-uniform sampler2D u_RefractionTexture;
+uniform sampler2D u_Texture0;
 
 const float AmbientStrength = 0.2;
 const float SpecularStrength = 0.5;
 
 void main()
 {
-    vec2 NDC = (v_ClipSpace.xy / v_ClipSpace.w) / 2.0 + 0.5;
-
-    vec2 TexCoord_Reflection = vec2(NDC.x, -NDC.y);
-    vec2 TexCoord_Refraction = vec2(NDC.x, NDC.y);
-
-    vec4 reflection = texture(u_ReflectionTexture, TexCoord_Reflection);
-    vec4 refraction = texture(u_RefractionTexture, TexCoord_Refraction);
-
     // AMBIENT
     vec3 Ambient = AmbientStrength * u_LightColor;
 
@@ -46,7 +35,6 @@ void main()
 
     vec4 Lighting = vec4(Ambient + Diffuse + Specular, 1.0f);
 
-//    FragColor = texture(u_ReflectionTexture, v_TexCoords) * Lighting;
-    FragColor = mix(reflection, refraction, 0.5);
+    FragColor = texture(u_Texture0, v_TexCoords) * Lighting;
 
 }

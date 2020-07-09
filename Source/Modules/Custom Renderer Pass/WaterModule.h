@@ -48,6 +48,7 @@ class WaterModule : public Module {
 
   Plane m_Plane;
   Shader m_Shader;
+  Shader m_SceneShader;
   Shader m_GUIShader;
 
   Model m_Model;
@@ -60,6 +61,8 @@ class WaterModule : public Module {
   VertexBuffer m_QVBOB;
   IndexBuffer m_QIBOB;
 
+  float m_WaterHeight = 0.0f;
+
  public:
   WaterModule() {}
 
@@ -71,5 +74,6 @@ class WaterModule : public Module {
 
  private:
   void PrimaryRenderPass(Transform &p_Transform, const Camera &p_Camera);
+  void SecondaryRenderPass(Transform &p_Transform, const Camera &p_Camera, const glm::vec4 &p_ClipPlane);
   void GUIRenderPass(Transform &p_Transform, const Camera &p_Camera, FrameBuffer *p_FBO, bool pReflection);
 };
