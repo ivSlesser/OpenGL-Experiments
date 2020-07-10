@@ -23,14 +23,17 @@
 #include "Texture.h"
 
 #include "Externals/stb_image.h"
+#include "Renderer.h"
 
 unsigned int Texture::slot_incrementor = 0;
 
 Texture::Texture() {
 
   // Create a default white texture.
-  glGenTextures(1, &id);
-  glBindTexture(GL_TEXTURE_2D, id);
+  if (id == 0) {
+    CHECK_GL_ERROR(glGenTextures(1, &id));
+  }
+  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, id));
 
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -44,9 +47,10 @@ Texture::Texture() {
 Texture::Texture(const char *file) {
 
   // Load a texture from a file.
-  glGenTextures(1, &id);
-  std::cout << glGetError() << std::endl;
-  glBindTexture(GL_TEXTURE_2D, id);
+  if (id == 0) {
+    CHECK_GL_ERROR(glGenTextures(1, &id));
+  }
+  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, id));
 
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -63,8 +67,8 @@ Texture::Texture(const char *file) {
     transparency = nrChannels == 3;
 
     // Create texture
-    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
+    CHECK_GL_ERROR(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data))
+    CHECK_GL_ERROR(glGenerateMipmap(GL_TEXTURE_2D))
 
   }
   else
@@ -80,12 +84,10 @@ Texture::~Texture() {
 }
 
 void Texture::Bind() {
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, id);
+  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, id));
 }
 
 GLenum Texture::SlotIntToEnum() {
-
   switch(slot) {
     case 0: return GL_TEXTURE0;
     case 1: return GL_TEXTURE1;

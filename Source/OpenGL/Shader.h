@@ -36,7 +36,7 @@ class Shader {
   Shader() {}
   bool Compile();
   virtual ~Shader();
-  inline void Bind() { glUseProgram(id); }
+  void Bind();
 
   void AddStage(GLenum p_Type, std::string p_Path);
 

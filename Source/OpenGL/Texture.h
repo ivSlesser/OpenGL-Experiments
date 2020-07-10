@@ -31,7 +31,7 @@ class Texture {
   static unsigned int slot_incrementor;
 
  private:
-  unsigned int id;
+  unsigned int id = 0;
   unsigned int slot;
   bool transparency;
 
@@ -42,6 +42,7 @@ class Texture {
 
   void Bind();
 
+  inline const unsigned int GetID() const { return id; }
   inline const unsigned int GetSlot() const { return slot; }
   inline const bool HasTransparency() const { return  transparency; }
 

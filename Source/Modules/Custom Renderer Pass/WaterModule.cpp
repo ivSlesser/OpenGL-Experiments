@@ -93,14 +93,6 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   Renderer *ptr = Renderer::Access();
 
   auto dims = Window::GetDimensions();
-  int w, h;
-  w = dims.x;
-  h = dims.y;
-
-#ifdef __APPLE__
-  w *= 2;
-  h *= 2;
-#endif
 
   Camera &camera = ptr->GetCamera();
 
@@ -112,7 +104,7 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   camera.InvertPitch();
   camera.UpdateProjectionView();
 
-  m_FBOReflection->Bind(w, h);
+  m_FBOReflection->Bind(dims.x, dims.y);
   SecondaryRenderPass(p_Transform, camera, glm::vec4(0.0f, 1.0f, 0.0f, -m_WaterHeight));
 
   // Refraction --------------------------------------------------------------------------------------------------------
@@ -120,9 +112,9 @@ void WaterModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   camera.InvertPitch();
   camera.UpdateProjectionView();
 
-  m_FBORefraction->Bind(w, h);
+  m_FBORefraction->Bind(dims.x, dims.y);
   SecondaryRenderPass(p_Transform, camera, glm::vec4(0.0f, -1.0f, 0.0f, m_WaterHeight));
-  m_FBOReflection->Bind(0, w, h);
+  m_FBOReflection->Bind(0, dims.x, dims.y);
 
   glDisable(GL_CLIP_DISTANCE0);
 
@@ -145,9 +137,7 @@ void WaterModule::OnDestroy() {
   auto dims = Window::GetDimensions();
   glViewport(0, 0, dims.x, dims.y);
   Window::ToggleFramebufferUsage(false);
-
   glDisable(GL_CLIP_DISTANCE0);
-
 }
 
 void WaterModule::PrimaryRenderPass(Transform &p_Transform, const Camera &p_Camera) {

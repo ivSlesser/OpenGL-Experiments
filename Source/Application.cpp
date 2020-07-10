@@ -37,8 +37,7 @@
 #include "Modules/Custom Renderer Pass/GerstnerWaveModule.h"
 #include "Modules/Custom Renderer Pass/FogModule.h"
 #include "Modules/Custom Renderer Pass/RayMarchingModule.h"
-#include "Modules/Custom Renderer Pass/WaterModule.h"
-
+#include "Modules/Custom Renderer Pass/PostProcessingModule.h"
 
 #include "Externals/stb_image.h"
 
@@ -57,7 +56,6 @@ void Application::Init() {
 void Application::Run() {
 
   Init();
-
   double dt = 1.0;
   while (window.WindowActive()) {
     window.ProcessInput();
@@ -68,7 +66,6 @@ void Application::Run() {
 	gui.Render();
 	window.End();
   }
-
 }
 
 void Application::ModuleSelector(std::string name) {
@@ -112,7 +109,7 @@ void Application::ModuleSelector(std::string name) {
 	if (ImGui::Button("8. Gerstner Waves (Ocean)")) { SwitchModule<GerstnerWaveModule>(); }
     if (ImGui::Button("9. Fog")) { SwitchModule<FogModule>(); }
     if (ImGui::Button("9. Ray Marching")) { SwitchModule<RayMarchingModule>(); }
-    if (ImGui::Button("10. Water")) { SwitchModule<WaterModule>(); }
+    if (ImGui::Button("10. Post Processing")) { SwitchModule<PostProcessingModule>(); }
   }
   ImGui::End();
 

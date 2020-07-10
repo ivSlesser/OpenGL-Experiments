@@ -1710,9 +1710,9 @@ Graphics/Camera/Camera.h
 Common.h
 ../Source/System/Common.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/WaterModule.cpp
-WaterModule.h
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/WaterModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/PostProcessingModule.cpp
+PostProcessingModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/PostProcessingModule.h
 Math/Random/Random.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/Math/Random/Random.h
 System/GUI/GUILayer.h
@@ -1720,7 +1720,7 @@ System/GUI/GUILayer.h
 OpenGL/Renderer.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/OpenGL/Renderer.h
 
-/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/WaterModule.h
+/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/PostProcessingModule.h
 Common.h
 /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Modules/Custom Renderer Pass/Common.h
 System/Module.h

@@ -22,7 +22,7 @@
 
 
 #include "Shader.h"
-
+#include "Renderer.h"
 
 /**
  * Compiles generated shaders into a program, there must be at least 2 shader stages added before
@@ -98,6 +98,10 @@ void Shader::AddStage(GLenum p_Type, std::string p_Path) {
 
 Shader::~Shader() {
   glDeleteProgram(id);
+}
+
+void Shader::Bind() {
+  CHECK_GL_ERROR(glUseProgram(id));
 }
 
 bool Shader::CompileShader(const char *filePath, int &id) {

@@ -63,12 +63,24 @@ FrameBuffer::~FrameBuffer() {
 }
 
 void FrameBuffer::Bind(unsigned int pWidth, unsigned int pHeight) {
+
+#ifdef __APPLE__
+  pWidth *= 2;
+  pHeight *= 2;
+#endif
+
   glBindFramebuffer(GL_FRAMEBUFFER, m_ID);
   glViewport(0, 0, pWidth, pHeight);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void FrameBuffer::Bind(GLuint pID, unsigned int pWidth, unsigned int pHeight) {
+
+#ifdef __APPLE__
+  pWidth *= 2;
+  pHeight *= 2;
+#endif
+
   glBindFramebuffer(GL_FRAMEBUFFER, pID);
   glViewport(0, 0, pWidth, pHeight);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

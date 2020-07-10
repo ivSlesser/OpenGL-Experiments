@@ -23,6 +23,10 @@
 
 #pragma once
 
+#define CHECK_GL_ERROR(x)   Renderer::ClearGLError();     \
+                            x;                            \
+                            Renderer::CheckGLError(#x);
+
 #include "Common.h"
 
 #include "System/Module.h"
@@ -83,6 +87,7 @@ class Renderer {
   }
 
   inline static void SetupDefaultTexture(Window &window) {
+    CHECK_GL_ERROR(glActiveTexture(GL_TEXTURE0));
     Renderer::Access()->white_texture.Bind();
     if (Renderer::Access()->white_texture.HasTransparency()) window.EnableTransparency();
     else window.DisableTransparency();

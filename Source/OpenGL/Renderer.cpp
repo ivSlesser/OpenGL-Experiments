@@ -29,7 +29,7 @@ Renderer *Renderer::s_Instance = nullptr;
 Renderer *Renderer::Access() {
 
   if (s_Instance == nullptr) {
-	s_Instance = new Renderer();
+    s_Instance = new Renderer();
   }
 
   return s_Instance;
@@ -65,6 +65,9 @@ void Renderer::Draw(Window &window, Transform &transform, Module *module) {
     module->OnDraw(transform, ptr->camera);
 
   } else {
+
+    glActiveTexture(GL_TEXTURE0);
+
     if (ptr->use_lighting) {
       ptr->lit_shader.Bind();
       ptr->lit_shader.Mat4("u_Model", transform.Transformation());
@@ -82,8 +85,13 @@ void Renderer::Draw(Window &window, Transform &transform, Module *module) {
 //      ptr->cat_texture.Bind();
 //      if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
       ptr->ref_texture.Bind();
-      if (ptr->ref_texture.HasTransparency()) window.EnableTransparency();
-      else window.DisableTransparency();
+
+      if (ptr->ref_texture.HasTransparency()) {
+        window.EnableTransparency();
+      } else {
+        window.DisableTransparency();
+      }
+
     } else {
       Renderer::SetupDefaultTexture(window);
     }
@@ -97,16 +105,16 @@ void Renderer::OnGUI() {
   Renderer *ptr = Renderer::Access();
   ImGui::Begin("Renderer");
   {
-	// Texture --------------------------------------------------------------------
-	ImGui::Checkbox("Use texture?", &ptr->use_texture);
+    // Texture --------------------------------------------------------------------
+    ImGui::Checkbox("Use texture?", &ptr->use_texture);
 
-	// Shader ---------------------------------------------------------------------
-	ImGui::Checkbox("Use Phong shading?", &ptr->use_lighting);
+    // Shader ---------------------------------------------------------------------
+    ImGui::Checkbox("Use Phong shading?", &ptr->use_lighting);
 
-	if (ptr->use_lighting) {
-	  ImGui::ColorEdit3("Light Color", &ptr->light_color.x);
-	  ImGui::SliderFloat3("Light Position", &ptr->light_position.x, -100.0f, 100.0f);
-	}
+    if (ptr->use_lighting) {
+      ImGui::ColorEdit3("Light Color", &ptr->light_color.x);
+      ImGui::SliderFloat3("Light Position", &ptr->light_position.x, -100.0f, 100.0f);
+    }
 
     // Camera ---------------------------------------------------------------------
     ImGui::DragFloat3("Camera Position", &ptr->camera.GetPosition().x, -1000.0f, 1000.0f);

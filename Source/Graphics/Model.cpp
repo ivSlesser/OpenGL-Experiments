@@ -82,9 +82,12 @@ bool Model::Load(const char *file) {
 
   // Create a random color
   glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+//  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+//  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+//  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
+  color.r = 1.0f;
+  color.g = 1.0f;
+  color.b = 1.0f;
   color.a = 1.0f;
 
   // Create vertices

@@ -24,29 +24,48 @@
 #pragma once
 
 #include "Common.h"
-#include "Renderer.h"
 
-class FrameBuffer {
+#include "System/Module.h"
+
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
+#include "OpenGL/FrameBuffer.h"
+#include "OpenGL/Shader.h"
+
+#include "Graphics/Plane.h"
+#include "Graphics/Quad.h"
+#include "Graphics/Model.h"
+
+class PostProcessingModule : public Module {
 
  private:
-  GLuint m_ID = 0;
-  GLuint aColor;
-  GLuint aDepth;
+  VertexArray m_DisplayVAO;
+  VertexBuffer m_DisplayVBO;
+  IndexBuffer m_DisplayIBO;
+
+  VertexArray  m_SceneVAO;
+  VertexBuffer m_SceneVBO;
+  IndexBuffer  m_SceneIBO;
+  FrameBuffer *m_SceneFBO;
+
+  Shader m_Shader;
+  Shader m_SceneShader;
+
+  Model m_Model;
 
  public:
-  FrameBuffer(unsigned int pWidth, unsigned int pHeight);
-  virtual ~FrameBuffer();
+  PostProcessingModule() {}
 
-  void Bind(unsigned int pWidth, unsigned int pHeight);
-  void Bind(GLuint pID, unsigned int pWidth, unsigned int pHeight);
+  virtual void OnInit(Camera &p_Camera) override;
+  virtual void OnUpdate(double dt = 1.0) override;
+  void OnDestroy() override;
+  virtual void OnGUI() override;
+  virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
 
-  inline GLuint GetID() { return m_ID; }
-  inline void SetID(GLuint to) { m_ID = to; }
-  inline GLuint GetColorAttachmentID() { return aColor; }
-  inline void SetColorAttachmentID(GLuint to) { aColor = to; }
-
-  inline void BindColorAttachment() {
-    CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, aColor));
-  }
+ private:
+  void CaptureScene(Transform &p_Transform, const Camera &p_Camera);
+  void DoPostProcessing(Transform &p_Transform, const Camera &p_Camera);
+  void OutputScene(Transform &p_Transform, const Camera &p_Camera);
 
 };
