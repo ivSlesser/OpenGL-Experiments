@@ -32,8 +32,8 @@ void PostProcessingModule::OnInit(Camera &p_Camera) {
   p_Camera.SetAndUpdatePosition({0.0f, 4.0f, 20.0f});
 
   // Shaders ---------
-  m_Shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/GUI/gui.vertex.glsl");
-  m_Shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/GUI/gui.fragment.glsl");
+  m_Shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/PostProcessing/pp.vertex.glsl");
+  m_Shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/PostProcessing/pp.fragment.glsl");
   m_Shader.Compile();
 
   m_SceneShader.AddStage(GL_VERTEX_SHADER, "Resources/lit.basic.vertex.glsl");
@@ -74,13 +74,22 @@ void PostProcessingModule::OnDestroy() {
 }
 
 void PostProcessingModule::OnGUI() {
-  Module::OnGUI();
+  ImGui::Begin("Post Processing Effects");
+  {
+    ImGui::Checkbox("Use Greyscale?", &m_Greyscale);
+    ImGui::Checkbox("Use Inverse?", &m_Invert);
+    ImGui::Checkbox("Use Contrast?", &m_Contrast);
+
+    if (m_Contrast) {
+      ImGui::DragFloat("Contrast Strength", &m_ContrastStrength, 0.1f);
+    }
+  }
+  ImGui::End();
 }
 
 void PostProcessingModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   Renderer *ptr = Renderer::Access();
   CaptureScene(p_Transform, p_Camera);
-  DoPostProcessing(p_Transform, p_Camera);
   OutputScene(p_Transform, p_Camera);
 }
 
@@ -106,10 +115,6 @@ void PostProcessingModule::CaptureScene(Transform &p_Transform, const Camera &p_
   m_SceneFBO->Bind(0, dims.x, dims.y);
 }
 
-void PostProcessingModule::DoPostProcessing(Transform &p_Transform, const Camera &p_Camera) {
-
-}
-
 void PostProcessingModule::OutputScene(Transform &p_Transform, const Camera &p_Camera) {
   Renderer *ptr = Renderer::Access();
 
@@ -117,6 +122,13 @@ void PostProcessingModule::OutputScene(Transform &p_Transform, const Camera &p_C
   m_SceneFBO->BindColorAttachment();
 
   m_Shader.Bind();
+
+  m_Shader.Bool("u_Greyscale", m_Greyscale);
+  m_Shader.Bool("u_Invert", m_Invert);
+  m_Shader.Bool("u_Contrast", m_Contrast);
+
+  m_Shader.Float("u_ContrastStrength", m_ContrastStrength);
+
   m_DisplayVAO.Bind();
   m_DisplayIBO.Bind();
   CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0));

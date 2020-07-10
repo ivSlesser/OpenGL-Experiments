@@ -54,6 +54,12 @@ class PostProcessingModule : public Module {
 
   Model m_Model;
 
+  bool m_Greyscale = false;
+  bool m_Invert = false;
+  bool m_Contrast = true;
+
+  float m_ContrastStrength = 0.6f;
+
  public:
   PostProcessingModule() {}
 
@@ -65,7 +71,6 @@ class PostProcessingModule : public Module {
 
  private:
   void CaptureScene(Transform &p_Transform, const Camera &p_Camera);
-  void DoPostProcessing(Transform &p_Transform, const Camera &p_Camera);
   void OutputScene(Transform &p_Transform, const Camera &p_Camera);
 
 };
