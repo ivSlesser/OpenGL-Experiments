@@ -21,21 +21,24 @@
 // SOFTWARE.
 
 
-#include "ModelModule.h"
+#pragma once
 
-#include "Graphics/MultiModel.h"
+#include "Common.h"
+#include "OpenGL/VertexArray.h"
+#include "OpenGL/VertexBuffer.h"
+#include "OpenGL/IndexBuffer.h"
 
-void ModelModule::OnInit(Camera &p_Camera) {
-  p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
-  m_Model.Load("Resources/Models/dragon.obj");
-}
+class Mesh {
 
-void ModelModule::OnUpdate(double dt) {
+ public:
+  VertexArray VAO;
+  VertexBuffer VBO;
+  IndexBuffer IBO;
+  unsigned int VertexCount = 0;
+  unsigned int IndexCount = 0;
+  std::string Name = "Mesh";
+  bool UsesMaterials = false;
 
-}
-
-void ModelModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
-	m_Model.Bind();
-  	glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
-
-}
+  bool Load(const std::vector<Vertex> &pVertices, const std::vector<unsigned int> &pIndices);
+  inline void Bind() { VAO.Bind(); IBO.Bind(); }
+};

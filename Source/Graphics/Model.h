@@ -24,25 +24,16 @@
 #pragma once
 
 #include "Common.h"
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
-#include "OpenGL/IndexBuffer.h"
+#include "Graphics/Mesh.h"
 
 class Model {
 
  private:
-  VertexArray VAO;
-  VertexBuffer VBO;
-  IndexBuffer IBO;
-  unsigned vertex_count = 0;
-  unsigned index_count = 0;
+  Mesh mMesh;
 
  public:
-  bool Load(const char *file);
-  inline void Bind() { VAO.Bind(); IBO.Bind(); }
-  inline const int VertexCount() const { return vertex_count; };
-  inline const int IndexCount() const { return index_count; }
-
- private:
-
+  bool Load(const char *pFile);
+  inline void Bind() { mMesh.Bind(); }
+  inline const int VertexCount() const { return mMesh.VertexCount; };
+  inline const int IndexCount() const { return mMesh.IndexCount; }
 };

@@ -21,21 +21,21 @@
 // SOFTWARE.
 
 
-#include "ModelModule.h"
+#pragma once
 
-#include "Graphics/MultiModel.h"
+#include "Common.h"
+#include "Graphics/Mesh.h"
+#include "Graphics/Properties/Material.h"
 
-void ModelModule::OnInit(Camera &p_Camera) {
-  p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
-  m_Model.Load("Resources/Models/dragon.obj");
-}
+class MultiModel {
 
-void ModelModule::OnUpdate(double dt) {
+ private:
+  std::vector<Mesh*> m_Meshes;
+  std::vector<Material> m_Materials;
 
-}
+ public:
+  MultiModel() {}
+  virtual ~MultiModel();
 
-void ModelModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
-	m_Model.Bind();
-  	glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
-
-}
+  bool Load(const char *file);
+};

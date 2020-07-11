@@ -57,6 +57,11 @@ void VertexArray::SetLayout() {
   glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
   glEnableVertexAttribArray(i++);
   count += 3;
+
+  // Material Index
+  glVertexAttribPointer(i, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
+  glEnableVertexAttribArray(i++);
+  count += 1;
 }
 
 void VertexArray::Bind() {

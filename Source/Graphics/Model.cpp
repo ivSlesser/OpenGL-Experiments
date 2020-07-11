@@ -23,10 +23,11 @@
 
 #include "Model.h"
 
-bool Model::Load(const char *file) {
-  std::ifstream in(file, std::ios::in);
+bool Model::Load(const char *pFile) {
+
+  std::ifstream in(pFile, std::ios::in);
   if (!in) {
-	std::cout << "Failed to open file: " << file << std::endl;
+	std::cout << "Failed to open file: " << pFile << std::endl;
 	return false;
   }
 
@@ -95,22 +96,11 @@ bool Model::Load(const char *file) {
 
   for (int i = 0; i < positions.size(); ++i) {
 	vertices.push_back({
-	  positions[i], color, glm::vec2(0.0f), normals[i]
-	});
+						   positions[i], color, glm::vec2(0.0f), normals[i]
+					   });
   }
 
-
-  // Create vertex buffer
-  vertex_count = vertices.size();
-  VAO.Bind();
-  VBO.Init(vertices);
-  VAO.SetLayout();
-
-  // Create indices
-
-  // Create index buffer
-  index_count = indices.size();
-  IBO.Init(indices);
+  mMesh.Load(vertices, indices);
 
   return true;
 }

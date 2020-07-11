@@ -30,4 +30,5 @@ struct Vertex {
   glm::vec4 color = glm::vec4(1.0f);
   glm::vec2 tex_coordinates = glm::vec4(0.0f);
   glm::vec3 normals = glm::vec3(0.0f, 0.0f, 1.0f);
+  float mat_index = 0;
 };

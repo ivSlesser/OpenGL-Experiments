@@ -21,21 +21,21 @@
 // SOFTWARE.
 
 
-#include "ModelModule.h"
+#include "Mesh.h"
 
-#include "Graphics/MultiModel.h"
+bool Mesh::Load(const std::vector<Vertex> &pVertices, const std::vector<unsigned int> &pIndices) {
 
-void ModelModule::OnInit(Camera &p_Camera) {
-  p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
-  m_Model.Load("Resources/Models/dragon.obj");
-}
+  // Create vertex buffer
+  VertexCount = pVertices.size();
+  VAO.Bind();
+  VBO.Init(pVertices);
+  VAO.SetLayout();
 
-void ModelModule::OnUpdate(double dt) {
+  // Create indices
 
-}
+  // Create index buffer
+  IndexCount = pIndices.size();
+  IBO.Init(pIndices);
 
-void ModelModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
-	m_Model.Bind();
-  	glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0);
-
+  return true;
 }
