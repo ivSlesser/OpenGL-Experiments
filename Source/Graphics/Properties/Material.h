@@ -34,6 +34,7 @@ struct Material {
   glm::vec3 Specular = glm::vec3(1.0f);
   float Shine = 32.0f; // Specular exponent
   float Dissolve = 1.0f; // 1: Opaque, 0: Transparent
+  bool LinkAmbientDiffuse = true;
 
   void SubmitAsUniform(Shader &pShader, unsigned int index = 0);
   void DisplayWithGUI();
