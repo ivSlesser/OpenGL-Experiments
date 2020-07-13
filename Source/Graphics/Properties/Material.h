@@ -24,12 +24,17 @@
 #pragma once
 
 #include "Common.h"
+#include "OpenGL/Shader.h"
+#include <random>
 
 struct Material {
-  	std::string Name;
-	glm::vec3 Ambient;
-	glm::vec3 Diffuse;
-	glm::vec3 Specular;
-	float Shine; // Specular exponent
-	float Dissolve; // 1: Opaque, 0: Transparent
+  	std::string Name = "Default Material " + std::to_string(rand());
+	glm::vec3 Ambient = glm::vec3(1.0f);
+	glm::vec3 Diffuse = glm::vec3(1.0f);
+	glm::vec3 Specular = glm::vec3(1.0f);
+	float Shine = 32.0f; // Specular exponent
+	float Dissolve = 1.0f; // 1: Opaque, 0: Transparent
+
+	void SubmitAsUniform(Shader &pShader, unsigned int index = 0);
+	void DisplayWithGUI();
 };

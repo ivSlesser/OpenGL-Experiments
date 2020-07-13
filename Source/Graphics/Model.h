@@ -33,6 +33,7 @@ class Model {
 
  public:
   bool Load(const char *pFile);
+  inline Material &GetMeshMaterial() { return mMesh.iMaterial; }
   inline void Bind() { mMesh.Bind(); }
   inline const int VertexCount() const { return mMesh.VertexCount; };
   inline const int IndexCount() const { return mMesh.IndexCount; }

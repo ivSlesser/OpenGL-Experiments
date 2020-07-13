@@ -53,7 +53,21 @@ bool MultiModel::Load(const char *file) {
 	return false;
   }
 
-  // Loop over shapes
+  // First Create Materials
+  for (int m = 0; m < materials.size(); ++m) {
+
+    Material material;
+    auto mat = materials[m];
+    material.Name = mat.name;
+    material.Ambient = glm::vec3(mat.ambient[0], mat.ambient[1], mat.ambient[2]);
+    material.Diffuse = glm::vec3(mat.diffuse[0], mat.diffuse[1], mat.diffuse[2]);
+    material.Specular = glm::vec3(mat.specular[0], mat.specular[1], mat.specular[2]);
+    material.Shine = mat.shininess;
+    material.Dissolve = mat.dissolve;
+    m_Materials.push_back(material);
+  }
+
+  // Then the meshes
   for (size_t s = 0; s < shapes.size(); s++) {
 
 	Mesh *mesh = new Mesh();
@@ -82,7 +96,7 @@ bool MultiModel::Load(const char *file) {
 		vertex.color = glm::vec4(attrib.colors[3 * idx.vertex_index + 0],
 								 attrib.colors[3 * idx.vertex_index + 1],
 								 attrib.colors[3 * idx.vertex_index + 2],
-								 1.0f)
+								 1.0f);
 		vertex.normals = glm::vec3(attrib.normals[3 * idx.normal_index + 0],
 								   attrib.normals[3 * idx.normal_index + 1],
 								   attrib.normals[3 * idx.normal_index + 2]);
@@ -100,20 +114,6 @@ bool MultiModel::Load(const char *file) {
 	mesh->Load(vertices, indices);
 	mesh->Name = shapes[s].name;
 	m_Meshes.push_back(mesh);
-
-  }
-
-  for (int m = 0; m < materials.size(); ++m) {
-
-	Material material;
-	auto mat = materials[m];
-	material.Name = mat.name;
-	material.Ambient = glm::vec3(mat.ambient[0], mat.ambient[1], mat.ambient[2]);
-	material.Diffuse = glm::vec3(mat.diffuse[0], mat.diffuse[1], mat.diffuse[2]);
-	material.Specular = glm::vec3(mat.specular[0], mat.specular[1], mat.specular[2]);
-	material.Shine = mat.shininess;
-	material.Dissolve = mat.dissolve;
-	m_Materials.push_back(material);
   }
 
   return true;

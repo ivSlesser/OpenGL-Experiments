@@ -23,7 +23,7 @@
 
 #include "Mesh.h"
 
-bool Mesh::Load(const std::vector<Vertex> &pVertices, const std::vector<unsigned int> &pIndices) {
+bool Mesh::Load(const std::vector<Vertex> &pVertices, const std::vector<unsigned int> &pIndices, const Material &pMaterial) {
 
   // Create vertex buffer
   VertexCount = pVertices.size();
@@ -36,6 +36,8 @@ bool Mesh::Load(const std::vector<Vertex> &pVertices, const std::vector<unsigned
   // Create index buffer
   IndexCount = pIndices.size();
   IBO.Init(pIndices);
+
+  iMaterial = pMaterial;
 
   return true;
 }

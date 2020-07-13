@@ -27,6 +27,7 @@
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"
 #include "OpenGL/IndexBuffer.h"
+#include "Properties/Material.h"
 
 class Mesh {
 
@@ -37,8 +38,9 @@ class Mesh {
   unsigned int VertexCount = 0;
   unsigned int IndexCount = 0;
   std::string Name = "Mesh";
+  Material iMaterial;
   bool UsesMaterials = false;
 
-  bool Load(const std::vector<Vertex> &pVertices, const std::vector<unsigned int> &pIndices);
+  bool Load(const std::vector<Vertex> &pVertices, const std::vector<unsigned int> &pIndices, const Material &pMaterial = {});
   inline void Bind() { VAO.Bind(); IBO.Bind(); }
 };

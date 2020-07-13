@@ -86,10 +86,15 @@ bool Model::Load(const char *pFile) {
   color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
   color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
   color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-//  color.r = 1.0f;
-//  color.g = 1.0f;
-//  color.b = 1.0f;
   color.a = 1.0f;
+
+  glm::vec3 color3 = glm::vec3(color.r, color.g, color.b);
+
+  Material mat;
+  mat.Ambient = color3;
+  mat.Diffuse = color3;
+  mat.Specular = color3;
+  mat.Dissolve = color.a;
 
   // Create vertices
   std::vector<Vertex> vertices;
@@ -100,7 +105,7 @@ bool Model::Load(const char *pFile) {
 					   });
   }
 
-  mMesh.Load(vertices, indices);
+  mMesh.Load(vertices, indices, mat);
 
   return true;
 }

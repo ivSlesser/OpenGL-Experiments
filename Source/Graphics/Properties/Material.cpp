@@ -22,4 +22,27 @@
 
 
 #include "Material.h"
+#include <sstream>
 
+#include "System/GUI/GUILayer.h"
+
+void Material::SubmitAsUniform(Shader &pShader, unsigned int index) {
+
+  std::stringstream str;
+  str << "u_Materials[" << index << "]";
+  std::string base = str.str();
+
+  pShader.Vec3( (base + ".Ambient").c_str(), Ambient);
+  pShader.Vec3( (base + ".Diffuse").c_str(), Diffuse);
+  pShader.Vec3( (base + ".Specular").c_str(), Specular);
+  pShader.Float( (base + ".Shine").c_str(), Shine);
+  pShader.Float( (base + ".Dissolve").c_str(), Dissolve);
+}
+
+void Material::DisplayWithGUI() {
+  ImGui::ColorEdit3((Name + ".Ambient").c_str(), &Ambient.x);
+  ImGui::ColorEdit3((Name + ".Diffuse").c_str(), &Diffuse.x);
+  ImGui::ColorEdit3((Name + ".Specular").c_str(), &Specular.x);
+  ImGui::DragFloat((Name + ".Shine").c_str(), &Shine, 2.0f, 0.0f, 128.0f);
+//  ImGui::DragFloat((Name + ".Dissolve").c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
+}

@@ -14,12 +14,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/Graphics/Mesh.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Graphics/Mesh.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Graphics/MultiModel.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Graphics/MultiModel.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Graphics/Properties/Material.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Graphics/Properties/Material.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Shaders/Model/model.fragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Shaders/Model/model.vertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/MaterialModelModule.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/MaterialModelModule.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeCCompiler.cmake" afterDir="false" />
@@ -89,11 +87,15 @@
       <change beforePath="$PROJECT_DIR$/Build/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Mesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Mesh.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Mesh.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Graphics/Model.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Model.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Graphics/Model.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Model.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Vertex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Vertex.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/ModelModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/ModelModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/VertexArray.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/VertexArray.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/MultiModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/MultiModel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Properties/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Properties/Material.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Properties/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Properties/Material.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/PostProcessingModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/PostProcessingModule.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -120,20 +122,21 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/Shaders/RayMarch" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/Shaders/Model" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/Shaders" />
-      <recent name="$PROJECT_DIR$/Source/Modules/Default Renderer Pass" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/Shaders/Model" />
       <recent name="$PROJECT_DIR$/Resources/Shaders/RayMarch" />
       <recent name="$PROJECT_DIR$/Resources/Shaders/Fog" />
       <recent name="$PROJECT_DIR$/Resources/Shaders/Gerstner" />
       <recent name="$PROJECT_DIR$/Resources/Shaders" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/Shaders" />
+      <recent name="$PROJECT_DIR$/Source/Modules/Default Renderer Pass" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -207,6 +210,8 @@
       <workItem from="1594364339437" duration="5460000" />
       <workItem from="1594381596595" duration="1860000" />
       <workItem from="1594453760127" duration="6090000" />
+      <workItem from="1594625446159" duration="1067000" />
+      <workItem from="1594627440435" duration="3092000" />
     </task>
     <servers />
   </component>
@@ -233,11 +238,6 @@
           <url>file://$PROJECT_DIR$/Foundations/Graphics/Quad.cpp</url>
           <line>35</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/Graphics/MultiModel.cpp</url>
-          <line>118</line>
-          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
