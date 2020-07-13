@@ -60,12 +60,12 @@ void Application::Run() {
   double dt = 1.0;
   while (window.WindowActive()) {
     window.ProcessInput();
-	Renderer::Update(dt);
-	module->OnUpdate(dt);
-	window.Begin();
-	Renderer::Draw(window, transform, module);
-	gui.Render();
-	window.End();
+    Renderer::Update(dt);
+    module->OnUpdate(dt);
+    window.Begin();
+    Renderer::Draw(window, transform, module);
+    gui.Render();
+    window.End();
   }
 }
 
@@ -77,44 +77,44 @@ void Application::ModuleSelector(std::string name) {
 
   ImGui::Begin("Transform");
   {
-	// Translation ---------------------------------------------------------------
-	glm::vec3 translation = transform.GetTranslate();
-	ImGui::DragFloat3("Translation", &translation.x, -10.0f, 10.0f);
-	transform.SetTranslate(translation);
+    // Translation ---------------------------------------------------------------
+    glm::vec3 translation = transform.GetTranslate();
+    ImGui::DragFloat3("Translation", &translation.x, -10.0f, 10.0f);
+    transform.SetTranslate(translation);
 
-	// Rotation ------------------------------------------------------------------
-	glm::vec3 rotation = transform.GetRotate();
-	ImGui::DragFloat3("Rotation", &rotation.x, -360.0f, 360.0f);
-	transform.SetRotate(rotation);
+    // Rotation ------------------------------------------------------------------
+    glm::vec3 rotation = transform.GetRotate();
+    ImGui::DragFloat3("Rotation", &rotation.x, -360.0f, 360.0f);
+    transform.SetRotate(rotation);
 
-	// Scale ---------------------------------------------------------------------
-	float scale_float = transform.GetScale().x;
-	ImGui::DragFloat3("Scale (XYZ)", &scale_float, 1.0f, 10.0f);
-	glm::vec3 scale = glm::vec3(scale_float);
-	transform.SetScale(scale);
+    // Scale ---------------------------------------------------------------------
+    ImGui::DragFloat("Scale (XYZ)", &transform.GetScale().x, 1.0f, 10.0f);
+    transform.SetScale(glm::vec3(transform.GetScale().x));
   }
+  ImGui::End();
 
-  ImGui::Text("Module Debug");
-  module->OnGUI();
-
+  ImGui::Begin("Module");
+  {
+    module->OnGUI();
+  }
   ImGui::End();
 
   // ------
 
   ImGui::Begin(name.c_str());
   {
-	if (ImGui::Button("1. Shape: Triangle")) { SwitchModule<TriangleModule>(); }
-	if (ImGui::Button("2. Shape: Quad")) { SwitchModule<QuadModule>(); }
-	if (ImGui::Button("3. Shape: Cube")) { SwitchModule<CubeModule>(); }
-	if (ImGui::Button("4. Shape: Plane")) { SwitchModule<PlaneModule>(); }
-	if (ImGui::Button("4. Shape: Model")) { SwitchModule<ModelModule>(); }
-	if (ImGui::Button("5. Terrain (Perlin)")) { SwitchModule<TerrainModule>(); }
+    if (ImGui::Button("1. Shape: Triangle")) { SwitchModule<TriangleModule>(); }
+    if (ImGui::Button("2. Shape: Quad")) { SwitchModule<QuadModule>(); }
+    if (ImGui::Button("3. Shape: Cube")) { SwitchModule<CubeModule>(); }
+    if (ImGui::Button("4. Shape: Plane")) { SwitchModule<PlaneModule>(); }
+    if (ImGui::Button("4. Shape: Model")) { SwitchModule<ModelModule>(); }
+    if (ImGui::Button("5. Terrain (Perlin)")) { SwitchModule<TerrainModule>(); }
     if (ImGui::Button("6. Geometry Shader Quads")) { SwitchModule<GeometryQuadModule>(); }
     if (ImGui::Button("7. Marching Cubes")) { SwitchModule<MarchingCubesModule>(); }
-	if (ImGui::Button("8. Gerstner Waves (Ocean)")) { SwitchModule<GerstnerWaveModule>(); }
+    if (ImGui::Button("8. Gerstner Waves (Ocean)")) { SwitchModule<GerstnerWaveModule>(); }
     if (ImGui::Button("9. Fog")) { SwitchModule<FogModule>(); }
     if (ImGui::Button("9. Ray Marching")) { SwitchModule<RayMarchingModule>(); }
-    if (ImGui::Button("10. Post Processing")) { SwitchModule<PostProcessingModule>(); }    if (ImGui::Button("10. Post Processing")) { SwitchModule<PostProcessingModule>(); }
+    if (ImGui::Button("10. Post Processing")) { SwitchModule<PostProcessingModule>(); }
     if (ImGui::Button("11. Material Model")) { SwitchModule<MaterialModelModule>(); }
   }
 

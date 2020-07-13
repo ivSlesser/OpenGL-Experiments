@@ -25,6 +25,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "Externals/tiny_obj_loader.h"
 #include "OpenGL/Renderer.h"
+#include "OpenGL/DrawHandler.h"
 
 MultiModel::~MultiModel() {
   for (Mesh *mesh : m_Meshes) {
@@ -126,6 +127,10 @@ bool MultiModel::Load(const char *file) {
 }
 
 void MultiModel::Render(Shader &pShader) {
+  Render(pShader, false, 1);
+}
+
+void MultiModel::Render(Shader &pShader, bool pInstanced, unsigned int pInstanceCount) {
 
   // Bind Materials
   unsigned int i = 0;
@@ -135,7 +140,13 @@ void MultiModel::Render(Shader &pShader) {
 
   for (Mesh *m : m_Meshes) {
     m->Bind();
-    CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, m->IndexCount, GL_UNSIGNED_INT, 0));
+
+    if (pInstanced) {
+      DrawHandler::IndexedInstance(m->IndexCount, pInstanceCount);
+    } else {
+      DrawHandler::Indexed(m->IndexCount);
+    }
   }
 }
+
 

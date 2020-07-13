@@ -40,6 +40,7 @@ class MultiModel {
 
   bool Load(const char *file);
   void Render(Shader &pShader);
+  void Render(Shader &pShader, bool pInstanced, unsigned int pInstanceCount);
 
   void DoMaterialGUI() {
     for (Material *m : m_Materials) {

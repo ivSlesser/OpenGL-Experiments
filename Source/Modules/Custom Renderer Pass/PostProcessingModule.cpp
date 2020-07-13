@@ -74,17 +74,13 @@ void PostProcessingModule::OnDestroy() {
 }
 
 void PostProcessingModule::OnGUI() {
-  ImGui::Begin("Post Processing Effects");
-  {
-    ImGui::Checkbox("Use Greyscale?", &m_Greyscale);
-    ImGui::Checkbox("Use Inverse?", &m_Invert);
-    ImGui::Checkbox("Use Contrast?", &m_Contrast);
+  ImGui::Checkbox("Use Greyscale?", &m_Greyscale);
+  ImGui::Checkbox("Use Inverse?", &m_Invert);
+  ImGui::Checkbox("Use Contrast?", &m_Contrast);
 
-    if (m_Contrast) {
-      ImGui::DragFloat("Contrast Strength", &m_ContrastStrength, 0.1f);
-    }
+  if (m_Contrast) {
+    ImGui::DragFloat("Contrast Strength", &m_ContrastStrength, 0.1f);
   }
-  ImGui::End();
 }
 
 void PostProcessingModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {

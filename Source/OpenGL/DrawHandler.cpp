@@ -21,31 +21,13 @@
 // SOFTWARE.
 
 
-#pragma once
+#include "DrawHandler.h"
+#include "OpenGL/Renderer.h"
 
-#include "Common.h"
+void DrawHandler::Indexed(unsigned int pIndexCount) {
+    CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, pIndexCount, GL_UNSIGNED_INT, 0));
+}
 
-#include "System/Module.h"
-#include "OpenGL/Shader.h"
-#include "Graphics/Model.h"
-#include "Graphics/MultiModel.h"
-
-class MaterialModelModule : public Module {
-
- private:
-  Shader m_Shader;
-  Model m_Model;
-  MultiModel m_MultiModel;
-
-  bool m_UseInstancing = false;
-  int m_NumInstances = 10;
-
- public:
-  MaterialModelModule() {}
-
-  virtual void OnInit(Camera &p_Camera) override;
-  virtual void OnUpdate(double dt = 1.0) override;
-  void OnDestroy() override;
-  virtual void OnGUI() override;
-  virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
-};
+void DrawHandler::IndexedInstance(unsigned int pIndexCount, unsigned int pInstanceCount) {
+  CHECK_GL_ERROR(glDrawElementsInstanced(GL_TRIANGLES, pIndexCount, GL_UNSIGNED_INT, 0, pInstanceCount));
+}

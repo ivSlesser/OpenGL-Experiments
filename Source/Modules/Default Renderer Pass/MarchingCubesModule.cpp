@@ -39,14 +39,10 @@ void MarchingCubesModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera)
 }
 
 void MarchingCubesModule::OnGUI() {
-  ImGui::Begin("Marching Cubes Module");
-  {
-    if (ImGui::Button("Generate")) {
-      InternalMarchGrid();
-    }
-    m_Marcher->OnGUI();
+  if (ImGui::Button("Generate")) {
+    InternalMarchGrid();
   }
-  ImGui::End();
+  m_Marcher->OnGUI();
 }
 
 void MarchingCubesModule::InternalMarchGrid() {

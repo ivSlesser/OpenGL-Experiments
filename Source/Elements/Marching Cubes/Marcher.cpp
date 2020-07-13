@@ -229,7 +229,6 @@ void Marcher::March(int pConfigIndex) {
 
 
 void Marcher::OnGUI() {
-
   ImGui::Checkbox("Smoothing?", &m_Smoothing);
   ImGui::Checkbox("Flat Shading?", &m_FlatShading);
 

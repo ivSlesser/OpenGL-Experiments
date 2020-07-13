@@ -38,8 +38,8 @@ void MaterialModelModule::OnInit(Camera &p_Camera) {
   m_Model.Load("Resources/Models/dragon.obj");
   m_MultiModel.Load("Resources/Models/tree_low.obj");
 
-//  glEnable(GL_BLEND);
-//  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void MaterialModelModule::OnUpdate(double dt) {
@@ -51,13 +51,15 @@ void MaterialModelModule::OnDestroy() {
 }
 
 void MaterialModelModule::OnGUI() {
-  {
-    ImGui::Text("m_Model");
-    m_Model.GetMeshMaterial().DisplayWithGUI();
+  ImGui::Text("m_Model");
+  m_Model.GetMeshMaterial().DisplayWithGUI();
 
-    ImGui::Text("m_MultiModel");
-    m_MultiModel.DoMaterialGUI();
-  }
+  ImGui::Text("m_MultiModel");
+
+//    ImGui::Checkbox("Use Instancing?", &m_UseInstancing);
+//    ImGui::DragInt("Instance Count", &m_NumInstances, 1, 1, 10000);
+
+  m_MultiModel.DoMaterialGUI();
 }
 
 void MaterialModelModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
@@ -82,5 +84,5 @@ void MaterialModelModule::OnDraw(Transform &p_Transform, const Camera &p_Camera)
   mmTF.SetTranslate({10.0f, 0.0f, 10.0f});
   mmTF.SetScale(glm::vec3(0.5f));
   m_Shader.Mat4("u_Model", mmTF.Transformation());
-  m_MultiModel.Render(m_Shader);
+  m_MultiModel.Render(m_Shader, m_UseInstancing, m_NumInstances);
 }

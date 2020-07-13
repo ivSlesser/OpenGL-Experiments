@@ -25,27 +25,14 @@
 
 #include "Common.h"
 
-#include "System/Module.h"
-#include "OpenGL/Shader.h"
-#include "Graphics/Model.h"
-#include "Graphics/MultiModel.h"
-
-class MaterialModelModule : public Module {
-
- private:
-  Shader m_Shader;
-  Model m_Model;
-  MultiModel m_MultiModel;
-
-  bool m_UseInstancing = false;
-  int m_NumInstances = 10;
+class DrawHandler {
 
  public:
-  MaterialModelModule() {}
+  //static void NonIndexed();
+  //static void NonIndexedInstanced();
 
-  virtual void OnInit(Camera &p_Camera) override;
-  virtual void OnUpdate(double dt = 1.0) override;
-  void OnDestroy() override;
-  virtual void OnGUI() override;
-  virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
+  static void Indexed(unsigned int pIndexCount);
+  static void IndexedInstance(unsigned int pIndexCount, unsigned int pInstanceCount);
+
 };
+

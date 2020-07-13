@@ -49,8 +49,4 @@ void main()
     //mat.Dissolve);
 
     FragColor = texture(u_Texture0, v_TexCoords) * FinalColor;
-//    FragColor = vec4(mat.Ambient, 1.0);
-//    FragColor = vec4(mat.Diffuse, 1.0);
-//    FragColor = vec4(mat.Specular, 1.0);
-
 }
