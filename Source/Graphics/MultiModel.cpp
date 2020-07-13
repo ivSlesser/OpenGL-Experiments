@@ -24,10 +24,15 @@
 #include "MultiModel.h"
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "Externals/tiny_obj_loader.h"
+#include "OpenGL/Renderer.h"
 
 MultiModel::~MultiModel() {
   for (Mesh *mesh : m_Meshes) {
-	delete mesh;
+    delete mesh;
+  }
+
+  for (Material *material : m_Materials) {
+    delete material;
   }
 }
 
@@ -41,81 +46,96 @@ bool MultiModel::Load(const char *file) {
   std::string err;
 
   if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, file, "Resources/Models/")) {
-	return false;
+    return false;
   }
 
   if (!warn.empty()) {
-	std::cout << warn << std::endl;
+    std::cout << warn << std::endl;
   }
 
   if (!err.empty()) {
-	std::cerr << err << std::endl;
-	return false;
+    std::cerr << err << std::endl;
+    return false;
   }
 
   // First Create Materials
   for (int m = 0; m < materials.size(); ++m) {
 
-    Material material;
+    Material *material = new Material();
     auto mat = materials[m];
-    material.Name = mat.name;
-    material.Ambient = glm::vec3(mat.ambient[0], mat.ambient[1], mat.ambient[2]);
-    material.Diffuse = glm::vec3(mat.diffuse[0], mat.diffuse[1], mat.diffuse[2]);
-    material.Specular = glm::vec3(mat.specular[0], mat.specular[1], mat.specular[2]);
-    material.Shine = mat.shininess;
-    material.Dissolve = mat.dissolve;
+    material->Name = mat.name;
+    material->Ambient = glm::vec3(mat.ambient[0], mat.ambient[1], mat.ambient[2]);
+    material->Diffuse = glm::vec3(mat.diffuse[0], mat.diffuse[1], mat.diffuse[2]);
+    material->Specular = glm::vec3(mat.specular[0], mat.specular[1], mat.specular[2]);
+    material->Shine = mat.shininess;
+    material->Dissolve = mat.dissolve;
     m_Materials.push_back(material);
   }
 
   // Then the meshes
   for (size_t s = 0; s < shapes.size(); s++) {
 
-	Mesh *mesh = new Mesh();
+    Mesh *mesh = new Mesh();
 
-	std::vector<Vertex> vertices;
-	std::vector<unsigned int> indices;
+    std::vector<Vertex> vertices;
+    std::vector<unsigned int> indices;
 
-	// Loop over faces
-	size_t index_offset = 0;
+    // Loop over faces
+    size_t index_offset = 0;
 
-	for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++) {
+    unsigned int I = 0;
 
-	  int fv = shapes[s].mesh.num_face_vertices[f];
-	  int fm = shapes[s].mesh.material_ids[f];
+    for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++) {
+      int fv = shapes[s].mesh.num_face_vertices[f];
+      int fm = shapes[s].mesh.material_ids[f];
 
-	  // Loop over vertices in the face.
-	  for (size_t v = 0; v < fv; v++) {
+      // Loop over vertices in the face.
+      for (size_t v = 0; v < fv; v++) {
 
-		tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
-		indices.push_back(3 * idx.vertex_index);
+        tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
 
-		Vertex vertex;
-		vertex.position = glm::vec3(attrib.vertices[3 * idx.vertex_index + 0],
-									attrib.vertices[3 * idx.vertex_index + 1],
-									attrib.vertices[3 * idx.vertex_index + 2]);
-		vertex.color = glm::vec4(attrib.colors[3 * idx.vertex_index + 0],
-								 attrib.colors[3 * idx.vertex_index + 1],
-								 attrib.colors[3 * idx.vertex_index + 2],
-								 1.0f);
-		vertex.normals = glm::vec3(attrib.normals[3 * idx.normal_index + 0],
-								   attrib.normals[3 * idx.normal_index + 1],
-								   attrib.normals[3 * idx.normal_index + 2]);
-		vertex.tex_coordinates =
-			glm::vec2(attrib.texcoords[2 * idx.texcoord_index + 0], attrib.texcoords[2 * idx.texcoord_index + 1]);
-		vertex.mat_index = fm;
-		vertices.push_back(vertex);
+        Vertex vertex;
+        vertex.position = glm::vec3(attrib.vertices[3 * idx.vertex_index + 0],
+                                    attrib.vertices[3 * idx.vertex_index + 1],
+                                    attrib.vertices[3 * idx.vertex_index + 2]);
+        vertex.color = glm::vec4(attrib.colors[3 * idx.vertex_index + 0],
+                                 attrib.colors[3 * idx.vertex_index + 1],
+                                 attrib.colors[3 * idx.vertex_index + 2],
+                                 1.0f);
+        vertex.normals = glm::vec3(attrib.normals[3 * idx.normal_index + 0],
+                                   attrib.normals[3 * idx.normal_index + 1],
+                                   attrib.normals[3 * idx.normal_index + 2]);
+        vertex.tex_coordinates =
+            glm::vec2(attrib.texcoords[2 * idx.texcoord_index + 0], attrib.texcoords[2 * idx.texcoord_index + 1]);
+        vertex.mat_index = fm;
+        vertices.push_back(vertex);
 
-		mesh->UsesMaterials = fm != -1;
-	  }
+        mesh->UsesMaterials = fm != -1;
+        indices.push_back(I++);
+      }
 
-	  index_offset += fv;
-	}
+      index_offset += fv;
+    }
 
-	mesh->Load(vertices, indices);
-	mesh->Name = shapes[s].name;
-	m_Meshes.push_back(mesh);
+    mesh->Load(vertices, indices);
+    mesh->Name = shapes[s].name;
+    m_Meshes.push_back(mesh);
   }
 
   return true;
+}
+
+void MultiModel::Render(Shader &pShader) {
+
+  // Bind Materials
+  unsigned int i = 0;
+  for (Material *m : m_Materials) {
+    m->SubmitAsUniform(pShader, i++);
+  }
+
+  for (Mesh *m : m_Meshes) {
+    m->Bind();
+    CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, m->IndexCount, GL_UNSIGNED_INT, 0));
+  }
 }
 

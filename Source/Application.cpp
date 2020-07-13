@@ -79,20 +79,24 @@ void Application::ModuleSelector(std::string name) {
   {
 	// Translation ---------------------------------------------------------------
 	glm::vec3 translation = transform.GetTranslate();
-	ImGui::SliderFloat3("Translation", &translation.x, -10.0f, 10.0f);
+	ImGui::DragFloat3("Translation", &translation.x, -10.0f, 10.0f);
 	transform.SetTranslate(translation);
 
 	// Rotation ------------------------------------------------------------------
 	glm::vec3 rotation = transform.GetRotate();
-	ImGui::SliderFloat3("Rotation", &rotation.x, -360.0f, 360.0f);
+	ImGui::DragFloat3("Rotation", &rotation.x, -360.0f, 360.0f);
 	transform.SetRotate(rotation);
 
 	// Scale ---------------------------------------------------------------------
 	float scale_float = transform.GetScale().x;
-	ImGui::SliderFloat("Scale (XYZ)", &scale_float, 1.0f, 10.0f);
+	ImGui::DragFloat3("Scale (XYZ)", &scale_float, 1.0f, 10.0f);
 	glm::vec3 scale = glm::vec3(scale_float);
 	transform.SetScale(scale);
   }
+
+  ImGui::Text("Module Debug");
+  module->OnGUI();
+
   ImGui::End();
 
   // ------
@@ -113,8 +117,7 @@ void Application::ModuleSelector(std::string name) {
     if (ImGui::Button("10. Post Processing")) { SwitchModule<PostProcessingModule>(); }    if (ImGui::Button("10. Post Processing")) { SwitchModule<PostProcessingModule>(); }
     if (ImGui::Button("11. Material Model")) { SwitchModule<MaterialModelModule>(); }
   }
-  ImGui::End();
 
-  module->OnGUI();
+  ImGui::End();
 }
 

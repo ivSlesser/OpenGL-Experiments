@@ -26,16 +26,24 @@
 #include "Common.h"
 #include "Graphics/Mesh.h"
 #include "Graphics/Properties/Material.h"
+#include "OpenGL/Shader.h"
 
 class MultiModel {
 
  private:
-  std::vector<Mesh*> m_Meshes;
-  std::vector<Material> m_Materials;
+  std::vector<Mesh *> m_Meshes;
+  std::vector<Material *> m_Materials;
 
  public:
   MultiModel() {}
   virtual ~MultiModel();
 
   bool Load(const char *file);
+  void Render(Shader &pShader);
+
+  void DoMaterialGUI() {
+    for (Material *m : m_Materials) {
+      m->DisplayWithGUI();
+    }
+  }
 };

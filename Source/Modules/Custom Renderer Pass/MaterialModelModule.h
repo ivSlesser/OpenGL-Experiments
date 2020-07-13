@@ -28,12 +28,14 @@
 #include "System/Module.h"
 #include "OpenGL/Shader.h"
 #include "Graphics/Model.h"
+#include "Graphics/MultiModel.h"
 
 class MaterialModelModule : public Module {
 
  private:
   Shader m_Shader;
   Model m_Model;
+  MultiModel m_MultiModel;
 
  public:
   MaterialModelModule() {}

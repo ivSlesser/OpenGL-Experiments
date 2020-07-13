@@ -36,6 +36,7 @@ void MaterialModelModule::OnInit(Camera &p_Camera) {
   m_Shader.Compile();
 
   m_Model.Load("Resources/Models/dragon.obj");
+  m_MultiModel.Load("Resources/Models/tree_low.obj");
 
 //  glEnable(GL_BLEND);
 //  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -50,11 +51,13 @@ void MaterialModelModule::OnDestroy() {
 }
 
 void MaterialModelModule::OnGUI() {
-  ImGui::Begin("Material Model");
   {
+    ImGui::Text("m_Model");
     m_Model.GetMeshMaterial().DisplayWithGUI();
+
+    ImGui::Text("m_MultiModel");
+    m_MultiModel.DoMaterialGUI();
   }
-  ImGui::End();
 }
 
 void MaterialModelModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
@@ -68,10 +71,16 @@ void MaterialModelModule::OnDraw(Transform &p_Transform, const Camera &p_Camera)
   m_Shader.Vec3("u_LightPosition", ptr->GetLightPosition());
   m_Shader.Vec3("u_CameraPosition", p_Camera.GetPosition());
 
+  // Model
   m_Model.GetMeshMaterial().SubmitAsUniform(m_Shader);
-
-  // Draw Here
   m_Model.Bind();
   m_Shader.Mat4("u_Model", p_Transform.Transformation());
   CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, m_Model.IndexCount(), GL_UNSIGNED_INT, 0));
+
+  // MultiModel
+  Transform mmTF;
+  mmTF.SetTranslate({10.0f, 0.0f, 10.0f});
+  mmTF.SetScale(glm::vec3(0.5f));
+  m_Shader.Mat4("u_Model", mmTF.Transformation());
+  m_MultiModel.Render(m_Shader);
 }

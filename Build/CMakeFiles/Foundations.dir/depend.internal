@@ -222,6 +222,7 @@ CMakeFiles/Foundations.dir/Source/Application.cpp.o
  ../Source/Graphics/Camera/PerspectiveCamera.h
  ../Source/Graphics/Mesh.h
  ../Source/Graphics/Model.h
+ ../Source/Graphics/MultiModel.h
  ../Source/Graphics/Plane.h
  ../Source/Graphics/Properties/Material.h
  ../Source/Graphics/Quad.h
@@ -2462,13 +2463,20 @@ CMakeFiles/Foundations.dir/Source/Graphics/MultiModel.cpp.o
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
  ../Source/Externals/tiny_obj_loader.h
+ ../Source/Graphics/Camera/Camera.h
+ ../Source/Graphics/Camera/PerspectiveCamera.h
  ../Source/Graphics/Mesh.h
  ../Source/Graphics/Properties/Material.h
+ ../Source/Graphics/Properties/Transform.h
  ../Source/Graphics/Vertex.h
  ../Source/OpenGL/IndexBuffer.h
+ ../Source/OpenGL/Renderer.h
  ../Source/OpenGL/Shader.h
+ ../Source/OpenGL/Texture.h
  ../Source/OpenGL/VertexArray.h
  ../Source/OpenGL/VertexBuffer.h
+ ../Source/System/Module.h
+ ../Source/System/Window.h
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/MultiModel.cpp
  /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Source/Graphics/MultiModel.h
 CMakeFiles/Foundations.dir/Source/Graphics/Plane.cpp.o
@@ -5098,6 +5106,7 @@ CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/MaterialModelModu
  ../Source/Graphics/Camera/PerspectiveCamera.h
  ../Source/Graphics/Mesh.h
  ../Source/Graphics/Model.h
+ ../Source/Graphics/MultiModel.h
  ../Source/Graphics/Properties/Material.h
  ../Source/Graphics/Properties/Transform.h
  ../Source/Graphics/Vertex.h
