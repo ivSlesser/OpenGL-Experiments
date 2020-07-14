@@ -31,7 +31,6 @@
 #include "Modules/Default Renderer Pass/TerrainModule.h"
 #include "Modules/Default Renderer Pass/MarchingCubesModule.h"
 
-
 // Custom Renderer Pass Modules
 #include "Modules/Custom Renderer Pass/GeometryQuadModule.h"
 #include "Modules/Custom Renderer Pass/GerstnerWaveModule.h"
@@ -39,6 +38,7 @@
 #include "Modules/Custom Renderer Pass/RayMarchingModule.h"
 #include "Modules/Custom Renderer Pass/PostProcessingModule.h"
 #include "Modules/Custom Renderer Pass/MaterialModelModule.h"
+#include "Modules/Custom Renderer Pass/InstancedModule.h"
 
 #include "Externals/stb_image.h"
 
@@ -116,6 +116,7 @@ void Application::ModuleSelector(std::string name) {
     if (ImGui::Button("9. Ray Marching")) { SwitchModule<RayMarchingModule>(); }
     if (ImGui::Button("10. Post Processing")) { SwitchModule<PostProcessingModule>(); }
     if (ImGui::Button("11. Material Model")) { SwitchModule<MaterialModelModule>(); }
+    if (ImGui::Button("12. Instanced Model")) { SwitchModule<InstancedModule>(); }
   }
 
   ImGui::End();

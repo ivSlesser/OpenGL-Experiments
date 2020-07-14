@@ -13,8 +13,7 @@ uniform vec3 u_LightColor;
 uniform vec3 u_CameraPosition;
 uniform sampler2D u_Texture0;
 
-const float AmbientStrength = 0.2;
-const float SpecularStrength = 0.5;
+const float AmbientStrength = 0.4;
 
 struct Material {
     vec3 Ambient;
@@ -43,7 +42,7 @@ void main()
     vec3 viewDirection = normalize(u_CameraPosition - v_FragmentPosition);
     vec3 reflectDirection = reflect(-lightDirection, nnormal);
     float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), mat.Shine);
-    vec3 Specular = SpecularStrength * spec * u_LightColor * mat.Specular;
+    vec3 Specular = spec * u_LightColor * mat.Specular;
 
     vec4 FinalColor = vec4(Ambient + Diffuse + Specular, 1.0);
     //mat.Dissolve);

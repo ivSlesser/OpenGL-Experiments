@@ -28,6 +28,10 @@
 #include "OpenGL/DrawHandler.h"
 
 MultiModel::~MultiModel() {
+  Clear();
+}
+
+void MultiModel::Clear() {
   for (Mesh *mesh : m_Meshes) {
     delete mesh;
   }
@@ -39,6 +43,72 @@ MultiModel::~MultiModel() {
 
 bool MultiModel::Load(const char *file) {
 
+  Clear();
+  m_Instanced = false;
+
+  std::vector<MultiModelLoadResult> data = DoLoad(file);
+
+  if (data.size() == 0) {
+    return false;
+  }
+
+  for (MultiModelLoadResult result : data) {
+    Mesh *mesh = new Mesh();
+    mesh->Name = result.Name;
+    mesh->Load(result.Vertices, result.Indices);
+    m_Meshes.push_back(mesh);
+  }
+
+  return true;
+}
+
+void MultiModel::Render(Shader &pShader) {
+  Render(pShader, false, 1);
+}
+
+void MultiModel::Render(Shader &pShader, bool pInstanced, unsigned int pInstanceCount) {
+
+  // Bind Materials
+  unsigned int i = 0;
+  for (Material *m : m_Materials) {
+    m->SubmitAsUniform(pShader, i++);
+  }
+
+  for (Mesh *m : m_Meshes) {
+    m->Bind();
+
+    if (pInstanced) {
+      DrawHandler::IndexedInstance(m->IndexCount, pInstanceCount);
+    } else {
+      DrawHandler::Indexed(m->IndexCount);
+    }
+  }
+}
+
+bool MultiModel::LoadAsInstanced(const char *file, const std::vector<glm::mat4> &pMatrices) {
+  Clear();
+  m_Instanced = true;
+
+  std::vector<MultiModelLoadResult> data = DoLoad(file);
+
+  if (data.size() == 0) {
+    return false;
+  }
+
+  for (MultiModelLoadResult result : data) {
+    Mesh *mesh = new Mesh();
+    mesh->Name = result.Name;
+    mesh->LoadInstanced(result.Vertices, result.Indices, pMatrices);
+    m_Meshes.push_back(mesh);
+  }
+
+  return true;
+}
+
+std::vector<MultiModelLoadResult> MultiModel::DoLoad(const char *file) {
+
+  std::vector<MultiModelLoadResult> result;
+
   tinyobj::attrib_t attrib;
   std::vector<tinyobj::shape_t> shapes;
   std::vector<tinyobj::material_t> materials;
@@ -47,7 +117,7 @@ bool MultiModel::Load(const char *file) {
   std::string err;
 
   if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, file, "Resources/Models/")) {
-    return false;
+    return result;
   }
 
   if (!warn.empty()) {
@@ -56,7 +126,7 @@ bool MultiModel::Load(const char *file) {
 
   if (!err.empty()) {
     std::cerr << err << std::endl;
-    return false;
+    return result;
   }
 
   // First Create Materials
@@ -76,10 +146,7 @@ bool MultiModel::Load(const char *file) {
   // Then the meshes
   for (size_t s = 0; s < shapes.size(); s++) {
 
-    Mesh *mesh = new Mesh();
-
-    std::vector<Vertex> vertices;
-    std::vector<unsigned int> indices;
+    result.push_back(MultiModelLoadResult());
 
     // Loop over faces
     size_t index_offset = 0;
@@ -109,44 +176,18 @@ bool MultiModel::Load(const char *file) {
         vertex.tex_coordinates =
             glm::vec2(attrib.texcoords[2 * idx.texcoord_index + 0], attrib.texcoords[2 * idx.texcoord_index + 1]);
         vertex.mat_index = fm;
-        vertices.push_back(vertex);
-
-        mesh->UsesMaterials = fm != -1;
-        indices.push_back(I++);
+        result[s].Vertices.push_back(vertex);
+        result[s].Indices.push_back(I++);
       }
 
       index_offset += fv;
     }
 
-    mesh->Load(vertices, indices);
-    mesh->Name = shapes[s].name;
-    m_Meshes.push_back(mesh);
+    result[s].Name = shapes[s].name;
   }
 
-  return true;
+  return result;
 }
 
-void MultiModel::Render(Shader &pShader) {
-  Render(pShader, false, 1);
-}
-
-void MultiModel::Render(Shader &pShader, bool pInstanced, unsigned int pInstanceCount) {
-
-  // Bind Materials
-  unsigned int i = 0;
-  for (Material *m : m_Materials) {
-    m->SubmitAsUniform(pShader, i++);
-  }
-
-  for (Mesh *m : m_Meshes) {
-    m->Bind();
-
-    if (pInstanced) {
-      DrawHandler::IndexedInstance(m->IndexCount, pInstanceCount);
-    } else {
-      DrawHandler::Indexed(m->IndexCount);
-    }
-  }
-}
 
 

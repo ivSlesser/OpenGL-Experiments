@@ -26,45 +26,74 @@
 #include "../Graphics/Vertex.h"
 
 VertexArray::VertexArray() {
-  glGenVertexArrays(1, &id);
+  glGenVertexArrays(1, &m_ID);
 }
 
 VertexArray::~VertexArray() {
-  glDeleteVertexArrays(1, &id);
+  glDeleteVertexArrays(1, &m_ID);
 }
 
 void VertexArray::SetLayout() {
   size_t sf = sizeof(float);
-  int count = 0;
-  int i = 0;
 
   // Position
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 3;
+  glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
+  glEnableVertexAttribArray(m_AttribIDMax++);
+  m_AttribCount += 3;
 
   // Color
-  glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 4;
+  glVertexAttribPointer(m_AttribIDMax, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
+  glEnableVertexAttribArray(m_AttribIDMax++);
+  m_AttribCount += 4;
 
   // Texture Coordinates
-  glVertexAttribPointer(i, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 2;
+  glVertexAttribPointer(m_AttribIDMax, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
+  glEnableVertexAttribArray(m_AttribIDMax++);
+  m_AttribCount += 2;
 
   // Normals
-  glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 3;
+  glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
+  glEnableVertexAttribArray(m_AttribIDMax++);
+  m_AttribCount += 3;
 
   // Material Index
-  glVertexAttribPointer(i, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(count * sf));
-  glEnableVertexAttribArray(i++);
-  count += 1;
+  glVertexAttribPointer(m_AttribIDMax, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
+  glEnableVertexAttribArray(m_AttribIDMax++);
+  m_AttribCount += 1;
 }
 
 void VertexArray::Bind() {
-  glBindVertexArray(id);
+  glBindVertexArray(m_ID);
+}
+
+void VertexArray::AttachInstancedMatrixBuffer(const std::vector<glm::mat4> &pMatrices) {
+
+  Bind();
+
+  glGenBuffers(1, &m_IBufferID);
+  glBindBuffer(GL_ARRAY_BUFFER, m_IBufferID);
+  glBufferData(GL_ARRAY_BUFFER, pMatrices.size() * sizeof(glm::mat4), pMatrices.data(), GL_STATIC_DRAW);
+
+  auto s = sizeof(glm::vec4);
+
+  glVertexAttribPointer(m_AttribIDMax, 4, GL_FLOAT, GL_FALSE, 4 * s, (void*)(0 * s));
+  glEnableVertexAttribArray(m_AttribIDMax);
+  glVertexAttribDivisor(m_AttribIDMax++, 1);
+  m_AttribCount += 4;
+
+  glVertexAttribPointer(m_AttribIDMax, 4, GL_FLOAT, GL_FALSE, 4 * s, (void*)(1 * s));
+  glEnableVertexAttribArray(m_AttribIDMax);
+  glVertexAttribDivisor(m_AttribIDMax++, 1);
+  m_AttribCount += 4;
+
+  glVertexAttribPointer(m_AttribIDMax, 4, GL_FLOAT, GL_FALSE, 4 * s, (void*)(2 * s));
+  glEnableVertexAttribArray(m_AttribIDMax);
+  glVertexAttribDivisor(m_AttribIDMax++, 1);
+  m_AttribCount += 4;
+
+  glVertexAttribPointer(m_AttribIDMax, 4, GL_FLOAT, GL_FALSE, 4 * s, (void*)(3 * s));
+  glEnableVertexAttribArray(m_AttribIDMax);
+  glVertexAttribDivisor(m_AttribIDMax++, 1);
+  m_AttribCount += 4;
 }
 

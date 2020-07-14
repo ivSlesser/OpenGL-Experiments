@@ -28,17 +28,26 @@
 #include "Graphics/Properties/Material.h"
 #include "OpenGL/Shader.h"
 
+struct MultiModelLoadResult {
+  std::string Name;
+  std::vector<Vertex> Vertices;
+  std::vector<unsigned int> Indices;
+};
+
 class MultiModel {
 
  private:
   std::vector<Mesh *> m_Meshes;
   std::vector<Material *> m_Materials;
+  bool m_Instanced = false;
 
  public:
   MultiModel() {}
   virtual ~MultiModel();
 
   bool Load(const char *file);
+  bool LoadAsInstanced(const char *file, const std::vector<glm::mat4> &pMatrices);
+
   void Render(Shader &pShader);
   void Render(Shader &pShader, bool pInstanced, unsigned int pInstanceCount);
 
@@ -47,4 +56,8 @@ class MultiModel {
       m->DisplayWithGUI();
     }
   }
+
+ private:
+  void Clear();
+  std::vector<MultiModelLoadResult> DoLoad(const char *file);
 };

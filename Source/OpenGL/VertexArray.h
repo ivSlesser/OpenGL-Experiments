@@ -23,15 +23,20 @@
 
 #pragma once
 
+#include "Common.h"
+
 class VertexArray {
 
  private:
-  unsigned int id;
+  unsigned int m_ID;
+  unsigned int m_IBufferID;
+  unsigned int m_AttribIDMax = 0;
+  unsigned int m_AttribCount = 0;
 
  public:
   VertexArray();
   virtual ~VertexArray();
   void SetLayout();
   void Bind();
-
+  void AttachInstancedMatrixBuffer(const std::vector<glm::mat4> &pMatrices);
 };

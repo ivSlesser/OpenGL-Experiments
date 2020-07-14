@@ -19,7 +19,6 @@ uniform mat4 u_ViewProjection;
 void main()
 {
     vec4 worldPosition = u_Model * vec4(a_Pos, 1.0);
-    worldPosition.x -= gl_InstanceID * 10;
     gl_Position = u_ViewProjection * worldPosition;
     v_FragmentPosition = worldPosition.xyz;
     v_Color = a_Color;

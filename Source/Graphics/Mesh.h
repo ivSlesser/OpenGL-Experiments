@@ -42,5 +42,6 @@ class Mesh {
   bool UsesMaterials = false;
 
   bool Load(const std::vector<Vertex> &pVertices, const std::vector<unsigned int> &pIndices, const Material &pMaterial = {});
+  bool LoadInstanced(const std::vector<Vertex> &pVertices, const std::vector<unsigned int> &pIndices, const std::vector<glm::mat4> &pMatrices, const Material &pMaterial = {});
   inline void Bind() { VAO.Bind(); IBO.Bind(); }
 };

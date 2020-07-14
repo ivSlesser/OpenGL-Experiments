@@ -31,13 +31,27 @@ bool Mesh::Load(const std::vector<Vertex> &pVertices, const std::vector<unsigned
   VBO.Init(pVertices);
   VAO.SetLayout();
 
-  // Create indices
-
   // Create index buffer
   IndexCount = pIndices.size();
   IBO.Init(pIndices);
 
   iMaterial = pMaterial;
+
+  return true;
+}
+
+bool Mesh::LoadInstanced(const std::vector<Vertex> &pVertices,
+                         const std::vector<unsigned int> &pIndices,
+                         const std::vector<glm::mat4> &pMatrices,
+                         const Material &pMaterial) {
+
+  auto res = Load(pVertices, pIndices, pMaterial);
+
+  if (!res) {
+    return false;
+  }
+
+  VAO.AttachInstancedMatrixBuffer(pMatrices);
 
   return true;
 }
