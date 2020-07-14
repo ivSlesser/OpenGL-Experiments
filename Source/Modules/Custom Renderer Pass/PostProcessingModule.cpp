@@ -36,8 +36,8 @@ void PostProcessingModule::OnInit(Camera &p_Camera) {
   m_Shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/PostProcessing/pp.fragment.glsl");
   m_Shader.Compile();
 
-  m_SceneShader.AddStage(GL_VERTEX_SHADER, "Resources/model.vertex.glsl");
-  m_SceneShader.AddStage(GL_FRAGMENT_SHADER, "Resources/model.fragment.glsl");
+  m_SceneShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/Model/model.vertex.glsl");
+  m_SceneShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Model/model.fragment.glsl");
   m_SceneShader.Compile();
   m_SceneShader.Int("u_Texture0", 0);
 
