@@ -15,25 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/VertexArray.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/VertexArray.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/Model/model.fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/Model/model.fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/Model/model.vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/Model/model.vertex.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Mesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Mesh.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Mesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/MultiModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/MultiModel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/MultiModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/MultiModel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/MaterialModelModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/MaterialModelModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/VertexArray.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/VertexArray.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/VertexArray.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/VertexArray.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +132,7 @@
       <workItem from="1594453760127" duration="6090000" />
       <workItem from="1594625446159" duration="1067000" />
       <workItem from="1594627440435" duration="7521000" />
-      <workItem from="1594709550020" duration="3485000" />
+      <workItem from="1594709550020" duration="4130000" />
     </task>
     <servers />
   </component>
