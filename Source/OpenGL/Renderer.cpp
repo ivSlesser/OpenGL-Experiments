@@ -113,7 +113,7 @@ void Renderer::OnGUI() {
 
     if (ptr->use_lighting) {
       ImGui::ColorEdit3("Light Color", &ptr->light_color.x);
-      ImGui::SliderFloat3("Light Position", &ptr->light_position.x, -100.0f, 100.0f);
+      ImGui::DragFloat3("Light Position", &ptr->light_position.x, 1.0f);
     }
 
     // Camera ---------------------------------------------------------------------

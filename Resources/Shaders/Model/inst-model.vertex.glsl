@@ -13,7 +13,6 @@ out vec2 v_TexCoords;
 out vec3 v_Normals;
 out float v_MatIndex;
 
-uniform mat4 u_Model;
 uniform mat4 u_ViewProjection;
 
 void main()
@@ -23,6 +22,6 @@ void main()
     v_FragmentPosition = worldPosition.xyz;
     v_Color = a_Color;
     v_TexCoords = a_TexCoords;
-    v_Normals = (u_Model * vec4(a_Normals, 1.0)).xyz;
+    v_Normals = (a_Model * vec4(a_Normals, 1.0)).xyz;
     v_MatIndex = a_MatIndex;
 }

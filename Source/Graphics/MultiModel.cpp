@@ -76,7 +76,6 @@ void MultiModel::Render(Shader &pShader, bool pInstanced, unsigned int pInstance
 
   for (Mesh *m : m_Meshes) {
     m->Bind();
-
     if (pInstanced) {
       DrawHandler::IndexedInstance(m->IndexCount, pInstanceCount);
     } else {

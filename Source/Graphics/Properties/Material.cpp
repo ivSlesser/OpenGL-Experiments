@@ -58,5 +58,5 @@ void Material::DisplayWithGUI() {
 
   ImGui::ColorEdit3((Name + " Specular").c_str(), &Specular.x);
   ImGui::DragFloat((Name + " Shine").c_str(), &Shine, 2.0f, 0.0f, 128.0f);
-//  ImGui::DragFloat((Name + " Dissolve").c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
+  ImGui::DragFloat((Name + " Dissolve").c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
 }

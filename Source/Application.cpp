@@ -39,6 +39,7 @@
 #include "Modules/Custom Renderer Pass/PostProcessingModule.h"
 #include "Modules/Custom Renderer Pass/MaterialModelModule.h"
 #include "Modules/Custom Renderer Pass/InstancedModule.h"
+#include "Modules/Custom Renderer Pass/TerrainSceneModule.h"
 
 #include "Externals/stb_image.h"
 
@@ -117,6 +118,9 @@ void Application::ModuleSelector(std::string name) {
     if (ImGui::Button("10. Post Processing")) { SwitchModule<PostProcessingModule>(); }
     if (ImGui::Button("11. Material Model")) { SwitchModule<MaterialModelModule>(); }
     if (ImGui::Button("12. Instanced Model")) { SwitchModule<InstancedModule>(); }
+    // TODO: Add to README:
+    if (ImGui::Button("13. Terrain Scene")) { SwitchModule<TerrainSceneModule>(); }
+
   }
 
   ImGui::End();

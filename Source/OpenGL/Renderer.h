@@ -54,7 +54,7 @@ class Renderer {
   Shader lit_shader;
   Shader unlit_shader;
   glm::vec3 light_color = glm::vec3(1.0f);
-  glm::vec3 light_position = glm::vec3(0.0f, 100.0f, 100.0f);
+  glm::vec3 light_position = glm::vec3(100.0f, 1000.0f, 100.0f);
 
   // -------------------------------------------------------------------------------------------------------------------
 

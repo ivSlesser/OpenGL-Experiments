@@ -40,7 +40,7 @@ void InstancedModule::OnInit(Camera &p_Camera) {
   srand(glfwGetTime()); // initialize random seed
 
   float radius = 1000.0;
-  float offset = 100.0f;
+  float offset = 1000.0f;
 
   for (unsigned int i = 0; i < m_NumInstances; i++) {
     Transform TF;
@@ -66,7 +66,6 @@ void InstancedModule::OnInit(Camera &p_Camera) {
   }
 
   m_MultiModel.LoadAsInstanced("Resources/Models/tree_low.obj", modelMatrices);
-
 }
 
 void InstancedModule::OnUpdate(double dt) {
@@ -94,9 +93,5 @@ void InstancedModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
   m_Shader.Vec3("u_CameraPosition", p_Camera.GetPosition());
 
   // MultiModel
-  Transform mmTF;
-  mmTF.SetTranslate({10.0f, 0.0f, 10.0f});
-  mmTF.SetScale(glm::vec3(0.5f));
-  m_Shader.Mat4("u_Model", mmTF.Transformation());
   m_MultiModel.Render(m_Shader, true, m_NumInstances);
 }
