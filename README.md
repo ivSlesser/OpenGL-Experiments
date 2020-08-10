@@ -1,6 +1,6 @@
-# OpenGL Scratchpad
+# Graphics Scratchpad
 
-A scratchpad for OpenGL based experimentation, intended for rapid iteration, integration and simplicity rather than
+A scratchpad for scenes rendered using OpenGL, intended for rapid iteration, integration and simplicity rather than
  optimisation and efficiency.
  
 This uses a module based approach, allowing for selectable, reusable and distinct demo scenes, with common elements such as the renderer, textures etc being encapsulated within the rest of the application.
@@ -31,7 +31,6 @@ The project also contains more advanced modules that showcase various different 
 - **PostProcessingModule:** A small collection of simple post-processing effects using 'Framebuffer Objects'.
 - **MaterialModelModule:** Added material support to the models, as well as multi-part model loading.
 - **InstancedModule:** Instanced model rendering
-
 
 ## Controls
 
