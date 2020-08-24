@@ -3,8 +3,8 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="Foundations" targetName="glfw" />
-      <config projectName="Foundations" targetName="glad" />
       <config projectName="Foundations" targetName="Foundations" />
+      <config projectName="Foundations" targetName="glad" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,8 +14,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Resources/Shaders/Terrain Scene/sky.fragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Shaders/Terrain Scene/sky.vertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/OpenGL/TextureCube.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/OpenGL/TextureCube.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/glad.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/glad.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_demo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_demo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_draw.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_draw.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_glfw.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_glfw.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_opengl3.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_opengl3.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_widgets.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_widgets.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/stb_image.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/stb_image.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Properties/Transform.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Properties/Transform.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Quad.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Quad.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Triangle.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Triangle.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Vertex.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Vertex.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/IndexBuffer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/IndexBuffer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/VertexArray.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/VertexArray.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/VertexBuffer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/VertexBuffer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/Libraries/glad/src/glad.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/Libraries/glad/src/glad.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/context.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/context.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/init.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/init.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/input.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/input.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/monitor.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/monitor.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/window.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/window.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +109,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/Shaders/Terrain Scene" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
@@ -137,6 +205,7 @@
       <workItem from="1594730545593" duration="196000" />
       <workItem from="1595076897278" duration="55000" />
       <workItem from="1597071594533" duration="137000" />
+      <workItem from="1598286426559" duration="2221000" />
     </task>
     <servers />
   </component>

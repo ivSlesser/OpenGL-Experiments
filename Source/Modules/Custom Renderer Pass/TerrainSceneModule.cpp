@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 
+#include <Graphics/Cube.h>
 #include "TerrainSceneModule.h"
 #include "Math/Random/Random.h"
 #include "System/GUI/GUILayer.h"
@@ -39,12 +40,16 @@ void TerrainSceneModule::OnInit(Camera &p_Camera) {
   m_ModelShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Model/inst-model.fragment.glsl");
   m_ModelShader.Compile();
 
+  m_SkyShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/Terrain Scene/sky.vertex.glsl");
+  m_SkyShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Terrain Scene/sky.fragment.glsl");
+  m_SkyShader.Compile();
+
   // Grass Texture
   m_Grass = new Texture("Resources/Textures/grass.png");
 
   // Terrain Plane
   unsigned int squaredDimension = 100;
-  m_NumInstances = (unsigned int)(squaredDimension / 10);
+  m_NumInstances = (unsigned int) (squaredDimension / 10);
   plane = Plane(glm::vec4(1.0f), glm::vec3(0.0f), glm::vec3(squaredDimension), 1);
 
   // Create vertices
@@ -79,6 +84,23 @@ void TerrainSceneModule::OnInit(Camera &p_Camera) {
   }
 
   m_MultiModel.LoadAsInstanced("Resources/Models/tree_low.obj", modelMatrices);
+
+  // Texture Cube
+  m_SkyTexture = new TextureCube();
+  std::vector<const char *> faces = {
+      "Resources/Textures/Skybox/right.jpg",
+      "Resources/Textures/Skybox/left.jpg",
+      "Resources/Textures/Skybox/top.jpg",
+      "Resources/Textures/Skybox/bottom.jpg",
+      "Resources/Textures/Skybox/front.jpg",
+      "Resources/Textures/Skybox/back.jpg"
+  };
+  m_SkyTexture->Init(faces);
+
+  m_CubeVAO.Bind();
+  m_CubeVBO.Init(Cube::Vertices(0.0f, 0.0f, 0.0f, 10000.0f, 10000.0f, 10000.0f));
+  m_CubeVAO.SetLayout();
+  m_CubeIBO.Init(Cube::Indices());
 }
 
 void TerrainSceneModule::OnUpdate(double dt) {
@@ -124,4 +146,14 @@ void TerrainSceneModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) 
   m_ModelShader.Vec3("u_CameraPosition", p_Camera.GetPosition());
 
   m_MultiModel.Render(m_ModelShader, true, m_NumInstances);
+
+  glDepthFunc(GL_LEQUAL);
+  m_SkyShader.Bind();
+  m_CubeVAO.Bind();
+  m_CubeIBO.Bind();
+  m_SkyTexture->Bind();
+
+  m_ModelShader.Mat4("u_ViewProjection", p_Camera.GetProjection() * glm::mat4(glm::mat3(p_Camera.GetView())));
+  glDrawElements(GL_TRIANGLES, Cube::IndexCount(), GL_UNSIGNED_INT, 0);
+  glDepthFunc(GL_LESS);
 }

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Libraries/glfw
+# Install script for directory: /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Libraries/glfw
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Build/Libraries/glfw/src/cmake_install.cmake")
+  include("/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Build/Libraries/glfw/src/cmake_install.cmake")
 
 endif()
 

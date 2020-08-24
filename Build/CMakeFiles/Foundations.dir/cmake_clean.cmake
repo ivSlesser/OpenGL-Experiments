@@ -47,6 +47,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/OpenGL/Renderer.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/Texture.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/OpenGL/TextureCube.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/VertexArray.cpp.o"
   "CMakeFiles/Foundations.dir/Source/OpenGL/VertexBuffer.cpp.o"
   "CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o"

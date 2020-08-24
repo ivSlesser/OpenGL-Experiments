@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Lifefyle/Projects/Personal/OpenGL-Experiments/Libraries/glfw/src
+# Install script for directory: /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Libraries/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

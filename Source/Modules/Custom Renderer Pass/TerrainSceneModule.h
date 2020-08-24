@@ -33,6 +33,7 @@
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"
 #include "OpenGL/IndexBuffer.h"
+#include "OpenGL/TextureCube.h"
 #include "Graphics/Plane.h"
 
 class TerrainSceneModule : public Module {
@@ -40,6 +41,9 @@ class TerrainSceneModule : public Module {
  private:
   Shader m_Shader;
   Shader m_ModelShader;
+  Shader m_SkyShader;
+
+
   MultiModel m_MultiModel;
   int m_NumInstances;
 
@@ -47,7 +51,13 @@ class TerrainSceneModule : public Module {
   VertexBuffer m_VBO;
   IndexBuffer m_IBO;
 
+  VertexArray m_CubeVAO;
+  VertexBuffer m_CubeVBO;
+  IndexBuffer m_CubeIBO;
+
   Texture *m_Grass;
+  TextureCube *m_SkyTexture;
+
   float m_TilingFactor = 20.0f;
   Plane plane;
 
