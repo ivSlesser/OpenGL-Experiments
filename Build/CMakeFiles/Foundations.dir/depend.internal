@@ -6035,6 +6035,7 @@ CMakeFiles/Foundations.dir/Source/Modules/Custom_Renderer_Pass/TerrainSceneModul
  ../Libraries/glm/glm/vec4.hpp
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
+ ../Source/Elements/Terrain.h
  ../Source/Externals/ImGUI.hpp
  ../Source/Externals/imgui/imconfig.h
  ../Source/Externals/imgui/imgui.h

@@ -30,6 +30,8 @@
 #include "Graphics/Model.h"
 #include "Graphics/MultiModel.h"
 
+#include "Elements/Terrain.h"
+
 #include "OpenGL/VertexArray.h"
 #include "OpenGL/VertexBuffer.h"
 #include "OpenGL/IndexBuffer.h"
@@ -43,10 +45,10 @@ class TerrainSceneModule : public Module {
   Shader m_ModelShader;
   Shader m_SkyShader;
 
-
   MultiModel m_MultiModel;
   int m_NumInstances;
 
+  Terrain m_Terrain;
   VertexArray m_VAO;
   VertexBuffer m_VBO;
   IndexBuffer m_IBO;
@@ -58,8 +60,7 @@ class TerrainSceneModule : public Module {
   Texture *m_Grass;
   TextureCube *m_SkyTexture;
 
-  float m_TilingFactor = 20.0f;
-  Plane plane;
+  float m_TilingFactor = 200.0f;
 
  public:
   TerrainSceneModule() {}
@@ -69,4 +70,6 @@ class TerrainSceneModule : public Module {
   void OnDestroy() override;
   virtual void OnGUI() override;
   virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
+
+ private:
 };

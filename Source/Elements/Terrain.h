@@ -31,13 +31,15 @@ class Terrain {
  private:
   std::vector<Vertex> vertices;
   std::vector<unsigned> indices;
-
+  glm::vec2 mSize;
 
  public:
   Terrain(glm::vec4 color = glm::vec4(1.0f),
   const glm::vec3 &pos = glm::vec3(0.0f),
   const glm::vec2 &size = glm::vec2(10.0f),
   float resolution = 5);
+
+  glm::vec3 sampleAtPoint(const glm::vec2& pPoint);
 
   inline std::vector<Vertex> &Vertices() { return vertices; }
   inline std::vector<unsigned> &Indices() { return indices; };

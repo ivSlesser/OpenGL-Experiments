@@ -20,7 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
 #include <Graphics/Cube.h>
 #include "TerrainSceneModule.h"
 #include "Math/Random/Random.h"
@@ -48,29 +47,37 @@ void TerrainSceneModule::OnInit(Camera &p_Camera) {
   m_Grass = new Texture("Resources/Textures/grass.png");
 
   // Terrain Plane
-  unsigned int squaredDimension = 100;
-  m_NumInstances = (unsigned int) (squaredDimension / 10);
-  plane = Plane(glm::vec4(1.0f), glm::vec3(0.0f), glm::vec3(squaredDimension), 1);
+  unsigned int squaredDimension = 50;
+//  m_NumInstances = (unsigned int) (squaredDimension * 50);
+  m_NumInstances = 1;
+
+  m_Terrain = Terrain(
+      glm::vec4(1.0f),
+      glm::vec3(0.0f),
+      glm::vec2(squaredDimension),
+      300);
 
   // Create vertices
   m_VAO.Bind();
-  m_VBO.Init(plane.Vertices());
+  m_VBO.Init(m_Terrain.Vertices());
   m_VAO.SetLayout();
 
   // Create indices
-  m_IBO.Init(plane.Indices());
+  m_IBO.Init(m_Terrain.Indices());
 
-  // Setup Model
+  // Setup Model Matrices
   std::vector<glm::mat4> modelMatrices;
   srand(glfwGetTime()); // initialize random seed
 
   for (unsigned int i = 0; i < m_NumInstances; i++) {
     Transform TF;
     glm::mat4 model = glm::mat4(1.0f);
+
     // 1. Displace along the terrain
     float x = 1 + rand() % (squaredDimension - 1);
     float z = 1 + rand() % (squaredDimension - 1);
-    TF.SetTranslate(glm::vec3(x, 0.0f, z));
+//    TF.SetTranslate(glm::vec3(x, m_Terrain.sampleAtPoint({x, z}), z));
+    TF.SetTranslate(m_Terrain.sampleAtPoint({x, z}));
 
     // 2. Scale between 0.05 and 0.25f
     float scale = (rand() % 20) / 200.0f + 0.05;
@@ -113,7 +120,7 @@ void TerrainSceneModule::OnDestroy() {
 
 void TerrainSceneModule::OnGUI() {
 
-  ImGui::DragFloat("Tiling Factor", &m_TilingFactor, 0.1f, 1.0f, 100.0f);
+  ImGui::DragFloat("Tiling Factor", &m_TilingFactor, 0.1f, 1.0f, 10000.0f);
 
   ImGui::Text("m_MultiModel");
   m_MultiModel.DoMaterialGUI();
@@ -136,7 +143,7 @@ void TerrainSceneModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) 
   m_VAO.Bind();
   m_IBO.Bind();
   m_Shader.Mat4("u_Model", p_Transform.Transformation());
-  glDrawElements(GL_TRIANGLES, plane.IndexCount(), GL_UNSIGNED_INT, 0);
+  glDrawElements(GL_TRIANGLES, m_Terrain.IndexCount(), GL_UNSIGNED_INT, 0);
 
   m_ModelShader.Bind();
 

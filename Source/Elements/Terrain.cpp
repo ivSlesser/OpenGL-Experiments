@@ -27,6 +27,8 @@
 
 Terrain::Terrain(glm::vec4 color, const glm::vec3 &pos, const glm::vec2 &size, float resolution) {
 
+  mSize = size;
+
   const float uvX = 1.0f / size.x;
   const float uvZ = 1.0f / size.y;
 
@@ -45,7 +47,7 @@ Terrain::Terrain(glm::vec4 color, const glm::vec3 &pos, const glm::vec2 &size, f
 	  float xp = pos.x + x * resolution;
 	  float zp = pos.z + z * resolution;
 
-	  float yp = pos.y + p.Noise(5, 0.6f, xoff, yoff, zoff) * 20;
+	  float yp = pos.y + p.Noise(5, 0.6f, xoff, yoff, zoff) * 20 * resolution;
 
 	  vertices.push_back({{xp, yp, zp}, color, {z * uvZ, x * uvX},
 						  {0.0f, 1.0f, 0.0f}});
@@ -88,4 +90,12 @@ Terrain::Terrain(glm::vec4 color, const glm::vec3 &pos, const glm::vec2 &size, f
 	}
   }
 
+}
+
+glm::vec3 Terrain::sampleAtPoint(const glm::vec2 &pPoint) {
+  // TODO: Return an approximate height value for a supplied point.
+  int x = (int)pPoint.x;
+  int z = (int)pPoint.y;
+  int index = mSize.y * z + x;
+  return vertices[index].position;
 }
