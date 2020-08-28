@@ -25,9 +25,9 @@
 
 #include "System/Module.h"
 
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
-#include "OpenGL/Shader.h"
+#include "Framework/GL/VertexArray.h"
+#include "Framework/GL/VertexBuffer.h"
+#include "Framework/GL/Shader.h"
 
 class GeometryQuadModule : public Module {
  private:

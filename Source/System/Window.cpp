@@ -23,7 +23,7 @@
 
 #include "Window.h"
 
-#include "OpenGL/Renderer.h"
+#include "Framework/Renderer.h"
 #include "Graphics/Camera/PerspectiveCamera.h"
 
 GLFWwindow *Window::sWindow = nullptr;

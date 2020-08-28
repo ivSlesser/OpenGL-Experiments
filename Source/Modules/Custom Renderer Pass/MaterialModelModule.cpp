@@ -24,7 +24,7 @@
 #include "MaterialModelModule.h"
 #include "Math/Random/Random.h"
 #include "System/GUI/GUILayer.h"
-#include "OpenGL/Renderer.h"
+#include "Framework/Renderer.h"
 
 void MaterialModelModule::OnInit(Camera &p_Camera) {
   m_Overrides[0] = true;

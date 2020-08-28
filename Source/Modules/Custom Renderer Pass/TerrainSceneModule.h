@@ -26,16 +26,16 @@
 #include "Common.h"
 
 #include "System/Module.h"
-#include "OpenGL/Shader.h"
+#include "Framework/GL/Shader.h"
 #include "Graphics/Model.h"
 #include "Graphics/MultiModel.h"
 
 #include "Elements/Terrain.h"
 
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
-#include "OpenGL/IndexBuffer.h"
-#include "OpenGL/TextureCube.h"
+#include "Framework/GL/VertexArray.h"
+#include "Framework/GL/VertexBuffer.h"
+#include "Framework/GL/IndexBuffer.h"
+#include "Framework/GL/TextureCube.h"
 #include "Graphics/Plane.h"
 
 class TerrainSceneModule : public Module {

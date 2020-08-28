@@ -26,7 +26,7 @@
 #include "Common.h"
 
 #include "System/Module.h"
-#include "OpenGL/Shader.h"
+#include "Framework/GL/Shader.h"
 #include "Graphics/Model.h"
 #include "Graphics/MultiModel.h"
 

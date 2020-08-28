@@ -24,8 +24,8 @@
 #include "MultiModel.h"
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "Externals/tiny_obj_loader.h"
-#include "OpenGL/Renderer.h"
-#include "OpenGL/DrawHandler.h"
+#include "Framework/Renderer.h"
+#include "Framework/GL/DrawHandler.h"
 
 MultiModel::~MultiModel() {
   Clear();

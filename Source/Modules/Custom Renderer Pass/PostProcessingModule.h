@@ -27,11 +27,11 @@
 
 #include "System/Module.h"
 
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
-#include "OpenGL/IndexBuffer.h"
-#include "OpenGL/FrameBuffer.h"
-#include "OpenGL/Shader.h"
+#include "Framework/GL/VertexArray.h"
+#include "Framework/GL/VertexBuffer.h"
+#include "Framework/GL/IndexBuffer.h"
+#include "Framework/GL/FrameBuffer.h"
+#include "Framework/GL/Shader.h"
 
 #include "Graphics/Plane.h"
 #include "Graphics/Quad.h"

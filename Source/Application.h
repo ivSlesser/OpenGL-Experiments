@@ -25,14 +25,18 @@
 
 #include "Common.h"
 
+#include "Framework/Repository.h"
+
 #include "System/Module.h"
 #include "System/Window.h"
 #include "System/GUI/GUILayer.h"
-#include "Graphics/Properties/Transform.h"
-#include "OpenGL/Renderer.h"
+#include "Framework/Components/Transform.h"
+#include "Framework/Renderer.h"
 
 class Application {
+
  private:
+  Repository mRepository;
   Window mWindow;
   GUILayer mGui;
   Module *mModule{nullptr};
@@ -44,17 +48,21 @@ class Application {
 
  private:
   void Init();
+  void Destroy();
   void ModuleSelector(std::string name);
 
   // Used to switch modules.
-  template <typename T>
+  template<typename T>
   void SwitchModule() {
-	if (mModule != nullptr) {
+    if (mModule != nullptr) {
       mModule->OnDestroy();
-	  delete mModule;
-	}
+      delete mModule;
+    }
     mTransform = Transform();
     mModule = new T();
     mModule->OnInit(Renderer::GetCamera());
   }
+
+ public:
+  inline Repository *GetRepository() { return &mRepository; }
 };

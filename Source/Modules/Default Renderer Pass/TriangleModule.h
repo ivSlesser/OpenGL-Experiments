@@ -25,8 +25,8 @@
 
 #include "System/Module.h"
 
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
+#include "Framework/GL/VertexArray.h"
+#include "Framework/GL/VertexBuffer.h"
 
 class TriangleModule : public Module {
  private:

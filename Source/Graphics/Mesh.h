@@ -24,10 +24,10 @@
 #pragma once
 
 #include "Common.h"
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
-#include "OpenGL/IndexBuffer.h"
-#include "Properties/Material.h"
+#include "Framework/GL/VertexArray.h"
+#include "Framework/GL/VertexBuffer.h"
+#include "Framework/GL/IndexBuffer.h"
+#include "Framework/Components/Material.h"
 
 class Mesh {
 

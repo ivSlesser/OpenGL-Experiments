@@ -27,9 +27,9 @@
 
 #include "System/Module.h"
 
-#include "OpenGL/VertexArray.h"
-#include "OpenGL/VertexBuffer.h"
-#include "OpenGL/IndexBuffer.h"
+#include "Framework/GL/VertexArray.h"
+#include "Framework/GL/VertexBuffer.h"
+#include "Framework/GL/IndexBuffer.h"
 #include "Elements/Terrain.h"
 
 class TerrainModule : public Module {

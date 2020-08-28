@@ -24,7 +24,7 @@
 #include "InstancedModule.h"
 #include "Math/Random/Random.h"
 #include "System/GUI/GUILayer.h"
-#include "OpenGL/Renderer.h"
+#include "Framework/Renderer.h"
 
 void InstancedModule::OnInit(Camera &p_Camera) {
   m_Overrides[0] = true;

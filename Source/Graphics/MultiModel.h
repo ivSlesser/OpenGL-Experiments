@@ -25,8 +25,8 @@
 
 #include "Common.h"
 #include "Graphics/Mesh.h"
-#include "Graphics/Properties/Material.h"
-#include "OpenGL/Shader.h"
+#include "Framework/Components/Material.h"
+#include "Framework/GL/Shader.h"
 
 struct MultiModelLoadResult {
   std::string Name;

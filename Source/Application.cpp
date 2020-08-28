@@ -44,6 +44,9 @@
 #include "Externals/stb_image.h"
 
 void Application::Init() {
+  // Repository --------------------------------------------------------------------------------------------------------
+  mRepository.Init();
+
   // Window ------------------------------------------------------------------------------------------------------------
   mGui.Init(mWindow.GetWindow());
 
@@ -55,11 +58,19 @@ void Application::Init() {
   mGui.AddElement([this]() { ModuleSelector("Module selection:"); });
 }
 
+void Application::Destroy() {
+  // Repository --------------------------------------------------------------------------------------------------------
+  mRepository.Destroy();
+}
+
+
 void Application::Run() {
 
   Init();
   double dt = 1.0;
+
   while (mWindow.WindowActive()) {
+
     mWindow.ProcessInput();
     Renderer::Update(dt);
     mModule->OnUpdate(dt);
@@ -67,7 +78,10 @@ void Application::Run() {
     Renderer::Draw(mWindow, mTransform, mModule);
     mGui.Render();
     mWindow.End();
+
   }
+
+  Destroy();
 }
 
 void Application::ModuleSelector(std::string name) {

@@ -24,7 +24,7 @@
 #include "GerstnerWaveModule.h"
 #include "Math/Random/Random.h"
 #include "System/GUI/GUILayer.h"
-#include "OpenGL/Renderer.h"
+#include "Framework/Renderer.h"
 
 void GerstnerWaveModule::OnInit(Camera &p_Camera) {
 

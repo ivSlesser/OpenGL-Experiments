@@ -25,7 +25,6 @@
 
 #include "Common.h"
 
-
 class Window {
  public:
   static GLFWwindow *sWindow;
@@ -48,7 +47,6 @@ class Window {
 	int minor = 1;
 	bool usingFramebuffer = false;
   } mConfig;
-
 
   // -------------------------------------------------------------------------------------------------------------------
 
@@ -94,7 +92,6 @@ class Window {
       glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
   }
-
 
   // Callbacks ---------------------------------------------------------------------------------------------------------
   void ProcessInput();

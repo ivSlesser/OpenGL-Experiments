@@ -23,9 +23,9 @@
 
 #pragma once
 
-#include "OpenGL/Shader.h"
-#include "OpenGL/Texture.h"
-#include "Graphics/Properties/Transform.h"
+#include "Framework/GL/Shader.h"
+#include "Framework/GL/Texture.h"
+#include "Framework/Components/Transform.h"
 
 #include "Graphics/Camera/Camera.h"
 
