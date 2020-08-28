@@ -27,18 +27,18 @@
 bool OrthographicCamera::OnInput(double dt) {
   bool needRecalc = false;
 
-  if (glfwGetKey(Window::s_Window, GLFW_KEY_W) == GLFW_PRESS) {
+  if (glfwGetKey(Window::sWindow, GLFW_KEY_W) == GLFW_PRESS) {
 	AddPosition(-up * speed * (float) dt);
 	needRecalc = true;
-  } else if (glfwGetKey(Window::s_Window, GLFW_KEY_S) == GLFW_PRESS) {
+  } else if (glfwGetKey(Window::sWindow, GLFW_KEY_S) == GLFW_PRESS) {
 	AddPosition(up * speed *  (float) dt);
 	needRecalc = true;
   }
 
-  if (glfwGetKey(Window::s_Window, GLFW_KEY_A) == GLFW_PRESS) {
+  if (glfwGetKey(Window::sWindow, GLFW_KEY_A) == GLFW_PRESS) {
 	AddPosition(-glm::normalize(glm::cross(front, up)) * speed *  (float) dt);
 	needRecalc = true;
-  } else if (glfwGetKey(Window::s_Window, GLFW_KEY_D) == GLFW_PRESS) {
+  } else if (glfwGetKey(Window::sWindow, GLFW_KEY_D) == GLFW_PRESS) {
 	AddPosition(glm::normalize(glm::cross(front, up)) * speed *  (float) dt);
 	needRecalc = true;
   }

@@ -93,7 +93,7 @@ void PostProcessingModule::CaptureScene(Transform &p_Transform, const Camera &p_
   auto dims = Window::GetDimensions();
 
   Renderer *ptr = Renderer::Access();
-  Renderer::SetupDefaultTexture(*Window::s_Instance);
+  Renderer::SetupDefaultTexture(*Window::sInstance);
 
   m_SceneFBO->Bind(dims.x, dims.y);
   m_SceneShader.Bind();

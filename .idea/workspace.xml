@@ -15,12 +15,14 @@
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Elements/Terrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Elements/Terrain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/PostProcessingModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/PostProcessingModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +147,7 @@
       <workItem from="1598286426559" duration="2433000" />
       <workItem from="1598540046786" duration="1672000" />
       <workItem from="1598541876835" duration="332000" />
-      <workItem from="1598606749826" duration="327000" />
+      <workItem from="1598606749826" duration="900000" />
     </task>
     <servers />
   </component>

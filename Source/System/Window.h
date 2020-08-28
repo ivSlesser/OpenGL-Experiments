@@ -28,14 +28,17 @@
 
 class Window {
  public:
-  static GLFWwindow *s_Window;
-  static Window *s_Instance;
+  static GLFWwindow *sWindow;
+  static Window *sInstance;
 
  private:
-  GLFWwindow *window{nullptr};
-  bool is_transparency_enabled = false;
-  bool is_left_mouse_held = false;
-  bool is_right_mouse_held = false;
+  GLFWwindow *mWindow{nullptr};
+
+  bool mIsTransparencyEnabled = false;
+  bool mIsWireframeEnabled = false;
+
+  bool mIsLeftMouseHeld = false;
+  bool mIsRightMouseHeld = false;
 
   struct WindowConfig {
 	unsigned int width = 1366;
@@ -44,7 +47,7 @@ class Window {
 	int major = 4;
 	int minor = 1;
 	bool usingFramebuffer = false;
-  } config;
+  } mConfig;
 
 
   // -------------------------------------------------------------------------------------------------------------------
@@ -56,18 +59,18 @@ class Window {
   void Begin();
   void End();
 
-  inline bool WindowActive() { return !glfwWindowShouldClose(window); }
-  inline GLFWwindow *GetWindow() { return window; }
+  inline bool WindowActive() { return !glfwWindowShouldClose(mWindow); }
+  inline GLFWwindow *GetWindow() { return mWindow; }
 
-  inline static void ToggleFramebufferUsage(bool to) { s_Instance->config.usingFramebuffer = to; }
-  inline static glm::vec2 GetDimensions() { return glm::vec2(s_Instance->config.width, s_Instance->config.height); }
+  inline static void ToggleFramebufferUsage(bool to) { sInstance->mConfig.usingFramebuffer = to; }
+  inline static glm::vec2 GetDimensions() { return glm::vec2(sInstance->mConfig.width, sInstance->mConfig.height); }
 
   // Transparency ------------------------------------------------------------------------------------------------------
-  inline const bool IsTransparencyEnabled() const { return is_transparency_enabled; }
+  inline const bool IsTransparencyEnabled() const { return mIsTransparencyEnabled; }
 
   // Enables transparency if it is not already enabled.
   inline void EnableTransparency() {
-    if (!is_transparency_enabled) {
+    if (!mIsTransparencyEnabled) {
 	  glEnable(GL_BLEND);
 	  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
@@ -75,10 +78,23 @@ class Window {
 
   // Disables transparency if it is not already disabled.
   inline void DisableTransparency() {
-    if (is_transparency_enabled) {
+    if (mIsTransparencyEnabled) {
       glDisable(GL_BLEND);
     }
   }
+
+  // Wireframe ------------------------------------------------------------------------------------------------------
+
+  // Toggle wireframe mode on or off.
+  inline void ToggleWireframeModeOnOff(bool pToggle) {
+    mIsWireframeEnabled = pToggle;
+    if (mIsWireframeEnabled) {
+      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    } else {
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
+  }
+
 
   // Callbacks ---------------------------------------------------------------------------------------------------------
   void ProcessInput();

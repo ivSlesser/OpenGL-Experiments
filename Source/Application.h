@@ -33,10 +33,10 @@
 
 class Application {
  private:
-  Window window;
-  GUILayer gui;
-  Module *module{nullptr};
-  Transform transform;
+  Window mWindow;
+  GUILayer mGui;
+  Module *mModule{nullptr};
+  Transform mTransform;
   bool mWireframe = false;
 
  public:
@@ -49,13 +49,12 @@ class Application {
   // Used to switch modules.
   template <typename T>
   void SwitchModule() {
-	if (module != nullptr) {
-	  module->OnDestroy();
-	  delete module;
+	if (mModule != nullptr) {
+      mModule->OnDestroy();
+	  delete mModule;
 	}
-	transform = Transform();
-	module = new T();
-	module->OnInit(Renderer::GetCamera());
+    mTransform = Transform();
+    mModule = new T();
+    mModule->OnInit(Renderer::GetCamera());
   }
-  void toggleWireframe();
 };

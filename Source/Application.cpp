@@ -45,28 +45,28 @@
 
 void Application::Init() {
   // Window ------------------------------------------------------------------------------------------------------------
-  gui.Init(window.GetWindow());
+  mGui.Init(mWindow.GetWindow());
 
   // Module ------------------------------------------------------------------------------------------------------------
   SwitchModule<TriangleModule>();
-  module->OnInit(Renderer::GetCamera());
+  mModule->OnInit(Renderer::GetCamera());
 
   // GUI ---------------------------------------------------------------------------------------------------------------
-  gui.AddElement([this]() { ModuleSelector("Module selection:"); });
+  mGui.AddElement([this]() { ModuleSelector("Module selection:"); });
 }
 
 void Application::Run() {
 
   Init();
   double dt = 1.0;
-  while (window.WindowActive()) {
-    window.ProcessInput();
+  while (mWindow.WindowActive()) {
+    mWindow.ProcessInput();
     Renderer::Update(dt);
-    module->OnUpdate(dt);
-    window.Begin();
-    Renderer::Draw(window, transform, module);
-    gui.Render();
-    window.End();
+    mModule->OnUpdate(dt);
+    mWindow.Begin();
+    Renderer::Draw(mWindow, mTransform, mModule);
+    mGui.Render();
+    mWindow.End();
   }
 }
 
@@ -77,7 +77,7 @@ void Application::ModuleSelector(std::string name) {
   ImGui::Begin("General");
   {
     if (ImGui::Checkbox("Wireframe mode?", &mWireframe)) {
-      toggleWireframe();
+      mWindow.ToggleWireframeModeOnOff(mWireframe);
     }
   }
   ImGui::End();
@@ -87,24 +87,24 @@ void Application::ModuleSelector(std::string name) {
   ImGui::Begin("Transform");
   {
     // Translation ---------------------------------------------------------------
-    glm::vec3 translation = transform.GetTranslate();
+    glm::vec3 translation = mTransform.GetTranslate();
     ImGui::DragFloat3("Translation", &translation.x, -10.0f, 10.0f);
-    transform.SetTranslate(translation);
+    mTransform.SetTranslate(translation);
 
     // Rotation ------------------------------------------------------------------
-    glm::vec3 rotation = transform.GetRotate();
+    glm::vec3 rotation = mTransform.GetRotate();
     ImGui::DragFloat3("Rotation", &rotation.x, -360.0f, 360.0f);
-    transform.SetRotate(rotation);
+    mTransform.SetRotate(rotation);
 
     // Scale ---------------------------------------------------------------------
-    ImGui::DragFloat("Scale (XYZ)", &transform.GetScale().x, 1.0f, 10.0f);
-    transform.SetScale(glm::vec3(transform.GetScale().x));
+    ImGui::DragFloat("Scale (XYZ)", &mTransform.GetScale().x, 1.0f, 10.0f);
+    mTransform.SetScale(glm::vec3(mTransform.GetScale().x));
   }
   ImGui::End();
 
   ImGui::Begin("Module");
   {
-    module->OnGUI();
+    mModule->OnGUI();
   }
   ImGui::End();
 
@@ -133,11 +133,3 @@ void Application::ModuleSelector(std::string name) {
 
   ImGui::End();
 }
-void Application::toggleWireframe() {
-  if (mWireframe) {
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  } else {
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  }
-}
-

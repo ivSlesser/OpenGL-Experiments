@@ -26,16 +26,16 @@
 #include "OpenGL/Renderer.h"
 #include "Graphics/Camera/PerspectiveCamera.h"
 
-GLFWwindow *Window::s_Window = nullptr;
-Window *Window::s_Instance = nullptr;
+GLFWwindow *Window::sWindow = nullptr;
+Window *Window::sInstance = nullptr;
 
 Window::Window() {
 
-  Window::s_Instance = this;
+  Window::sInstance = this;
 
   glfwInit();
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, config.major);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, config.minor);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, mConfig.major);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, mConfig.minor);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 //  glfwWindowHint(GLFW_SAMPLES, 0);
 
@@ -43,19 +43,19 @@ Window::Window() {
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-  window = glfwCreateWindow(config.width, config.height, config.title, NULL, NULL);
-  if (window == NULL) {
+  mWindow = glfwCreateWindow(mConfig.width, mConfig.height, mConfig.title, NULL, NULL);
+  if (mWindow == NULL) {
 	std::cout << "Failed to create GLFW window" << std::endl;
 	glfwTerminate();
 	std::abort();
   }
-  glfwMakeContextCurrent(window);
+  glfwMakeContextCurrent(mWindow);
 
   glfwSwapInterval( 0 );
 
-  glfwSetFramebufferSizeCallback(window, Window::OnResize);
-  glfwSetCursorPosCallback(window, Window::OnMouseMove);
-  glfwSetMouseButtonCallback(window, Window::OnMouseButton);
+  glfwSetFramebufferSizeCallback(mWindow, Window::OnResize);
+  glfwSetCursorPosCallback(mWindow, Window::OnMouseMove);
+  glfwSetMouseButtonCallback(mWindow, Window::OnMouseButton);
 
   if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
 	std::cout << "Failed to initialize GLAD" << std::endl;
@@ -64,7 +64,7 @@ Window::Window() {
 
   glEnable(GL_DEPTH_TEST);
 
-  Window::s_Window = window;
+  Window::sWindow = mWindow;
 }
 
 Window::~Window() {
@@ -77,21 +77,21 @@ void Window::Begin() {
 }
 
 void Window::End() {
-  glfwSwapBuffers(window);
+  glfwSwapBuffers(mWindow);
 }
 
 void Window::ProcessInput() {
   glfwPollEvents();
 
-  if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	glfwSetWindowShouldClose(window, true);
+  if (glfwGetKey(mWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	glfwSetWindowShouldClose(mWindow, true);
 }
 
 void Window::OnResize(GLFWwindow *window, int width, int height) {
-  Window::s_Instance->config.width = width;
-  Window::s_Instance->config.height = height;
+  Window::sInstance->mConfig.width = width;
+  Window::sInstance->mConfig.height = height;
 
-  if (!Window::s_Instance->config.usingFramebuffer) {
+  if (!Window::sInstance->mConfig.usingFramebuffer) {
     glViewport(0, 0, width, height);
   }
 }
@@ -101,7 +101,7 @@ void Window::OnMouseMove(GLFWwindow *window, double xpos, double ypos) {
   static float prevY = 0.0f;
 
   static bool firstMouse = true;
-  if (s_Instance->is_right_mouse_held) {
+  if (sInstance->mIsRightMouseHeld) {
 	if (firstMouse) {
 	  prevX = xpos;
 	  prevY = ypos;
@@ -123,16 +123,16 @@ void Window::OnMouseMove(GLFWwindow *window, double xpos, double ypos) {
 void Window::OnMouseButton(GLFWwindow *m, int button, int action, int mods) {
   if (button == GLFW_MOUSE_BUTTON_LEFT) {
 	if (action == GLFW_PRESS)
-	  s_Instance->is_left_mouse_held = true;
+      sInstance->mIsLeftMouseHeld = true;
 	else if (action == GLFW_RELEASE)
-	  s_Instance->is_left_mouse_held = false;
+      sInstance->mIsLeftMouseHeld = false;
   }
 
   if (button == GLFW_MOUSE_BUTTON_RIGHT) {
 	if (action == GLFW_PRESS)
-	  s_Instance->is_right_mouse_held = true;
+      sInstance->mIsRightMouseHeld = true;
 	else if (action == GLFW_RELEASE)
-	  s_Instance->is_right_mouse_held = false;
+      sInstance->mIsRightMouseHeld = false;
   }
 }
 
