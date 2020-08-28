@@ -74,6 +74,14 @@ void Application::ModuleSelector(std::string name) {
 
   Renderer::OnGUI();
 
+  ImGui::Begin("General");
+  {
+    if (ImGui::Checkbox("Wireframe mode?", &mWireframe)) {
+      toggleWireframe();
+    }
+  }
+  ImGui::End();
+
   // ------
 
   ImGui::Begin("Transform");
@@ -124,5 +132,12 @@ void Application::ModuleSelector(std::string name) {
   }
 
   ImGui::End();
+}
+void Application::toggleWireframe() {
+  if (mWireframe) {
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  } else {
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  }
 }
 

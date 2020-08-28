@@ -37,6 +37,7 @@ class Application {
   GUILayer gui;
   Module *module{nullptr};
   Transform transform;
+  bool mWireframe = false;
 
  public:
   void Run();
@@ -56,4 +57,5 @@ class Application {
 	module = new T();
 	module->OnInit(Renderer::GetCamera());
   }
+  void toggleWireframe();
 };

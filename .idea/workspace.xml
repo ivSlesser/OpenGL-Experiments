@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Foundations" targetName="Foundations" />
-      <config projectName="Foundations" targetName="glad" />
       <config projectName="Foundations" targetName="glfw" />
+      <config projectName="Foundations" targetName="glad" />
+      <config projectName="Foundations" targetName="Foundations" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -15,17 +15,11 @@
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Elements/Terrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Elements/Terrain.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Elements/Terrain.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Elements/Terrain.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -150,7 +144,8 @@
       <workItem from="1597071594533" duration="137000" />
       <workItem from="1598286426559" duration="2433000" />
       <workItem from="1598540046786" duration="1672000" />
-      <workItem from="1598541876835" duration="201000" />
+      <workItem from="1598541876835" duration="332000" />
+      <workItem from="1598606749826" duration="327000" />
     </task>
     <servers />
   </component>
