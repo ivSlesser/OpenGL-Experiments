@@ -25,9 +25,21 @@
 
 #include "Common.h"
 
+#include "./Repository.h"
+
 class Simulation {
 
   // Will have a list of models and meshes it contains.
   // Remember to add in checks if (!loaded...) load()
 
+ protected:
+  std::vector<uint32_t> mInstances; // List of meshes this scene contains.
+
+  // -------------------------------------------------------------------------------------------------------------------
+ public:
+  virtual ~Simulation() {}
+  virtual void OnInit() = 0;
+  virtual void OnUpdate() = 0;
+  virtual void OnDestroy() = 0;
+  virtual void OnGUI() = 0;
 };

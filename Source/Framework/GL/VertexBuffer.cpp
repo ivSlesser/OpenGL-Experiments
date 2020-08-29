@@ -22,19 +22,28 @@
 
 
 #include "VertexBuffer.h"
+#include "Framework/Renderer.h"
+
+VertexBuffer::VertexBuffer() {
+  CHECK_GL_ERROR(glGenBuffers(1, &id));
+}
 
 void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW);
+  CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, id));
+  CHECK_GL_ERROR(glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW));
 }
 
 VertexBuffer::~VertexBuffer() {
-  glDeleteBuffers(1, &id);
+  // TODO: Move to OnDestroy Method.
+//  CHECK_GL_ERROR(glDeleteBuffers(1, &id));
 }
 
 void VertexBuffer::Bind() {
-  glBindBuffer(GL_ARRAY_BUFFER, id);
+  CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, id));
+}
 
+void VertexBuffer::Init(const std::vector<Vertex2> &data) {
+  CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, id));
+  CHECK_GL_ERROR(glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex2), data.data(), GL_STATIC_DRAW));
 }
 

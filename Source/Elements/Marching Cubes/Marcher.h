@@ -24,7 +24,7 @@
 #pragma once
 
 #include "Common.h"
-#include "Graphics/Vertex.h"
+#include "Framework/Geometry/Vertex.h"
 #include "Math/Random/Perlin.h"
 
 class Marcher {

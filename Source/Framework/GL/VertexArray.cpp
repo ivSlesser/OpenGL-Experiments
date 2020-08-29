@@ -23,14 +23,17 @@
 
 #include "VertexArray.h"
 
-#include "Graphics/Vertex.h"
+#include "Framework/Geometry/Vertex.h"
+#include "Framework/Renderer.h"
 
 VertexArray::VertexArray() {
-  glGenVertexArrays(1, &m_ID);
+  CHECK_GL_ERROR(glGenVertexArrays(1, &m_ID));
+  CHECK_GL_ERROR(glBindVertexArray(m_ID));
 }
 
 VertexArray::~VertexArray() {
-  glDeleteVertexArrays(1, &m_ID);
+  // TODO: Move to OnDestroy Method.
+//  CHECK_GL_ERROR(glDeleteVertexArrays(1, &m_ID));
 }
 
 void VertexArray::SetLayout() {
@@ -62,8 +65,27 @@ void VertexArray::SetLayout() {
   m_AttribCount += 1;
 }
 
+void VertexArray::SetLayout2() {
+  size_t sf = sizeof(float);
+
+  // Position
+  CHECK_GL_ERROR(glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)(m_AttribCount * sf)));
+  CHECK_GL_ERROR(glEnableVertexAttribArray(m_AttribIDMax++));
+  m_AttribCount += 3;
+
+  // Texture Coordinates
+  CHECK_GL_ERROR(glVertexAttribPointer(m_AttribIDMax, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)(m_AttribCount * sf)));
+  CHECK_GL_ERROR(glEnableVertexAttribArray(m_AttribIDMax++));
+  m_AttribCount += 2;
+
+  // Normals
+  CHECK_GL_ERROR(glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)(m_AttribCount * sf)));
+  CHECK_GL_ERROR(glEnableVertexAttribArray(m_AttribIDMax++));
+  m_AttribCount += 3;
+}
+
 void VertexArray::Bind() {
-  glBindVertexArray(m_ID);
+  CHECK_GL_ERROR(glBindVertexArray(m_ID));
 }
 
 void VertexArray::AttachInstancedMatrixBuffer(const std::vector<glm::mat4> &pMatrices) {

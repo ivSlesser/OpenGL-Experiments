@@ -26,6 +26,7 @@
 #include "Common.h"
 
 #include "Framework/Repository.h"
+#include "Framework/Simulation.h"
 
 #include "System/Module.h"
 #include "System/Window.h"
@@ -40,6 +41,7 @@ class Application {
   Window mWindow;
   GUILayer mGui;
   Module *mModule{nullptr};
+  Simulation *mSimulation{nullptr};
   Transform mTransform;
   bool mWireframe = false;
 
@@ -49,7 +51,8 @@ class Application {
  private:
   void Init();
   void Destroy();
-  void ModuleSelector(std::string name);
+
+  void OnGUI(std::string name);
 
   // Used to switch modules.
   template<typename T>
@@ -61,6 +64,17 @@ class Application {
     mTransform = Transform();
     mModule = new T();
     mModule->OnInit(Renderer::GetCamera());
+  }
+
+  // Used to switch simulations.
+  template<typename T>
+  void SelectSimulation() {
+    if (mSimulation != nullptr) {
+      mSimulation->OnDestroy();
+      delete mSimulation;
+    }
+    mSimulation = new T();
+    mSimulation->OnInit();
   }
 
  public:

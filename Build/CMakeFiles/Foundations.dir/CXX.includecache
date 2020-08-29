@@ -1579,16 +1579,16 @@ glm/gtx/euler_angles.hpp
 ../Source/Elements/Marching Cubes/Marcher.h
 Common.h
 ../Source/Elements/Marching Cubes/Common.h
-Graphics/Vertex.h
-../Source/Elements/Marching Cubes/Graphics/Vertex.h
+Framework/Geometry/Vertex.h
+../Source/Elements/Marching Cubes/Framework/Geometry/Vertex.h
 Math/Random/Perlin.h
 ../Source/Elements/Marching Cubes/Math/Random/Perlin.h
 
 ../Source/Elements/Terrain.h
 Common.h
 ../Source/Elements/Common.h
-Graphics/Vertex.h
-../Source/Elements/Graphics/Vertex.h
+Framework/Geometry/Vertex.h
+../Source/Elements/Framework/Geometry/Vertex.h
 
 ../Source/Externals/ImGUI.hpp
 imgui/imgui.h
@@ -1622,66 +1622,6 @@ imgui_user.h
 
 ../Source/Externals/imgui/imgui_impl_opengl3.h
 
-../Source/Externals/stb_image.h
-stb_image.h
-../Source/Externals/stb_image.h
-stdio.h
--
-stdlib.h
--
-stdarg.h
--
-stddef.h
--
-stdlib.h
--
-string.h
--
-limits.h
--
-math.h
--
-stdio.h
--
-assert.h
--
-stdint.h
--
-emmintrin.h
--
-intrin.h
--
-arm_neon.h
--
-
-../Source/Externals/tiny_obj_loader.h
-map
--
-string
--
-vector
--
-cassert
--
-cctype
--
-cmath
--
-cstddef
--
-cstdlib
--
-cstring
--
-limits
--
-utility
--
-fstream
--
-sstream
--
-
 ../Source/Framework/Components/Material.h
 Common.h
 ../Source/Framework/Components/Common.h
@@ -1689,14 +1629,6 @@ Framework/GL/Shader.h
 ../Source/Framework/Components/Framework/GL/Shader.h
 random
 -
-
-../Source/Framework/Components/Transform.h
-Common.h
-../Source/Framework/Components/Common.h
-
-../Source/Framework/GL/DrawHandler.h
-Common.h
-../Source/Framework/GL/Common.h
 
 ../Source/Framework/GL/FrameBuffer.h
 Common.h
@@ -1725,24 +1657,12 @@ Common.h
 ../Source/Framework/GL/Common.h
 
 ../Source/Framework/GL/VertexBuffer.h
-Graphics/Vertex.h
-../Source/Framework/GL/Graphics/Vertex.h
+Framework/Geometry/Vertex.h
+../Source/Framework/GL/Framework/Geometry/Vertex.h
 
-../Source/Framework/Renderer.h
+../Source/Framework/Geometry/Vertex.h
 Common.h
-../Source/Framework/Common.h
-System/Module.h
-../Source/Framework/System/Module.h
-System/Window.h
-../Source/Framework/System/Window.h
-Framework/Components/Transform.h
-../Source/Framework/Framework/Components/Transform.h
-Framework/GL/Texture.h
-../Source/Framework/Framework/GL/Texture.h
-Graphics/Camera/PerspectiveCamera.h
-../Source/Framework/Graphics/Camera/PerspectiveCamera.h
-Framework/GL/Shader.h
-../Source/Framework/Framework/GL/Shader.h
+../Source/Framework/Geometry/Common.h
 
 ../Source/Graphics/Camera/Camera.h
 Common.h
@@ -1751,18 +1671,6 @@ Common.h
 ../Source/Graphics/Camera/PerspectiveCamera.h
 Camera.h
 ../Source/Graphics/Camera/Camera.h
-
-../Source/Graphics/Cube.h
-Common.h
-../Source/Graphics/Common.h
-Vertex.h
-../Source/Graphics/Vertex.h
-
-../Source/Graphics/FlatCube.h
-Common.h
-../Source/Graphics/Common.h
-Vertex.h
-../Source/Graphics/Vertex.h
 
 ../Source/Graphics/Mesh.h
 Common.h
@@ -1795,58 +1703,20 @@ Framework/GL/Shader.h
 ../Source/Graphics/Plane.h
 Common.h
 ../Source/Graphics/Common.h
-Vertex.h
-../Source/Graphics/Vertex.h
+Framework/Geometry/Vertex.h
+../Source/Graphics/Framework/Geometry/Vertex.h
 
 ../Source/Graphics/Quad.h
-Vertex.h
-../Source/Graphics/Vertex.h
-
-../Source/Graphics/Triangle.h
-Vertex.h
-../Source/Graphics/Vertex.h
-
-../Source/Graphics/Vertex.h
-Common.h
-../Source/Graphics/Common.h
+Framework/Geometry/Vertex.h
+../Source/Graphics/Framework/Geometry/Vertex.h
 
 ../Source/Math/Random/Perlin.h
 Common.h
 ../Source/Math/Random/Common.h
 
-../Source/Math/Random/Random.h
-Common.h
-../Source/Math/Random/Common.h
-
-../Source/System/GUI/GUILayer.h
-vector
--
-Externals/ImGUI.hpp
-../Source/System/GUI/Externals/ImGUI.hpp
-../Window.h
-../Source/System/Window.h
-
-../Source/System/Module.h
-Framework/GL/Shader.h
-../Source/System/Framework/GL/Shader.h
-Framework/GL/Texture.h
-../Source/System/Framework/GL/Texture.h
-Framework/Components/Transform.h
-../Source/System/Framework/Components/Transform.h
-Graphics/Camera/Camera.h
-../Source/System/Graphics/Camera/Camera.h
-
-../Source/System/Window.h
-Common.h
-../Source/System/Common.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Application.cpp
 Application.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Application.h
-Modules/Default Renderer Pass/TriangleModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/TriangleModule.h
-Modules/Default Renderer Pass/QuadModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/QuadModule.h
 Modules/Default Renderer Pass/CubeModule.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/CubeModule.h
 Modules/Default Renderer Pass/PlaneModule.h
@@ -1873,6 +1743,10 @@ Modules/Custom Renderer Pass/InstancedModule.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/InstancedModule.h
 Modules/Custom Renderer Pass/TerrainSceneModule.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/TerrainSceneModule.h
+Simulations/Simple/TriangleSim.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/TriangleSim.h
+Simulations/Simple/RectangleSim.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/RectangleSim.h
 Externals/stb_image.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Externals/stb_image.h
 
@@ -1881,6 +1755,8 @@ Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Common.h
 Framework/Repository.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Repository.h
+Framework/Simulation.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Simulation.h
 System/Module.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/System/Module.h
 System/Window.h
@@ -2010,14 +1886,6 @@ intrin.h
 arm_neon.h
 -
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Material.cpp
-Material.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Material.h
-sstream
--
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/System/GUI/GUILayer.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Material.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Common.h
@@ -2026,103 +1894,29 @@ Framework/GL/Shader.h
 random
 -
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Transform.cpp
-Transform.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Transform.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Transform.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Common.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/DrawHandler.cpp
-DrawHandler.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/DrawHandler.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/DrawHandler.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Mesh.h
 Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Common.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
+Framework/GL/VertexArray.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Framework/GL/VertexArray.h
+Framework/GL/VertexBuffer.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Framework/GL/VertexBuffer.h
+Framework/GL/IndexBuffer.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Framework/GL/IndexBuffer.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/FrameBuffer.cpp
-FrameBuffer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/FrameBuffer.h
-System/Window.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/System/Window.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/FrameBuffer.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
 Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Common.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
+./Vertex.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Vertex.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/IndexBuffer.cpp
-IndexBuffer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/IndexBuffer.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/IndexBuffer.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Vertex.h
 Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Common.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Shader.cpp
-Shader.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Shader.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Shader.h
-Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Common.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Texture.cpp
-Texture.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Texture.h
-Externals/stb_image.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Externals/stb_image.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Texture.h
-Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Common.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/TextureCube.cpp
-TextureCube.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/TextureCube.h
-Externals/stb_image.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Externals/stb_image.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/TextureCube.h
-Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Common.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/VertexArray.cpp
-VertexArray.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/VertexArray.h
-Graphics/Vertex.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Graphics/Vertex.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/VertexArray.h
-Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Common.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/VertexBuffer.cpp
-VertexBuffer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/VertexBuffer.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/VertexBuffer.h
-Graphics/Vertex.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/GL/Graphics/Vertex.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Renderer.cpp
-Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Renderer.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/System/GUI/GUILayer.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Renderer.h
 Common.h
@@ -2140,10 +1934,6 @@ Graphics/Camera/PerspectiveCamera.h
 Framework/GL/Shader.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Framework/GL/Shader.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Repository.cpp
-Repository.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Repository.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Repository.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Common.h
@@ -2153,70 +1943,16 @@ Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Material.h
 Framework/GL/Texture.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Framework/GL/Texture.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Simulation.cpp
-Simulation.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Simulation.h
+Framework/GL/Shader.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Framework/GL/Shader.h
+./Geometry/Mesh.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Mesh.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Simulation.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Common.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Mesh.cpp
-Mesh.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Mesh.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Mesh.h
-Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Common.h
-Framework/GL/VertexArray.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Framework/GL/VertexArray.h
-Framework/GL/VertexBuffer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Framework/GL/VertexBuffer.h
-Framework/GL/IndexBuffer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Framework/GL/IndexBuffer.h
-Framework/Components/Material.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Framework/Components/Material.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Model.cpp
-Model.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Model.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Model.h
-Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Common.h
-Graphics/Mesh.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Graphics/Mesh.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/MultiModel.cpp
-MultiModel.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/MultiModel.h
-Externals/tiny_obj_loader.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Externals/tiny_obj_loader.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Framework/Renderer.h
-Framework/GL/DrawHandler.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Framework/GL/DrawHandler.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/MultiModel.h
-Common.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Common.h
-Graphics/Mesh.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Graphics/Mesh.h
-Framework/Components/Material.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Framework/Components/Material.h
-Framework/GL/Shader.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Graphics/Framework/GL/Shader.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/FogModule.cpp
-FogModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/FogModule.h
-Math/Random/Random.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Math/Random/Random.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/System/GUI/GUILayer.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/Renderer.h
+./Repository.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Repository.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/FogModule.h
 Common.h
@@ -2236,14 +1972,6 @@ Graphics/Plane.h
 Graphics/Model.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Graphics/Model.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/GeometryQuadModule.cpp
-GeometryQuadModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/GeometryQuadModule.h
-Math/Random/Random.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Math/Random/Random.h
-Graphics/Quad.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Graphics/Quad.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/GeometryQuadModule.h
 System/Module.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/System/Module.h
@@ -2253,16 +1981,6 @@ Framework/GL/VertexBuffer.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/GL/VertexBuffer.h
 Framework/GL/Shader.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/GL/Shader.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.cpp
-GerstnerWaveModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.h
-Math/Random/Random.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Math/Random/Random.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/System/GUI/GUILayer.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/Renderer.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.h
 System/Module.h
@@ -2278,16 +1996,6 @@ Framework/GL/Shader.h
 Graphics/Plane.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Graphics/Plane.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/InstancedModule.cpp
-InstancedModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/InstancedModule.h
-Math/Random/Random.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Math/Random/Random.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/System/GUI/GUILayer.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/Renderer.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/InstancedModule.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Common.h
@@ -2300,16 +2008,6 @@ Graphics/Model.h
 Graphics/MultiModel.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Graphics/MultiModel.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/MaterialModelModule.cpp
-MaterialModelModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/MaterialModelModule.h
-Math/Random/Random.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Math/Random/Random.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/System/GUI/GUILayer.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/Renderer.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/MaterialModelModule.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Common.h
@@ -2321,16 +2019,6 @@ Graphics/Model.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Graphics/Model.h
 Graphics/MultiModel.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Graphics/MultiModel.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/PostProcessingModule.cpp
-PostProcessingModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/PostProcessingModule.h
-Math/Random/Random.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Math/Random/Random.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/System/GUI/GUILayer.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/Renderer.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/PostProcessingModule.h
 Common.h
@@ -2354,14 +2042,6 @@ Graphics/Quad.h
 Graphics/Model.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Graphics/Model.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/RayMarchingModule.cpp
-RayMarchingModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/RayMarchingModule.h
-Graphics/Quad.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Graphics/Quad.h
-System/Window.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/System/Window.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/RayMarchingModule.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Common.h
@@ -2375,18 +2055,6 @@ Framework/GL/IndexBuffer.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/GL/IndexBuffer.h
 Framework/GL/Shader.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/GL/Shader.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/TerrainSceneModule.cpp
-Graphics/Cube.h
--
-TerrainSceneModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/TerrainSceneModule.h
-Math/Random/Random.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Math/Random/Random.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/System/GUI/GUILayer.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Framework/Renderer.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/TerrainSceneModule.h
 Common.h
@@ -2412,16 +2080,6 @@ Framework/GL/TextureCube.h
 Graphics/Plane.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Custom Renderer Pass/Graphics/Plane.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/CubeModule.cpp
-CubeModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/CubeModule.h
-Graphics/Cube.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Graphics/Cube.h
-Graphics/FlatCube.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Graphics/FlatCube.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/System/GUI/GUILayer.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/CubeModule.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Common.h
@@ -2433,12 +2091,6 @@ Framework/GL/VertexBuffer.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Framework/GL/VertexBuffer.h
 Framework/GL/IndexBuffer.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Framework/GL/IndexBuffer.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/MarchingCubesModule.cpp
-MarchingCubesModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/MarchingCubesModule.h
-System/GUI/GUILayer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/System/GUI/GUILayer.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/MarchingCubesModule.h
 Common.h
@@ -2454,12 +2106,6 @@ Framework/GL/VertexBuffer.h
 Framework/GL/IndexBuffer.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Framework/GL/IndexBuffer.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/ModelModule.cpp
-ModelModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/ModelModule.h
-Graphics/MultiModel.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Graphics/MultiModel.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/ModelModule.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Common.h
@@ -2467,10 +2113,6 @@ System/Module.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/System/Module.h
 Graphics/Model.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Graphics/Model.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/PlaneModule.cpp
-PlaneModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/PlaneModule.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/PlaneModule.h
 Common.h
@@ -2486,26 +2128,6 @@ Framework/GL/IndexBuffer.h
 Graphics/Plane.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Graphics/Plane.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/QuadModule.cpp
-QuadModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/QuadModule.h
-Graphics/Quad.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Graphics/Quad.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/QuadModule.h
-System/Module.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/System/Module.h
-Framework/GL/VertexArray.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Framework/GL/VertexArray.h
-Framework/GL/VertexBuffer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Framework/GL/VertexBuffer.h
-Framework/GL/IndexBuffer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Framework/GL/IndexBuffer.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/TerrainModule.cpp
-TerrainModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/TerrainModule.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/TerrainModule.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Common.h
@@ -2520,19 +2142,29 @@ Framework/GL/IndexBuffer.h
 Elements/Terrain.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Elements/Terrain.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/TriangleModule.cpp
-TriangleModule.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/TriangleModule.h
-Graphics/Triangle.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Graphics/Triangle.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/RectangleSim.cpp
+RectangleSim.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/RectangleSim.h
+../../Framework/Geometry/Shapes2D.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/TriangleModule.h
-System/Module.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/System/Module.h
-Framework/GL/VertexArray.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Framework/GL/VertexArray.h
-Framework/GL/VertexBuffer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Modules/Default Renderer Pass/Framework/GL/VertexBuffer.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/RectangleSim.h
+Common.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/Common.h
+../../Framework/Simulation.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Simulation.h
+
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/TriangleSim.cpp
+TriangleSim.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/TriangleSim.h
+../../Framework/Geometry/Shapes2D.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
+
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/TriangleSim.h
+Common.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Simulations/Simple/Common.h
+../../Framework/Simulation.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Simulation.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/System/GUI/GUILayer.h
 vector
@@ -2552,19 +2184,7 @@ Framework/Components/Transform.h
 Graphics/Camera/Camera.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/System/Graphics/Camera/Camera.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/System/Window.cpp
-Window.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/System/Window.h
-Framework/Renderer.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/System/Framework/Renderer.h
-Graphics/Camera/PerspectiveCamera.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/System/Graphics/Camera/PerspectiveCamera.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/System/Window.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/System/Common.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/main.cpp
-Application.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Application.h
 

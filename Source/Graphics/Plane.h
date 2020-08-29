@@ -23,7 +23,7 @@
 #pragma once
 
 #include "Common.h"
-#include "Vertex.h"
+#include "Framework/Geometry/Vertex.h"
 
 class Plane {
 

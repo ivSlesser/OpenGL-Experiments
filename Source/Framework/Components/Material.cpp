@@ -60,3 +60,11 @@ void Material::DisplayWithGUI() {
   ImGui::DragFloat((Name + " Shine").c_str(), &Shine, 2.0f, 0.0f, 128.0f);
   ImGui::DragFloat((Name + " Dissolve").c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
 }
+
+void Material::SubmitAsUniform(Shader *pShader) {
+  pShader->Vec3("u_Material.Ambient", Ambient);
+  pShader->Vec3("u_Material.Diffuse", Diffuse);
+  pShader->Vec3("u_Material.Specular", Specular);
+  pShader->Float("u_Material.Shine", Shine);
+  pShader->Float("u_Material.Dissolve", Dissolve);
+}

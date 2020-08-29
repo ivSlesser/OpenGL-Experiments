@@ -30,8 +30,8 @@ class IndexBuffer {
   unsigned int id;
 
  public:
-  IndexBuffer() {}
+  IndexBuffer();
   virtual ~IndexBuffer();
-  void Init(const std::vector<unsigned> &data);
+  void Init(const std::vector<uint32_t> &data);
   void Bind();
 };

@@ -45,21 +45,21 @@ Window::Window() {
 
   mWindow = glfwCreateWindow(mConfig.width, mConfig.height, mConfig.title, NULL, NULL);
   if (mWindow == NULL) {
-	std::cout << "Failed to create GLFW window" << std::endl;
-	glfwTerminate();
-	std::abort();
+    std::cout << "Failed to create GLFW window" << std::endl;
+    glfwTerminate();
+    std::abort();
   }
   glfwMakeContextCurrent(mWindow);
 
-  glfwSwapInterval( 0 );
+  glfwSwapInterval(0);
 
   glfwSetFramebufferSizeCallback(mWindow, Window::OnResize);
   glfwSetCursorPosCallback(mWindow, Window::OnMouseMove);
   glfwSetMouseButtonCallback(mWindow, Window::OnMouseButton);
 
   if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-	std::cout << "Failed to initialize GLAD" << std::endl;
-	std::abort();
+    std::cout << "Failed to initialize GLAD" << std::endl;
+    std::abort();
   }
 
   glEnable(GL_DEPTH_TEST);
@@ -72,7 +72,7 @@ Window::~Window() {
 }
 
 void Window::Begin() {
-  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+  glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
@@ -84,7 +84,7 @@ void Window::ProcessInput() {
   glfwPollEvents();
 
   if (glfwGetKey(mWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	glfwSetWindowShouldClose(mWindow, true);
+    glfwSetWindowShouldClose(mWindow, true);
 }
 
 void Window::OnResize(GLFWwindow *window, int width, int height) {
@@ -102,36 +102,36 @@ void Window::OnMouseMove(GLFWwindow *window, double xpos, double ypos) {
 
   static bool firstMouse = true;
   if (sInstance->mIsRightMouseHeld) {
-	if (firstMouse) {
-	  prevX = xpos;
-	  prevY = ypos;
-	  firstMouse = false;
-	}
+    if (firstMouse) {
+      prevX = xpos;
+      prevY = ypos;
+      firstMouse = false;
+    }
 
-	float xoffset = xpos - prevX;
-	float yoffset = prevY - ypos;
+    float xoffset = xpos - prevX;
+    float yoffset = prevY - ypos;
 
-	prevX = xpos;
-	prevY = ypos;
+    prevX = xpos;
+    prevY = ypos;
 
-	Renderer::GetCamera().AddAndUpdateRotation(glm::vec3(yoffset, xoffset, 0.0f));
+    Renderer::GetCamera().AddAndUpdateRotation(glm::vec3(yoffset, xoffset, 0.0f));
   } else {
-	firstMouse = true;
+    firstMouse = true;
   }
 }
 
 void Window::OnMouseButton(GLFWwindow *m, int button, int action, int mods) {
   if (button == GLFW_MOUSE_BUTTON_LEFT) {
-	if (action == GLFW_PRESS)
+    if (action == GLFW_PRESS)
       sInstance->mIsLeftMouseHeld = true;
-	else if (action == GLFW_RELEASE)
+    else if (action == GLFW_RELEASE)
       sInstance->mIsLeftMouseHeld = false;
   }
 
   if (button == GLFW_MOUSE_BUTTON_RIGHT) {
-	if (action == GLFW_PRESS)
+    if (action == GLFW_PRESS)
       sInstance->mIsRightMouseHeld = true;
-	else if (action == GLFW_RELEASE)
+    else if (action == GLFW_RELEASE)
       sInstance->mIsRightMouseHeld = false;
   }
 }

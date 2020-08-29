@@ -42,3 +42,4 @@ const glm::mat4 &Transform::Transformation() {
   // Always return from cache.
   return tf;
 }
+

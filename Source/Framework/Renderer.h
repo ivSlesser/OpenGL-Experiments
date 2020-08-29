@@ -44,32 +44,29 @@ class Renderer {
   PerspectiveCamera camera;
 
   // Texture Related ---------------------------------------------------------------------------------------------------
+
+  // TODO: Add Textures To Repo
   bool use_texture = false;
   Texture white_texture;
   Texture cat_texture = Texture("Resources/Textures/cat.jpg");
   Texture ref_texture = Texture("Resources/Textures/Debug.png");
 
   // Shader Related ----------------------------------------------------------------------------------------------------
-  bool use_lighting = false;
-  Shader lit_shader;
-  Shader unlit_shader;
-  glm::vec3 light_color = glm::vec3(1.0f);
-  glm::vec3 light_position = glm::vec3(100.0f, 1000.0f, 100.0f);
+  glm::vec3 mLightColor = glm::vec3(1.0f);
+  glm::vec3 mLightPosition = glm::vec3(1000.0f, 1000.0f, 1000.0f);
 
   // -------------------------------------------------------------------------------------------------------------------
 
  public:
   static Renderer *Access();
   static void Update(double dt = 1.0);
-  static void Draw(Window &window, Transform &transform, Module *module);
+  static void Draw();
   static void OnGUI();
 
   inline static Camera &GetCamera() { return Renderer::Access()->camera; }
 
-  inline const glm::vec3 &GetLightColor() const { return light_color; }
-  inline const glm::vec3 &GetLightPosition() const { return light_position; }
-  inline Shader &GetLitShader() { return lit_shader; }
-  inline Shader &GetUnlitShader() { return lit_shader; }
+  inline const glm::vec3 &GetLightColor() const { return mLightColor; }
+  inline const glm::vec3 &GetLightPosition() const { return mLightPosition; }
 
   static void ClearGLError() {
     unsigned errorCode;
@@ -79,18 +76,22 @@ class Renderer {
 
   static void CheckGLError(std::string msg = "") {
     auto res = glGetError();
-
     if (res != 0) {
       std::cout << msg << " -> " << res << std::endl;
     }
-
   }
 
   inline static void SetupDefaultTexture(Window &window) {
     CHECK_GL_ERROR(glActiveTexture(GL_TEXTURE0));
     Renderer::Access()->white_texture.Bind();
+    // TODO: Investigate if needed.
     if (Renderer::Access()->white_texture.HasTransparency()) window.EnableTransparency();
     else window.DisableTransparency();
+  }
+
+  inline static void SetupDefaultTexture() {
+    CHECK_GL_ERROR(glActiveTexture(GL_TEXTURE0));
+    Renderer::Access()->white_texture.Bind();
   }
 
  private:

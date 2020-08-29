@@ -28,14 +28,19 @@
 #include "./Components/Transform.h"
 #include "./Components/Material.h"
 #include "Framework/GL/Texture.h"
+#include "Framework/GL/Shader.h"
 
-// TODO: Add Meshes
-// TODO: Add Shaders
+#include "./Geometry/Mesh.h"
+
+// TODO: Call OnDestroy for complex items (Texture, Buffers, Mesh etc.)
+
 // TODO: Add Cameras
 
+// TODO: integrate textures into this.
 struct RenderingInstance {
   uint32_t MeshID;
-  uint32_t InstanceID;
+  uint32_t TransformID;
+  uint32_t MaterialID;
 };
 
 enum RenderType {
@@ -45,6 +50,11 @@ enum RenderType {
 class Repository {
 
  private:
+  static Repository *sInstance;
+
+  // Meshes ------------------------------------------------------------------------------------------------------------
+  std::vector<Mesh2> mMeshes;
+  std::map<std::string, uint32_t> mMeshesMap;
 
   // Instances ---------------------------------------------------------------------------------------------------------
   std::vector<RenderingInstance> mInstances;
@@ -60,27 +70,67 @@ class Repository {
   std::vector<Texture> mTextures;
   std::map<std::string, uint32_t> mTexturesMap;
 
+  // Shaders ----------------------------------------------------------------------------------------------------------
+  std::vector<Shader> mShaders;
+  std::map<std::string, uint32_t> mShadersMap;
+
  public:
+  inline static Repository *Get() { return sInstance; };
   bool Init();
   void Destroy();
 
+  // General -----------------------------------------------------------------------------------------------------------
+  void ClearAll();
+  void ClearInstancesAndTransforms();
+
+  // Meshes ------------------------------------------------------------------------------------------------------------
+
+  uint32_t AddMesh(const Mesh2 &pMesh);
+  Mesh2 *GetMesh(const std::string &pName);
+  uint32_t GetMeshID(const std::string &pName);
+  Mesh2 *GetMesh(uint32_t pID);
+  bool MeshExists(const std::string &pName);
+  void ClearMeshes();
+
   // Instances ---------------------------------------------------------------------------------------------------------
-  uint32_t AddTransform(uint32_t pMeshID, const Transform &pTransform);
+
+  uint32_t AddInstance(int32_t pMeshID, const Transform &pTransform, uint32_t pMaterialID = 0);
   RenderingInstance *GetInstance(uint32_t pID);
+  inline const std::vector<RenderingInstance> &GetAllRenderingInstances() const { return mInstances; }
+
+  void ClearInstances();
 
   // Transforms --------------------------------------------------------------------------------------------------------
-  uint32_t AddTransform(const Transform &pTransform);
+
+  uint32_t AddTransform(const Transform &pTransform = Transform());
   Transform *GetTransform(uint32_t pID);
+  Transform *GetTransformForInstance(uint32_t pInstanceID);
+  void ClearTransforms();
 
   // Materials ---------------------------------------------------------------------------------------------------------
+
   uint32_t AddMaterial(const Material &pMaterial);
   Material *GetMaterial(const std::string &pName);
   uint32_t GetMaterialID(const std::string &pName);
-  Material *GetMaterial(uint32_t pID);
+  Material *GetMaterial(uint32_t pID = 0);
+  bool MaterialExists(const std::string &pName);
+  void ClearMaterials();
 
   // Textures ----------------------------------------------------------------------------------------------------------
+
   uint32_t AddTexture(const Texture &pTexture);
   Texture *GetTexture(const std::string &pName);
   uint32_t GetTextureID(const std::string &pName);
-  Texture *GetTexture(uint32_t pID);
+  Texture *GetTexture(uint32_t pID = 0);
+  bool TextureExists(const std::string &pName);
+  void ClearTextures();
+
+  // Shaders ----------------------------------------------------------------------------------------------------------
+
+  uint32_t AddShader(const std::string &pName, const Shader &pShader);
+  Shader *GetShader(const std::string &pName);
+  uint32_t GetShaderID(const std::string &pName);
+  Shader *GetShader(uint32_t pID = 0);
+  bool ShaderExists(const std::string &pName);
+  void ClearShaders();
 };

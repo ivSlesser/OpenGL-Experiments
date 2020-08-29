@@ -20,83 +20,73 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
 #include "Renderer.h"
 #include "System/GUI/GUILayer.h"
+#include "Repository.h"
 
 Renderer *Renderer::s_Instance = nullptr;
 
 Renderer *Renderer::Access() {
-
   if (s_Instance == nullptr) {
     s_Instance = new Renderer();
   }
-
   return s_Instance;
 }
 
 Renderer::Renderer() {
-  // Unlit Shader ------------------------------------------------------------------------------------------------------
-  unlit_shader.AddStage(GL_VERTEX_SHADER, "Resources/unlit.basic.vertex.glsl");
-  unlit_shader.AddStage(GL_FRAGMENT_SHADER, "Resources/unlit.basic.fragment.glsl");
-  unlit_shader.Compile();
-  unlit_shader.Int("u_Texture0", 0);
 
-  // Lit Shader --------------------------------------------------------------------------------------------------------
-  lit_shader.AddStage(GL_VERTEX_SHADER, "Resources/lit.basic.vertex.glsl");
-  lit_shader.AddStage(GL_FRAGMENT_SHADER, "Resources/lit.basic.fragment.glsl");
-  lit_shader.Compile();
-  lit_shader.Int("u_Texture0", 0);
+  // Camera TODO: Integrate into repo
+//  GetCamera().SetPosition(0.0f);
+
+  // Default Shader ----------------------------------------------------------------------------------------------------
+  Shader shader;
+  shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/default.vertex.glsl");
+  shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/default.fragment.glsl");
+  if (!shader.Compile()) {
+    throw std::invalid_argument("Shader compilation failed.");
+  }
+  Repository::Get()->AddShader("Default", shader);
 }
 
 void Renderer::Update(double dt) {
   Renderer::Access()->camera.Update(dt);
 }
 
-void Renderer::Draw(Window &window, Transform &transform, Module *module) {
+void Renderer::Draw() {
 
   Renderer *ptr = Renderer::Access();
 
-  // Draw --------------------------------------------------------------------------------------------------------------
+  glActiveTexture(GL_TEXTURE0);
 
-  if (module->OverridesShader()) {
+  Shader *shader = Repository::Get()->GetShader(); // Default Shader
+  shader->Bind();
 
-    window.EnableTransparency();
-    module->OnDraw(transform, ptr->camera);
+  shader->Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
+  shader->Vec3("u_LightPosition", ptr->mLightPosition);
+  shader->Vec3("u_LightColor", ptr->mLightColor);
+  shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
 
-  } else {
+  Renderer::SetupDefaultTexture();
 
-    glActiveTexture(GL_TEXTURE0);
+  const std::vector<RenderingInstance> &instances = Repository::Get()->GetAllRenderingInstances();
 
-    if (ptr->use_lighting) {
-      ptr->lit_shader.Bind();
-      ptr->lit_shader.Mat4("u_Model", transform.Transformation());
-      ptr->lit_shader.Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
-      ptr->lit_shader.Vec3("u_LightPosition", ptr->light_position);
-      ptr->lit_shader.Vec3("u_LightColor", ptr->light_color);
-      ptr->lit_shader.Vec3("u_CameraPosition", ptr->camera.GetPosition());
-    } else {
-      ptr->unlit_shader.Bind();
-      ptr->unlit_shader.Mat4("u_Model", transform.Transformation());
-      ptr->unlit_shader.Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
-    }
+  for (const RenderingInstance &instance : instances) {
 
-    if (ptr->use_texture) {
-//      ptr->cat_texture.Bind();
-//      if (ptr->cat_texture.HasTransparency()) window.EnableTransparency();
-      ptr->ref_texture.Bind();
+    // Get Components
+    Mesh2 *mesh = Repository::Get()->GetMesh(instance.MeshID);
+    Transform *transform = Repository::Get()->GetTransform(instance.TransformID);
+    Material *material = Repository::Get()->GetMaterial(instance.MaterialID);
 
-      if (ptr->ref_texture.HasTransparency()) {
-        window.EnableTransparency();
-      } else {
-        window.DisableTransparency();
-      }
+    // Upload Model Matrix
+    shader->Mat4("u_Model", transform->Transformation());
 
-    } else {
-      Renderer::SetupDefaultTexture(window);
-    }
+    // Upload Material
+    material->SubmitAsUniform(shader);
 
-    module->OnDraw(ptr->use_lighting ? ptr->lit_shader : ptr->unlit_shader, ptr->camera);
+    // Do draw
+    mesh->Bind();
+    CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, mesh->IndexCount, GL_UNSIGNED_INT, 0));
+
   }
 
 }
@@ -109,12 +99,8 @@ void Renderer::OnGUI() {
     ImGui::Checkbox("Use texture?", &ptr->use_texture);
 
     // Shader ---------------------------------------------------------------------
-    ImGui::Checkbox("Use Phong shading?", &ptr->use_lighting);
-
-    if (ptr->use_lighting) {
-      ImGui::ColorEdit3("Light Color", &ptr->light_color.x);
-      ImGui::DragFloat3("Light Position", &ptr->light_position.x, 1.0f);
-    }
+    ImGui::ColorEdit3("Light Color", &ptr->mLightColor.x);
+    ImGui::DragFloat3("Light Position", &ptr->mLightPosition.x, 1.0f);
 
     // Camera ---------------------------------------------------------------------
     ImGui::DragFloat3("Camera Position", &ptr->camera.GetPosition().x, -1000.0f, 1000.0f);

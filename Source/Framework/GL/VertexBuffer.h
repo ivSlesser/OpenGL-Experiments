@@ -23,7 +23,7 @@
 
 #pragma once
 
-#include "Graphics/Vertex.h"
+#include "Framework/Geometry/Vertex.h"
 
 class VertexBuffer {
 
@@ -31,9 +31,11 @@ class VertexBuffer {
   unsigned int id;
 
  public:
-  VertexBuffer() {}
-  void Init(const std::vector<Vertex> &data);
+  VertexBuffer();
   virtual ~VertexBuffer();
+  void Init(const std::vector<Vertex> &data);
+  void Init(const std::vector<Vertex2> &data);
+
   void Bind();
 
 };

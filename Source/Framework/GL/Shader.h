@@ -33,7 +33,7 @@ class Shader {
   std::vector<int> m_Stages;
 
  public:
-  Shader() {}
+  Shader();
   bool Compile();
   virtual ~Shader();
   void Bind();
@@ -59,4 +59,6 @@ class Shader {
   virtual bool CompileShader(const char *filePath, int &id);
   int UniformLocation(const char *name);
   void RemoveStoredStages();
+  const char *TypeString(uint32_t type);
+  void LogFullProgramInfo();
 };

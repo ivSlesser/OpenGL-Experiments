@@ -14,14 +14,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/Framework/Repository.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Framework/Repository.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Framework/Simulation.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Framework/Simulation.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Shaders/default.fragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/Shaders/default.vertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Mesh.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Simulations/Simple/RectangleSim.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Simulations/Simple/RectangleSim.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Simulations/Simple/TriangleSim.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/OpenGL/Shader.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Quad.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Quad.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Triangle.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Vertex.cpp.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
@@ -30,34 +35,41 @@
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Elements/Marching Cubes/Marcher.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Elements/Marching Cubes/Marcher.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Elements/Terrain.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Elements/Terrain.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Components/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Material.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Components/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Material.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Components/Transform.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Transform.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/IndexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/IndexBuffer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/IndexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/IndexBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/Shader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/Shader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexArray.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexArray.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexArray.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexArray.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Simulation.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Simulation.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Cube.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Cube.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/FlatCube.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/FlatCube.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Graphics/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Mesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/MultiModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/MultiModel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/MultiModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/MultiModel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Properties/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Material.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Properties/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Material.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Properties/Transform.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Transform.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Properties/Transform.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Transform.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/FogModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/FogModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/InstancedModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/InstancedModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/MaterialModelModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/MaterialModelModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/PostProcessingModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/PostProcessingModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/DrawHandler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/DrawHandler.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/FrameBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/FrameBuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/FrameBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/FrameBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Shader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Texture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Texture.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/Texture.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/Texture.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/OpenGL/TextureCube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OpenGL/TextureCube.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Module.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Module.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Plane.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Plane.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Quad.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Graphics/Quad.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Triangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Triangle.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/Simple/TriangleSim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Vertex.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Vertex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Vertex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/TriangleModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/TriangleModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/TriangleModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/TriangleModule.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,6 +80,20 @@
   </component>
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileTemplateManagerImpl">
@@ -89,19 +115,19 @@
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Source/Framework/Geometry" />
+      <recent name="$PROJECT_DIR$/Source/Framework/GL" />
+      <recent name="$PROJECT_DIR$/Source/Framework/Components" />
+      <recent name="$PROJECT_DIR$/Source/Framework" />
+      <recent name="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/Shaders/Terrain Scene" />
       <recent name="$PROJECT_DIR$/Source/Modules/Default Renderer Pass" />
       <recent name="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass" />
       <recent name="$PROJECT_DIR$/Source/OpenGL" />
       <recent name="$PROJECT_DIR$/Resources/Shaders/Model" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Source/Framework/Components" />
-      <recent name="$PROJECT_DIR$/Source/Framework" />
-      <recent name="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass" />
-      <recent name="$PROJECT_DIR$/Resources/Shaders" />
-      <recent name="$PROJECT_DIR$/Source/Modules/Default Renderer Pass" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -186,12 +212,23 @@
       <workItem from="1598540046786" duration="1672000" />
       <workItem from="1598541876835" duration="332000" />
       <workItem from="1598606749826" duration="1088000" />
-      <workItem from="1598611705456" duration="3452000" />
+      <workItem from="1598611705456" duration="3709000" />
+      <workItem from="1598718772307" duration="16192000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -216,15 +253,10 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/Framework/Renderer.h</url>
-          <line>83</line>
-          <option name="timeStamp" value="15" />
+          <line>79</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="CMakeRunConfiguration">
-        <watch expression="vertices[index]" language="ObjectiveC" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

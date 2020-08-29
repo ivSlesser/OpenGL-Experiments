@@ -27,7 +27,7 @@
 
 class VertexArray {
 
- private:
+ protected:
   unsigned int m_ID;
   unsigned int m_IBufferID;
   unsigned int m_AttribIDMax = 0;
@@ -36,7 +36,8 @@ class VertexArray {
  public:
   VertexArray();
   virtual ~VertexArray();
-  void SetLayout();
+  void SetLayout(); // TODO: Refactor out this
+  void SetLayout2();
   void Bind();
   void AttachInstancedMatrixBuffer(const std::vector<glm::mat4> &pMatrices);
 };

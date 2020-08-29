@@ -28,7 +28,7 @@
 #include <random>
 
 struct Material {
-  std::string Name = "Default Material " + std::to_string(rand());
+  std::string Name = "Default";
   glm::vec3 Ambient = glm::vec3(1.0f);
   glm::vec3 Diffuse = glm::vec3(1.0f);
   glm::vec3 Specular = glm::vec3(1.0f);
@@ -36,6 +36,7 @@ struct Material {
   float Dissolve = 1.0f; // 1: Opaque, 0: Transparent
   bool LinkAmbientDiffuse = true;
 
+  void SubmitAsUniform(Shader *pShader);
   void SubmitAsUniform(Shader &pShader, unsigned int index = 0);
   void DisplayWithGUI();
 };

@@ -22,17 +22,22 @@
 
 
 #include "IndexBuffer.h"
+#include "Framework/Renderer.h"
 
-IndexBuffer::~IndexBuffer() {
-  glDeleteBuffers(1, &id);
+IndexBuffer::IndexBuffer() {
+  CHECK_GL_ERROR(glGenBuffers(1, &id));
 }
 
-void IndexBuffer::Init(const std::vector<unsigned> &data) {
-  glGenBuffers(1, &id);
-  Bind();
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, data.size() * sizeof(unsigned), data.data(), GL_STATIC_DRAW);
+IndexBuffer::~IndexBuffer() {
+//   TODO: Move to OnDestroy Method.
+//  CHECK_GL_ERROR(glDeleteBuffers(1, &id));
+}
+
+void IndexBuffer::Init(const std::vector<uint32_t> &data) {
+  CHECK_GL_ERROR(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id));
+  CHECK_GL_ERROR(glBufferData(GL_ELEMENT_ARRAY_BUFFER, data.size() * sizeof(uint32_t), data.data(), GL_STATIC_DRAW));
 }
 
 void IndexBuffer::Bind() {
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
+  CHECK_GL_ERROR(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id));
 }
