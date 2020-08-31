@@ -65,9 +65,6 @@ void Renderer::Draw() {
   shader->Vec3("u_LightColor", ptr->mLightColor);
   shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
 
-  // TODO: Get ID from instance, also check for alpha & handle.
-  Repository::Get()->GetTexture()->Bind();
-
   const std::vector<RenderingInstance> &instances = Repository::Get()->GetAllRenderingInstances();
 
   for (const RenderingInstance &instance : instances) {
@@ -76,6 +73,7 @@ void Renderer::Draw() {
     Mesh *mesh = Repository::Get()->GetMesh(instance.MeshID);
     Transform *transform = Repository::Get()->GetTransform(instance.TransformID);
     Material *material = Repository::Get()->GetMaterial(instance.MaterialID);
+    Texture *texture = Repository::Get()->GetTexture(instance.TextureID); // TODO: Also need to check for alpha.
 
     // Upload Model Matrix
     shader->Mat4("u_Model", transform->Transformation());

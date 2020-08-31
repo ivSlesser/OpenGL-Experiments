@@ -32,15 +32,11 @@
 
 #include "./Geometry/Mesh.h"
 
-// TODO: Call OnDestroy for complex items (Texture, Buffers, Mesh etc.)
-
-// TODO: Add Cameras
-
-// TODO: integrate textures into this.
 struct RenderingInstance {
   uint32_t MeshID;                                // ID of the mesh for this instance
   uint32_t TransformID;                           // ID of the transform for this instance
   uint32_t MaterialID;                            // ID of the material for this instance
+  uint32_t TextureID;                            // ID of the texture for this instance
 };
 
 enum RenderType {
@@ -70,7 +66,7 @@ class Repository {
   std::vector<Texture> mTextures;                 // Texture storage
   std::map<std::string, uint32_t> mTexturesMap;   // Texture lookup map
 
-  // Shaders ----------------------------------------------------------------------------------------------------------
+  // Shaders -----------------------------------------------------------------------------------------------------------
   std::vector<Shader> mShaders;                   // Shader storage
   std::map<std::string, uint32_t> mShadersMap;    // Shader lookup map
 
@@ -95,7 +91,7 @@ class Repository {
 
   // Instances ---------------------------------------------------------------------------------------------------------
 
-  uint32_t AddInstance(int32_t pMeshID, const Transform &pTransform, uint32_t pMaterialID = 0);
+  uint32_t AddInstance(int32_t pMeshID, const Transform &pTransform, uint32_t pMaterialID = 0, uint32_t pTextureID = 0);
   RenderingInstance *GetInstance(uint32_t pID);
   inline const std::vector<RenderingInstance> &GetAllRenderingInstances() const { return mInstances; }
   void ClearInstances();
