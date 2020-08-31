@@ -31,13 +31,15 @@ class SimpleGeometrySim : public Simulation {
  private:
   enum Selection {
     TRIANGLE = 0,
-    RECTANGLE = 1,
-    CUBE = 2,
-    CUBEFLAT = 3,
-    PLANE = 4,
+    RECTANGLE,
+    POLYGON,
+    CUBE,
+    CUBEFLAT,
+    PLANE,
   };
 
-  Selection mSelection = Selection::TRIANGLE;     // Currently selected geometry component
+  Selection mSelection{Selection::TRIANGLE};          // Currently selected geometry component
+  uint32_t mNumSidesPolygon{5};                       // Number of sides of the polygon
 
  public:
   void OnCreate() override;
@@ -51,7 +53,11 @@ class SimpleGeometrySim : public Simulation {
   // Shape Creation
   void CreateTriangle();
   void CreateRectangle();
+  void CreatePolygon(uint32_t pSides);
   void CreateCube();
   void CreateFlatCube();
   void CreatePlane();
+
+  // Shape Specific
+  void ChangePolygonSides(uint32_t pSides);
 };

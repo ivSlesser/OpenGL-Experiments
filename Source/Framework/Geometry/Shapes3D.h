@@ -52,11 +52,9 @@ struct CubeFlat {
 struct Plane {
   std::vector<Vertex> mVertices;
   std::vector<unsigned> mIndices;
-
   Plane(const glm::vec2 &pSize = glm::vec2(10.0f), float pResolution = 5);
   inline std::vector<Vertex> &Vertices() { return mVertices; }
   inline std::vector<unsigned> &Indices() { return mIndices; };
   inline const int VertexCount() const { return mVertices.size(); };
   inline const int IndexCount() const { return mIndices.size(); }
-
 };

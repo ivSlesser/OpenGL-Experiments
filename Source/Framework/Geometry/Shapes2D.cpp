@@ -59,3 +59,43 @@ std::vector<uint32_t> Rectangle::Indices(uint32_t pOffset) {
       1 + pOffset, 2 + pOffset, 3 + pOffset    // Second triangle
   };
 }
+
+// Polygon -------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+void Polygon::Create(float pSides) {
+
+  if (pSides < 3) {
+    throw std::invalid_argument("Number of sides must be 3 or greater.");
+  }
+
+  // Central vertex
+  mVertices.push_back(
+      {{0.0f, 0.0f, 0.0f}, {1.0f, 1.0f}}
+  );
+
+  float halfPI = M_PI * 0.5f;
+  float angleStep = (2 * M_PI) / pSides;
+
+  for (int i = 0; i < pSides; ++i) {
+    mIndices.push_back(0); // Centre.
+
+    float x1 = 1.0f * cos(i * angleStep + halfPI);
+    float y1 = 1.0f * sin(i * angleStep + halfPI);
+
+    mIndices.push_back(mVertices.size());
+
+    mVertices.push_back(
+        {{x1, y1, 0.0f}, {1.0f, 1.0f}}
+    );
+
+    float x2 = 1.0f * cos((i + 1) * angleStep + halfPI);
+    float y2 = 1.0f * sin((i + 1) * angleStep + halfPI);
+
+    mIndices.push_back(mVertices.size());
+
+    mVertices.push_back(
+        {{x2, y2, 0.0f}, {1.0f, 1.0f}}
+    );
+  }
+}

@@ -45,3 +45,16 @@ struct Rectangle {
   inline static uint32_t VertexCount() { return 4; };
   inline static uint32_t IndexCount() { return 6; };
 };
+
+// Polygon -------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+struct Polygon {
+  std::vector<Vertex> mVertices;
+  std::vector<unsigned> mIndices;
+  void Create(float pSides = 5);
+  inline std::vector<Vertex> &Vertices() { return mVertices; }
+  inline std::vector<unsigned> &Indices() { return mIndices; };
+  inline const int VertexCount() const { return mVertices.size(); };
+  inline const int IndexCount() const { return mIndices.size(); }
+};

@@ -64,6 +64,8 @@ void SimpleGeometrySim::SetSelection(Selection pSelection) {
       break;
     case Selection::RECTANGLE:CreateRectangle();
       break;
+    case Selection::POLYGON:CreatePolygon(mNumSidesPolygon);
+      break;
     case Selection::CUBE:CreateCube();
       break;
     case Selection::CUBEFLAT:CreateFlatCube();
@@ -92,6 +94,11 @@ void SimpleGeometrySim::OnGUI() {
       return;
     }
 
+    if (ImGui::Button("Polygon")) {
+      SetSelection(Selection::POLYGON);
+      return;
+    }
+
     if (ImGui::Button("Cube (Smooth)")) {
       SetSelection(Selection::CUBE);
       return;
@@ -107,6 +114,14 @@ void SimpleGeometrySim::OnGUI() {
       return;
     }
     ImGui::NewLine();
+  }
+
+  // Polygon -----------------------------------------------------------------------------------------------------------
+  if (mSelection == Selection::POLYGON) {
+    float numSidesCopy = mNumSidesPolygon;
+    if (ImGui::DragFloat("Polygon Sides", &numSidesCopy, 1.0f, 3.0f, 100.0f)) {
+      ChangePolygonSides((uint32_t) numSidesCopy);
+    }
   }
 
   // Transform ---------------------------------------------------------------------------------------------------------
@@ -202,6 +217,34 @@ void SimpleGeometrySim::CreatePlane() {
   Transform t;
   t.SetRotate({-10.0f, 0.0f, 0.0f});
   mInstances.push_back(Repository::Get()->AddInstance(plane, t));
+}
 
+/**
+ * Create an N sided polygon where N is specified as a parameter.
+ * This is a general use function that simple performs the creation. For switching the polygon
+ * to a differing number of sides, use ChangePolygonSides(pSides)
+ *
+ * @param pSides        Number of sides in the shape.
+ */
+void SimpleGeometrySim::CreatePolygon(uint32_t pSides) {
+  Polygon p;
+  p.Create(pSides);
+  Mesh polygonMesh;
+  polygonMesh.Create("Polygon " + std::to_string(pSides), p.Vertices(), p.Indices());
+  uint32_t polygon = Repository::Get()->AddMesh(polygonMesh);
+  mInstances.push_back(Repository::Get()->AddInstance(polygon, Transform()));
+}
+
+/**
+ * Handles creation of a polygon with the specified number of sides, clearing existing
+ * instances and transforms.
+ *
+ * @param pSides        Number of sides in the shape.
+ */
+void SimpleGeometrySim::ChangePolygonSides(uint32_t pSides) {
+  mInstances.clear();
+  Repository::Get()->ClearInstancesAndTransforms();
+  mNumSidesPolygon = pSides;
+  CreatePolygon(pSides);
 }
 
