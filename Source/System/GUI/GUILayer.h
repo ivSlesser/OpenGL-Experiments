@@ -35,20 +35,20 @@
 
 // Encapsulate the debug GUI interface, based on ImGUI.
 // Allows display and adjustment of set variables.
-class GUILayer
-{
+class GUILayer {
+
  private:
-  std::vector<std::function<void()>> windows; // Display elements
-  ImGuiIO *io; // ImGUI context
-  GLFWwindow *window; // Rendering context
+  std::vector<std::function<void()>> mWindows;     // Display elements
+  ImGuiIO *mIO;                                    // ImGUI context
+  GLFWwindow *mWindow;                             // Rendering context
 
  public:
   GUILayer() {};
   virtual ~GUILayer();
 
   void ConstantElements();
-  void AddElement(std::function<void()> window);
-  bool Create(GLFWwindow *_window);
+  void AddElement(std::function<void()> pWindow);
+  bool Create(GLFWwindow *pWindow);
   void Render();
 
   void Begin();

@@ -28,28 +28,22 @@
 class Texture {
 
  private:
-  static unsigned int slot_incrementor;
-
- private:
-  unsigned int id = 0;
-  unsigned int slot;
-  bool transparency;
+  unsigned int mID = 0;
+  bool mHasAlpha;
   std::string mName;
 
  public:
-  // TODO: Add Name
-  Texture();
-  Texture(const char *file);
-  virtual ~Texture();
+  Texture() {};
+  virtual ~Texture() {};
+
+  bool Create(std::string &pName);
+  bool Create(std::string &pName, const char *pFile);
+  void Destroy();
 
   void Bind();
 
   inline const std::string &Name() const { return mName; }
 
-  inline const unsigned int GetID() const { return id; }
-  inline const unsigned int GetSlot() const { return slot; }
-  inline const bool HasTransparency() const { return  transparency; }
-
- private:
-    GLenum SlotIntToEnum();
+  inline const unsigned int GetID() const { return mID; }
+  inline const bool HasTransparency() const { return  mHasAlpha; }
 };

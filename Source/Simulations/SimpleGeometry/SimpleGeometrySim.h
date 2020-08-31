@@ -26,8 +26,6 @@
 #include "Common.h"
 #include "../../Framework/Simulation.h"
 
-
-
 class SimpleGeometrySim : public Simulation {
 
  private:
@@ -39,16 +37,17 @@ class SimpleGeometrySim : public Simulation {
     PLANE = 4,
   };
 
-  Selection mSelection = Selection::TRIANGLE;
+  Selection mSelection = Selection::TRIANGLE;     // Currently selected geometry component
 
  public:
-  void OnInit() override;
+  void OnCreate() override;
   void OnUpdate() override;
   void OnDestroy() override;
   void OnGUI() override;
 
  private:
   void SetSelection(Selection pSelection);
+
   // Shape Creation
   void CreateTriangle();
   void CreateRectangle();

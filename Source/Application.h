@@ -36,11 +36,10 @@
 class Application {
 
  private:
-  Repository mRepository;
-  Window mWindow;
-  GUILayer mGui;
-  Simulation *mSimulation{nullptr};
-  bool mWireframe = false;
+  Repository mRepository;               // Repository for framework components
+  Simulation *mSimulation{nullptr};     // Active simulation
+  Window mWindow;                       // Display window
+  GUILayer mGui;                        // ImGUI layer
 
  public:
   void Run();
@@ -51,7 +50,11 @@ class Application {
 
   void OnGUI();
 
-  // Used to switch simulations.
+  /**
+   * Helper function to select a simulation, performing creation, destruction
+   * etc. required to switch the active simulation
+   * @tparam T Simulation class type
+   */
   template<typename T>
   void SelectSimulation() {
     if (mSimulation != nullptr) {
@@ -59,9 +62,13 @@ class Application {
       delete mSimulation;
     }
     mSimulation = new T();
-    mSimulation->OnInit();
+    mSimulation->OnCreate();
   }
 
  public:
+  /**
+   * Return a pointer to the application's repository
+   * @return Pointer to the repository
+   */
   inline Repository *GetRepository() { return &mRepository; }
 };

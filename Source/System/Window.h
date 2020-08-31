@@ -33,19 +33,18 @@ class Window {
  private:
   GLFWwindow *mWindow{nullptr};
 
-  bool mIsTransparencyEnabled = false;
-
-  bool mIsLeftMouseHeld = false;
-  bool mIsRightMouseHeld = false;
+  bool mIsTransparencyEnabled = false;      // Is transparency enabled for this window?
+  bool mIsLeftMouseHeld = false;            // Is the left mouse button held?
+  bool mIsRightMouseHeld = false;           // Is the right mouse button held?
 
   struct WindowConfig {
-	unsigned int width = 1366;
-	unsigned int height = 768;
-	const char *title = "OpenGL Experiments";
-	int major = 4;
-	int minor = 1;
-	bool usingFramebuffer = false;
-  } mConfig;
+    unsigned int width = 1366;
+    unsigned int height = 768;
+    const char *title = "OpenGL Experiments";
+    int major = 4;
+    int minor = 1;
+    bool usingFramebuffer = false;
+  } mConfig;                                // Window configuration data.
 
   // -------------------------------------------------------------------------------------------------------------------
 
@@ -55,22 +54,24 @@ class Window {
 
   inline bool WindowActive() { return !glfwWindowShouldClose(mWindow); }
   inline GLFWwindow *GetWindow() { return mWindow; }
+  inline const bool IsTransparencyEnabled() const { return mIsTransparencyEnabled; }
 
   inline static void ToggleFramebufferUsage(bool to) { sInstance->mConfig.usingFramebuffer = to; }
   inline static glm::vec2 GetDimensions() { return glm::vec2(sInstance->mConfig.width, sInstance->mConfig.height); }
 
-  // Transparency ------------------------------------------------------------------------------------------------------
-  inline const bool IsTransparencyEnabled() const { return mIsTransparencyEnabled; }
-
-  // Enables transparency if it is not already enabled.
+  /**
+   * Enables transparency if it is not already enabled.
+   */
   inline void EnableTransparency() {
     if (!mIsTransparencyEnabled) {
-	  glEnable(GL_BLEND);
-	  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+      glEnable(GL_BLEND);
+      glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
   }
 
-  // Disables transparency if it is not already disabled.
+  /**
+   * Disables transparency if it is not already disabled.
+   */
   inline void DisableTransparency() {
     if (mIsTransparencyEnabled) {
       glDisable(GL_BLEND);
@@ -80,8 +81,8 @@ class Window {
   // Callbacks ---------------------------------------------------------------------------------------------------------
   void ProcessInput();
   static void OnResize(GLFWwindow *window, int width, int height);
-  static void OnMouseMove(GLFWwindow* window, double xpos, double ypos);
-  static void OnMouseButton(GLFWwindow *m, int button, int action, int mods);
+  static void OnMouseMove(GLFWwindow *window, double xpos, double ypos);
+  static void OnMouseButton(GLFWwindow *window, int button, int action, int mods);
 
 };
 

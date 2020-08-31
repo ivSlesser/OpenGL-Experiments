@@ -38,9 +38,9 @@
 
 // TODO: integrate textures into this.
 struct RenderingInstance {
-  uint32_t MeshID;
-  uint32_t TransformID;
-  uint32_t MaterialID;
+  uint32_t MeshID;                                // ID of the mesh for this instance
+  uint32_t TransformID;                           // ID of the transform for this instance
+  uint32_t MaterialID;                            // ID of the material for this instance
 };
 
 enum RenderType {
@@ -50,29 +50,29 @@ enum RenderType {
 class Repository {
 
  private:
-  static Repository *sInstance;
+  static Repository *sInstance;                   // Singleton instance
 
   // Meshes ------------------------------------------------------------------------------------------------------------
-  std::vector<Mesh> mMeshes;
-  std::map<std::string, uint32_t> mMeshesMap;
+  std::vector<Mesh> mMeshes;                      // Mesh storage
+  std::map<std::string, uint32_t> mMeshesMap;     // Mesh lookup map
 
   // Instances ---------------------------------------------------------------------------------------------------------
-  std::vector<RenderingInstance> mInstances;
+  std::vector<RenderingInstance> mInstances;      // Instance storage
 
   // Transforms --------------------------------------------------------------------------------------------------------
-  std::vector<Transform> mTransforms;
+  std::vector<Transform> mTransforms;             // Transform storage
 
   // Materials ---------------------------------------------------------------------------------------------------------
-  std::vector<Material> mMaterials;
-  std::map<std::string, uint32_t> mMaterialsMap;
+  std::vector<Material> mMaterials;               // Material storage
+  std::map<std::string, uint32_t> mMaterialsMap;  // Material lookup map
 
   // Textures ----------------------------------------------------------------------------------------------------------
-  std::vector<Texture> mTextures;
-  std::map<std::string, uint32_t> mTexturesMap;
+  std::vector<Texture> mTextures;                 // Texture storage
+  std::map<std::string, uint32_t> mTexturesMap;   // Texture lookup map
 
   // Shaders ----------------------------------------------------------------------------------------------------------
-  std::vector<Shader> mShaders;
-  std::map<std::string, uint32_t> mShadersMap;
+  std::vector<Shader> mShaders;                   // Shader storage
+  std::map<std::string, uint32_t> mShadersMap;    // Shader lookup map
 
  public:
   inline static Repository *Get() { return sInstance; };
@@ -98,7 +98,6 @@ class Repository {
   uint32_t AddInstance(int32_t pMeshID, const Transform &pTransform, uint32_t pMaterialID = 0);
   RenderingInstance *GetInstance(uint32_t pID);
   inline const std::vector<RenderingInstance> &GetAllRenderingInstances() const { return mInstances; }
-
   void ClearInstances();
 
   // Transforms --------------------------------------------------------------------------------------------------------

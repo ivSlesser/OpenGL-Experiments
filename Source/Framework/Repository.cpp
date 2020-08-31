@@ -25,19 +25,45 @@
 
 Repository *Repository::sInstance = nullptr;
 
+/**
+ * Create the repository, adding default components as needed.
+ *
+ * @return      True if succeeded.
+ */
 bool Repository::Create() {
   Repository::sInstance = this;
 
-  AddMaterial(Material()); // Default material.
+  // Default Shader ----------------------------------------------------------------------------------------------------
+  Shader shader;
+  shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/default.vertex.glsl");
+  shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/default.fragment.glsl");
+  if (!shader.Compile()) {
+    return false;
+  }
+  AddShader("Default", shader);
+
+  // Default Material --------------------------------------------------------------------------------------------------
+  AddMaterial(Material());
+
+  // Default Texture ---------------------------------------------------------------------------------------------------
+  Texture defaultTexture;
+  defaultTexture.Create((std::string &) "Default");
+  AddTexture(defaultTexture);
 
   return true;
 }
 
+/**
+ * Destroys the repository and all stored data.
+ */
 void Repository::Destroy() {
   Repository::sInstance = nullptr;
   ClearAll();
 }
 
+/**
+ * Displays the repository data and controls.
+ */
 void Repository::OnGUI() {
   ImGui::Begin("Repository");
   {
@@ -55,6 +81,9 @@ void Repository::OnGUI() {
 // General -------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------
 
+/**
+ * Calls the clear functions for each type of stored object.
+ */
 void Repository::ClearAll() {
   ClearMeshes();
   ClearInstances();
@@ -64,6 +93,9 @@ void Repository::ClearAll() {
   ClearShaders();
 }
 
+/**
+ * Clears the stored instances and transforms.
+ */
 void Repository::ClearInstancesAndTransforms() {
   ClearInstances();
   ClearTransforms();
@@ -73,18 +105,31 @@ void Repository::ClearInstancesAndTransforms() {
 // Meshes --------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------
 
+/**
+ * Adds a new mesh to the repository, returning its ID.
+ * If a mesh with the same name exists it will return the ID of the existing mesh.
+ *
+ * @param pMesh             Mesh to add.
+ * @return                  ID of the added mesh, or the ID of an existing mesh.
+ */
 uint32_t Repository::AddMesh(const Mesh &pMesh) {
   // Check that the name doesn't already exist.
   if (MeshExists(pMesh.Name)) {
     return GetMeshID(pMesh.Name);
   }
 
-  // Add the material to the vector and the map.
+  // Add the mesh to the vector and the map.
   mMeshesMap[pMesh.Name] = mMeshes.size();
   mMeshes.push_back(pMesh);
   return mMeshes.size() - 1;
 }
 
+/**
+ * Returns a pointer to a stored mesh given it's name.
+ *
+ * @param pName             Mesh name to fetch.
+ * @return                  A Mesh pointer, or nullptr if it doesn't exist.
+ */
 Mesh *Repository::GetMesh(const std::string &pName) {
   // Check that the name exists.
   if (!MeshExists(pName)) {
@@ -93,6 +138,13 @@ Mesh *Repository::GetMesh(const std::string &pName) {
   return GetMesh(mMeshesMap[pName]);
 }
 
+/**
+ * Returns the ID of a stored mesh given it's name.
+ *
+ * @param pName                     Mesh name to fetch.
+ * @return                          The ID of the stored mesh.
+ * @throws std::invalid_argument    Thrown if a mesh doesn't exist with that name.
+ */
 uint32_t Repository::GetMeshID(const std::string &pName) {
   // Check that the name exists.
   if (!MeshExists(pName)) {
@@ -101,6 +153,12 @@ uint32_t Repository::GetMeshID(const std::string &pName) {
   return mMeshesMap[pName];
 }
 
+/**
+ * Returns a pointer to a stored mesh, given its ID.
+ *
+ * @param pID               Mesh ID to fetch.
+ * @return                  A Mesh pointer, or nullptr if it doesn't exist.
+ */
 Mesh *Repository::GetMesh(uint32_t pID) {
   try {
     return &mMeshes[pID];
@@ -109,10 +167,19 @@ Mesh *Repository::GetMesh(uint32_t pID) {
   }
 }
 
+/**
+ * Checks a mesh is stored in the repository, given its name.
+ *
+ * @param pName             Mesh name to fetch.
+ * @return                  True if the mesh exists in the repository.
+ */
 bool Repository::MeshExists(const std::string &pName) {
   return mMeshesMap.count(pName) > 0;
 }
 
+/**
+ * Clears the stored mesh objects, calling their Destroy() prior to clearing.
+ */
 void Repository::ClearMeshes() {
 
   for (Mesh &mesh : mMeshes) {
@@ -126,6 +193,8 @@ void Repository::ClearMeshes() {
 // ---------------------------------------------------------------------------------------------------------------------
 // Instances -----------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------
+
+// TODO: Finish documenting
 
 uint32_t Repository::AddInstance(int32_t pMeshID, const Transform &pTransform, uint32_t pMaterialID) {
   // TODO: Make this a map. <RenderingType, <MeshID, <Material, Transform>>

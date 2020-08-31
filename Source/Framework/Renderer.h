@@ -46,20 +46,18 @@ class Renderer {
     uint32_t Calls = 0;
     uint32_t Vertices = 0;
     uint32_t Indices = 0;
-  } mStatistics;
+  } mStatistics;                                      // Collected statistics for the renderer.
 
-  PerspectiveCamera camera;
-  bool mIsWireframeEnabled = false;
+  PerspectiveCamera camera;                           // Camera (Will refactor into repo)
+  bool mIsWireframeEnabled = false;                   // Is the wire-frame mode enabled?
 
-  glm::vec3 mClearColor = glm::vec3(0.2f);
+  glm::vec3 mClearColor = glm::vec3(0.2f);    // Clear color for the buffer swap routine.
 
   // Texture Related ---------------------------------------------------------------------------------------------------
 
   // TODO: Add Textures To Repo
-  bool use_texture = false;
-  Texture white_texture;
-  Texture cat_texture = Texture("Resources/Textures/cat.jpg");
-  Texture ref_texture = Texture("Resources/Textures/Debug.png");
+//  Texture cat_texture = Texture("Resources/Textures/cat.jpg");
+//  Texture ref_texture = Texture("Resources/Textures/Debug.png");
 
   // Shader Related ----------------------------------------------------------------------------------------------------
   glm::vec3 mLightColor = glm::vec3(1.0f);
@@ -70,22 +68,31 @@ class Renderer {
  public:
   static Renderer *Access();
   static void Begin();
-  static void Update();
   static void End();
   static void Draw();
   static void OnGUI();
 
-  inline static Camera &GetCamera() { return Renderer::Access()->camera; }
+  static void ToggleWireframeRendering();
 
+  inline static Camera &GetCamera() { return Renderer::Access()->camera; }
   inline const glm::vec3 &GetLightColor() const { return mLightColor; }
   inline const glm::vec3 &GetLightPosition() const { return mLightPosition; }
 
+  /**
+   * Utility function to clear all OpenGL errors.
+   */
   static void ClearGLError() {
     unsigned errorCode;
     while ((errorCode = glGetError()) != GL_NO_ERROR) {
     }
   }
 
+  /**
+   * Utility function to check if there is an error flaged by the
+   * OpenGL API.
+   *
+   * @param msg             [Optional] Message to prepend to error check output.
+   */
   static void CheckGLError(std::string msg = "") {
     auto res = glGetError();
     if (res != 0) {
@@ -93,22 +100,6 @@ class Renderer {
     }
   }
 
-  inline static void SetupDefaultTexture(Window &window) {
-    CHECK_GL_ERROR(glActiveTexture(GL_TEXTURE0));
-    Renderer::Access()->white_texture.Bind();
-    // TODO: Investigate if needed.
-    if (Renderer::Access()->white_texture.HasTransparency()) window.EnableTransparency();
-    else window.DisableTransparency();
-  }
-
-  inline static void SetupDefaultTexture() {
-    CHECK_GL_ERROR(glActiveTexture(GL_TEXTURE0));
-    Renderer::Access()->white_texture.Bind();
-  }
-
-  static bool ToggleWireframeRendering();
-
  private:
   Renderer();
-
 };

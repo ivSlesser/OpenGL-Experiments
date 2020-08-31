@@ -25,15 +25,20 @@
 #include "Externals/stb_image.h"
 #include "Framework/Renderer.h"
 
-unsigned int Texture::slot_incrementor = 0;
+/**
+ * Creates a 1x1 white texture.
+ *
+ *
+ * @param pName            Texture name.
+ * @return                  True if created successfully.
+*/
+bool Texture::Create(std::string &pName) {
+  mName = pName;
 
-Texture::Texture() {
-
-  // Create a default white texture.
-  if (id == 0) {
-    CHECK_GL_ERROR(glGenTextures(1, &id));
+  if (mID == 0) {
+    CHECK_GL_ERROR(glGenTextures(1, &mID));
   }
-  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, id));
+  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, mID));
 
   CHECK_GL_ERROR(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));
   CHECK_GL_ERROR(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT));
@@ -42,15 +47,24 @@ Texture::Texture() {
 
   unsigned int data = 0xffffffff;
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, &data);
+
+  return true;
 }
 
-Texture::Texture(const char *file) {
-
+/**
+ * Creates a texture from a file.
+ *
+ * @param pName             Texture name.
+ * @param pFile             Texture source file.
+ * @return                  True if created successfully.
+ */
+bool Texture::Create(std::string &pName, const char *pFile) {
+  mName = pName;
   // Load a texture from a file.
-  if (id == 0) {
-    CHECK_GL_ERROR(glGenTextures(1, &id));
+  if (mID == 0) {
+    CHECK_GL_ERROR(glGenTextures(1, &mID));
   }
-  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, id));
+  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, mID));
 
   CHECK_GL_ERROR(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));
   CHECK_GL_ERROR(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT));
@@ -59,40 +73,33 @@ Texture::Texture(const char *file) {
 
   int width, height, nrChannels;
   stbi_set_flip_vertically_on_load(true);
-  unsigned char *data = stbi_load(file, &width, &height, &nrChannels, 0);
-  if (data)
-  {
+  unsigned char *data = stbi_load(pFile, &width, &height, &nrChannels, 0);
+  if (data) {
     // Check if transparency ( channel )
     GLenum format = nrChannels == 3 ? GL_RGB : GL_RGBA;
-    transparency = nrChannels == 3;
-
+    mHasAlpha = nrChannels == 3;
     // Create texture
     CHECK_GL_ERROR(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data))
     CHECK_GL_ERROR(glGenerateMipmap(GL_TEXTURE_2D))
-
-  }
-  else
-  {
+  } else {
     std::cout << "Failed to load texture" << std::endl;
+    return false;
   }
-
   stbi_image_free(data);
+  return true;
 }
 
-Texture::~Texture() {
-  CHECK_GL_ERROR(glDeleteTextures(1, &id));
+/**
+ * Used to remove the texture from the OpenGL API
+ */
+void Texture::Destroy() {
+  CHECK_GL_ERROR(glDeleteTextures(1, &mID));
+  mID = 0;
 }
 
+/**
+ * Binds the texture so it is active for use.
+ */
 void Texture::Bind() {
-  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, id));
-}
-
-GLenum Texture::SlotIntToEnum() {
-  switch(slot) {
-    case 0: return GL_TEXTURE0;
-    case 1: return GL_TEXTURE1;
-    case 2: return GL_TEXTURE2;
-    case 3: return GL_TEXTURE3;
-    default: return GL_TEXTURE0;
-  }
+  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, mID));
 }

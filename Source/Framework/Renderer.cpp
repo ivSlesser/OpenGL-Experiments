@@ -26,6 +26,12 @@
 
 Renderer *Renderer::s_Instance = nullptr;
 
+/**
+ * Return a pointer to the singleton instance of the renderer, creating
+ * it if the renderer is not already setup.
+ *
+ * @return                  Pointer to renderer singleton instance
+ */
 Renderer *Renderer::Access() {
   if (s_Instance == nullptr) {
     s_Instance = new Renderer();
@@ -33,24 +39,19 @@ Renderer *Renderer::Access() {
   return s_Instance;
 }
 
+/**
+ * Constructor, handles creation of a default shader.
+ */
 Renderer::Renderer() {
 
   // Camera TODO: Integrate into repo
 //  GetCamera().SetPosition(0.0f);
-
-  // Default Shader ----------------------------------------------------------------------------------------------------
-  Shader shader;
-  shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/default.vertex.glsl");
-  shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/default.fragment.glsl");
-  if (!shader.Compile()) {
-    throw std::invalid_argument("Shader compilation failed.");
-  }
-  Repository::Get()->AddShader("Default", shader);
 }
 
-void Renderer::Update() {
-}
-
+/**
+ * Performs rendering functions, setting shader variables and querying the repository for rendering instances.
+ * Will load the values defined in each instance before rendering the actual geometry.
+ */
 void Renderer::Draw() {
 
   Renderer *ptr = Renderer::Access();
@@ -64,7 +65,8 @@ void Renderer::Draw() {
   shader->Vec3("u_LightColor", ptr->mLightColor);
   shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
 
-  Renderer::SetupDefaultTexture();
+  // TODO: Get ID from instance, also check for alpha & handle.
+  Repository::Get()->GetTexture()->Bind();
 
   const std::vector<RenderingInstance> &instances = Repository::Get()->GetAllRenderingInstances();
 
@@ -96,6 +98,9 @@ void Renderer::Draw() {
   }
 }
 
+/**
+ * Displays the renderer data and controls.
+ */
 void Renderer::OnGUI() {
   Renderer *ptr = Renderer::Access();
   ImGui::Begin("Renderer");
@@ -125,6 +130,10 @@ void Renderer::OnGUI() {
   ImGui::End();
 }
 
+/**
+ * Called before the Draw() function to allow for per-frame pre-draw functionality such
+ * as resetting statistics, clearing buffers etc.
+ */
 void Renderer::Begin() {
   DEBUG_ONLY(s_Instance->mStatistics.Calls = 0)
   DEBUG_ONLY(s_Instance->mStatistics.Vertices = 0)
@@ -137,11 +146,18 @@ void Renderer::Begin() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
+/**
+ * Called after the Draw() function to allow for per-frame post-draw functionality such as
+ * swapping the back buffers.
+ */
 void Renderer::End() {
   glfwSwapBuffers(Window::sWindow);
 }
 
-bool Renderer::ToggleWireframeRendering() {
+/**
+ * Toggles wire-frame rendering mode on or off.
+ */
+void Renderer::ToggleWireframeRendering() {
   s_Instance->mIsWireframeEnabled = !s_Instance->mIsWireframeEnabled;
   if (s_Instance->mIsWireframeEnabled) {
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);

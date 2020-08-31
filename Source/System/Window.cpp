@@ -22,15 +22,16 @@
 
 
 #include "Window.h"
-
 #include "Framework/Renderer.h"
-#include "Framework/Components/Camera/PerspectiveCamera.h"
 
 GLFWwindow *Window::sWindow = nullptr;
 Window *Window::sInstance = nullptr;
 
+/**
+ * Constructor. Initialises the window, OpenGL API and configures the default
+ * settings for OpenGL.
+ */
 Window::Window() {
-
   Window::sInstance = this;
 
   glfwInit();
@@ -67,10 +68,16 @@ Window::Window() {
   Window::sWindow = mWindow;
 }
 
+/**
+ * Destructor, terminates the window.
+ */
 Window::~Window() {
   glfwTerminate();
 }
 
+/**
+ * Handles input processing.
+ */
 void Window::ProcessInput() {
   glfwPollEvents();
 
@@ -78,6 +85,13 @@ void Window::ProcessInput() {
     glfwSetWindowShouldClose(mWindow, true);
 }
 
+/**
+ * Handler for window resize events.
+ *
+ * @param window    Window pointer
+ * @param width     New width
+ * @param height    New height
+ */
 void Window::OnResize(GLFWwindow *window, int width, int height) {
   Window::sInstance->mConfig.width = width;
   Window::sInstance->mConfig.height = height;
@@ -87,6 +101,13 @@ void Window::OnResize(GLFWwindow *window, int width, int height) {
   }
 }
 
+/**
+ * Handler for mouse move events.
+ *
+ * @param window    Window pointer
+ * @param xpos      Mouse X position
+ * @param ypos      Mouse Y position
+ */
 void Window::OnMouseMove(GLFWwindow *window, double xpos, double ypos) {
   static float prevX = 0.0f;
   static float prevY = 0.0f;
@@ -111,7 +132,15 @@ void Window::OnMouseMove(GLFWwindow *window, double xpos, double ypos) {
   }
 }
 
-void Window::OnMouseButton(GLFWwindow *m, int button, int action, int mods) {
+/**
+ * Handler for mouse button click events.
+ *
+ * @param window    Window pointer
+ * @param button    Which button is it?
+ * @param action    What is the button doing?
+ * @param mods      Modifiers
+ */
+void Window::OnMouseButton(GLFWwindow *window, int button, int action, int mods) {
   if (button == GLFW_MOUSE_BUTTON_LEFT) {
     if (action == GLFW_PRESS)
       sInstance->mIsLeftMouseHeld = true;

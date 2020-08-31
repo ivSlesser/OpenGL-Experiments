@@ -26,19 +26,33 @@
 #include "../../Framework/Geometry/Shapes3D.h"
 #include "Externals/ImGUI.hpp"
 
-void SimpleGeometrySim::OnInit() {
+/**
+ * Handles creation of the simulation, initially creating a triangle primitive
+ */
+void SimpleGeometrySim::OnCreate() {
   SetSelection(mSelection);
 }
 
+/**
+ * Perform per-frame functions on the simulations prior to rendering
+ */
 void SimpleGeometrySim::OnUpdate() {
   Transform *transform = Repository::Get()->GetTransformForInstance(mInstances[0]);
 //  transform->AddRotate({ 0.0f, 0.0f, 0.1f });
 }
 
+/**
+ * Handles tear-down of the simulation
+ */
 void SimpleGeometrySim::OnDestroy() {
   Repository::Get()->ClearInstancesAndTransforms();
 }
 
+/**
+ * Set the selection for the simulation, selecting the primitive displayed.
+ *
+ * @param pSelection        Primitive to display
+ */
 void SimpleGeometrySim::SetSelection(Selection pSelection) {
   mInstances.clear();
   Repository::Get()->ClearInstancesAndTransforms();
@@ -59,6 +73,9 @@ void SimpleGeometrySim::SetSelection(Selection pSelection) {
   }
 }
 
+/**
+ * Handles display of simulation values and controls.
+ */
 void SimpleGeometrySim::OnGUI() {
 
   // Selection ---------------------------------------------------------------------------------------------------------
@@ -134,6 +151,9 @@ void SimpleGeometrySim::OnGUI() {
 
 }
 
+/**
+ * Create and store a triangle mesh in the repository.
+ */
 void SimpleGeometrySim::CreateTriangle() {
   Mesh triangleMesh;
   triangleMesh.Create("Triangle", Triangle::Vertices(), Triangle::Indices());
@@ -141,6 +161,9 @@ void SimpleGeometrySim::CreateTriangle() {
   mInstances.push_back(Repository::Get()->AddInstance(triangle, Transform()));
 }
 
+/**
+ * Create and store a rectangle mesh in the repository.
+ */
 void SimpleGeometrySim::CreateRectangle() {
   Mesh rectangleMesh;
   rectangleMesh.Create("Rectangle", Rectangle::Vertices(), Rectangle::Indices());
@@ -148,6 +171,9 @@ void SimpleGeometrySim::CreateRectangle() {
   mInstances.push_back(Repository::Get()->AddInstance(rectangle, Transform()));
 }
 
+/**
+ * Create and store a cube mesh in the repository.
+ */
 void SimpleGeometrySim::CreateCube() {
   Mesh cubeMesh;
   cubeMesh.Create("Cube", Cube::Vertices(), Cube::Indices());
@@ -155,6 +181,9 @@ void SimpleGeometrySim::CreateCube() {
   mInstances.push_back(Repository::Get()->AddInstance(rectangle, Transform()));
 }
 
+/**
+ * Create and store a flat cube mesh in the repository.
+ */
 void SimpleGeometrySim::CreateFlatCube() {
   Mesh cubeMesh;
   cubeMesh.Create("CubeFlat", CubeFlat::Vertices());
@@ -162,6 +191,9 @@ void SimpleGeometrySim::CreateFlatCube() {
   mInstances.push_back(Repository::Get()->AddInstance(rectangle, Transform()));
 }
 
+/**
+ * Create and store a plane mesh in the repository.
+ */
 void SimpleGeometrySim::CreatePlane() {
   Plane p;
   Mesh planeMesh;

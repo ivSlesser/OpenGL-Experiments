@@ -23,6 +23,9 @@
 #include "Application.h"
 #include "Simulations/SimpleGeometry/SimpleGeometrySim.h"
 
+/**
+ * Handles the creation of application components.
+ */
 void Application::Create() {
   // Repository --------------------------------------------------------------------------------------------------------
   mRepository.Create();
@@ -37,34 +40,36 @@ void Application::Create() {
   mGui.AddElement([this]() { OnGUI(); });
 }
 
+/**
+ * Used to tear-down application components.
+ */
 void Application::Destroy() {
   mSimulation->OnDestroy();
   // Repository --------------------------------------------------------------------------------------------------------
   mRepository.Destroy();
 }
 
+/**
+ * Used to start and control the application's lifecycle.
+ */
 void Application::Run() {
-
   Create();
   Renderer *renderer = Renderer::Access();
 
   while (mWindow.WindowActive()) {
-
     mWindow.ProcessInput();
-
     mSimulation->OnUpdate();
-
     Renderer::Begin();
     Renderer::Draw();
-
     mGui.Render();
-
     Renderer::End();
   }
-
   Destroy();
 }
 
+/**
+ * Used to dictate what is shown on the GUI layer.
+ */
 void Application::OnGUI() {
 
   Renderer::OnGUI();
