@@ -28,16 +28,26 @@
 #include "Framework/GL/VertexBuffer.h"
 #include "Framework/GL/IndexBuffer.h"
 
+// TODO: Draw Commands. ?
+// TODO: Material ID's
+
 struct Mesh {
-  std::string Name;
+  std::string Name;               // Name of the mesh, must be unique
 
-  VertexArray VAO;
-  VertexBuffer VBO;
-  IndexBuffer IBO;
+  VertexArray VAO;                // Holds vertex layout configuration
+  VertexBuffer VBO;               // Holds mesh vertices
+  IndexBuffer IBO;                // Holds mesh indices
 
-  uint32_t VertexCount{0};
-  uint32_t IndexCount{0};
+  uint32_t VertexCount{0};        // Number of vertices it contains
+  uint32_t IndexCount{0};         // Number of indices it contains
 
+  /**
+   * Create the mesh from vertex and index data.
+   *
+   * @param pName                   Unique name for the mesh
+   * @param pVertices               Input vertex data
+   * @param pIndices                Input index data
+   */
   void Create(std::string pName, const std::vector<Vertex> &pVertices, const std::vector<uint32_t> &pIndices) {
     Name = pName;
     CreateVertexData(pVertices);
@@ -48,17 +58,29 @@ struct Mesh {
     }
   }
 
+  /**
+   * Create a mesh from vertex data, with no indexing of vertices.
+   *
+   * @param pName                   Unique name for the mesh
+   * @param pVertices               Input vertex data
+   */
   void Create(std::string pName, const std::vector<Vertex> &pVertices) {
     Name = pName;
     CreateVertexData(pVertices);
   }
 
+  /**
+   * Destroy the mesh, clearing data from its components.
+   */
   void Destroy() {
     IBO.Destroy();
     VBO.Destroy();
     VAO.Destroy();
   }
 
+  /**
+   * Bind the mesh
+   */
   void Bind() {
     VAO.Bind();
 
@@ -68,6 +90,8 @@ struct Mesh {
   }
 
  private:
+
+  // Used to remove duplicate code from the Create() functions.
   void CreateVertexData(const std::vector<Vertex> &pVertices) {
     VertexCount = pVertices.size();
 
@@ -75,7 +99,4 @@ struct Mesh {
     VBO.Create(pVertices);
     VAO.SetLayout();
   }
-
-  // TODO: Draw Commands. ?
-  // TODO: Material ID's
 };

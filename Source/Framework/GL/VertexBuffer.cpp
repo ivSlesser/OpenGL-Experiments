@@ -28,11 +28,6 @@ VertexBuffer::VertexBuffer() {
   CHECK_GL_ERROR(glGenBuffers(1, &id));
 }
 
-void VertexBuffer::Init(const std::vector<Vertex> &data) {
-  CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, id));
-  CHECK_GL_ERROR(glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW));
-}
-
 void VertexBuffer::Bind() {
   CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, id));
 }

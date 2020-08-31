@@ -34,7 +34,7 @@ class Shader {
 
  public:
   Shader();
-  bool Compile();
+  bool Create();
   virtual ~Shader();
   void Bind();
 

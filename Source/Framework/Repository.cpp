@@ -37,7 +37,7 @@ bool Repository::Create() {
   Shader shader;
   shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/default.vertex.glsl");
   shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/default.fragment.glsl");
-  if (!shader.Compile()) {
+  if (!shader.Create()) {
     return false;
   }
   AddShader("Default", shader);

@@ -57,8 +57,6 @@ std::vector<uint32_t> Cube::Indices(uint32_t pOffset) {
 std::vector<Vertex> CubeFlat::Vertices() {
   std::vector<Vertex> vertices(36);
 
-  // TODO: Get Rid OfDuplicate Vertices In Each Face
-  // TODO: Fix, see wireframe mode!
   return {
       // Front
       {{-1.0f, -1.0f, -1.0f}, {1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}}, // BL

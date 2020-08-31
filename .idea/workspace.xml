@@ -15,26 +15,13 @@
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/Texture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/Texture.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/Texture.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/Texture.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/Shader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/Shader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Mesh.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Simulation.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Simulation.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/GUI/GUILayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/GUI/GUILayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/GUI/GUILayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/GUI/GUILayer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -178,7 +165,7 @@
       <workItem from="1598606749826" duration="1088000" />
       <workItem from="1598611705456" duration="3709000" />
       <workItem from="1598718772307" duration="16240000" />
-      <workItem from="1598851674849" duration="14110000" />
+      <workItem from="1598851674849" duration="14605000" />
     </task>
     <servers />
   </component>

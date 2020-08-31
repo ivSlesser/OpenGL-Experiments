@@ -37,7 +37,7 @@ Shader::Shader() {
  *
  * @return True if compilation was successful.
  */
-bool Shader::Compile() {
+bool Shader::Create() {
 
   // At a minimum we need a vertex & fragment stage, broadly we're checking size < 3 here,
   // but future work could check to see the stage type added.
