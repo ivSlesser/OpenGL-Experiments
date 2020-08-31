@@ -23,6 +23,8 @@
 
 #pragma once
 
+#define DEBUG_ONLY(x)   x;
+
 #define CHECK_GL_ERROR(x)   Renderer::ClearGLError();     \
                             x;                            \
                             Renderer::CheckGLError(#x);
@@ -40,7 +42,16 @@ class Renderer {
  private:
   static Renderer *s_Instance;
 
+  struct RenderingStatistics {
+    uint32_t Calls = 0;
+    uint32_t Vertices = 0;
+    uint32_t Indices = 0;
+  } mStatistics;
+
   PerspectiveCamera camera;
+  bool mIsWireframeEnabled = false;
+
+  glm::vec3 mClearColor = glm::vec3(0.2f);
 
   // Texture Related ---------------------------------------------------------------------------------------------------
 
@@ -58,7 +69,9 @@ class Renderer {
 
  public:
   static Renderer *Access();
-  static void Update(double dt = 1.0);
+  static void Begin();
+  static void Update();
+  static void End();
   static void Draw();
   static void OnGUI();
 
@@ -92,6 +105,8 @@ class Renderer {
     CHECK_GL_ERROR(glActiveTexture(GL_TEXTURE0));
     Renderer::Access()->white_texture.Bind();
   }
+
+  static bool ToggleWireframeRendering();
 
  private:
   Renderer();

@@ -34,7 +34,6 @@ class Window {
   GLFWwindow *mWindow{nullptr};
 
   bool mIsTransparencyEnabled = false;
-  bool mIsWireframeEnabled = false;
 
   bool mIsLeftMouseHeld = false;
   bool mIsRightMouseHeld = false;
@@ -53,9 +52,6 @@ class Window {
  public:
   Window();
   virtual ~Window();
-
-  void Begin();
-  void End();
 
   inline bool WindowActive() { return !glfwWindowShouldClose(mWindow); }
   inline GLFWwindow *GetWindow() { return mWindow; }
@@ -78,18 +74,6 @@ class Window {
   inline void DisableTransparency() {
     if (mIsTransparencyEnabled) {
       glDisable(GL_BLEND);
-    }
-  }
-
-  // Wireframe ------------------------------------------------------------------------------------------------------
-
-  // Toggle wireframe mode on or off.
-  inline void ToggleWireframeModeOnOff(bool pToggle) {
-    mIsWireframeEnabled = pToggle;
-    if (mIsWireframeEnabled) {
-      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    } else {
-      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
   }
 

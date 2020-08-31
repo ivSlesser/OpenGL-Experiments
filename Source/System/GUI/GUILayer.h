@@ -48,7 +48,7 @@ class GUILayer
 
   void ConstantElements();
   void AddElement(std::function<void()> window);
-  bool Init(GLFWwindow *_window);
+  bool Create(GLFWwindow *_window);
   void Render();
 
   void Begin();

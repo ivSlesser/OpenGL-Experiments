@@ -26,7 +26,6 @@
 #include "../../Framework/Geometry/Shapes3D.h"
 #include "Externals/ImGUI.hpp"
 
-
 void SimpleGeometrySim::OnInit() {
   SetSelection(mSelection);
 }
@@ -47,20 +46,15 @@ void SimpleGeometrySim::SetSelection(Selection pSelection) {
   mSelection = pSelection;
 
   switch (mSelection) {
-    case Selection::TRIANGLE:
-      CreateTriangle();
+    case Selection::TRIANGLE:CreateTriangle();
       break;
-    case Selection::RECTANGLE:
-      CreateRectangle();
+    case Selection::RECTANGLE:CreateRectangle();
       break;
-    case Selection::CUBE:
-      CreateCube();
+    case Selection::CUBE:CreateCube();
       break;
-    case Selection::CUBEFLAT:
-      CreateFlatCube();
+    case Selection::CUBEFLAT:CreateFlatCube();
       break;
-    case Selection::PLANE:
-      CreatePlane();
+    case Selection::PLANE:CreatePlane();
       break;
   }
 }
@@ -95,6 +89,7 @@ void SimpleGeometrySim::OnGUI() {
       SetSelection(Selection::PLANE);
       return;
     }
+    ImGui::NewLine();
   }
 
   // Transform ---------------------------------------------------------------------------------------------------------
@@ -123,15 +118,18 @@ void SimpleGeometrySim::OnGUI() {
     glm::vec3 rotation = transform->GetRotate();
     if (ImGui::DragFloat3("Rotation", &rotation.x, 0.1f, -360.0f, 360.0f)) {
       transform->SetRotate(rotation);
-      // TODO: Reset Material
     }
+    ImGui::NewLine();
+
   }
 
   // Material ----------------------------------------------------------------------------------------------------------
   {
+    // TODO: Reset Material
     ImGui::Text("Material");
     Material *material = Repository::Get()->GetMaterial(mInstances[0]);
     material->DisplayWithGUI(0);
+    ImGui::NewLine();
   }
 
 }

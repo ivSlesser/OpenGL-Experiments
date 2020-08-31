@@ -76,8 +76,9 @@ class Repository {
 
  public:
   inline static Repository *Get() { return sInstance; };
-  bool Init();
+  bool Create();
   void Destroy();
+  void OnGUI();
 
   // General -----------------------------------------------------------------------------------------------------------
   void ClearAll();

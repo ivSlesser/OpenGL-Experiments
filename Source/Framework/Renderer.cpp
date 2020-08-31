@@ -48,14 +48,12 @@ Renderer::Renderer() {
   Repository::Get()->AddShader("Default", shader);
 }
 
-void Renderer::Update(double dt) {
-  Renderer::Access()->camera.Update(dt);
+void Renderer::Update() {
 }
 
 void Renderer::Draw() {
 
   Renderer *ptr = Renderer::Access();
-
   glActiveTexture(GL_TEXTURE0);
 
   Shader *shader = Repository::Get()->GetShader(); // Default Shader
@@ -86,31 +84,69 @@ void Renderer::Draw() {
     // Do draw
     mesh->Bind();
 
+    DEBUG_ONLY(s_Instance->mStatistics.Calls++)
+
     if (mesh->IndexCount != 0) {
+      DEBUG_ONLY(s_Instance->mStatistics.Indices += mesh->IndexCount)
       CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, mesh->IndexCount, GL_UNSIGNED_INT, 0));
     } else {
+      DEBUG_ONLY(s_Instance->mStatistics.Vertices += mesh->VertexCount)
       CHECK_GL_ERROR(glDrawArrays(GL_TRIANGLES, 0, mesh->VertexCount));
     }
-
   }
-
 }
 
 void Renderer::OnGUI() {
   Renderer *ptr = Renderer::Access();
   ImGui::Begin("Renderer");
   {
-    // Texture --------------------------------------------------------------------
-    ImGui::Checkbox("Use texture?", &ptr->use_texture);
+    // Statistics ------------------------------------------------------------------------------------------------------
+    DEBUG_ONLY(ImGui::Text("Draw Calls: %d", s_Instance->mStatistics.Calls))
+    DEBUG_ONLY(ImGui::Text("Vertices: %d", s_Instance->mStatistics.Vertices))
+    DEBUG_ONLY(ImGui::Text("Indices: %d", s_Instance->mStatistics.Indices))
+    DEBUG_ONLY(ImGui::NewLine())
 
-    // Shader ---------------------------------------------------------------------
+    // General ---------------------------------------------------------------------------------------------------------
+    ImGui::ColorEdit3("Clear Color", &ptr->mClearColor.x);
+    if (ImGui::Button("Toggle Wire-frame")) {
+      Renderer::ToggleWireframeRendering();
+    }
+
+    ImGui::NewLine();
+
+    // Shader ----------------------------------------------------------------------------------------------------------
     ImGui::ColorEdit3("Light Color", &ptr->mLightColor.x);
     ImGui::DragFloat3("Light Position", &ptr->mLightPosition.x, 1.0f);
 
-    // Camera ---------------------------------------------------------------------
+    // Camera ----------------------------------------------------------------------------------------------------------
     ImGui::DragFloat3("Camera Position", &ptr->camera.GetPosition().x, -1000.0f, 1000.0f);
     ImGui::DragFloat3("Camera Rotation", &ptr->camera.GetRotation().x, -360.0f, 360.0f);
-
   }
   ImGui::End();
 }
+
+void Renderer::Begin() {
+  DEBUG_ONLY(s_Instance->mStatistics.Calls = 0)
+  DEBUG_ONLY(s_Instance->mStatistics.Vertices = 0)
+  DEBUG_ONLY(s_Instance->mStatistics.Indices = 0)
+
+  Renderer::Access()->camera.Update(1.0);
+
+  glm::vec3 C = s_Instance->mClearColor;
+  glClearColor(C.x, C.y, C.z, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void Renderer::End() {
+  glfwSwapBuffers(Window::sWindow);
+}
+
+bool Renderer::ToggleWireframeRendering() {
+  s_Instance->mIsWireframeEnabled = !s_Instance->mIsWireframeEnabled;
+  if (s_Instance->mIsWireframeEnabled) {
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  } else {
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  }
+}
+

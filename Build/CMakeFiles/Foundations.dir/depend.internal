@@ -3994,12 +3994,19 @@ CMakeFiles/Foundations.dir/Source/Framework/Repository.cpp.o
  ../Libraries/glm/glm/vec4.hpp
  ../Libraries/glm/glm/vector_relational.hpp
  ../Source/Common.h
+ ../Source/Externals/ImGUI.hpp
+ ../Source/Externals/imgui/imconfig.h
+ ../Source/Externals/imgui/imgui.h
+ ../Source/Externals/imgui/imgui_impl_glfw.h
+ ../Source/Externals/imgui/imgui_impl_opengl3.h
  ../Source/Framework/GL/IndexBuffer.h
  ../Source/Framework/GL/Shader.h
  ../Source/Framework/GL/Texture.h
  ../Source/Framework/GL/VertexArray.h
  ../Source/Framework/GL/VertexBuffer.h
  ../Source/Framework/Geometry/Vertex.h
+ ../Source/System/GUI/GUILayer.h
+ ../Source/System/Window.h
  /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Material.h
  /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Transform.h
  /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Geometry/Mesh.h

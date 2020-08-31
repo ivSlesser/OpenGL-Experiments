@@ -23,12 +23,12 @@
 #include "Application.h"
 #include "Simulations/SimpleGeometry/SimpleGeometrySim.h"
 
-void Application::Init() {
+void Application::Create() {
   // Repository --------------------------------------------------------------------------------------------------------
-  mRepository.Init();
+  mRepository.Create();
 
   // Window ------------------------------------------------------------------------------------------------------------
-  mGui.Init(mWindow.GetWindow());
+  mGui.Create(mWindow.GetWindow());
 
   // Simulation --------------------------------------------------------------------------------------------------------
   SelectSimulation<SimpleGeometrySim>();
@@ -45,20 +45,21 @@ void Application::Destroy() {
 
 void Application::Run() {
 
-  Init();
-  double dt = 1.0;
+  Create();
+  Renderer *renderer = Renderer::Access();
 
   while (mWindow.WindowActive()) {
 
     mWindow.ProcessInput();
-    Renderer::Update(dt);
 
     mSimulation->OnUpdate();
 
-    mWindow.Begin();
+    Renderer::Begin();
     Renderer::Draw();
+
     mGui.Render();
-    mWindow.End();
+
+    Renderer::End();
   }
 
   Destroy();
@@ -67,45 +68,16 @@ void Application::Run() {
 void Application::OnGUI() {
 
   Renderer::OnGUI();
+  mRepository.OnGUI();
 
-  ImGui::Begin("General");
-  {
-    if (ImGui::Checkbox("Wireframe mode?", &mWireframe)) {
-      mWindow.ToggleWireframeModeOnOff(mWireframe);
-    }
-  }
-  ImGui::End();
-
-  // ------
-
+  // -------------------------------------------------------------------------------------------------------------------
   ImGui::Begin("Simulation");
   {
     mSimulation->OnGUI();
   }
   ImGui::End();
 
-  // ------
-
-//  ImGui::Begin(name.c_str());
-//  {
-// //    if (ImGui::Button("1. Shape: Triangle")) { SwitchModule<TriangleModule>(); }
-// //    if (ImGui::Button("2. Shape: Quad")) { SwitchModule<QuadModule>(); }
-//    if (ImGui::Button("3. Shape: Cube")) { SwitchModule<CubeModule>(); }
-//    if (ImGui::Button("4. Shape: Plane")) { SwitchModule<PlaneModule>(); }
-//    if (ImGui::Button("4. Shape: Model")) { SwitchModule<ModelModule>(); }
-//    if (ImGui::Button("5. Terrain (Perlin)")) { SwitchModule<TerrainModule>(); }
-//    if (ImGui::Button("6. Geometry Shader Quads")) { SwitchModule<GeometryQuadModule>(); }
-//    if (ImGui::Button("7. Marching Cubes")) { SwitchModule<MarchingCubesModule>(); }
-//    if (ImGui::Button("8. Gerstner Waves (Ocean)")) { SwitchModule<GerstnerWaveModule>(); }
-//    if (ImGui::Button("9. Fog")) { SwitchModule<FogModule>(); }
-//    if (ImGui::Button("9. Ray Marching")) { SwitchModule<RayMarchingModule>(); }
-//    if (ImGui::Button("10. Post Processing")) { SwitchModule<PostProcessingModule>(); }
-//    if (ImGui::Button("11. Material Model")) { SwitchModule<MaterialModelModule>(); }
-//    if (ImGui::Button("12. Instanced Model")) { SwitchModule<InstancedModule>(); }
-//    // TODO: Add to README:
-//    if (ImGui::Button("13. Terrain Scene")) { SwitchModule<TerrainSceneModule>(); }
-//  }
-
+  // -------------------------------------------------------------------------------------------------------------------
   ImGui::Begin("Simulation Chooser");
   {
     if (ImGui::Button("1. Simple Geometry")) { SelectSimulation<SimpleGeometrySim>(); }

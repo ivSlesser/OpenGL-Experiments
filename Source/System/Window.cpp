@@ -71,15 +71,6 @@ Window::~Window() {
   glfwTerminate();
 }
 
-void Window::Begin() {
-  glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-void Window::End() {
-  glfwSwapBuffers(mWindow);
-}
-
 void Window::ProcessInput() {
   glfwPollEvents();
 

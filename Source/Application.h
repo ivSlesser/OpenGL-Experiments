@@ -46,7 +46,7 @@ class Application {
   void Run();
 
  private:
-  void Init();
+  void Create();
   void Destroy();
 
   void OnGUI();

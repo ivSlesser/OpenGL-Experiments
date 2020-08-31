@@ -21,10 +21,11 @@
 // SOFTWARE.
 
 #include "Repository.h"
+#include "System/GUI/GUILayer.h"
 
 Repository *Repository::sInstance = nullptr;
 
-bool Repository::Init() {
+bool Repository::Create() {
   Repository::sInstance = this;
 
   AddMaterial(Material()); // Default material.
@@ -35,6 +36,19 @@ bool Repository::Init() {
 void Repository::Destroy() {
   Repository::sInstance = nullptr;
   ClearAll();
+}
+
+void Repository::OnGUI() {
+  ImGui::Begin("Repository");
+  {
+    ImGui::Text("Meshes: %d", (int) mMeshes.size());
+    ImGui::Text("Instances: %d", (int) mInstances.size());
+    ImGui::Text("Transform: %d", (int) mTransforms.size());
+    ImGui::Text("Materials: %d", (int) mMaterials.size());
+    ImGui::Text("Textures: %d", (int) mTextures.size());
+    ImGui::Text("Shaders: %d", (int) mShaders.size());
+  }
+  ImGui::End();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -307,6 +321,7 @@ void Repository::ClearShaders() {
   mShaders.clear();
   mShadersMap.clear();
 }
+
 
 
 

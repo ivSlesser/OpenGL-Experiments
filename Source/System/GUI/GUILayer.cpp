@@ -31,7 +31,7 @@ GUILayer::~GUILayer() {
 }
 
 // Configure and initializes the ImGUI context.
-bool GUILayer::Init(GLFWwindow *_window) {
+bool GUILayer::Create(GLFWwindow *_window) {
   window = _window;
   IMGUI_CHECKVERSION();
   ImGui::CreateContext();
