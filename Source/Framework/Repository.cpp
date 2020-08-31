@@ -100,6 +100,11 @@ bool Repository::MeshExists(const std::string &pName) {
 }
 
 void Repository::ClearMeshes() {
+
+  for (Mesh2 &mesh : mMeshes) {
+    mesh.Destroy();
+  }
+
   mMeshes.clear();
   mMeshesMap.clear();
 }
@@ -148,7 +153,11 @@ Transform *Repository::GetTransform(uint32_t pID) {
 }
 
 Transform *Repository::GetTransformForInstance(uint32_t pInstanceID) {
-  return GetTransform(GetInstance(pInstanceID)->TransformID);
+  try {
+    return GetTransform(GetInstance(pInstanceID)->TransformID);
+  } catch (const std::exception &e) {
+    return nullptr;
+  }
 }
 
 void Repository::ClearTransforms() {

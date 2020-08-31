@@ -28,11 +28,6 @@ IndexBuffer::IndexBuffer() {
   CHECK_GL_ERROR(glGenBuffers(1, &id));
 }
 
-IndexBuffer::~IndexBuffer() {
-//   TODO: Move to OnDestroy Method.
-//  CHECK_GL_ERROR(glDeleteBuffers(1, &id));
-}
-
 void IndexBuffer::Init(const std::vector<uint32_t> &data) {
   CHECK_GL_ERROR(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id));
   CHECK_GL_ERROR(glBufferData(GL_ELEMENT_ARRAY_BUFFER, data.size() * sizeof(uint32_t), data.data(), GL_STATIC_DRAW));
@@ -40,4 +35,13 @@ void IndexBuffer::Init(const std::vector<uint32_t> &data) {
 
 void IndexBuffer::Bind() {
   CHECK_GL_ERROR(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id));
+}
+
+void IndexBuffer::Create(const std::vector<uint32_t> &pData) {
+  // TODO: Move init block code here.
+  Init(pData);
+}
+
+void IndexBuffer::Destroy() {
+  CHECK_GL_ERROR(glDeleteBuffers(1, &id));
 }

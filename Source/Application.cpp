@@ -21,28 +21,7 @@
 // SOFTWARE.
 
 #include "Application.h"
-
-// Default Renderer Pass Modules
-#include "Modules/Default Renderer Pass/CubeModule.h"
-#include "Modules/Default Renderer Pass/PlaneModule.h"
-#include "Modules/Default Renderer Pass/ModelModule.h"
-#include "Modules/Default Renderer Pass/TerrainModule.h"
-#include "Modules/Default Renderer Pass/MarchingCubesModule.h"
-
-// Custom Renderer Pass Modules
-#include "Modules/Custom Renderer Pass/GeometryQuadModule.h"
-#include "Modules/Custom Renderer Pass/GerstnerWaveModule.h"
-#include "Modules/Custom Renderer Pass/FogModule.h"
-#include "Modules/Custom Renderer Pass/RayMarchingModule.h"
-#include "Modules/Custom Renderer Pass/PostProcessingModule.h"
-#include "Modules/Custom Renderer Pass/MaterialModelModule.h"
-#include "Modules/Custom Renderer Pass/InstancedModule.h"
-#include "Modules/Custom Renderer Pass/TerrainSceneModule.h"
-
-#include "Simulations/Simple/TriangleSim.h"
-#include "Simulations/Simple/RectangleSim.h"
-
-#include "Externals/stb_image.h"
+#include "Simulations/SimpleGeometry/SimpleGeometrySim.h"
 
 void Application::Init() {
   // Repository --------------------------------------------------------------------------------------------------------
@@ -51,15 +30,11 @@ void Application::Init() {
   // Window ------------------------------------------------------------------------------------------------------------
   mGui.Init(mWindow.GetWindow());
 
-  // Module ------------------------------------------------------------------------------------------------------------
-//  SwitchModule<TriangleModule>();
-//  mModule->OnInit(Renderer::GetCamera());
-
-  SelectSimulation<TriangleSim>();
-//  mSimulation->OnInit();
+  // Simulation --------------------------------------------------------------------------------------------------------
+  SelectSimulation<SimpleGeometrySim>();
 
   // GUI ---------------------------------------------------------------------------------------------------------------
-  mGui.AddElement([this]() { OnGUI("Module selection:"); });
+  mGui.AddElement([this]() { OnGUI(); });
 }
 
 void Application::Destroy() {
@@ -82,7 +57,6 @@ void Application::Run() {
 
     mWindow.Begin();
     Renderer::Draw();
-//    Renderer::Draw(mWindow, mTransform, mModule);
     mGui.Render();
     mWindow.End();
   }
@@ -90,7 +64,7 @@ void Application::Run() {
   Destroy();
 }
 
-void Application::OnGUI(std::string name) {
+void Application::OnGUI() {
 
   Renderer::OnGUI();
 
@@ -103,24 +77,6 @@ void Application::OnGUI(std::string name) {
   ImGui::End();
 
   // ------
-
-  ImGui::Begin("Transform");
-  {
-    // Translation ---------------------------------------------------------------
-    glm::vec3 translation = mTransform.GetTranslate();
-    ImGui::DragFloat3("Translation", &translation.x, -10.0f, 10.0f);
-    mTransform.SetTranslate(translation);
-
-    // Rotation ------------------------------------------------------------------
-    glm::vec3 rotation = mTransform.GetRotate();
-    ImGui::DragFloat3("Rotation", &rotation.x, -360.0f, 360.0f);
-    mTransform.SetRotate(rotation);
-
-    // Scale ---------------------------------------------------------------------
-    ImGui::DragFloat("Scale (XYZ)", &mTransform.GetScale().x, 1.0f, 10.0f);
-    mTransform.SetScale(glm::vec3(mTransform.GetScale().x));
-  }
-  ImGui::End();
 
   ImGui::Begin("Simulation");
   {
@@ -152,8 +108,7 @@ void Application::OnGUI(std::string name) {
 
   ImGui::Begin("Simulation Chooser");
   {
-    if (ImGui::Button("1. Simple Shape: Triangle")) { SelectSimulation<TriangleSim>(); }
-    if (ImGui::Button("2. Simple Shape: Rectangle")) { SelectSimulation<RectangleSim>(); }
+    if (ImGui::Button("1. Simple Geometry")) { SelectSimulation<SimpleGeometrySim>(); }
   }
 
   ImGui::End();

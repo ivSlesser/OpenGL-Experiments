@@ -31,11 +31,6 @@ VertexArray::VertexArray() {
   CHECK_GL_ERROR(glBindVertexArray(m_ID));
 }
 
-VertexArray::~VertexArray() {
-  // TODO: Move to OnDestroy Method.
-//  CHECK_GL_ERROR(glDeleteVertexArrays(1, &m_ID));
-}
-
 void VertexArray::SetLayout() {
   size_t sf = sizeof(float);
 
@@ -117,5 +112,9 @@ void VertexArray::AttachInstancedMatrixBuffer(const std::vector<glm::mat4> &pMat
   glEnableVertexAttribArray(m_AttribIDMax);
   glVertexAttribDivisor(m_AttribIDMax++, 1);
   m_AttribCount += 4;
+}
+
+void VertexArray::Destroy() {
+  CHECK_GL_ERROR(glDeleteVertexArrays(1, &m_ID));
 }
 

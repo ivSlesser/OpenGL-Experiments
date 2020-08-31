@@ -61,6 +61,22 @@ void Material::DisplayWithGUI() {
   ImGui::DragFloat((Name + " Dissolve").c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
 }
 
+void Material::DisplayWithGUI(uint32_t pIndex) {
+
+  std::stringstream str;
+  str << "[" << pIndex << "] -> " << Name;
+
+  ImGui::Text(str.str().c_str());
+
+  if (ImGui::ColorEdit3((Name + " Ambient/Diffuse").c_str(), &Ambient.x)) {
+    Diffuse = Ambient;
+  }
+
+  ImGui::ColorEdit3((Name + " Specular").c_str(), &Specular.x);
+  ImGui::DragFloat((Name + " Shine").c_str(), &Shine, 2.0f, 0.0f, 128.0f);
+  ImGui::DragFloat((Name + " Dissolve").c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
+}
+
 void Material::SubmitAsUniform(Shader *pShader) {
   pShader->Vec3("u_Material.Ambient", Ambient);
   pShader->Vec3("u_Material.Diffuse", Diffuse);
@@ -68,3 +84,4 @@ void Material::SubmitAsUniform(Shader *pShader) {
   pShader->Float("u_Material.Shine", Shine);
   pShader->Float("u_Material.Dissolve", Dissolve);
 }
+

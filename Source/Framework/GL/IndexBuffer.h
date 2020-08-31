@@ -31,7 +31,9 @@ class IndexBuffer {
 
  public:
   IndexBuffer();
-  virtual ~IndexBuffer();
+  virtual ~IndexBuffer() {};
   void Init(const std::vector<uint32_t> &data);
+  void Create(const std::vector<uint32_t> &pData); // TODO: Refactor out init
+  void Destroy();
   void Bind();
 };

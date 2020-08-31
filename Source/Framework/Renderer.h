@@ -29,7 +29,6 @@
 
 #include "Common.h"
 
-#include "System/Module.h"
 #include "System/Window.h"
 #include "Framework/Components/Transform.h"
 #include "Framework/GL/Texture.h"

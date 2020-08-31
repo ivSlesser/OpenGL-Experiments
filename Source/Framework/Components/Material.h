@@ -39,4 +39,6 @@ struct Material {
   void SubmitAsUniform(Shader *pShader);
   void SubmitAsUniform(Shader &pShader, unsigned int index = 0);
   void DisplayWithGUI();
+  void DisplayWithGUI(uint32_t pIndex);
+
 };

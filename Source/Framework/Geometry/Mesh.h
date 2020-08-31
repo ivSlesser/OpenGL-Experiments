@@ -34,7 +34,7 @@ struct Mesh2 {
 
   VertexArray VAO;
   VertexBuffer VBO;
-  IndexBuffer Indices;
+  IndexBuffer IBO;
 
   uint32_t VertexCount;
   uint32_t IndexCount;
@@ -45,14 +45,20 @@ struct Mesh2 {
     IndexCount = pIndices.size();
 
     VAO.Bind();
-    VBO.Init(pVertices);
+    VBO.Create(pVertices);
     VAO.SetLayout2();
-    Indices.Init(pIndices);
+    IBO.Create(pIndices);
+  }
+
+  void Destroy() {
+    IBO.Destroy();
+    VBO.Destroy();
+    VAO.Destroy();
   }
 
   void Bind() {
     VAO.Bind();
-    Indices.Bind();
+    IBO.Bind();
   }
 
   void Draw() {
@@ -60,6 +66,6 @@ struct Mesh2 {
     glDrawElements(GL_TRIANGLES, IndexCount, GL_UNSIGNED_INT, 0);
   }
 
-  // TODO: Draw Commands.
+  // TODO: Draw Commands. ?
   // TODO: Material ID's
 };

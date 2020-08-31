@@ -28,7 +28,6 @@
 #include "Framework/Repository.h"
 #include "Framework/Simulation.h"
 
-#include "System/Module.h"
 #include "System/Window.h"
 #include "System/GUI/GUILayer.h"
 #include "Framework/Components/Transform.h"
@@ -40,9 +39,7 @@ class Application {
   Repository mRepository;
   Window mWindow;
   GUILayer mGui;
-  Module *mModule{nullptr};
   Simulation *mSimulation{nullptr};
-  Transform mTransform;
   bool mWireframe = false;
 
  public:
@@ -52,19 +49,7 @@ class Application {
   void Init();
   void Destroy();
 
-  void OnGUI(std::string name);
-
-  // Used to switch modules.
-  template<typename T>
-  void SwitchModule() {
-    if (mModule != nullptr) {
-      mModule->OnDestroy();
-      delete mModule;
-    }
-    mTransform = Transform();
-    mModule = new T();
-    mModule->OnInit(Renderer::GetCamera());
-  }
+  void OnGUI();
 
   // Used to switch simulations.
   template<typename T>

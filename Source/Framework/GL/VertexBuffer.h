@@ -32,9 +32,10 @@ class VertexBuffer {
 
  public:
   VertexBuffer();
-  virtual ~VertexBuffer();
+  virtual ~VertexBuffer() {};
   void Init(const std::vector<Vertex> &data);
-  void Init(const std::vector<Vertex2> &data);
+  void Create(const std::vector<Vertex2> &data);
+  void Destroy();
 
   void Bind();
 
