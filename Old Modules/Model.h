@@ -24,40 +24,17 @@
 #pragma once
 
 #include "Common.h"
-#include "Graphics/Mesh.h"
-#include "Framework/Components/Material.h"
-#include "Framework/GL/Shader.h"
+#include "Mesh.h"
 
-struct MultiModelLoadResult {
-  std::string Name;
-  std::vector<Vertex> Vertices;
-  std::vector<unsigned int> Indices;
-};
-
-class MultiModel {
+class Model {
 
  private:
-  std::vector<Mesh *> m_Meshes;
-  std::vector<Material *> m_Materials;
-  bool m_Instanced = false;
+  Mesh mMesh;
 
  public:
-  MultiModel() {}
-  virtual ~MultiModel();
-
-  bool Load(const char *file);
-  bool LoadAsInstanced(const char *file, const std::vector<glm::mat4> &pMatrices);
-
-  void Render(Shader &pShader);
-  void Render(Shader &pShader, bool pInstanced, unsigned int pInstanceCount);
-
-  void DoMaterialGUI() {
-    for (Material *m : m_Materials) {
-      m->DisplayWithGUI();
-    }
-  }
-
- private:
-  void Clear();
-  std::vector<MultiModelLoadResult> DoLoad(const char *file);
+  bool Load(const char *pFile);
+  inline Material &GetMeshMaterial() { return mMesh.iMaterial; }
+  inline void Bind() { mMesh.Bind(); }
+  inline const int VertexCount() const { return mMesh.VertexCount; };
+  inline const int IndexCount() const { return mMesh.IndexCount; }
 };

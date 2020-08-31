@@ -35,6 +35,8 @@ class SimpleGeometrySim : public Simulation {
     TRIANGLE = 0,
     RECTANGLE = 1,
     CUBE = 2,
+    CUBEFLAT = 3,
+    PLANE = 4,
   };
 
   Selection mSelection = Selection::TRIANGLE;
@@ -51,4 +53,6 @@ class SimpleGeometrySim : public Simulation {
   void CreateTriangle();
   void CreateRectangle();
   void CreateCube();
+  void CreateFlatCube();
+  void CreatePlane();
 };

@@ -32,7 +32,7 @@
 #include "System/Window.h"
 #include "Framework/Components/Transform.h"
 #include "Framework/GL/Texture.h"
-#include "Graphics/Camera/PerspectiveCamera.h"
+#include "./Components/Camera/PerspectiveCamera.h"
 #include "Framework/GL/Shader.h"
 
 class Renderer {

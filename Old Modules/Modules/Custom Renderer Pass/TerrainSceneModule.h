@@ -27,8 +27,8 @@
 
 #include "System/Module.h"
 #include "Framework/GL/Shader.h"
-#include "Graphics/Model.h"
-#include "Graphics/MultiModel.h"
+#include "../../Model.h"
+#include "../../MultiModel.h"
 
 #include "Elements/Terrain.h"
 

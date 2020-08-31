@@ -56,6 +56,12 @@ void SimpleGeometrySim::SetSelection(Selection pSelection) {
     case Selection::CUBE:
       CreateCube();
       break;
+    case Selection::CUBEFLAT:
+      CreateFlatCube();
+      break;
+    case Selection::PLANE:
+      CreatePlane();
+      break;
   }
 }
 
@@ -75,8 +81,18 @@ void SimpleGeometrySim::OnGUI() {
       return;
     }
 
-    if (ImGui::Button("Cube")) {
+    if (ImGui::Button("Cube (Smooth)")) {
       SetSelection(Selection::CUBE);
+      return;
+    }
+
+    if (ImGui::Button("Cube (Flat)")) {
+      SetSelection(Selection::CUBEFLAT);
+      return;
+    }
+
+    if (ImGui::Button("Plane")) {
+      SetSelection(Selection::PLANE);
       return;
     }
   }
@@ -107,6 +123,7 @@ void SimpleGeometrySim::OnGUI() {
     glm::vec3 rotation = transform->GetRotate();
     if (ImGui::DragFloat3("Rotation", &rotation.x, 0.1f, -360.0f, 360.0f)) {
       transform->SetRotate(rotation);
+      // TODO: Reset Material
     }
   }
 
@@ -120,23 +137,41 @@ void SimpleGeometrySim::OnGUI() {
 }
 
 void SimpleGeometrySim::CreateTriangle() {
-  Mesh2 triangleMesh;
+  Mesh triangleMesh;
   triangleMesh.Create("Triangle", Triangle::Vertices(), Triangle::Indices());
   uint32_t triangle = Repository::Get()->AddMesh(triangleMesh);
   mInstances.push_back(Repository::Get()->AddInstance(triangle, Transform()));
 }
 
 void SimpleGeometrySim::CreateRectangle() {
-  Mesh2 rectangleMesh;
+  Mesh rectangleMesh;
   rectangleMesh.Create("Rectangle", Rectangle::Vertices(), Rectangle::Indices());
   uint32_t rectangle = Repository::Get()->AddMesh(rectangleMesh);
   mInstances.push_back(Repository::Get()->AddInstance(rectangle, Transform()));
 }
 
 void SimpleGeometrySim::CreateCube() {
-  Mesh2 cubeMesh;
+  Mesh cubeMesh;
   cubeMesh.Create("Cube", Cube::Vertices(), Cube::Indices());
   uint32_t rectangle = Repository::Get()->AddMesh(cubeMesh);
   mInstances.push_back(Repository::Get()->AddInstance(rectangle, Transform()));
+}
+
+void SimpleGeometrySim::CreateFlatCube() {
+  Mesh cubeMesh;
+  cubeMesh.Create("CubeFlat", CubeFlat::Vertices());
+  uint32_t rectangle = Repository::Get()->AddMesh(cubeMesh);
+  mInstances.push_back(Repository::Get()->AddInstance(rectangle, Transform()));
+}
+
+void SimpleGeometrySim::CreatePlane() {
+  Plane p;
+  Mesh planeMesh;
+  planeMesh.Create("Plane (Default)", p.Vertices(), p.Indices());
+  uint32_t plane = Repository::Get()->AddMesh(planeMesh);
+  Transform t;
+  t.SetRotate({-10.0f, 0.0f, 0.0f});
+  mInstances.push_back(Repository::Get()->AddInstance(plane, t));
+
 }
 

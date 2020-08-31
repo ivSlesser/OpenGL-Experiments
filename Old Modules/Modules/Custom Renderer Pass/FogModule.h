@@ -33,7 +33,7 @@
 #include "Framework/GL/Shader.h"
 
 #include "Graphics/Plane.h"
-#include "Graphics/Model.h"
+#include "../../Model.h"
 
 class FogModule : public Module {
  private:

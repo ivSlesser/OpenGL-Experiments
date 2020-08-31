@@ -22,7 +22,7 @@
 
 
 #include "Marcher.h"
-#include "Elements/Marching Cubes/Tables.h"
+#include "Tables.h"
 #include "System/GUI/GUILayer.h"
 
 Marcher::Marcher(const glm::vec2 &pDimensions)

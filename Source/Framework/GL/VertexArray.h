@@ -36,8 +36,7 @@ class VertexArray {
  public:
   VertexArray();
   virtual ~VertexArray() {};
-  void SetLayout(); // TODO: Refactor out this
-  void SetLayout2();
+  void SetLayout();
   void Bind();
   void AttachInstancedMatrixBuffer(const std::vector<glm::mat4> &pMatrices);
   void Destroy();

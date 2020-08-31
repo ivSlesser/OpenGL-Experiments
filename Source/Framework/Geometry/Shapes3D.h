@@ -26,12 +26,37 @@
 #include "Common.h"
 #include "./Vertex.h"
 
-// Cube ------------------------------------------------------------------------------------------------------------
+// Cube ----------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------
 
 struct Cube {
-  static std::vector<Vertex2> Vertices();
+  static std::vector<Vertex> Vertices();
   static std::vector<uint32_t> Indices(uint32_t pOffset = 0);
   inline static uint32_t VertexCount() { return 8; };
   inline static uint32_t IndexCount() { return 36; };
+};
+
+// CubeFlat ------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+struct CubeFlat {
+  static std::vector<Vertex> Vertices();
+  static std::vector<uint32_t> Indices(uint32_t pOffset = 0);
+  inline static uint32_t VertexCount() { return 36; };
+  inline static uint32_t IndexCount() { return 0; };
+};
+
+// CubeFlat ------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+struct Plane {
+  std::vector<Vertex> mVertices;
+  std::vector<unsigned> mIndices;
+
+  Plane(const glm::vec2 &pSize = glm::vec2(10.0f), float pResolution = 5);
+  inline std::vector<Vertex> &Vertices() { return mVertices; }
+  inline std::vector<unsigned> &Indices() { return mIndices; };
+  inline const int VertexCount() const { return mVertices.size(); };
+  inline const int IndexCount() const { return mIndices.size(); }
+
 };

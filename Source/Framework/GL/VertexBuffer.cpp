@@ -37,9 +37,9 @@ void VertexBuffer::Bind() {
   CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, id));
 }
 
-void VertexBuffer::Create(const std::vector<Vertex2> &data) {
+void VertexBuffer::Create(const std::vector<Vertex> &data) {
   CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, id));
-  CHECK_GL_ERROR(glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex2), data.data(), GL_STATIC_DRAW));
+  CHECK_GL_ERROR(glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW));
 }
 
 void VertexBuffer::Destroy() {

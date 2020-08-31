@@ -24,34 +24,40 @@
 #pragma once
 
 #include "Common.h"
-#include "Framework/GL/VertexArray.h"
-#include "Framework/GL/VertexBuffer.h"
-#include "Framework/GL/IndexBuffer.h"
+#include "Mesh.h"
 #include "Framework/Components/Material.h"
+#include "Framework/GL/Shader.h"
 
-// TODO: Destroy method, which calls destroy of the components.
+struct MultiModelLoadResult {
+  std::string Name;
+  std::vector<Vertex> Vertices;
+  std::vector<unsigned int> Indices;
+};
 
-class Mesh {
+class MultiModel {
+
+ private:
+  std::vector<Mesh *> m_Meshes;
+  std::vector<Material *> m_Materials;
+  bool m_Instanced = false;
 
  public:
-  VertexArray VAO;
-  VertexBuffer VBO;
-  IndexBuffer IBO;
-  unsigned int VertexCount = 0;
-  unsigned int IndexCount = 0;
-  std::string Name = "Mesh";
-  Material iMaterial;
-  bool UsesMaterials = false;
+  MultiModel() {}
+  virtual ~MultiModel();
 
-  bool Load(const std::vector<Vertex> &pVertices,
-            const std::vector<unsigned int> &pIndices,
-            const Material &pMaterial = {});
-  bool LoadInstanced(const std::vector<Vertex> &pVertices,
-                     const std::vector<unsigned int> &pIndices,
-                     const std::vector<glm::mat4> &pMatrices,
-                     const Material &pMaterial = {});
-  inline void Bind() {
-    VAO.Bind();
-    IBO.Bind();
+  bool Load(const char *file);
+  bool LoadAsInstanced(const char *file, const std::vector<glm::mat4> &pMatrices);
+
+  void Render(Shader &pShader);
+  void Render(Shader &pShader, bool pInstanced, unsigned int pInstanceCount);
+
+  void DoMaterialGUI() {
+    for (Material *m : m_Materials) {
+      m->DisplayWithGUI();
+    }
   }
+
+ private:
+  void Clear();
+  std::vector<MultiModelLoadResult> DoLoad(const char *file);
 };

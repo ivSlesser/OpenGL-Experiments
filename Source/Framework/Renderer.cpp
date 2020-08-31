@@ -73,7 +73,7 @@ void Renderer::Draw() {
   for (const RenderingInstance &instance : instances) {
 
     // Get Components
-    Mesh2 *mesh = Repository::Get()->GetMesh(instance.MeshID);
+    Mesh *mesh = Repository::Get()->GetMesh(instance.MeshID);
     Transform *transform = Repository::Get()->GetTransform(instance.TransformID);
     Material *material = Repository::Get()->GetMaterial(instance.MaterialID);
 
@@ -85,7 +85,12 @@ void Renderer::Draw() {
 
     // Do draw
     mesh->Bind();
-    CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, mesh->IndexCount, GL_UNSIGNED_INT, 0));
+
+    if (mesh->IndexCount != 0) {
+      CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, mesh->IndexCount, GL_UNSIGNED_INT, 0));
+    } else {
+      CHECK_GL_ERROR(glDrawArrays(GL_TRIANGLES, 0, mesh->VertexCount));
+    }
 
   }
 

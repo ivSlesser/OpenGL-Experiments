@@ -30,7 +30,7 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 struct Triangle {
-  static std::vector<Vertex2> Vertices();
+  static std::vector<Vertex> Vertices();
   static std::vector<uint32_t> Indices(uint32_t pOffset = 0);
   inline static uint32_t VertexCount() { return 3; };
   inline static uint32_t IndexCount() { return 3; };
@@ -40,7 +40,7 @@ struct Triangle {
 // ---------------------------------------------------------------------------------------------------------------------
 
 struct Rectangle {
-  static std::vector<Vertex2> Vertices();
+  static std::vector<Vertex> Vertices();
   static std::vector<uint32_t> Indices(uint32_t pOffset = 0);
   inline static uint32_t VertexCount() { return 4; };
   inline static uint32_t IndexCount() { return 6; };

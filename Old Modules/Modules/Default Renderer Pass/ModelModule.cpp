@@ -23,7 +23,7 @@
 
 #include "ModelModule.h"
 
-#include "Graphics/MultiModel.h"
+#include "../../MultiModel.h"
 
 void ModelModule::OnInit(Camera &p_Camera) {
   p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});

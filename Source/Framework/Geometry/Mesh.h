@@ -28,26 +28,29 @@
 #include "Framework/GL/VertexBuffer.h"
 #include "Framework/GL/IndexBuffer.h"
 
-// TODO: Rename back to Mesh when incorporated throughout.
-struct Mesh2 {
+struct Mesh {
   std::string Name;
 
   VertexArray VAO;
   VertexBuffer VBO;
   IndexBuffer IBO;
 
-  uint32_t VertexCount;
-  uint32_t IndexCount;
+  uint32_t VertexCount{0};
+  uint32_t IndexCount{0};
 
-  void Create(std::string pName, const std::vector<Vertex2> &pVertices, const std::vector<uint32_t> &pIndices) {
+  void Create(std::string pName, const std::vector<Vertex> &pVertices, const std::vector<uint32_t> &pIndices) {
     Name = pName;
-    VertexCount = pVertices.size();
-    IndexCount = pIndices.size();
+    CreateVertexData(pVertices);
 
-    VAO.Bind();
-    VBO.Create(pVertices);
-    VAO.SetLayout2();
-    IBO.Create(pIndices);
+    if (pIndices.size() > 0) {
+      IndexCount = pIndices.size();
+      IBO.Create(pIndices);
+    }
+  }
+
+  void Create(std::string pName, const std::vector<Vertex> &pVertices) {
+    Name = pName;
+    CreateVertexData(pVertices);
   }
 
   void Destroy() {
@@ -58,12 +61,19 @@ struct Mesh2 {
 
   void Bind() {
     VAO.Bind();
-    IBO.Bind();
+
+    if (IndexCount != 0) {
+      IBO.Bind();
+    }
   }
 
-  void Draw() {
-    Bind();
-    glDrawElements(GL_TRIANGLES, IndexCount, GL_UNSIGNED_INT, 0);
+ private:
+  void CreateVertexData(const std::vector<Vertex> &pVertices) {
+    VertexCount = pVertices.size();
+
+    VAO.Bind();
+    VBO.Create(pVertices);
+    VAO.SetLayout();
   }
 
   // TODO: Draw Commands. ?

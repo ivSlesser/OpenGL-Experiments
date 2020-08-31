@@ -59,7 +59,7 @@ void Repository::ClearInstancesAndTransforms() {
 // Meshes --------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------
 
-uint32_t Repository::AddMesh(const Mesh2 &pMesh) {
+uint32_t Repository::AddMesh(const Mesh &pMesh) {
   // Check that the name doesn't already exist.
   if (MeshExists(pMesh.Name)) {
     return GetMeshID(pMesh.Name);
@@ -71,7 +71,7 @@ uint32_t Repository::AddMesh(const Mesh2 &pMesh) {
   return mMeshes.size() - 1;
 }
 
-Mesh2 *Repository::GetMesh(const std::string &pName) {
+Mesh *Repository::GetMesh(const std::string &pName) {
   // Check that the name exists.
   if (!MeshExists(pName)) {
     return nullptr;
@@ -87,7 +87,7 @@ uint32_t Repository::GetMeshID(const std::string &pName) {
   return mMeshesMap[pName];
 }
 
-Mesh2 *Repository::GetMesh(uint32_t pID) {
+Mesh *Repository::GetMesh(uint32_t pID) {
   try {
     return &mMeshes[pID];
   } catch (const std::exception &e) {
@@ -101,7 +101,7 @@ bool Repository::MeshExists(const std::string &pName) {
 
 void Repository::ClearMeshes() {
 
-  for (Mesh2 &mesh : mMeshes) {
+  for (Mesh &mesh : mMeshes) {
     mesh.Destroy();
   }
 

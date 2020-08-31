@@ -68,13 +68,13 @@ void Material::DisplayWithGUI(uint32_t pIndex) {
 
   ImGui::Text(str.str().c_str());
 
-  if (ImGui::ColorEdit3((Name + " Ambient/Diffuse").c_str(), &Ambient.x)) {
+  if (ImGui::ColorEdit3(("Ambient/Diffuse " + Name).c_str(), &Ambient.x)) {
     Diffuse = Ambient;
   }
 
-  ImGui::ColorEdit3((Name + " Specular").c_str(), &Specular.x);
-  ImGui::DragFloat((Name + " Shine").c_str(), &Shine, 2.0f, 0.0f, 128.0f);
-  ImGui::DragFloat((Name + " Dissolve").c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
+  ImGui::ColorEdit3(("Specular " + Name).c_str(), &Specular.x);
+  ImGui::DragFloat(("Shine " + Name).c_str(), &Shine, 2.0f, 0.0f, 128.0f);
+  ImGui::DragFloat(("Dissolve " + Name).c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
 }
 
 void Material::SubmitAsUniform(Shader *pShader) {

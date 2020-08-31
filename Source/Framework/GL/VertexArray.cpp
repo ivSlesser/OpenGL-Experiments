@@ -35,46 +35,17 @@ void VertexArray::SetLayout() {
   size_t sf = sizeof(float);
 
   // Position
-  glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
-  glEnableVertexAttribArray(m_AttribIDMax++);
-  m_AttribCount += 3;
-
-  // Color
-  glVertexAttribPointer(m_AttribIDMax, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
-  glEnableVertexAttribArray(m_AttribIDMax++);
-  m_AttribCount += 4;
-
-  // Texture Coordinates
-  glVertexAttribPointer(m_AttribIDMax, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
-  glEnableVertexAttribArray(m_AttribIDMax++);
-  m_AttribCount += 2;
-
-  // Normals
-  glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
-  glEnableVertexAttribArray(m_AttribIDMax++);
-  m_AttribCount += 3;
-
-  // Material Index
-  glVertexAttribPointer(m_AttribIDMax, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf));
-  glEnableVertexAttribArray(m_AttribIDMax++);
-  m_AttribCount += 1;
-}
-
-void VertexArray::SetLayout2() {
-  size_t sf = sizeof(float);
-
-  // Position
-  CHECK_GL_ERROR(glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)(m_AttribCount * sf)));
+  CHECK_GL_ERROR(glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf)));
   CHECK_GL_ERROR(glEnableVertexAttribArray(m_AttribIDMax++));
   m_AttribCount += 3;
 
   // Texture Coordinates
-  CHECK_GL_ERROR(glVertexAttribPointer(m_AttribIDMax, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)(m_AttribCount * sf)));
+  CHECK_GL_ERROR(glVertexAttribPointer(m_AttribIDMax, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf)));
   CHECK_GL_ERROR(glEnableVertexAttribArray(m_AttribIDMax++));
   m_AttribCount += 2;
 
   // Normals
-  CHECK_GL_ERROR(glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)(m_AttribCount * sf)));
+  CHECK_GL_ERROR(glVertexAttribPointer(m_AttribIDMax, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(m_AttribCount * sf)));
   CHECK_GL_ERROR(glEnableVertexAttribArray(m_AttribIDMax++));
   m_AttribCount += 3;
 }

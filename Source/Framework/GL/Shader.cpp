@@ -24,7 +24,9 @@
 #include "Shader.h"
 #include "Framework/Renderer.h"
 
-// TODO: Doc
+/**
+ * Generates a program ID through the OpenGL API.
+ */
 Shader::Shader() {
   id = glCreateProgram();
 }
@@ -103,12 +105,21 @@ void Shader::AddStage(GLenum p_Type, std::string p_Path) {
 Shader::~Shader() {
 }
 
-// TODO: Doc
+/**
+ * Bind the shader, using it for rendering input geometry.
+ */
 void Shader::Bind() {
   CHECK_GL_ERROR(glUseProgram(id));
 }
 
-// TODO: Doc
+/**
+ * Compiles a shader program, taking an input file, reading and validating the source code and then creating the
+ * actual shader object.
+ *
+ * @param filePath Path to the shader.
+ * @param id ID to register the shader object to.
+ * @return True if succeeded.
+ */
 bool Shader::CompileShader(const char *filePath, int &id) {
   std::ifstream shaderFile(filePath);
 
@@ -222,7 +233,11 @@ void Shader::RemoveStoredStages() {
   m_Stages.clear();
 }
 
-// TODO: Doc
+/**
+ * Returns a human readable string representing an OpenGL type.
+ * @param type Input OpenGL type
+ * @return String of converted value.
+ */
 const char *Shader::TypeString(uint32_t type) {
   // https://www.khronos.org/opengl/wiki/OpenGL_Type
   switch (type) {
@@ -244,7 +259,9 @@ const char *Shader::TypeString(uint32_t type) {
   return "other";
 }
 
-// TODO: Doc
+/**
+ * Log the information for a created program.
+ */
 void Shader::LogFullProgramInfo() {
 
   std::cout << "\n";
@@ -276,11 +293,13 @@ void Shader::LogFullProgramInfo() {
         char long_name[64];
         std::cout << name << "[" << j << "]" << std::endl;
         int location = glGetAttribLocation(id, long_name);
-        std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << name << ", Location: " << location << std::endl;
+        std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << name << ", Location: " << location
+                  << std::endl;
       }
     } else {
       int location = glGetAttribLocation(id, name);
-      std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << name << ", Location: " << location << std::endl;
+      std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << name << ", Location: " << location
+                << std::endl;
     }
   }
 
@@ -297,11 +316,13 @@ void Shader::LogFullProgramInfo() {
         char long_name[64];
         std::cout << name << "[" << j << "]" << std::endl;
         int location = glGetUniformLocation(id, long_name);
-        std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << long_name << ", Location: " << location << std::endl;
+        std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << long_name << ", Location: "
+                  << location << std::endl;
       }
     } else {
       int location = glGetUniformLocation(id, name);
-      std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << name << ", Location: " << location << std::endl;
+      std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << name << ", Location: " << location
+                << std::endl;
     }
   }
 

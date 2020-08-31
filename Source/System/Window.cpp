@@ -24,7 +24,7 @@
 #include "Window.h"
 
 #include "Framework/Renderer.h"
-#include "Graphics/Camera/PerspectiveCamera.h"
+#include "Framework/Components/Camera/PerspectiveCamera.h"
 
 GLFWwindow *Window::sWindow = nullptr;
 Window *Window::sInstance = nullptr;

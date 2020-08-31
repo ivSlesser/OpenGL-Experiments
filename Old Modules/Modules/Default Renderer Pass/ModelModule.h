@@ -25,7 +25,7 @@
 
 #include "Common.h"
 #include "System/Module.h"
-#include "Graphics/Model.h"
+#include "../../Model.h"
 
 class ModelModule : public Module {
  private:

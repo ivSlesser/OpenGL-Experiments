@@ -53,7 +53,7 @@ class Repository {
   static Repository *sInstance;
 
   // Meshes ------------------------------------------------------------------------------------------------------------
-  std::vector<Mesh2> mMeshes;
+  std::vector<Mesh> mMeshes;
   std::map<std::string, uint32_t> mMeshesMap;
 
   // Instances ---------------------------------------------------------------------------------------------------------
@@ -85,10 +85,10 @@ class Repository {
 
   // Meshes ------------------------------------------------------------------------------------------------------------
 
-  uint32_t AddMesh(const Mesh2 &pMesh);
-  Mesh2 *GetMesh(const std::string &pName);
+  uint32_t AddMesh(const Mesh &pMesh);
+  Mesh *GetMesh(const std::string &pName);
   uint32_t GetMeshID(const std::string &pName);
-  Mesh2 *GetMesh(uint32_t pID);
+  Mesh *GetMesh(uint32_t pID);
   bool MeshExists(const std::string &pName);
   void ClearMeshes();
 

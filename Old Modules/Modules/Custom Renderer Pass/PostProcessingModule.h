@@ -35,7 +35,7 @@
 
 #include "Graphics/Plane.h"
 #include "Graphics/Quad.h"
-#include "Graphics/Model.h"
+#include "../../Model.h"
 
 class PostProcessingModule : public Module {
 

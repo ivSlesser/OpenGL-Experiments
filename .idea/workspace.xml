@@ -14,77 +14,73 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Old Modules/Mesh.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Old Modules/Mesh.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Old Modules/old_readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Graphics/Quad.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/FlatCube.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/FlatCube.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/FogModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/FogModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/InstancedModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/InstancedModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/MaterialModelModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/MaterialModelModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/PostProcessingModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/PostProcessingModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/TerrainSceneModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/TerrainSceneModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/ModelModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/ModelModule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/ModelModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/ModelModule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Elements/Marching Cubes/Marcher.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Elements/Marching Cubes/Marcher.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Elements/Marching Cubes/Marcher.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Elements/Marching Cubes/Marcher.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Elements/Marching Cubes/Tables.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Elements/Marching Cubes/Tables.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Elements/Terrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Elements/Terrain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Elements/Terrain.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Elements/Terrain.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/Components/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Material.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Components/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Material.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/GL/IndexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/IndexBuffer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/GL/IndexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/IndexBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/Shader.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexArray.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexArray.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexArray.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexArray.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/VertexBuffer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Mesh.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Vertex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Vertex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Cube.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Cube.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/FlatCube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/FlatCube.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/FlatCube.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/FlatCube.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Quad.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Graphics/Quad.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/FogModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/FogModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/FogModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/FogModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GeometryQuadModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/GeometryQuadModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GeometryQuadModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/GeometryQuadModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/GerstnerWaveModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/GerstnerWaveModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/GerstnerWaveModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/InstancedModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/InstancedModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/InstancedModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/InstancedModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/MaterialModelModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/MaterialModelModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/MaterialModelModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/MaterialModelModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/PostProcessingModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/PostProcessingModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/PostProcessingModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/PostProcessingModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/RayMarchingModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/RayMarchingModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/RayMarchingModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/RayMarchingModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/TerrainSceneModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass/TerrainSceneModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/TerrainSceneModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/CubeModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/CubeModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/CubeModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/CubeModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/MarchingCubesModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/MarchingCubesModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/MarchingCubesModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/MarchingCubesModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/ModelModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/ModelModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/ModelModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/ModelModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/PlaneModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/PlaneModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/PlaneModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/PlaneModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/QuadModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/QuadModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/QuadModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/QuadModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/TerrainModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/TerrainModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/TerrainModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/TerrainModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/TriangleModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/TriangleModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Modules/Default Renderer Pass/TriangleModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/TriangleModule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Simulations/Simple/RectangleSim.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Simulations/Simple/RectangleSim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Simulations/Simple/TriangleSim.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Simulations/Simple/TriangleSim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/System/Module.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Camera/Camera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Camera/Camera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Camera/OrthographicCamera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/OrthographicCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Camera/OrthographicCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Camera/PerspectiveCamera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Camera/PerspectiveCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Components/Camera/PerspectiveCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Mesh.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Mesh.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Model.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Model.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Model.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Model.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/MultiModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/MultiModel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/MultiModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/MultiModel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Plane.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Graphics/Plane.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/System/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/System/Window.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -139,9 +135,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Old Modules" />
+      <recent name="$PROJECT_DIR$/Source/Framework/Components" />
       <recent name="$PROJECT_DIR$/Source/Framework/Geometry" />
       <recent name="$PROJECT_DIR$/Source/Framework/GL" />
-      <recent name="$PROJECT_DIR$/Source/Framework/Components" />
       <recent name="$PROJECT_DIR$/Source/Framework" />
     </key>
   </component>
@@ -229,7 +225,7 @@
       <workItem from="1598606749826" duration="1088000" />
       <workItem from="1598611705456" duration="3709000" />
       <workItem from="1598718772307" duration="16240000" />
-      <workItem from="1598851674849" duration="4500000" />
+      <workItem from="1598851674849" duration="7468000" />
     </task>
     <servers />
   </component>
@@ -269,7 +265,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/Framework/Renderer.h</url>
-          <line>79</line>
+          <line>78</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
