@@ -36,6 +36,7 @@ class SimpleGeometrySim : public Simulation {
     CUBE,
     CUBEFLAT,
     PLANE,
+    MODEL,
   };
 
   Selection mSelection{Selection::TRIANGLE};          // Currently selected geometry component
@@ -57,6 +58,7 @@ class SimpleGeometrySim : public Simulation {
   void CreateCube();
   void CreateFlatCube();
   void CreatePlane();
+  void CreateModel();
 
   // Shape Specific
   void ChangePolygonSides(uint32_t pSides);

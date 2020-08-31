@@ -51,7 +51,7 @@ class Renderer {
   PerspectiveCamera camera;                           // Camera (Will refactor into repo)
   bool mIsWireframeEnabled = false;                   // Is the wire-frame mode enabled?
 
-  glm::vec3 mClearColor = glm::vec3(0.2f);    // Clear color for the buffer swap routine.
+  glm::vec3 mClearColor = glm::vec3(0.474f);  // Clear color for the buffer swap routine.
 
   // Texture Related ---------------------------------------------------------------------------------------------------
 

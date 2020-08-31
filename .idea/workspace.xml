@@ -15,15 +15,20 @@
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes2D.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Model.h" beforeDir="false" afterPath="$PROJECT_DIR$/Old Modules/Model.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/CubeModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/CubeModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/PlaneModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/PlaneModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/QuadModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/QuadModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/TriangleModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/TriangleModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Mesh.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h" afterDir="false" />
     </list>
@@ -70,19 +75,19 @@
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Old Modules" />
+      <recent name="$PROJECT_DIR$/Source/Framework/Geometry" />
+      <recent name="$PROJECT_DIR$/Source/Framework/Components" />
+      <recent name="$PROJECT_DIR$/Source/Framework/GL" />
+      <recent name="$PROJECT_DIR$/Source/Framework" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/Shaders/Terrain Scene" />
       <recent name="$PROJECT_DIR$/Source/Modules/Default Renderer Pass" />
       <recent name="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass" />
       <recent name="$PROJECT_DIR$/Source/OpenGL" />
       <recent name="$PROJECT_DIR$/Resources/Shaders/Model" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Old Modules" />
-      <recent name="$PROJECT_DIR$/Source/Framework/Components" />
-      <recent name="$PROJECT_DIR$/Source/Framework/Geometry" />
-      <recent name="$PROJECT_DIR$/Source/Framework/GL" />
-      <recent name="$PROJECT_DIR$/Source/Framework" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -170,7 +175,7 @@
       <workItem from="1598611705456" duration="3709000" />
       <workItem from="1598718772307" duration="16240000" />
       <workItem from="1598851674849" duration="14739000" />
-      <workItem from="1598883735673" duration="3262000" />
+      <workItem from="1598883735673" duration="4233000" />
     </task>
     <servers />
   </component>

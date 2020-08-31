@@ -20,7 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
 #include "SimpleGeometrySim.h"
 #include "../../Framework/Geometry/Shapes2D.h"
 #include "../../Framework/Geometry/Shapes3D.h"
@@ -72,6 +71,8 @@ void SimpleGeometrySim::SetSelection(Selection pSelection) {
       break;
     case Selection::PLANE:CreatePlane();
       break;
+    case Selection::MODEL:CreateModel();
+      break;
   }
 }
 
@@ -111,6 +112,11 @@ void SimpleGeometrySim::OnGUI() {
 
     if (ImGui::Button("Plane")) {
       SetSelection(Selection::PLANE);
+      return;
+    }
+
+    if (ImGui::Button("OBJ Model")) {
+      SetSelection(Selection::MODEL);
       return;
     }
     ImGui::NewLine();
@@ -236,6 +242,16 @@ void SimpleGeometrySim::CreatePolygon(uint32_t pSides) {
 }
 
 /**
+ * Create and store a sample model mesh in the repository.
+ */
+void SimpleGeometrySim::CreateModel() {
+  Mesh modelMesh;
+  modelMesh.Create("Resources/Models/dragon.obj");
+  uint32_t model = Repository::Get()->AddMesh(modelMesh);
+  mInstances.push_back(Repository::Get()->AddInstance(model, Transform()));
+}
+
+/**
  * Handles creation of a polygon with the specified number of sides, clearing existing
  * instances and transforms.
  *
@@ -247,4 +263,5 @@ void SimpleGeometrySim::ChangePolygonSides(uint32_t pSides) {
   mNumSidesPolygon = pSides;
   CreatePolygon(pSides);
 }
+
 
