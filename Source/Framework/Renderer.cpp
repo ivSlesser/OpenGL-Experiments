@@ -99,6 +99,8 @@ void Renderer::Draw() {
   shader->Vec3("u_LightPosition", ptr->mLightPosition);
   shader->Vec3("u_LightColor", ptr->mLightColor);
   shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
+  shader->Float("u_Density", ptr->mSettings.FogDensity);
+  shader->Float("u_Gradient", ptr->mSettings.FogGradient);
 
   const std::vector<RenderingInstance> &instances = Repository::Get()->GetAllRenderingInstances();
 
@@ -199,6 +201,12 @@ void Renderer::OnGUI() {
     ImGui::Checkbox("Use Greyscale?", &ptr->mPPSettings.ApplyGreyscale);
     ImGui::Checkbox("Use Inverse?", &ptr->mPPSettings.ApplyInvert);
     ImGui::DragFloat("Contrast", &ptr->mPPSettings.ContrastStrength, 0.01f);
+    ImGui::NewLine();
+
+    // Fog -------------------------------------------------------------------------------------------------------------
+    ImGui::DragFloat("Density", &ptr->mPPSettings.mSettings, 0.001f, 0.0f, 1.0f);
+    ImGui::DragFloat("Gradient", &ptr->mPPSettings.mSettings, 0.01f, 0.0f, 4.0f);
+    ImGui::ColorPicker4("Sky Color", &ptr->mSettings.ClearColor.x);
     ImGui::NewLine();
   }
   ImGui::End();

@@ -13,8 +13,8 @@ uniform vec3 u_CameraPosition;
 uniform sampler2D u_Texture0;
 uniform vec4 u_SkyColor;
 
-const float AmbientStrength = 0.2;
-const float SpecularStrength = 0.5;
+const float AmbientStrength = 0.2; // TODO: Move to Renderer
+const float SpecularStrength = 0.5; // TODO: Move to Renderer
 
 void main()
 {

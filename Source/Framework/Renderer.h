@@ -52,27 +52,30 @@ class Renderer {
     uint32_t Calls = 0;
     uint32_t Vertices = 0;
     uint32_t Indices = 0;
-  } mStatistics;                                      // Collected statistics for the renderer.
+  } mStatistics;                            // Collected statistics for the renderer.
 
   struct RenderingSettings {
-    bool IsWireframeEnabled{false};                   // Is the wire-frame mode enabled?
-    glm::vec3 ClearColor{0.474f};             // Clear color for the buffer swap routine.
-  } mSettings;                                        // Rendering settings
+    bool IsWireframeEnabled{false};         // Is the wire-frame mode enabled?
+    glm::vec3 ClearColor{0.474f};   // Clear color for the buffer swap routine.
+    float FogDensity{0.0035f};              // How thick the fog is. Greater means lower visibility.
+    float FogGradient{5.0f};                // How quickly visibility decreases. Greater means smaller view distance.
+
+  } mSettings;                              // Rendering settings
 
   struct PostProcessingSettings {
-    bool ApplyGreyscale{false};                       // Should apply greyscale effect?
-    bool ApplyInvert{false};                          // Should apply inversion effect?
+    bool ApplyGreyscale{false};             // Should apply greyscale effect?
+    bool ApplyInvert{false};                // Should apply inversion effect?
+    float ContrastStrength{1.0f};           // Strength of contrast effect
 
-    float ContrastStrength{1.0f};                     // Strength of contrast effect
-  } mPPSettings;                                      // Post processing settings.
+  } mPPSettings;                            // Post processing settings.
 
-  uint32_t mPostProcessingShaderID{0};                // Post processing shader ID
-  VertexArray mScreenVAO;                             // Output VAO for Post processing rectangle.
-  VertexBuffer mScreenVBO;                            // Output VBO for Post processing rectangle.
-  IndexBuffer mScreenIBO;                             // Output IBO for Post processing rectangle.
-  FrameBuffer mPrimaryFBO;                            // Primary Framebuffer for rendering.
+  uint32_t mPostProcessingShaderID{0};      // Post processing shader ID
+  VertexArray mScreenVAO;                   // Output VAO for Post processing rectangle.
+  VertexBuffer mScreenVBO;                  // Output VBO for Post processing rectangle.
+  IndexBuffer mScreenIBO;                   // Output IBO for Post processing rectangle.
+  FrameBuffer mPrimaryFBO;                  // Primary Framebuffer for rendering.
 
-  PerspectiveCamera camera;                           // Camera (Will refactor into repo)
+  PerspectiveCamera camera;                 // Camera (Will refactor into repo)
 
 
   // Texture Related ---------------------------------------------------------------------------------------------------
