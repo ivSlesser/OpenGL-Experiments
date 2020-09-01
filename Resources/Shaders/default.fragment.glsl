@@ -10,7 +10,7 @@ in float v_Visibility;
 uniform vec3 u_LightPosition;
 uniform vec3 u_LightColor;
 uniform vec3 u_CameraPosition;
-uniform vec4 u_SkyColor;
+uniform vec3 u_SkyColor;
 
 uniform sampler2D u_Texture0;
 
@@ -48,5 +48,5 @@ void main()
     vec4 Lighting = vec4(Ambient + Diffuse + Specular, 1.0f);
 
     FragColor = texture(u_Texture0, v_TexCoords) * Lighting;
-    FragColor = mix(u_SkyColor, FragColor, v_Visibility);
+    FragColor = mix(vec4(u_SkyColor, 1.0), FragColor, v_Visibility);
 }

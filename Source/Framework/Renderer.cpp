@@ -95,12 +95,15 @@ void Renderer::Draw() {
   Shader *shader = Repository::Get()->GetShader(); // Default Shader
   shader->Bind();
 
+  shader->Mat4("u_View", ptr->camera.GetView());
   shader->Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
   shader->Vec3("u_LightPosition", ptr->mLightPosition);
   shader->Vec3("u_LightColor", ptr->mLightColor);
   shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
+  shader->Bool("u_ApplyFog", ptr->mSettings.ApplyFog);
   shader->Float("u_Density", ptr->mSettings.FogDensity);
   shader->Float("u_Gradient", ptr->mSettings.FogGradient);
+  shader->Vec3("u_SkyColor", ptr->mSettings.ClearColor);
 
   const std::vector<RenderingInstance> &instances = Repository::Get()->GetAllRenderingInstances();
 
@@ -204,9 +207,10 @@ void Renderer::OnGUI() {
     ImGui::NewLine();
 
     // Fog -------------------------------------------------------------------------------------------------------------
-    ImGui::DragFloat("Density", &ptr->mPPSettings.mSettings, 0.001f, 0.0f, 1.0f);
-    ImGui::DragFloat("Gradient", &ptr->mPPSettings.mSettings, 0.01f, 0.0f, 4.0f);
-    ImGui::ColorPicker4("Sky Color", &ptr->mSettings.ClearColor.x);
+    ImGui::Text("Fog");
+    ImGui::Checkbox("Apply Fog?", &ptr->mSettings.ApplyFog);
+    ImGui::DragFloat("Density", &ptr->mSettings.FogDensity, 0.001f, 0.0f, 1.0f);
+    ImGui::DragFloat("Gradient", &ptr->mSettings.FogGradient, 0.01f, 0.0f, 4.0f);
     ImGui::NewLine();
   }
   ImGui::End();

@@ -10,8 +10,9 @@ out vec3 v_Normals;
 out float v_Visibility;
 
 uniform mat4 u_Model;
+uniform mat4 u_View;
 uniform mat4 u_ViewProjection;
-
+uniform bool u_ApplyFog;
 uniform float u_Density;
 uniform float u_Gradient;
 
@@ -23,7 +24,12 @@ void main()
     v_TexCoords = a_TexCoords;
     v_Normals = (u_Model * vec4(a_Normals, 1.0)).xyz;
 
-    float distance = length(posRelativeToCam.xyz);
-    v_Visibility = exp(-pow((distance * u_Density), u_Gradient));
-    v_Visibility = clamp(v_Visibility, 0.0, 1.0);
+    // Fog -----------------------------------------------------------------
+    v_Visibility = 1.0f;
+    if (u_ApplyFog) {
+        vec4 posRelativeToCam = u_View * worldPosition;
+        float distance = length(posRelativeToCam.xyz);
+        v_Visibility = exp(-pow((distance * u_Density), u_Gradient));
+        v_Visibility = clamp(v_Visibility, 0.0, 1.0);
+    }
 }

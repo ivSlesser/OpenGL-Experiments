@@ -57,6 +57,7 @@ class Renderer {
   struct RenderingSettings {
     bool IsWireframeEnabled{false};         // Is the wire-frame mode enabled?
     glm::vec3 ClearColor{0.474f};   // Clear color for the buffer swap routine.
+    bool ApplyFog{true};                    // Should apply fog effect?
     float FogDensity{0.0035f};              // How thick the fog is. Greater means lower visibility.
     float FogGradient{5.0f};                // How quickly visibility decreases. Greater means smaller view distance.
 
