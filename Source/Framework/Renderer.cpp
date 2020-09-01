@@ -23,6 +23,7 @@
 #include "Renderer.h"
 #include "System/GUI/GUILayer.h"
 #include "Repository.h"
+#include "./Geometry/Shapes2D.h"
 
 Renderer *Renderer::s_Instance = nullptr;
 
@@ -44,8 +45,37 @@ Renderer *Renderer::Access() {
  */
 Renderer::Renderer() {
 
-  // Camera TODO: Integrate into repo
-//  GetCamera().SetPosition(0.0f);
+  // -------------------------------------------------------------------------------------------------------------------
+  // Post Processing Set-Up --------------------------------------------------------------------------------------------
+
+  // Shader
+  Shader ppShader;
+  ppShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/PostProcessing/pp.vertex.glsl");
+  ppShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/PostProcessing/pp.fragment.glsl");
+  ppShader.Create();
+  mPostProcessingShaderID = Repository::Get()->AddShader("Post-Processing", ppShader);
+
+  // Display rectangle
+  mScreenVAO.Bind();
+  mScreenVBO.Create(Rectangle::Vertices());
+  mScreenVAO.SetLayout();
+  mScreenIBO.Create(Rectangle::Indices());
+
+  // Framebuffer
+  auto dims = Window::GetDimensions();
+  int width, height;
+
+#ifdef __APPLE__
+  width = dims.x * 2;
+  height = dims.y * 2;
+#endif
+  if (!mPrimaryFBO.Create(width, height)) {
+    std::abort();
+  }
+  Window::ToggleFramebufferUsage(true); // TODO: Needed?
+
+  // End Post Processing Set-Up ----------------------------------------------------------------------------------------
+  // -------------------------------------------------------------------------------------------------------------------
 }
 
 /**
@@ -55,7 +85,12 @@ Renderer::Renderer() {
 void Renderer::Draw() {
 
   Renderer *ptr = Renderer::Access();
-  glActiveTexture(GL_TEXTURE0);
+  auto windowXY = Window::GetDimensions();
+
+  ptr->mPrimaryFBO.Bind(windowXY);
+
+  // Render Scene To FBO -----------------------------------------------------------------------------------------------
+  // -------------------------------------------------------------------------------------------------------------------
 
   Shader *shader = Repository::Get()->GetShader(); // Default Shader
   shader->Bind();
@@ -74,6 +109,9 @@ void Renderer::Draw() {
     Transform *transform = Repository::Get()->GetTransform(instance.TransformID);
     Material *material = Repository::Get()->GetMaterial(instance.MaterialID);
     Texture *texture = Repository::Get()->GetTexture(instance.TextureID); // TODO: Also need to check for alpha.
+
+    // Bind Texture
+    texture->Bind();
 
     // Upload Model Matrix
     shader->Mat4("u_Model", transform->Transformation());
@@ -94,6 +132,32 @@ void Renderer::Draw() {
       CHECK_GL_ERROR(glDrawArrays(GL_TRIANGLES, 0, mesh->VertexCount));
     }
   }
+
+  // Apply PP & Output FBO ---------------------------------------------------------------------------------------------
+  // -------------------------------------------------------------------------------------------------------------------
+  bool wfState = ptr->mSettings.IsWireframeEnabled; // Store mWireFrameRendering state
+  if (wfState) { // Toggle wire-frame off so it won't disturb the output rectangle.
+    Renderer::SetWireframeRendering(false);
+  }
+
+  ptr->mPrimaryFBO.Bind(0, windowXY);
+  ptr->mPrimaryFBO.BindColorAttachment();
+
+  Shader *ppShader = Repository::Get()->GetShader(ptr->mPostProcessingShaderID); // Default Shader
+  ppShader->Bind();
+
+  ppShader->Bool("u_Greyscale", ptr->mPPSettings.ApplyGreyscale);
+  ppShader->Bool("u_Invert", ptr->mPPSettings.ApplyInvert);
+  ppShader->Float("u_ContrastStrength", ptr->mPPSettings.ContrastStrength);
+
+  ptr->mScreenVAO.Bind();
+  ptr->mScreenIBO.Bind();
+  CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, Rectangle::IndexCount(), GL_UNSIGNED_INT, 0));
+
+  if (wfState) { // Toggle wire-frame back on.
+    Renderer::SetWireframeRendering(true);
+  }
+
 }
 
 /**
@@ -110,7 +174,8 @@ void Renderer::OnGUI() {
     DEBUG_ONLY(ImGui::NewLine())
 
     // General ---------------------------------------------------------------------------------------------------------
-    ImGui::ColorEdit3("Clear Color", &ptr->mClearColor.x);
+    ImGui::Text("General");
+    ImGui::ColorEdit3("Clear Color", &ptr->mSettings.ClearColor.x);
     if (ImGui::Button("Toggle Wire-frame")) {
       Renderer::ToggleWireframeRendering();
     }
@@ -118,12 +183,23 @@ void Renderer::OnGUI() {
     ImGui::NewLine();
 
     // Shader ----------------------------------------------------------------------------------------------------------
+    ImGui::Text("Lighting");
     ImGui::ColorEdit3("Light Color", &ptr->mLightColor.x);
     ImGui::DragFloat3("Light Position", &ptr->mLightPosition.x, 1.0f);
+    ImGui::NewLine();
 
     // Camera ----------------------------------------------------------------------------------------------------------
+    ImGui::Text("Camera");
     ImGui::DragFloat3("Camera Position", &ptr->camera.GetPosition().x, -1000.0f, 1000.0f);
     ImGui::DragFloat3("Camera Rotation", &ptr->camera.GetRotation().x, -360.0f, 360.0f);
+    ImGui::NewLine();
+
+    // Post Processing -------------------------------------------------------------------------------------------------
+    ImGui::Text("Post Processing");
+    ImGui::Checkbox("Use Greyscale?", &ptr->mPPSettings.ApplyGreyscale);
+    ImGui::Checkbox("Use Inverse?", &ptr->mPPSettings.ApplyInvert);
+    ImGui::DragFloat("Contrast", &ptr->mPPSettings.ContrastStrength, 0.01f);
+    ImGui::NewLine();
   }
   ImGui::End();
 }
@@ -139,7 +215,7 @@ void Renderer::Begin() {
 
   Renderer::Access()->camera.Update(1.0);
 
-  glm::vec3 C = s_Instance->mClearColor;
+  glm::vec3 C = s_Instance->mSettings.ClearColor;
   glClearColor(C.x, C.y, C.z, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -156,8 +232,17 @@ void Renderer::End() {
  * Toggles wire-frame rendering mode on or off.
  */
 void Renderer::ToggleWireframeRendering() {
-  s_Instance->mIsWireframeEnabled = !s_Instance->mIsWireframeEnabled;
-  if (s_Instance->mIsWireframeEnabled) {
+  Renderer::SetWireframeRendering(!s_Instance->mSettings.IsWireframeEnabled);
+}
+
+/**
+ * Set the wire-frame rendering mode to the specified value.
+ *
+ * @param pTo       Boolean value to set to.
+ */
+void Renderer::SetWireframeRendering(bool pTo) {
+  s_Instance->mSettings.IsWireframeEnabled = pTo;
+  if (s_Instance->mSettings.IsWireframeEnabled) {
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   } else {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);

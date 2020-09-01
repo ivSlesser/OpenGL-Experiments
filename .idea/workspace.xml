@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Foundations" targetName="glfw" />
       <config projectName="Foundations" targetName="Foundations" />
       <config projectName="Foundations" targetName="glad" />
+      <config projectName="Foundations" targetName="glfw" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -15,13 +15,23 @@
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/lit.basic.fragment.glsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/lit.basic.vertex.glsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/unlit.basic.fragment.glsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/unlit.basic.vertex.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/PostProcessingModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Custom Renderer Pass/PostProcessingModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/pp.fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/pp.fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/pp.vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/pp.vertex.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/FrameBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/FrameBuffer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/FrameBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/FrameBuffer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +177,8 @@
       <workItem from="1598718772307" duration="16240000" />
       <workItem from="1598851674849" duration="14739000" />
       <workItem from="1598883735673" duration="4457000" />
-      <workItem from="1598891318150" duration="378000" />
+      <workItem from="1598891318150" duration="513000" />
+      <workItem from="1598940905403" duration="3397000" />
     </task>
     <servers />
   </component>
@@ -207,8 +218,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/Framework/Renderer.h</url>
-          <line>98</line>
+          <line>121</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Source/Framework/Renderer.cpp</url>
+          <line>55</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

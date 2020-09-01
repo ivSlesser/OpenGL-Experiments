@@ -32,9 +32,15 @@
 #include "Common.h"
 
 #include "System/Window.h"
+
+#include "./Components/Camera/PerspectiveCamera.h"
+
 #include "Framework/Components/Transform.h"
 #include "Framework/GL/Texture.h"
-#include "./Components/Camera/PerspectiveCamera.h"
+#include "Framework/GL/VertexArray.h"
+#include "Framework/GL/VertexBuffer.h"
+#include "Framework/GL/IndexBuffer.h"
+#include "Framework/GL/FrameBuffer.h"
 #include "Framework/GL/Shader.h"
 
 class Renderer {
@@ -48,10 +54,26 @@ class Renderer {
     uint32_t Indices = 0;
   } mStatistics;                                      // Collected statistics for the renderer.
 
-  PerspectiveCamera camera;                           // Camera (Will refactor into repo)
-  bool mIsWireframeEnabled = false;                   // Is the wire-frame mode enabled?
+  struct RenderingSettings {
+    bool IsWireframeEnabled{false};                   // Is the wire-frame mode enabled?
+    glm::vec3 ClearColor{0.474f};             // Clear color for the buffer swap routine.
+  } mSettings;                                        // Rendering settings
 
-  glm::vec3 mClearColor = glm::vec3(0.474f);  // Clear color for the buffer swap routine.
+  struct PostProcessingSettings {
+    bool ApplyGreyscale{false};                       // Should apply greyscale effect?
+    bool ApplyInvert{false};                          // Should apply inversion effect?
+
+    float ContrastStrength{1.0f};                     // Strength of contrast effect
+  } mPPSettings;                                      // Post processing settings.
+
+  uint32_t mPostProcessingShaderID{0};                // Post processing shader ID
+  VertexArray mScreenVAO;                             // Output VAO for Post processing rectangle.
+  VertexBuffer mScreenVBO;                            // Output VBO for Post processing rectangle.
+  IndexBuffer mScreenIBO;                             // Output IBO for Post processing rectangle.
+  FrameBuffer mPrimaryFBO;                            // Primary Framebuffer for rendering.
+
+  PerspectiveCamera camera;                           // Camera (Will refactor into repo)
+
 
   // Texture Related ---------------------------------------------------------------------------------------------------
 
@@ -73,6 +95,7 @@ class Renderer {
   static void OnGUI();
 
   static void ToggleWireframeRendering();
+  static void SetWireframeRendering(bool pTo);
 
   inline static Camera &GetCamera() { return Renderer::Access()->camera; }
   inline const glm::vec3 &GetLightColor() const { return mLightColor; }

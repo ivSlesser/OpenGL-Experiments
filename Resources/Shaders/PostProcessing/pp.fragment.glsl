@@ -2,7 +2,6 @@
 
 out vec4 FragColor;
 
-in vec4 v_Color;
 in vec2 v_TexCoords;
 
 uniform sampler2D u_Texture0;
@@ -10,7 +9,6 @@ uniform sampler2D u_Texture0;
 // PP On/Off Toggles
 uniform bool u_Greyscale;
 uniform bool u_Invert;
-uniform bool u_Contrast;
 
 // PP Related Variables
 uniform float u_ContrastStrength;
@@ -32,9 +30,7 @@ void main()
     }
 
     // Contrast --------------------------------------------------------------------------------------------------------
-    if (u_Contrast) {
-        FinalColour.rgb =  (FinalColour.rgb - 0.5) * (1.0 + u_ContrastStrength) + 0.5;
-    }
+    FinalColour.rgb =  (FinalColour.rgb - 0.5) * (1.0 + u_ContrastStrength) + 0.5;
 
     // Output ----------------------------------------------------------------------------------------------------------
     FragColor = FinalColour;

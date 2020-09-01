@@ -24,29 +24,30 @@
 #pragma once
 
 #include "Common.h"
-#include "Framework/Renderer.h"
 
 class FrameBuffer {
 
  private:
-  GLuint m_ID = 0;
-  GLuint aColor;
-  GLuint aDepth;
+  uint32_t m_ID{0};
+  uint32_t aColor;
+  uint32_t aDepth;
 
  public:
-  FrameBuffer(unsigned int pWidth, unsigned int pHeight);
-  virtual ~FrameBuffer();
+  FrameBuffer() {}
+  virtual ~FrameBuffer() {};
 
-  void Bind(unsigned int pWidth, unsigned int pHeight);
-  void Bind(GLuint pID, unsigned int pWidth, unsigned int pHeight);
+  bool Create(uint32_t pWidth, uint32_t pHeight);
+  void Destroy();
 
-  inline GLuint GetID() { return m_ID; }
-  inline void SetID(GLuint to) { m_ID = to; }
-  inline GLuint GetColorAttachmentID() { return aColor; }
-  inline void SetColorAttachmentID(GLuint to) { aColor = to; }
+  void Bind(const glm::vec2 &pWidthHeight);
+  void Bind(uint32_t pWidth, uint32_t pHeight);
+  void Bind(uint32_t pID, const glm::vec2 &pWidthHeight);
+  void Bind(uint32_t pID, uint32_t pWidth, uint32_t pHeight);
 
-  inline void BindColorAttachment() {
-    CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_2D, aColor));
-  }
+  inline uint32_t GetID() { return m_ID; }
+  inline void SetID(uint32_t to) { m_ID = to; }
+  inline uint32_t GetColorAttachmentID() { return aColor; }
+  inline void SetColorAttachmentID(uint32_t to) { aColor = to; }
 
+  void BindColorAttachment();
 };

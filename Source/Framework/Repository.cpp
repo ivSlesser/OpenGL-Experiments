@@ -359,9 +359,9 @@ uint32_t Repository::AddShader(const std::string &pName, const Shader &pShader) 
     return GetShaderID(pName);
   }
   // Add the material to the vector and the map.
-  mTexturesMap[pName] = mShaders.size();
+  mShadersMap[pName] = mShaders.size();
   mShaders.push_back(pShader);
-  return mTextures.size() - 1;
+  return mShaders.size() - 1;
 }
 
 Shader *Repository::GetShader(const std::string &pName) {
