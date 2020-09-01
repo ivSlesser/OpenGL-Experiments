@@ -63,6 +63,14 @@ class Renderer {
 
   } mSettings;                              // Rendering settings
 
+  struct LightingSettings {
+    glm::vec3 SunColor{1.0f};       // Sun (global light) color
+    glm::vec3 SunPosition{1000.0f}; // Sun (global light position
+    float AmbientStrength{0.2f};            // Ambient lighting strength
+    float SpecularStrength{0.5f};           // Specular highlight strength
+
+  } mLightSettings;                         // Lighting settings
+
   struct PostProcessingSettings {
     bool ApplyGreyscale{false};             // Should apply greyscale effect?
     bool ApplyInvert{false};                // Should apply inversion effect?
@@ -85,10 +93,6 @@ class Renderer {
 //  Texture cat_texture = Texture("Resources/Textures/cat.jpg");
 //  Texture ref_texture = Texture("Resources/Textures/Debug.png");
 
-  // Shader Related ----------------------------------------------------------------------------------------------------
-  glm::vec3 mLightColor = glm::vec3(1.0f);
-  glm::vec3 mLightPosition = glm::vec3(1000.0f, 1000.0f, 1000.0f);
-
   // -------------------------------------------------------------------------------------------------------------------
 
  public:
@@ -102,8 +106,6 @@ class Renderer {
   static void SetWireframeRendering(bool pTo);
 
   inline static Camera &GetCamera() { return Renderer::Access()->camera; }
-  inline const glm::vec3 &GetLightColor() const { return mLightColor; }
-  inline const glm::vec3 &GetLightPosition() const { return mLightPosition; }
 
   /**
    * Utility function to clear all OpenGL errors.

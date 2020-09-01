@@ -27,14 +27,13 @@
 #include "Framework/GL/Shader.h"
 #include <random>
 
+// TODO: Handle transparency
 struct Material {
   std::string Name = "Default";
-  glm::vec3 Ambient = glm::vec3(1.0f);
   glm::vec3 Diffuse = glm::vec3(1.0f);
   glm::vec3 Specular = glm::vec3(1.0f);
   float Shine = 32.0f; // Specular exponent
   float Dissolve = 1.0f; // 1: Opaque, 0: Transparent
-  bool LinkAmbientDiffuse = true;
 
   void SubmitAsUniform(Shader *pShader);
   void SubmitAsUniform(Shader &pShader, unsigned int index = 0);

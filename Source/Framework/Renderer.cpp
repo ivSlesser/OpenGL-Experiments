@@ -97,8 +97,10 @@ void Renderer::Draw() {
 
   shader->Mat4("u_View", ptr->camera.GetView());
   shader->Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
-  shader->Vec3("u_LightPosition", ptr->mLightPosition);
-  shader->Vec3("u_LightColor", ptr->mLightColor);
+  shader->Vec3("u_SunPosition", ptr->mLightSettings.SunPosition);
+  shader->Vec3("u_SunColor", ptr->mLightSettings.SunColor);
+  shader->Float("u_AmbientStrength", ptr->mLightSettings.AmbientStrength);
+  shader->Float("u_SpecularStrength", ptr->mLightSettings.SpecularStrength);
   shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
   shader->Bool("u_ApplyFog", ptr->mSettings.ApplyFog);
   shader->Float("u_Density", ptr->mSettings.FogDensity);
@@ -189,8 +191,10 @@ void Renderer::OnGUI() {
 
     // Shader ----------------------------------------------------------------------------------------------------------
     ImGui::Text("Lighting");
-    ImGui::ColorEdit3("Light Color", &ptr->mLightColor.x);
-    ImGui::DragFloat3("Light Position", &ptr->mLightPosition.x, 1.0f);
+    ImGui::ColorEdit3("Sun Color", &ptr->mLightSettings.SunColor.x);
+    ImGui::DragFloat3("Sun Position", &ptr->mLightSettings.SunPosition.x, 1.0f);
+    ImGui::DragFloat("Ambient Strength", &ptr->mLightSettings.AmbientStrength, 0.01f, 0.0f, 1.0f);
+    ImGui::DragFloat("Specular Strength", &ptr->mLightSettings.SpecularStrength, 0.01f, 0.0f, 1.0f);
     ImGui::NewLine();
 
     // Camera ----------------------------------------------------------------------------------------------------------

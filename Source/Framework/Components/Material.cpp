@@ -32,33 +32,10 @@ void Material::SubmitAsUniform(Shader &pShader, unsigned int index) {
   str << "u_Materials[" << index << "]";
   std::string base = str.str();
 
-  pShader.Vec3((base + ".Ambient").c_str(), Ambient);
   pShader.Vec3((base + ".Diffuse").c_str(), Diffuse);
   pShader.Vec3((base + ".Specular").c_str(), Specular);
   pShader.Float((base + ".Shine").c_str(), Shine);
   pShader.Float((base + ".Dissolve").c_str(), Dissolve);
-}
-
-void Material::DisplayWithGUI() {
-  ImGui::Text(Name.c_str());
-
-  ImGui::Checkbox((Name + ": Link Ambient & Diffuse?").c_str(), &LinkAmbientDiffuse);
-
-  if (ImGui::ColorEdit3((Name + " Ambient").c_str(), &Ambient.x)) {
-    if (LinkAmbientDiffuse) {
-      Diffuse = Ambient;
-    }
-  }
-
-  if (ImGui::ColorEdit3((Name + " Diffuse").c_str(), &Diffuse.x)) {
-    if (LinkAmbientDiffuse) {
-      Ambient = Diffuse;
-    }
-  }
-
-  ImGui::ColorEdit3((Name + " Specular").c_str(), &Specular.x);
-  ImGui::DragFloat((Name + " Shine").c_str(), &Shine, 2.0f, 0.0f, 128.0f);
-  ImGui::DragFloat((Name + " Dissolve").c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
 }
 
 void Material::DisplayWithGUI(uint32_t pIndex) {
@@ -68,17 +45,13 @@ void Material::DisplayWithGUI(uint32_t pIndex) {
 
   ImGui::Text(str.str().c_str());
 
-  if (ImGui::ColorEdit3(("Ambient/Diffuse " + Name).c_str(), &Ambient.x)) {
-    Diffuse = Ambient;
-  }
-
+  ImGui::ColorEdit3(("Diffuse " + Name).c_str(), &Diffuse.x);
   ImGui::ColorEdit3(("Specular " + Name).c_str(), &Specular.x);
   ImGui::DragFloat(("Shine " + Name).c_str(), &Shine, 2.0f, 0.0f, 128.0f);
   ImGui::DragFloat(("Dissolve " + Name).c_str(), &Dissolve, 0.01f, 0.0f, 1.0f);
 }
 
 void Material::SubmitAsUniform(Shader *pShader) {
-  pShader->Vec3("u_Material.Ambient", Ambient);
   pShader->Vec3("u_Material.Diffuse", Diffuse);
   pShader->Vec3("u_Material.Specular", Specular);
   pShader->Float("u_Material.Shine", Shine);
