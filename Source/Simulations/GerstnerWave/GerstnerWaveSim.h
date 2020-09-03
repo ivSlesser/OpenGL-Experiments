@@ -23,33 +23,25 @@
 
 #pragma once
 
-#include "System/Module.h"
+#include "Common.h"
+#include "../../Framework/Simulation.h"
 
-#include "Framework/GL/VertexArray.h"
-#include "Framework/GL/VertexBuffer.h"
-#include "Framework/GL/IndexBuffer.h"
-#include "Framework/GL/Shader.h"
-#include "Graphics/Plane.h"
+class GerstnerWaveSim : public Simulation {
 
-class GerstnerWaveModule : public Module {
  private:
-  VertexArray m_VAO;
-  VertexBuffer m_VBO;
-  IndexBuffer m_IBO;
+  uint32_t mGerstnerShaderID;
 
-  Plane plane;
-
-  glm::vec4 m_Wave0 = glm::vec4(0.09f, 0.71f, 0.06f, 85.0f);
-  glm::vec4 m_Wave1 = glm::vec4(-0.01f, 0.45f, 0.03f, 30.0f);
-  glm::vec4 m_Wave2 = glm::vec4(0.18f, 0.32f, 0.06f, 40.0f);
-
-  Shader m_Shader;
+  glm::vec4 mWave0 = glm::vec4(0.09f, 0.71f, 0.06f, 85.0f);
+  glm::vec4 mWave1 = glm::vec4(-0.01f, 0.45f, 0.03f, 30.0f);
+  glm::vec4 mWave2 = glm::vec4(0.18f, 0.32f, 0.06f, 40.0f);
 
  public:
-  GerstnerWaveModule() {}
+  ~GerstnerWaveSim() override;
+  void OnCreate() override;
+  void OnUpdate() override;
+  void OnFixedUpdate(const double &pStep) override;
+  void OnPreDraw() override;
+  void OnDestroy() override;
+  void OnGUI() override;
 
-  virtual void OnInit(Camera &p_Camera) override;
-  virtual void OnUpdate(double dt = 1.0) override;
-  virtual void OnGUI() override;
-  virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
 };

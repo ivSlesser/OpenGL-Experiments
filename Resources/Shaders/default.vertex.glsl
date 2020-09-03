@@ -15,6 +15,8 @@ uniform mat4 u_ViewProjection;
 uniform bool u_ApplyFog;
 uniform float u_Density;
 uniform float u_Gradient;
+uniform float u_Time;
+uniform float u_DeltaTime;
 
 void main()
 {

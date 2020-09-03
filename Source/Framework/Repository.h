@@ -23,6 +23,8 @@
 
 #pragma once
 
+// TODO: Ability to replace mesh.
+
 #include "Common.h"
 
 #include "./Components/Transform.h"
@@ -36,7 +38,8 @@ struct RenderingInstance {
   uint32_t MeshID;                                // ID of the mesh for this instance
   uint32_t TransformID;                           // ID of the transform for this instance
   uint32_t MaterialID;                            // ID of the material for this instance
-  uint32_t TextureID;                            // ID of the texture for this instance
+  uint32_t TextureID;                             // ID of the texture for this instance
+  uint32_t ShaderID;                              // ID of the shader for this instance
 };
 
 enum RenderType {
@@ -91,7 +94,7 @@ class Repository {
 
   // Instances ---------------------------------------------------------------------------------------------------------
 
-  uint32_t AddInstance(int32_t pMeshID, const Transform &pTransform, uint32_t pMaterialID = 0, uint32_t pTextureID = 0);
+  uint32_t AddInstance(int32_t pMeshID, const Transform &pTransform, uint32_t pMaterialID = 0, uint32_t pShaderID = 0, uint32_t pTextureID = 0);
   RenderingInstance *GetInstance(uint32_t pID);
   inline const std::vector<RenderingInstance> &GetAllRenderingInstances() const { return mInstances; }
   void ClearInstances();

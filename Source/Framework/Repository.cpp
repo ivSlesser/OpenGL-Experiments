@@ -199,11 +199,13 @@ void Repository::ClearMeshes() {
 uint32_t Repository::AddInstance(int32_t pMeshID,
                                  const Transform &pTransform,
                                  uint32_t pMaterialID,
+                                 uint32_t pShaderID,
                                  uint32_t pTextureID) {
   // TODO: Make this a map. <RenderingType, <Texture, <MeshID, <Material, Transform>>> also add shader?
   RenderingInstance instance;
   instance.MeshID = pMeshID;
   instance.MaterialID = pMaterialID;
+  instance.ShaderID = pShaderID;
   instance.TextureID = pTextureID;
   instance.TransformID = AddTransform(pTransform);
   mInstances.push_back(instance);

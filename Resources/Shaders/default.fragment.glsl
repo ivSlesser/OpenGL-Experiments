@@ -14,6 +14,9 @@ uniform vec3 u_SkyColor;
 uniform float u_AmbientStrength;
 uniform float u_SpecularStrength;
 
+uniform float u_Time;
+uniform float u_DeltaTime;
+
 uniform sampler2D u_Texture0;
 
 struct Material {

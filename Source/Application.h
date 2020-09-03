@@ -28,6 +28,7 @@
 #include "Framework/Repository.h"
 #include "Framework/Simulation.h"
 
+#include "System/Clock.h"
 #include "System/Window.h"
 #include "System/GUI/GUILayer.h"
 #include "Framework/Components/Transform.h"
@@ -36,6 +37,7 @@
 class Application {
 
  private:
+  Clock mClock;                         // Engine clock
   Repository mRepository;               // Repository for framework components
   Simulation *mSimulation{nullptr};     // Active simulation
   Window mWindow;                       // Display window

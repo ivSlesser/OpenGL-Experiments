@@ -1640,6 +1640,10 @@ Framework/Geometry/Vertex.h
 Common.h
 ../Source/Framework/Geometry/Common.h
 
+../Source/System/Clock.h
+Common.h
+../Source/System/Common.h
+
 ../Source/System/GUI/GUILayer.h
 vector
 -
@@ -1695,6 +1699,8 @@ Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Renderer.cpp
 Renderer.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Renderer.h
+System/Clock.h
+/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/System/Clock.h
 System/GUI/GUILayer.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/System/GUI/GUILayer.h
 Repository.h

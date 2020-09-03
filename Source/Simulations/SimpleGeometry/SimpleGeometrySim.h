@@ -44,7 +44,9 @@ class SimpleGeometrySim : public Simulation {
 
  public:
   void OnCreate() override;
+  void OnFixedUpdate(const double &pStep) override {};
   void OnUpdate() override;
+  void OnPreDraw() override {};
   void OnDestroy() override;
   void OnGUI() override;
 

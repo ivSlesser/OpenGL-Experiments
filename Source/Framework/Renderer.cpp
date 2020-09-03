@@ -21,9 +21,12 @@
 // SOFTWARE.
 
 #include "Renderer.h"
+
+#include "System/Clock.h"
 #include "System/GUI/GUILayer.h"
 #include "Repository.h"
 #include "./Geometry/Shapes2D.h"
+
 
 Renderer *Renderer::s_Instance = nullptr;
 
@@ -92,24 +95,31 @@ void Renderer::Draw() {
   // Render Scene To FBO -----------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
 
-  Shader *shader = Repository::Get()->GetShader(); // Default Shader
-  shader->Bind();
 
-  shader->Mat4("u_View", ptr->camera.GetView());
-  shader->Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
-  shader->Vec3("u_SunPosition", ptr->mLightSettings.SunPosition);
-  shader->Vec3("u_SunColor", ptr->mLightSettings.SunColor);
-  shader->Float("u_AmbientStrength", ptr->mLightSettings.AmbientStrength);
-  shader->Float("u_SpecularStrength", ptr->mLightSettings.SpecularStrength);
-  shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
-  shader->Bool("u_ApplyFog", ptr->mSettings.ApplyFog);
-  shader->Float("u_Density", ptr->mSettings.FogDensity);
-  shader->Float("u_Gradient", ptr->mSettings.FogGradient);
-  shader->Vec3("u_SkyColor", ptr->mSettings.ClearColor);
 
   const std::vector<RenderingInstance> &instances = Repository::Get()->GetAllRenderingInstances();
 
   for (const RenderingInstance &instance : instances) {
+
+    // TODO: Shader will be a map!
+    Shader *shader = Repository::Get()->GetShader(instance.ShaderID); // Default Shader
+    shader->Bind();
+
+    shader->Float("u_Time", Clock::ElapsedTime);
+    shader->Float("u_DeltaTime", Clock::DeltaTime);
+
+    shader->Mat4("u_View", ptr->camera.GetView());
+    shader->Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
+    shader->Vec3("u_SunPosition", ptr->mLightSettings.SunPosition);
+    shader->Vec3("u_SunColor", ptr->mLightSettings.SunColor);
+    shader->Float("u_AmbientStrength", ptr->mLightSettings.AmbientStrength);
+    shader->Float("u_SpecularStrength", ptr->mLightSettings.SpecularStrength);
+    shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
+    shader->Bool("u_ApplyFog", ptr->mSettings.ApplyFog);
+    shader->Float("u_Density", ptr->mSettings.FogDensity);
+    shader->Float("u_Gradient", ptr->mSettings.FogGradient);
+    shader->Vec3("u_SkyColor", ptr->mSettings.ClearColor);
+
 
     // Get Components
     Mesh *mesh = Repository::Get()->GetMesh(instance.MeshID);

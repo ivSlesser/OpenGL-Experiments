@@ -22,11 +22,18 @@
 
 #include "Application.h"
 #include "Simulations/SimpleGeometry/SimpleGeometrySim.h"
+#include "Simulations/GerstnerWave/GerstnerWaveSim.h"
 
 /**
  * Handles the creation of application components.
  */
 void Application::Create() {
+
+  // Clock -------------------------------------------------------------------------------------------------------------
+  if (!mClock.Init()) {
+    throw new std::exception;
+  }
+
   // Repository --------------------------------------------------------------------------------------------------------
   mRepository.Create();
 
@@ -57,13 +64,22 @@ void Application::Run() {
   Renderer *renderer = Renderer::Access();
 
   while (mWindow.WindowActive()) {
+    mClock.Update();
     mWindow.ProcessInput();
+
     mSimulation->OnUpdate();
+
+    for (int i = 0; mClock.ShouldProceedWithSimulationStep(i); ++i) {
+      mSimulation->OnFixedUpdate(mClock.GetIntervalWhileDecrementingAccumulate());
+    }
+
     Renderer::Begin();
+    mSimulation->OnPreDraw();
     Renderer::Draw();
     mGui.Render();
     Renderer::End();
   }
+
   Destroy();
 }
 
@@ -86,6 +102,7 @@ void Application::OnGUI() {
   ImGui::Begin("Simulation Chooser");
   {
     if (ImGui::Button("1. Simple Geometry")) { SelectSimulation<SimpleGeometrySim>(); }
+    if (ImGui::Button("2. Gerstner Waves")) { SelectSimulation<GerstnerWaveSim>(); }
   }
 
   ImGui::End();
