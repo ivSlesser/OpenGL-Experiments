@@ -39,13 +39,19 @@ void GerstnerWaveSim::OnCreate() {
   ppShader.Create();
   mGerstnerShaderID = Repository::Get()->AddShader("Gerstner-Waves", ppShader);
 
-  Plane p;
+  // Material
+  Material sea;
+  sea.Name = "Ocean";
+  sea.Diffuse = glm::vec3(0.0f, 0.412f, 0.58f);
+  uint32_t seaMaterialID = Repository::Get()->AddMaterial(sea);
+
+  Plane p(glm::vec2(100.0f), 2.0f);
   Mesh planeMesh;
   planeMesh.Create("Water Plane", p.Vertices(), p.Indices());
   uint32_t plane = Repository::Get()->AddMesh(planeMesh);
   Transform t;
   t.SetRotate({-10.0f, 0.0f, 0.0f});
-  mInstances.push_back(Repository::Get()->AddInstance(plane, t, 0, mGerstnerShaderID));
+  mInstances.push_back(Repository::Get()->AddInstance(plane, t, seaMaterialID, mGerstnerShaderID));
 }
 
 void GerstnerWaveSim::OnUpdate() {
@@ -83,5 +89,17 @@ void GerstnerWaveSim::OnGUI() {
   ImGui::DragFloat2("Direction 2", &mWave2.x, 0.1f, -1.0f, 1.0f, "%.2f");
   ImGui::DragFloat("Wavelength 2", &mWave2.w, 0.1f, 0.0f, 100.0f, "%.2f");
   ImGui::DragFloat("Steepness 2", &mWave2.z, 0.01f, 0.0f, 1.0f, "%.3f");
+
+  // Ocean Material  // Material ----------------------------------------------------------------------------------------------------------
+  {
+    // TODO: Reset Material
+    ImGui::Text("Materials");
+    for(int i = 0; i < mInstances.size(); ++i) {
+      Material *material = Repository::Get()->GetMaterial(Repository::Get()->GetInstance(mInstances[i])->MaterialID);
+      material->DisplayWithGUI(i);
+      ImGui::NewLine();
+    }
+  }
+
 }
 

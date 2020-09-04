@@ -164,10 +164,13 @@ void SimpleGeometrySim::OnGUI() {
   // Material ----------------------------------------------------------------------------------------------------------
   {
     // TODO: Reset Material
-    ImGui::Text("Material");
-    Material *material = Repository::Get()->GetMaterial(mInstances[0]);
-    material->DisplayWithGUI(0);
-    ImGui::NewLine();
+    ImGui::Text("Materials");
+
+    for(int i = 0; i < mInstances.size(); ++i) {
+      Material *material = Repository::Get()->GetMaterial(Repository::Get()->GetInstance(mInstances[i])->MaterialID);
+      material->DisplayWithGUI(i);
+      ImGui::NewLine();
+    }
   }
 
 }

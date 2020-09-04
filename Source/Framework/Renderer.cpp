@@ -95,8 +95,6 @@ void Renderer::Draw() {
   // Render Scene To FBO -----------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
 
-
-
   const std::vector<RenderingInstance> &instances = Repository::Get()->GetAllRenderingInstances();
 
   for (const RenderingInstance &instance : instances) {
