@@ -9,7 +9,7 @@ file(GLOB_RECURSE SOURCES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.hpp")
 
 # Executable definition and properties
 #add_executable(${PROJECT_NAME} ${SOURCES})
-add_executable(${PROJECT_NAME} ${SOURCES} Source/System/Clock.cpp Source/System/Clock.h Source/Simulations/GerstnerWave/GerstnerWaveSim.cpp Source/Simulations/GerstnerWave/GerstnerWaveSim.h)
+add_executable(${PROJECT_NAME} ${SOURCES} Source/System/Clock.cpp Source/System/Clock.h Source/Simulations/GerstnerWave/GerstnerWaveSim.cpp Source/Simulations/GerstnerWave/GerstnerWaveSim.h Source/Simulations/PerlinTerrain/PerlinTerrainSim.cpp Source/Simulations/PerlinTerrain/PerlinTerrainSim.h Source/Components/Terrain/Terrain.cpp Source/Components/Terrain/Terrain.h Source/Simulations/MarchingCubes/MarchingCubesSim.cpp Source/Simulations/MarchingCubes/MarchingCubesSim.h)
 target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 

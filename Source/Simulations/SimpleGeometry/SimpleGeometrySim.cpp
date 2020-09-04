@@ -220,6 +220,7 @@ void SimpleGeometrySim::CreateFlatCube() {
  */
 void SimpleGeometrySim::CreatePlane() {
   Plane p;
+  p.Create();
   Mesh planeMesh;
   planeMesh.Create("Plane (Default)", p.Vertices(), p.Indices());
   uint32_t plane = Repository::Get()->AddMesh(planeMesh);

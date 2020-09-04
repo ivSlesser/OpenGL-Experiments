@@ -20,41 +20,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "MarchingCubesModule.h"
-#include "System/GUI/GUILayer.h"
 
-void MarchingCubesModule::OnInit(Camera &p_Camera) {
-  p_Camera.SetAndUpdatePosition({0.0f, 10.0f, 30.0f});
-  m_Marcher = new Marcher(glm::vec2(64.0f, 12.0f));
-  InternalMarchGrid();
+#include "PerlinTerrainSim.h"
+#include "Externals/ImGUI.hpp"
+
+PerlinTerrainSim::~PerlinTerrainSim() {
+
 }
 
-void MarchingCubesModule::OnUpdate(double dt) {
+void PerlinTerrainSim::OnCreate() {
+  mTerrain.Create(glm::vec2(500.0f), 2.0f);
+  Mesh terrainMesh;
+  terrainMesh.Create("Water Plane", mTerrain.Vertices(), mTerrain.Indices());
+  uint32_t terrain = Repository::Get()->AddMesh(terrainMesh);
+  mInstances.push_back(Repository::Get()->AddInstance(terrain, Transform()));
 }
 
-void MarchingCubesModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
-  m_VAO.Bind();
-  m_IBO.Bind();
-  glDrawElements(GL_TRIANGLES, m_Marcher->IndexCount(), GL_UNSIGNED_INT, 0);
-}
+void PerlinTerrainSim::OnGUI() {
 
-void MarchingCubesModule::OnGUI() {
-  if (ImGui::Button("Generate")) {
-    InternalMarchGrid();
+  // Material ----------------------------------------------------------------------------------------------------------
+  {
+    // TODO: Reset Material
+    ImGui::Text("Materials");
+    for (int i = 0; i < mInstances.size(); ++i) {
+      Material *material = Repository::Get()->GetMaterial(Repository::Get()->GetInstance(mInstances[i])->MaterialID);
+      material->DisplayWithGUI(i);
+      ImGui::NewLine();
+    }
   }
-  m_Marcher->OnGUI();
-}
-
-void MarchingCubesModule::InternalMarchGrid() {
-  m_Marcher->March();
-
-  auto vertices = m_Marcher->Vertices();
-  auto indices = m_Marcher->Indices();
-
-  m_VAO.Bind();
-  m_VBO.Init(vertices);
-  m_VAO.SetLayout();
-
-  m_IBO.Init(indices);
-
 }

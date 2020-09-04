@@ -25,41 +25,47 @@
 #include "Tables.h"
 #include "System/GUI/GUILayer.h"
 
-Marcher::Marcher(const glm::vec2 &pDimensions)
-    : m_Dimensions(pDimensions) {
+void Marcher::Create(const glm::vec2 &pDimensions, float pDensity) {
+  mDimensions = pDimensions;
+  mDensity = pDensity;
+  March();
+}
+
+void Marcher::Create() {
+  March();
 }
 
 void Marcher::March() {
 
-  m_Data.clear();
-  m_Vertices.clear();
-  m_Indices.clear();
+  mData.clear();
+  mVertices.clear();
+  mIndices.clear();
 
   // Generate the data
-  for (int z = 0; z < m_Dimensions.x + 1; ++z) {
-    for (int y = 0; y < m_Dimensions.y + 1; ++y) {
-      for (int x = 0; x < m_Dimensions.x + 1; ++x) {
-        float height = m_Amplitude * (float) m_Perlin.Noise(
-            m_Octaves, m_Persistence,
-            x / m_Frequency * m_FrequencyScale.x + m_Scale.x,
-            y / m_Frequency * m_FrequencyScale.y + m_Scale.y,
-            z / m_Frequency * m_FrequencyScale.z + m_Scale.z) + m_Surface;
-        m_Data.push_back((float) y - height);
+  for (int z = 0; z < mDimensions.x + 1; ++z) {
+    for (int y = 0; y < mDimensions.y + 1; ++y) {
+      for (int x = 0; x < mDimensions.x + 1; ++x) {
+        float height = mAmplitude * (float) mPerlin.Noise(
+            mOctaves, mPersistence,
+            x / mFrequency * mFrequencyScale.x + mScale.x,
+            y / mFrequency * mFrequencyScale.y + mScale.y,
+            z / mFrequency * mFrequencyScale.z + mScale.z) + mSurface;
+        mData.push_back((float) y - height);
       }
     }
   }
 
   // Loop through each segment in our chunk.
-  for (int z = 0; z < m_Dimensions.x; ++z) {
-    for (int y = 0; y < m_Dimensions.y; ++y) {
-      for (int x = 0; x < m_Dimensions.x; ++x) {
+  for (int z = 0; z < mDimensions.x; ++z) {
+    for (int y = 0; y < mDimensions.y; ++y) {
+      for (int x = 0; x < mDimensions.x; ++x) {
 
         // Create an array of floats representing each corner of a cube and get the value from our data grid.
         float cube[8];
 
         for (int i = 0; i < 8; i++) {
           glm::vec3 corner = glm::vec3(x, y, z) + Tables::Corners[i];
-          cube[i] = m_Data[I3D(corner.x, corner.y, corner.z)];
+          cube[i] = mData[I3D(corner.x, corner.y, corner.z)];
         }
 
         // Pass the cube into a function which performs in the in-cell operation.
@@ -97,7 +103,8 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
       glm::vec3 vert2 = pPosition + Tables::Corners[Tables::Edges[indice][1]];
 
       glm::vec3 vertPosition;
-      if (m_Smoothing) {
+
+      if (mSmoothing) {
         // Get the terrain values at either end of our current edge from the cube array created above.
         float vert1Sample = pCube[Tables::Edges[indice][0]];
         float vert2Sample = pCube[Tables::Edges[indice][1]];
@@ -107,9 +114,9 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
 
         // If the difference is 0, then the terrain passes through the middle.
         if (difference == 0)
-          difference = m_Threshold;
+          difference = mThreshold;
         else
-          difference = (m_Threshold - vert1Sample) / difference;
+          difference = (mThreshold - vert1Sample) / difference;
 
         // Calculate the point along the edge that passes through.
         vertPosition = vert1 + ((vert2 - vert1) * difference);
@@ -118,19 +125,16 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
         vertPosition = (vert1 + vert2) / 2.0f;
       }
 
-//      // Add to our vertices and triangles list and incremement the edgeIndex.
-//      m_Vertices.push_back({vertPosition});
-//      m_Indices.push_back(m_Vertices.size() - 1);
-//      triangle[p] = m_Vertices.size() - 1;
+      vertPosition *= mDensity;
 
-      // Add to our vertices and triangles list and incremement the edgeIndex.
-      if (m_FlatShading) {
-        m_Vertices.push_back({vertPosition});
-        m_Indices.push_back(m_Vertices.size() - 1);
-        triangle[p] = m_Vertices.size() - 1;
+      // Add to our vertices and triangles list and increment the edgeIndex.
+      if (mFlatShading) {
+        mVertices.push_back({vertPosition});
+        mIndices.push_back(mVertices.size() - 1);
+        triangle[p] = mVertices.size() - 1;
       } else {
-        m_Indices.push_back(VertForIndice(vertPosition));
-        triangle[p] = m_Indices.back();
+        mIndices.push_back(VertForIndice(vertPosition));
+        triangle[p] = mIndices.back();
       }
 
       edgeIndex++;
@@ -138,38 +142,38 @@ void Marcher::CellOperation(float *pCube, const glm::vec3 &pPosition) {
 
     // NORMALS (PER FACE)
     Vertex v1, v2, v3;
-    v1 = m_Vertices[triangle[0]];
-    v2 = m_Vertices[triangle[1]];
-    v3 = m_Vertices[triangle[2]];
+    v1 = mVertices[triangle[0]];
+    v2 = mVertices[triangle[1]];
+    v3 = mVertices[triangle[2]];
 
     glm::vec3 normal = glm::normalize(glm::cross((v2.position - v1.position), (v3.position - v1.position)));
 
-    m_Vertices[triangle[0]].normals = normal;
-    m_Vertices[triangle[1]].normals = normal;
-    m_Vertices[triangle[2]].normals = normal;
+    mVertices[triangle[0]].normals = normal;
+    mVertices[triangle[1]].normals = normal;
+    mVertices[triangle[2]].normals = normal;
   }
 }
 
 int Marcher::VertForIndice(glm::vec3 vert) {
 
   // Loop through all the vertices currently in the vertices list.
-  for (int i = 0; i < m_Vertices.size(); i++) {
+  for (int i = 0; i < mVertices.size(); i++) {
 
     // If we find a vert that matches ours, then simply return this index.
-    if (m_Vertices[i].position == vert)
+    if (mVertices[i].position == vert)
       return i;
   }
 
   // If we didn't find a match, add this vert to the list and return last index.
-  m_Vertices.push_back({vert});
-  return m_Vertices.size() - 1;
+  mVertices.push_back({vert});
+  return mVertices.size() - 1;
 
 }
 
 int Marcher::GetCubeConfiguration(float *cube) {
   int configurationIndex = 0;
   for (int i = 0; i < 8; i++) {
-    if (cube[i] > m_Threshold) {
+    if (cube[i] > mThreshold) {
       configurationIndex |= 1 << i;
     }
   }
@@ -177,9 +181,9 @@ int Marcher::GetCubeConfiguration(float *cube) {
 }
 
 void Marcher::March(int pConfigIndex) {
-  m_Data.clear();
-  m_Vertices.clear();
-  m_Indices.clear();
+  mData.clear();
+  mVertices.clear();
+  mIndices.clear();
 
   // If the configuration of this cube is 0 or 255 (completely inside the terrain or completely outside of it) we don't need to do anything.
   if (pConfigIndex == 0 || pConfigIndex == 255)
@@ -207,41 +211,42 @@ void Marcher::March(int pConfigIndex) {
       glm::vec3 vertPosition = (vert1 + vert2) / 2.0f;
 
       // Add to our vertices and triangles list and incremement the edgeIndex.
-      m_Vertices.push_back({vertPosition});
-      m_Indices.push_back(m_Vertices.size() - 1);
-      triangle[p] = m_Vertices.size() - 1;
+      mVertices.push_back({vertPosition});
+      mIndices.push_back(mVertices.size() - 1);
+      triangle[p] = mVertices.size() - 1;
       edgeIndex++;
     }
 
     // NORMALS (PER FACE)
     Vertex v1, v2, v3;
-    v1 = m_Vertices[triangle[0]];
-    v2 = m_Vertices[triangle[1]];
-    v3 = m_Vertices[triangle[2]];
+    v1 = mVertices[triangle[0]];
+    v2 = mVertices[triangle[1]];
+    v3 = mVertices[triangle[2]];
 
     glm::vec3 normal = glm::normalize(glm::cross((v2.position - v1.position), (v3.position - v1.position)));
 
-    m_Vertices[triangle[0]].normals = normal;
-    m_Vertices[triangle[1]].normals = normal;
-    m_Vertices[triangle[2]].normals = normal;
+    mVertices[triangle[0]].normals = normal;
+    mVertices[triangle[1]].normals = normal;
+    mVertices[triangle[2]].normals = normal;
   }
 }
 
-
 void Marcher::OnGUI() {
-  ImGui::Checkbox("Smoothing?", &m_Smoothing);
-  ImGui::Checkbox("Flat Shading?", &m_FlatShading);
+  ImGui::Checkbox("Smoothing?", &mSmoothing);
+  ImGui::Checkbox("Flat Shading?", &mFlatShading);
 
-  ImGui::DragFloat("Threshold", &m_Threshold, 0.01f, -1.0f, 1.0f);
-  ImGui::DragInt("Octaves", &m_Octaves, 1, 1, 10);
-  ImGui::DragFloat("Persistence", &m_Persistence, 0.01f, 0.01f, 3.0f);
+  ImGui::DragFloat("Mesh Density", &mDensity, 1.0f, 1.0f, 20.0f);
 
-  ImGui::DragFloat("Frequency", &m_Frequency, 0.1f, -128.0f, 128.0f);
-  ImGui::DragFloat("Amplitude", &m_Amplitude, 0.1f, -128.0f, 128.0f);
-  ImGui::DragFloat("Surface", &m_Surface, 1.0f, 0.0f, 12.0f);
+  ImGui::DragFloat("Threshold", &mThreshold, 0.01f, -1.0f, 1.0f);
+  ImGui::DragInt("Octaves", &mOctaves, 1, 1, 10);
+  ImGui::DragFloat("Persistence", &mPersistence, 0.01f, 0.01f, 3.0f);
 
-  ImGui::DragFloat3("Frequency Scale", &m_FrequencyScale.x, 0.01f, 0.01f, 1.5f);
-  ImGui::DragFloat3("Scale", &m_Scale.x, 0.001f, 0.001f, 3.0f);
+  ImGui::DragFloat("Frequency", &mFrequency, 0.1f, -128.0f, 128.0f);
+  ImGui::DragFloat("Amplitude", &mAmplitude, 0.1f, -128.0f, 128.0f);
+  ImGui::DragFloat("Surface", &mSurface, 1.0f, 0.0f, 12.0f);
+
+  ImGui::DragFloat3("Frequency Scale", &mFrequencyScale.x, 0.01f, 0.01f, 1.5f);
+  ImGui::DragFloat3("Scale", &mScale.x, 0.001f, 0.001f, 3.0f);
 }
 
 

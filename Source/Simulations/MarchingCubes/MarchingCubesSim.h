@@ -24,30 +24,24 @@
 #pragma once
 
 #include "Common.h"
-#include "System/Module.h"
-#include "Elements/Marching Cubes/Marcher.h"
+#include "Framework/Simulation.h"
+#include "Components/Marching Cubes/Marcher.h"
 
-#include "Framework/GL/VertexArray.h"
-#include "Framework/GL/VertexBuffer.h"
-#include "Framework/GL/IndexBuffer.h"
+class MarchingCubesSim : public Simulation {
 
-class MarchingCubesModule : public Module {
  private:
-  Marcher *m_Marcher;
-  int m_Index = 0;
-
-  VertexArray m_VAO;
-  VertexBuffer m_VBO;
-  IndexBuffer m_IBO;
+  Marcher mMarcher;
 
  public:
-  MarchingCubesModule() {}
-
-  virtual void OnInit(Camera &p_Camera) override;
-  virtual void OnUpdate(double dt = 1.0) override;
-  virtual void OnGUI() override;
-  virtual void OnDraw(const Shader &p_Shader, const Camera &p_Camera) override;
+  ~MarchingCubesSim() override;
+  void OnCreate() override;
+  void OnUpdate() override {};
+  void OnFixedUpdate(const double &pStep) override {};
+  void OnPreDraw() override {};
+  void OnDestroy() override {};
+  void OnGUI() override;
 
  private:
-  void InternalMarchGrid();
+  void CreateMarchedMesh();
+
 };

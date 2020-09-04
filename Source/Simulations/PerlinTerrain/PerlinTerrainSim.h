@@ -24,26 +24,20 @@
 #pragma once
 
 #include "Common.h"
+#include "../../Framework/Simulation.h"
+#include "../../Components/Terrain/Terrain.h"
 
-#include "System/Module.h"
+class PerlinTerrainSim : public Simulation {
 
-#include "Framework/GL/VertexArray.h"
-#include "Framework/GL/VertexBuffer.h"
-#include "Framework/GL/IndexBuffer.h"
-#include "Elements/Terrain.h"
-
-class TerrainModule : public Module {
  private:
-  VertexArray m_VAO;
-  VertexBuffer m_VBO;
-  IndexBuffer m_IBO;
-
-  Terrain m_Terrain;
+  Terrain mTerrain;       // Perlin Terrain object
 
  public:
-  TerrainModule() {}
-
-  virtual void OnInit(Camera &p_Camera) override;
-  virtual void OnUpdate(double dt = 1.0) override;
-  virtual void OnDraw(const Shader &p_Shader, const Camera &p_Camera) override;
+  ~PerlinTerrainSim() override;
+  void OnCreate() override;
+  void OnUpdate() override {};
+  void OnFixedUpdate(const double &pStep) override {};
+  void OnPreDraw() override {};
+  void OnDestroy() override {};
+  void OnGUI() override;
 };

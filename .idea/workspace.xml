@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
+      <config projectName="Foundations" targetName="glfw" />
       <config projectName="Foundations" targetName="Foundations" />
       <config projectName="Foundations" targetName="glad" />
-      <config projectName="Foundations" targetName="glfw" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,12 +14,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/Components/Terrain/Terrain.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Simulations/PerlinTerrain/PerlinTerrainSim.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Elements/Marching Cubes/Marcher.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Components/Marching Cubes/Marcher.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Elements/Marching Cubes/Marcher.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Components/Marching Cubes/Marcher.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Elements/Marching Cubes/Tables.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Components/Marching Cubes/Tables.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Elements/Terrain.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Elements/Terrain.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/MarchingCubes/MarchingCubesSim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/MarchingCubesModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/MarchingCubes/MarchingCubesSim.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/MarchingCubesModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/PerlinTerrain/PerlinTerrainSim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/TerrainModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Modules/Modules/Default Renderer Pass/TerrainModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Components/Terrain/Terrain.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Geometry/Shapes3D.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Simulations/GerstnerWave/GerstnerWaveSim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/GerstnerWave/GerstnerWaveSim.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,19 +85,19 @@
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Old Modules" />
-      <recent name="$PROJECT_DIR$/Source/Framework/Geometry" />
-      <recent name="$PROJECT_DIR$/Source/Framework/Components" />
-      <recent name="$PROJECT_DIR$/Source/Framework/GL" />
-      <recent name="$PROJECT_DIR$/Source/Framework" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/Shaders/Terrain Scene" />
       <recent name="$PROJECT_DIR$/Source/Modules/Default Renderer Pass" />
       <recent name="$PROJECT_DIR$/Source/Modules/Custom Renderer Pass" />
       <recent name="$PROJECT_DIR$/Source/OpenGL" />
       <recent name="$PROJECT_DIR$/Resources/Shaders/Model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Source/Components" />
+      <recent name="$PROJECT_DIR$/Old Modules" />
+      <recent name="$PROJECT_DIR$/Source/Framework/Geometry" />
+      <recent name="$PROJECT_DIR$/Source/Framework/Components" />
+      <recent name="$PROJECT_DIR$/Source/Framework/GL" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -168,7 +189,7 @@
       <workItem from="1598891318150" duration="513000" />
       <workItem from="1598940905403" duration="5720000" />
       <workItem from="1599141684605" duration="2699000" />
-      <workItem from="1599231618653" duration="449000" />
+      <workItem from="1599231618653" duration="3676000" />
     </task>
     <servers />
   </component>

@@ -24,44 +24,44 @@
 #pragma once
 
 #include "Common.h"
+#include "Framework/Geometry/Shapes3D.h"
 #include "Framework/Geometry/Vertex.h"
 #include "Math/Random/Perlin.h"
 
-class Marcher {
+// TODO: Make threaded!
+
+class Marcher : public Plane {
+
  private:
-  Perlin m_Perlin;
+  Perlin mPerlin;
 
-  std::vector<float> m_Data;
-  glm::vec2 m_Dimensions;
+  std::vector<float> mData;
+  glm::vec2 mDimensions = glm::vec2(32.0f);
+  float mDensity = 1.0f;
 
-  std::vector<Vertex> m_Vertices;
-  std::vector<unsigned> m_Indices;
+  float mThreshold = 0.5f;
+  bool mSmoothing = false;
+  bool mFlatShading = false;
 
-  float m_Threshold = 0.5;
-  bool m_Smoothing = false;
-  bool m_FlatShading = false;
+  int mOctaves = 3;
+  float mPersistence = 0.6f;
+  float mFrequency = 16.0f;
+  float mAmplitude = 4.0f;
+  float mSurface = 6.0f;
 
-  int m_Octaves = 3;
-  float m_Persistence = 0.6f;
-  float m_Frequency = 16.0f;
-  float m_Amplitude = 4.0f;
-  float m_Surface = 6.0f;
-  glm::vec3 m_FrequencyScale = glm::vec3(1.5f, 1.5f, 1.5f);
-  glm::vec3 m_Scale = glm::vec3(0.001f, 0.001f, 0.001f);
+  glm::vec3 mFrequencyScale = glm::vec3(1.5f, 1.5f, 1.5f);
+  glm::vec3 mScale = glm::vec3(0.001f, 0.001f, 0.001f);
 
  public:
-  Marcher(const glm::vec2 &pDimensions);
+  Marcher() {};
+
+  void Create(const glm::vec2 &pDimensions, float pDensity) override;
+  void Create();
 
   void March();
   void March(int pConfigIndex);
 
-  inline std::vector<Vertex> Vertices() { return m_Vertices; }
-  inline std::vector<unsigned> Indices() { return m_Indices; }
-  inline int VertexCount() { return m_Vertices.size(); }
-  inline int IndexCount() { return m_Indices.size(); }
-
-  int VertForIndice (glm::vec3 vert);
-
+  int VertForIndice(glm::vec3 vert);
   void OnGUI();
 
  private:
@@ -69,9 +69,9 @@ class Marcher {
   int GetCubeConfiguration(float cube[]);
 
   // Indexes
-  inline int I2D(int x, int z) { return x + z * m_Dimensions.x + 1; };
+  inline int I2D(int x, int z) { return x + z * mDimensions.x + 1; };
   inline int I3D(int x, int y, int z) {
-    return z * (m_Dimensions.y + 1) * (m_Dimensions.x + 1) + y * (m_Dimensions.x + 1) + x;
-    return (z * (m_Dimensions.x + 1) * (m_Dimensions.y + 1)) + (y * (m_Dimensions.x + 1)) + x;}
+    return z * (mDimensions.y + 1) * (mDimensions.x + 1) + y * (mDimensions.x + 1) + x;
+  }
 
 };

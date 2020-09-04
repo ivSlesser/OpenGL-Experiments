@@ -21,35 +21,16 @@
 // SOFTWARE.
 
 
-#include "TerrainModule.h"
+#pragma once
 
-void TerrainModule::OnInit(Camera &p_Camera) {
-  p_Camera.SetAndUpdatePosition({3.0f, 1.0f, 7.0f});
+#include "Common.h"
+#include "Framework/Geometry/Shapes3D.h"
 
-  // Create a random color
-  glm::vec4 color;
-  color.r = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.g = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.b = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX));
-  color.a = 1.0f;
+class Terrain : public Plane {
 
-  m_Terrain = Terrain(color, glm::vec3(0.0f), glm::vec2(100.0f), 1);
+ private:
+  glm::vec2 mSize;
 
-  // Create vertices
-  m_VAO.Bind();
-  m_VBO.Init(m_Terrain.Vertices());
-  m_VAO.SetLayout();
-
-  // Create indices
-  m_IBO.Init(m_Terrain.Indices());
-}
-
-void TerrainModule::OnUpdate(double dt) {
-
-}
-
-void TerrainModule::OnDraw(const Shader &p_Shader, const Camera &p_Camera) {
-  m_VAO.Bind();
-  m_IBO.Bind();
-  glDrawElements(GL_TRIANGLES, m_Terrain.IndexCount(), GL_UNSIGNED_INT, 0);
-}
+ public:
+  void Create(const glm::vec2 &pSize, float pDensity = 5.0f) override;
+};

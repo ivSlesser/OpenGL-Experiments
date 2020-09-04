@@ -114,7 +114,7 @@ std::vector<uint32_t> CubeFlat::Indices(uint32_t pOffset) {
 // Plane ---------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------
 
-Plane::Plane(const glm::vec2 &pSize, float pResolution) {
+void Plane::Create(const glm::vec2 &pSize, float pDensity) {
   const float uvX = 1.0f / (pSize.x - 1);
   const float uvZ = 1.0f / (pSize.y - 1);
 
@@ -122,8 +122,8 @@ Plane::Plane(const glm::vec2 &pSize, float pResolution) {
   unsigned vertex = 0;
   for (unsigned x = 0; x < pSize.x; ++x) {
     for (unsigned z = 0; z < pSize.y; ++z) {
-      float xp = x * pResolution;
-      float zp = z * pResolution;
+      float xp = x * pDensity;
+      float zp = z * pDensity;
       mVertices.push_back({{xp, 0.0f, zp}, {z * uvZ, x * uvX}, {0.0f, 1.0f, 0.0f}});
     }
   }

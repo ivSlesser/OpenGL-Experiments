@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Application.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Components/Marching_Cubes/Marcher.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Components/Terrain/Terrain.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Externals/glad.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_demo.cpp.o"
@@ -29,6 +31,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Math/Random/Perlin.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Math/Random/Random.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Simulations/GerstnerWave/GerstnerWaveSim.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Simulations/MarchingCubes/MarchingCubesSim.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Simulations/PerlinTerrain/PerlinTerrainSim.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp.o"
   "CMakeFiles/Foundations.dir/Source/System/Clock.cpp.o"
   "CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o"

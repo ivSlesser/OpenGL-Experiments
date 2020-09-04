@@ -45,7 +45,9 @@ void GerstnerWaveSim::OnCreate() {
   sea.Diffuse = glm::vec3(0.0f, 0.412f, 0.58f);
   uint32_t seaMaterialID = Repository::Get()->AddMaterial(sea);
 
-  Plane p(glm::vec2(100.0f), 2.0f);
+  Plane p;
+  p.Create(glm::vec2(100.0f), 2.0f);
+
   Mesh planeMesh;
   planeMesh.Create("Water Plane", p.Vertices(), p.Indices());
   uint32_t plane = Repository::Get()->AddMesh(planeMesh);
@@ -90,7 +92,7 @@ void GerstnerWaveSim::OnGUI() {
   ImGui::DragFloat("Wavelength 2", &mWave2.w, 0.1f, 0.0f, 100.0f, "%.2f");
   ImGui::DragFloat("Steepness 2", &mWave2.z, 0.01f, 0.0f, 1.0f, "%.3f");
 
-  // Ocean Material  // Material ----------------------------------------------------------------------------------------------------------
+  // Material ----------------------------------------------------------------------------------------------------------
   {
     // TODO: Reset Material
     ImGui::Text("Materials");
