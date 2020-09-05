@@ -20,37 +20,50 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
-#include "IndexBuffer.h"
+#include "UniformBuffer.h"
 #include "Framework/Renderer.h"
+
+uint32_t UniformBuffer::sBindingSlotIncrementor = 0;
 
 /**
  * Construct the object, generating a buffer ID.
  */
-IndexBuffer::IndexBuffer() {
+UniformBuffer::UniformBuffer() {
   CHECK_GL_ERROR(glGenBuffers(1, &mID));
 }
 
 /**
  * Bind the buffer making the data available for use.
- */
-void IndexBuffer::Bind() {
-  CHECK_GL_ERROR(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mID));
+*/
+void UniformBuffer::Bind() {
+  CHECK_GL_ERROR(glBindBuffer(GL_UNIFORM_BUFFER, mID));
 }
 
 /**
  * Generate the buffer with the specified data.
  *
- * @param pData             Data to populate into the buffer,
+ * @param pName             Uniform block name, which must match what is in the shader.
+ * @param pData             Data to populate into the buffer.
  */
-void IndexBuffer::Create(const std::vector<uint32_t> &pData) {
-  CHECK_GL_ERROR(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mID));
-  CHECK_GL_ERROR(glBufferData(GL_ELEMENT_ARRAY_BUFFER, pData.size() * sizeof(uint32_t), pData.data(), GL_STATIC_DRAW));
+void UniformBuffer::Create(const std::string &pName, const UniformBufferData &pData) {
+  mName = pName.c_str();
+  mBindingSlot = sBindingSlotIncrementor++;
+  CHECK_GL_ERROR(glBindBuffer(GL_UNIFORM_BUFFER, mID));
+  CHECK_GL_ERROR(glBindBufferBase(GL_UNIFORM_BUFFER, mBindingSlot, mID));
+  CHECK_GL_ERROR(glBufferData(GL_UNIFORM_BUFFER, pData.ContentsSizeInBytes, &pData.Contents, GL_DYNAMIC_DRAW));
 }
 
 /**
  * Destroy the buffer in the OpenGL API
  */
-void IndexBuffer::Destroy() {
+void UniformBuffer::Destroy() {
   CHECK_GL_ERROR(glDeleteBuffers(1, &mID));
 }
+
+// TODO: Doc
+void UniformBuffer::PerShaderBinding(uint32_t pShaderID) {
+  CHECK_GL_ERROR(glBindBuffer(GL_UNIFORM_BUFFER, mID));
+  uint32_t uniformBlockID = glGetUniformBlockIndex(pShaderID, mName);
+  CHECK_GL_ERROR(glUniformBlockBinding(pShaderID, uniformBlockID, mBindingSlot));
+}
+

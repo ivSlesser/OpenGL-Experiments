@@ -25,12 +25,14 @@
 
 #include "Common.h"
 
+// TODO: Uniform Block Cache
+
 class Shader {
 
  private:
-  int id{0};
-  std::map<const char *, int> uniform_locations;
-  std::vector<int> m_Stages;
+  uint32_t mID{0};
+  std::map<const char *, int> mUniformLocations;
+  std::vector<int> mStages;
 
  public:
   Shader();
@@ -38,27 +40,29 @@ class Shader {
   virtual ~Shader();
   void Bind();
 
-  void AddStage(GLenum p_Type, std::string p_Path);
+  inline uint32_t ID() { return mID; }
 
-  void Bool(const char *name, bool value);
-  void Int(const char *name, int value);
-  void Float(const char *name, float value);
-  void Double(const char *name, double value);
-  void Vec2(const char *name, const glm::vec2 &value);
-  void Vec2(const char *name, float x, float y);
-  void Vec3(const char *name, const glm::vec3 &value);
-  void Vec3(const char *name, float x, float y, float z);
-  void Vec4(const char *name, const glm::vec4 &value);
-  void Vec4s(const char *name, int size, const glm::vec4 value[]);
-  void Vec4(const char *name, float x, float y, float z, float w);
-  void Mat2(const char *name, const glm::mat2 &mat);
-  void Mat3(const char *name, const glm::mat3 &mat);
-  void Mat4(const char *name, const glm::mat4 &mat);
+  void AddStage(GLenum pType, std::string pPath);
+
+  void Bool(const char *pName, bool pValue);
+  void Int(const char *pName, int pValue);
+  void Float(const char *pName, float pValue);
+  void Double(const char *pName, double pValue);
+  void Vec2(const char *pName, const glm::vec2 &pValue);
+  void Vec2(const char *pName, float x, float y);
+  void Vec3(const char *pName, const glm::vec3 &pValue);
+  void Vec3(const char *pName, float x, float y, float z);
+  void Vec4(const char *pName, const glm::vec4 &pValue);
+  void Vec4s(const char *pName, int size, const glm::vec4 pValue[]);
+  void Vec4(const char *pName, float x, float y, float z, float w);
+  void Mat2(const char *pName, const glm::mat2 &mat);
+  void Mat3(const char *pName, const glm::mat3 &mat);
+  void Mat4(const char *pName, const glm::mat4 &mat);
 
  private:
-  virtual bool CompileShader(const char *filePath, int &id);
-  int UniformLocation(const char *name);
+  virtual bool CompileShader(const char *pPath, int &pID);
+  int UniformLocation(const char *pName);
   void RemoveStoredStages();
-  const char *TypeString(uint32_t type);
+  const char *TypeString(uint32_t pType);
   void LogFullProgramInfo();
 };

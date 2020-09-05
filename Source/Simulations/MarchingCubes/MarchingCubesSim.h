@@ -37,7 +37,7 @@ class MarchingCubesSim : public Simulation {
   void OnCreate() override;
   void OnUpdate() override {};
   void OnFixedUpdate(const double &pStep) override {};
-  void OnPreDraw() override {};
+  void OnDraw(Shader *pShader) override {};
   void OnDestroy() override {};
   void OnGUI() override;
 

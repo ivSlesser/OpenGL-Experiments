@@ -24,14 +24,10 @@
 #include "PerlinTerrainSim.h"
 #include "Externals/ImGUI.hpp"
 
-PerlinTerrainSim::~PerlinTerrainSim() {
-
-}
-
 void PerlinTerrainSim::OnCreate() {
   mTerrain.Create(glm::vec2(500.0f), 2.0f);
   Mesh terrainMesh;
-  terrainMesh.Create("Water Plane", mTerrain.Vertices(), mTerrain.Indices());
+  terrainMesh.Create("Perlin-Terrain", mTerrain.Vertices(), mTerrain.Indices());
   uint32_t terrain = Repository::Get()->AddMesh(terrainMesh);
   mInstances.push_back(Repository::Get()->AddInstance(terrain, Transform()));
 }

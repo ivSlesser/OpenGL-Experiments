@@ -28,36 +28,36 @@
  * Generates a program ID through the OpenGL API.
  */
 Shader::Shader() {
-  id = glCreateProgram();
+  mID = glCreateProgram();
 }
 
 /**
  * Compiles generated shaders into a program, there must be at least 2 shader stages added before
  * compilation will occur.
  *
- * @return True if compilation was successful.
+ * @return                  True if compilation was successful.
  */
 bool Shader::Create() {
 
   // At a minimum we need a vertex & fragment stage, broadly we're checking size < 3 here,
   // but future work could check to see the stage type added.
-  if (m_Stages.size() < 2) {
+  if (mStages.size() < 2) {
     std::cout << "Shader::Init - Error: At a minimum requires Vertex & Fragment stage to be added" << std::endl;
     return false;
   }
 
-  for (int stage : m_Stages) {
-    CHECK_GL_ERROR(glAttachShader(id, stage));
+  for (int stage : mStages) {
+    CHECK_GL_ERROR(glAttachShader(mID, stage));
   }
 
-  CHECK_GL_ERROR(glLinkProgram(id));
+  CHECK_GL_ERROR(glLinkProgram(mID));
 
   int success = 0;
   char *infolog;
-  CHECK_GL_ERROR(glGetProgramiv(id, GL_LINK_STATUS, &success));
+  CHECK_GL_ERROR(glGetProgramiv(mID, GL_LINK_STATUS, &success));
 
   if (!success) {
-    CHECK_GL_ERROR(glGetProgramInfoLog(id, 512, NULL, infolog));
+    CHECK_GL_ERROR(glGetProgramInfoLog(mID, 512, NULL, infolog));
     std::cout << infolog << std::endl;
     return false;
   }
@@ -66,7 +66,7 @@ bool Shader::Create() {
 
   RemoveStoredStages();
 
-  printf("Program created with id: %d\n", id);
+  printf("Program created with id: %d\n", mID);
 
   return true;
 }
@@ -76,30 +76,30 @@ bool Shader::Create() {
  * checks that the type is supported and that a vertex shader is or has been added,
  * the generates and compiles the actual shader.
  *
- * @param p_Type Type of shader being added.
- * @param p_Path Path to shader file.
+ * @param pType             Type of shader being added.
+ * @param pPath             Path to shader file.
  */
-void Shader::AddStage(GLenum p_Type, std::string p_Path) {
-  // Check to ensure p_Type is supported.
-  if (p_Type != GL_VERTEX_SHADER && p_Type != GL_FRAGMENT_SHADER && p_Type != GL_GEOMETRY_SHADER) {
+void Shader::AddStage(GLenum pType, std::string pPath) {
+  // Check to ensure pType is supported.
+  if (pType != GL_VERTEX_SHADER && pType != GL_FRAGMENT_SHADER && pType != GL_GEOMETRY_SHADER) {
     std::cout << "Shader::AddStage - Error: Stage unsupported" << std::endl;
     std::abort();
   }
 
   // Check to ensure we have a vertex shader at element 0.
-  if (p_Type != GL_VERTEX_SHADER && m_Stages.size() == 0) {
+  if (pType != GL_VERTEX_SHADER && mStages.size() == 0) {
     std::cout << "Shader::AddStage - Error: Vertex stage must be added first." << std::endl;
     std::abort();
   }
 
   // Generate and attempt to compile.
-  int shaderID = glCreateShader(p_Type);
-  if (!CompileShader(p_Path.c_str(), shaderID)) {
+  int shaderID = glCreateShader(pType);
+  if (!CompileShader(pPath.c_str(), shaderID)) {
     std::abort();
   }
 
   // Add to our stages list.
-  m_Stages.push_back(shaderID);
+  mStages.push_back(shaderID);
 }
 
 Shader::~Shader() {
@@ -109,22 +109,22 @@ Shader::~Shader() {
  * Bind the shader, using it for rendering input geometry.
  */
 void Shader::Bind() {
-  CHECK_GL_ERROR(glUseProgram(id));
+  CHECK_GL_ERROR(glUseProgram(mID));
 }
 
 /**
  * Compiles a shader program, taking an input file, reading and validating the source code and then creating the
  * actual shader object.
  *
- * @param filePath Path to the shader.
- * @param id ID to register the shader object to.
- * @return True if succeeded.
+ * @param pPath             Path to the shader.
+ * @param pID               ID to register the shader object to.
+ * @return                  True if succeeded.
  */
-bool Shader::CompileShader(const char *filePath, int &id) {
-  std::ifstream shaderFile(filePath);
+bool Shader::CompileShader(const char *pPath, int &pID) {
+  std::ifstream shaderFile(pPath);
 
   if (shaderFile.fail()) {
-    printf("[%s]%d: Could not load file %s (%s)", __FILE__, __LINE__, filePath, strerror(errno));
+    printf("[%s]%d: Could not load file %s (%s)", __FILE__, __LINE__, pPath, strerror(errno));
     return false;
   }
 
@@ -137,88 +137,88 @@ bool Shader::CompileShader(const char *filePath, int &id) {
 
   shaderFile.close();
   const char *contentsPtr = fileContents.c_str();
-  CHECK_GL_ERROR(glShaderSource(id, 1, &contentsPtr, nullptr));
-  CHECK_GL_ERROR(glCompileShader(id));
+  CHECK_GL_ERROR(glShaderSource(pID, 1, &contentsPtr, nullptr));
+  CHECK_GL_ERROR(glCompileShader(pID));
   int success = 0;
-  CHECK_GL_ERROR(glGetShaderiv(id, GL_COMPILE_STATUS, &success));
+  CHECK_GL_ERROR(glGetShaderiv(pID, GL_COMPILE_STATUS, &success));
 
   if (!success) {
     GLint length = 0;
-    CHECK_GL_ERROR(glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length));
+    CHECK_GL_ERROR(glGetShaderiv(pID, GL_INFO_LOG_LENGTH, &length));
     char *message = (char *) alloca(length * sizeof(char));
-    CHECK_GL_ERROR(glGetShaderInfoLog(id, length, &length, message));
+    CHECK_GL_ERROR(glGetShaderInfoLog(pID, length, &length, message));
     std::cout << message << std::endl;
-    CHECK_GL_ERROR(glDeleteShader(id));
+    CHECK_GL_ERROR(glDeleteShader(pID));
     return false;
   }
 
   return true;
 }
 
-int Shader::UniformLocation(const char *name) {
-  if (uniform_locations.find(name) != uniform_locations.end()) {
-    return uniform_locations[name];
+int Shader::UniformLocation(const char *pName) {
+  if (mUniformLocations.find(pName) != mUniformLocations.end()) {
+    return mUniformLocations[pName];
   } else {
-    int a = glGetUniformLocation(id, name);
-    uniform_locations[name] = a;
+    int a = glGetUniformLocation(mID, pName);
+    mUniformLocations[pName] = a;
     return a;
   }
 }
 
-void Shader::Bool(const char *name, bool value) {
-  CHECK_GL_ERROR(glUniform1i(UniformLocation(name), (int) value));
+void Shader::Bool(const char *pName, bool pValue) {
+  CHECK_GL_ERROR(glUniform1i(UniformLocation(pName), (int) pValue));
 }
 
-void Shader::Int(const char *name, int value) {
-  CHECK_GL_ERROR(glUniform1i(UniformLocation(name), value));
+void Shader::Int(const char *pName, int pValue) {
+  CHECK_GL_ERROR(glUniform1i(UniformLocation(pName), pValue));
 }
 
-void Shader::Float(const char *name, float value) {
-  CHECK_GL_ERROR(glUniform1f(UniformLocation(name), value));
+void Shader::Float(const char *pName, float pValue) {
+  CHECK_GL_ERROR(glUniform1f(UniformLocation(pName), pValue));
 }
 
-void Shader::Double(const char *name, double value) {
-  CHECK_GL_ERROR(glUniform1d(UniformLocation(name), value));
+void Shader::Double(const char *pName, double pValue) {
+  CHECK_GL_ERROR(glUniform1d(UniformLocation(pName), pValue));
 }
 
-void Shader::Vec2(const char *name, const glm::vec2 &value) {
-  CHECK_GL_ERROR(glUniform2fv(UniformLocation(name), 1, &value[0]));
+void Shader::Vec2(const char *pName, const glm::vec2 &pValue) {
+  CHECK_GL_ERROR(glUniform2fv(UniformLocation(pName), 1, &pValue[0]));
 }
 
-void Shader::Vec2(const char *name, float x, float y) {
-  CHECK_GL_ERROR(glUniform2f(UniformLocation(name), x, y));
+void Shader::Vec2(const char *pName, float x, float y) {
+  CHECK_GL_ERROR(glUniform2f(UniformLocation(pName), x, y));
 }
 
-void Shader::Vec3(const char *name, const glm::vec3 &value) {
-  CHECK_GL_ERROR(glUniform3fv(UniformLocation(name), 1, &value[0]));
+void Shader::Vec3(const char *pName, const glm::vec3 &pValue) {
+  CHECK_GL_ERROR(glUniform3fv(UniformLocation(pName), 1, &pValue[0]));
 }
 
-void Shader::Vec3(const char *name, float x, float y, float z) {
-  CHECK_GL_ERROR(glUniform3f(UniformLocation(name), x, y, z));
+void Shader::Vec3(const char *pName, float x, float y, float z) {
+  CHECK_GL_ERROR(glUniform3f(UniformLocation(pName), x, y, z));
 }
 
-void Shader::Vec4(const char *name, const glm::vec4 &value) {
-  CHECK_GL_ERROR(glUniform4fv(UniformLocation(name), 1, &value[0]));
+void Shader::Vec4(const char *pName, const glm::vec4 &pValue) {
+  CHECK_GL_ERROR(glUniform4fv(UniformLocation(pName), 1, &pValue[0]));
 }
 
-void Shader::Vec4s(const char *name, int size, const glm::vec4 value[]) {
-  CHECK_GL_ERROR(glUniform4fv(UniformLocation(name), size, glm::value_ptr(value[0])));
+void Shader::Vec4s(const char *pName, int size, const glm::vec4 pValue[]) {
+  CHECK_GL_ERROR(glUniform4fv(UniformLocation(pName), size, glm::value_ptr(pValue[0])));
 }
 
-void Shader::Vec4(const char *name, float x, float y, float z, float w) {
-  CHECK_GL_ERROR(glUniform4f(UniformLocation(name), x, y, z, w));
+void Shader::Vec4(const char *pName, float x, float y, float z, float w) {
+  CHECK_GL_ERROR(glUniform4f(UniformLocation(pName), x, y, z, w));
 }
 
-void Shader::Mat2(const char *name, const glm::mat2 &mat) {
-  CHECK_GL_ERROR(glUniformMatrix2fv(UniformLocation(name), 1, GL_FALSE, &mat[0][0]));
+void Shader::Mat2(const char *pName, const glm::mat2 &mat) {
+  CHECK_GL_ERROR(glUniformMatrix2fv(UniformLocation(pName), 1, GL_FALSE, &mat[0][0]));
 }
 
-void Shader::Mat3(const char *name, const glm::mat3 &mat) {
-  CHECK_GL_ERROR(glUniformMatrix3fv(UniformLocation(name), 1, GL_FALSE, &mat[0][0]));
+void Shader::Mat3(const char *pName, const glm::mat3 &mat) {
+  CHECK_GL_ERROR(glUniformMatrix3fv(UniformLocation(pName), 1, GL_FALSE, &mat[0][0]));
 }
 
-void Shader::Mat4(const char *name, const glm::mat4 &mat) {
-  CHECK_GL_ERROR(glUniformMatrix4fv(UniformLocation(name), 1, GL_FALSE, &mat[0][0]));
+void Shader::Mat4(const char *pName, const glm::mat4 &mat) {
+  CHECK_GL_ERROR(glUniformMatrix4fv(UniformLocation(pName), 1, GL_FALSE, &mat[0][0]));
 }
 
 /**
@@ -226,17 +226,17 @@ void Shader::Mat4(const char *name, const glm::mat4 &mat) {
  * and then clearing the list.
  */
 void Shader::RemoveStoredStages() {
-  for (int stage : m_Stages) {
+  for (int stage : mStages) {
     CHECK_GL_ERROR(glDeleteShader(stage));
   }
 
-  m_Stages.clear();
+  mStages.clear();
 }
 
 /**
  * Returns a human readable string representing an OpenGL type.
  * @param type Input OpenGL type
- * @return String of converted value.
+ * @return String of converted pValue.
  */
 const char *Shader::TypeString(uint32_t type) {
   // https://www.khronos.org/opengl/wiki/OpenGL_Type
@@ -266,62 +266,62 @@ void Shader::LogFullProgramInfo() {
 
   std::cout << "\n";
 
-  std::cout << "ShaderProgram id " << id << " log:" << std::endl;
+  std::cout << "ShaderProgram id " << mID << " log:" << std::endl;
 
   int params = -1;
-  glGetProgramiv(id, GL_LINK_STATUS, &params);
+  glGetProgramiv(mID, GL_LINK_STATUS, &params);
   std::cout << "GL_LINK_STATUS = " << params << std::endl;
 
-  glGetProgramiv(id, GL_ATTACHED_SHADERS, &params);
+  glGetProgramiv(mID, GL_ATTACHED_SHADERS, &params);
   std::cout << "GL_ATTACHED_SHADERS = " << params << std::endl;;
 
-  glGetProgramiv(id, GL_ACTIVE_ATTRIBUTES, &params);
+  glGetProgramiv(mID, GL_ACTIVE_ATTRIBUTES, &params);
   std::cout << "GL_ACTIVE_ATTRIBUTES = " << params << std::endl;
 
   const char *output_format = "\t%d -> Type: %-20s Name: %-20s Location: %-20d";
 
   for (int i = 0; i < params; i++) {
-    char name[64];
+    char pName[64];
     int max_length = 64;
     int actual_length = 0;
     int size = 0;
     GLenum type;
-    glGetActiveAttrib(id, i, max_length, &actual_length, &size, &type, name);
+    glGetActiveAttrib(mID, i, max_length, &actual_length, &size, &type, pName);
 
     if (size > 1) {
       for (int j = 0; j < size; j++) {
-        char long_name[64];
-        std::cout << name << "[" << j << "]" << std::endl;
-        int location = glGetAttribLocation(id, long_name);
-        std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << name << ", Location: " << location
+        char long_pName[64];
+        std::cout << pName << "[" << j << "]" << std::endl;
+        int location = glGetAttribLocation(mID, long_pName);
+        std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << pName << ", Location: " << location
                   << std::endl;
       }
     } else {
-      int location = glGetAttribLocation(id, name);
-      std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << name << ", Location: " << location
+      int location = glGetAttribLocation(mID, pName);
+      std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << pName << ", Location: " << location
                 << std::endl;
     }
   }
 
-  glGetProgramiv(id, GL_ACTIVE_UNIFORMS, &params);
+  glGetProgramiv(mID, GL_ACTIVE_UNIFORMS, &params);
   for (int i = 0; i < params; i++) {
-    char name[64];
+    char pName[64];
     int max_length = 64;
     int actual_length = 0;
     int size = 0;
     GLenum type;
-    glGetActiveUniform(id, i, max_length, &actual_length, &size, &type, name);
+    glGetActiveUniform(mID, i, max_length, &actual_length, &size, &type, pName);
     if (size > 1) {
       for (int j = 0; j < size; j++) {
-        char long_name[64];
-        std::cout << name << "[" << j << "]" << std::endl;
-        int location = glGetUniformLocation(id, long_name);
-        std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << long_name << ", Location: "
+        char long_pName[64];
+        std::cout << pName << "[" << j << "]" << std::endl;
+        int location = glGetUniformLocation(mID, long_pName);
+        std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << long_pName << ", Location: "
                   << location << std::endl;
       }
     } else {
-      int location = glGetUniformLocation(id, name);
-      std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << name << ", Location: " << location
+      int location = glGetUniformLocation(mID, pName);
+      std::cout << "\t" << i << " -> Type: " << TypeString(type) << ", Name: " << pName << ", Location: " << location
                 << std::endl;
     }
   }
@@ -329,8 +329,8 @@ void Shader::LogFullProgramInfo() {
   int ML = 2048;
   int AL = 0;
   char IL[2048];
-  glGetProgramInfoLog(id, ML, &AL, IL);
-  std::cout << "Program info log " << id << std::endl;
+  glGetProgramInfoLog(mID, ML, &AL, IL);
+  std::cout << "Program info log " << mID << std::endl;
   std::cout << IL << std::endl;
   std::cout << "\n";
 }

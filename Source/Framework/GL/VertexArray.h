@@ -28,10 +28,10 @@
 class VertexArray {
 
  protected:
-  unsigned int m_ID;
-  unsigned int m_IBufferID;
-  unsigned int m_AttribIDMax = 0;
-  unsigned int m_AttribCount = 0;
+  unsigned int mID;
+  unsigned int mIBufferID;
+  unsigned int mAttribIDMax = 0;
+  unsigned int mAttribCount = 0;
 
  public:
   VertexArray();

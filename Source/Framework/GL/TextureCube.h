@@ -28,7 +28,7 @@
 class TextureCube {
 
  private:
-  unsigned int m_ID = 0;
+  unsigned int mID = 0;
 
  public:
   TextureCube() {}
@@ -37,5 +37,5 @@ class TextureCube {
   bool Init(std::vector<const char *> pFaces);
   void Bind();
 
-  inline const unsigned int GetID() const { return m_ID; }
+  inline const unsigned int GetID() const { return mID; }
 };

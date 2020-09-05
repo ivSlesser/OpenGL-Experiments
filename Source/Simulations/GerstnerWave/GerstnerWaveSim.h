@@ -29,19 +29,17 @@
 class GerstnerWaveSim : public Simulation {
 
  private:
-  uint32_t mGerstnerShaderID;
-
   glm::vec4 mWave0 = glm::vec4(0.09f, 0.71f, 0.06f, 85.0f);
   glm::vec4 mWave1 = glm::vec4(-0.01f, 0.45f, 0.03f, 30.0f);
   glm::vec4 mWave2 = glm::vec4(0.18f, 0.32f, 0.06f, 40.0f);
 
  public:
-  ~GerstnerWaveSim() override;
+  ~GerstnerWaveSim() override {};
   void OnCreate() override;
-  void OnUpdate() override;
-  void OnFixedUpdate(const double &pStep) override;
-  void OnPreDraw() override;
-  void OnDestroy() override;
+  void OnUpdate() override {};
+  void OnFixedUpdate(const double &pStep) override {};
+  void OnDraw(Shader *pShader) override;
+  void OnDestroy() override {};
   void OnGUI() override;
 
 };

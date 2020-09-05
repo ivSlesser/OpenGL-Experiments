@@ -24,19 +24,33 @@
 #include "VertexBuffer.h"
 #include "Framework/Renderer.h"
 
+/**
+ * Construct the object, generating a buffer ID.
+ */
 VertexBuffer::VertexBuffer() {
-  CHECK_GL_ERROR(glGenBuffers(1, &id));
+  CHECK_GL_ERROR(glGenBuffers(1, &mID));
 }
 
+/**
+ * Bind the buffer making the data available for use.
+ */
 void VertexBuffer::Bind() {
-  CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, id));
+  CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, mID));
 }
 
-void VertexBuffer::Create(const std::vector<Vertex> &data) {
-  CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, id));
-  CHECK_GL_ERROR(glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vertex), data.data(), GL_STATIC_DRAW));
+/**
+ * Generate the buffer with the specified data.
+ *
+ * @param pData             Data to populate into the buffer,
+ */
+void VertexBuffer::Create(const std::vector<Vertex> &pData) {
+  CHECK_GL_ERROR(glBindBuffer(GL_ARRAY_BUFFER, mID));
+  CHECK_GL_ERROR(glBufferData(GL_ARRAY_BUFFER, pData.size() * sizeof(Vertex), pData.data(), GL_STATIC_DRAW));
 }
 
+/**
+ * Destroy the buffer in the OpenGL API
+ */
 void VertexBuffer::Destroy() {
-  CHECK_GL_ERROR(glDeleteBuffers(1, &id));
+  CHECK_GL_ERROR(glDeleteBuffers(1, &mID));
 }

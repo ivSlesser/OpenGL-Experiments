@@ -26,10 +26,14 @@
 #include "Simulations/PerlinTerrain/PerlinTerrainSim.h"
 #include "Simulations/MarchingCubes/MarchingCubesSim.h"
 
+Application *Application::Instance = nullptr;
+
 /**
  * Handles the creation of application components.
  */
 void Application::Create() {
+
+  Instance = this;
 
   // Clock -------------------------------------------------------------------------------------------------------------
   if (!mClock.Init()) {
@@ -38,6 +42,9 @@ void Application::Create() {
 
   // Repository --------------------------------------------------------------------------------------------------------
   mRepository.Create();
+
+  // Renderer ----------------------------------------------------------------------------------------------------------
+  Renderer::Access()->Create();
 
   // Window ------------------------------------------------------------------------------------------------------------
   mGui.Create(mWindow.GetWindow());
@@ -63,7 +70,6 @@ void Application::Destroy() {
  */
 void Application::Run() {
   Create();
-  Renderer *renderer = Renderer::Access();
 
   while (mWindow.WindowActive()) {
     mClock.Update();
@@ -76,7 +82,6 @@ void Application::Run() {
     }
 
     Renderer::Begin();
-    mSimulation->OnPreDraw();
     Renderer::Draw();
     mGui.Render();
     Renderer::End();
@@ -104,9 +109,9 @@ void Application::OnGUI() {
   ImGui::Begin("Simulation Chooser");
   {
     if (ImGui::Button("1. Simple Geometry")) { SelectSimulation<SimpleGeometrySim>(); }
-    if (ImGui::Button("2. Gerstner Waves")) { SelectSimulation<GerstnerWaveSim>(); }
-    if (ImGui::Button("3. Perlin Terrain")) { SelectSimulation<PerlinTerrainSim>(); }
-    if (ImGui::Button("4. Marching Cubes Terrain")) { SelectSimulation<MarchingCubesSim>(); }
+    if (ImGui::Button("2. Perlin Terrain")) { SelectSimulation<PerlinTerrainSim>(); }
+    if (ImGui::Button("3. Marching Cubes Terrain")) { SelectSimulation<MarchingCubesSim>(); }
+    if (ImGui::Button("4. Gerstner Waves")) { SelectSimulation<GerstnerWaveSim>(); }
   }
 
   ImGui::End();

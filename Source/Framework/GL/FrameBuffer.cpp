@@ -26,8 +26,8 @@
 #include "Framework/Renderer.h"
 
 bool FrameBuffer::Create(uint32_t pWidth, uint32_t pHeight) {
-  CHECK_GL_ERROR(glGenFramebuffers(1, &m_ID));
-  CHECK_GL_ERROR(glBindFramebuffer(GL_FRAMEBUFFER, m_ID));
+  CHECK_GL_ERROR(glGenFramebuffers(1, &mID));
+  CHECK_GL_ERROR(glBindFramebuffer(GL_FRAMEBUFFER, mID));
 
   // Create a colour attachment
   CHECK_GL_ERROR(glGenTextures(1, &aColor));
@@ -55,8 +55,8 @@ bool FrameBuffer::Create(uint32_t pWidth, uint32_t pHeight) {
 }
 
 void FrameBuffer::Destroy() {
-  if (m_ID != 0) {
-    CHECK_GL_ERROR(glDeleteFramebuffers(1, &m_ID));
+  if (mID != 0) {
+    CHECK_GL_ERROR(glDeleteFramebuffers(1, &mID));
     CHECK_GL_ERROR(glDeleteTextures(1, &aColor));
     CHECK_GL_ERROR(glDeleteRenderbuffers(1, &aDepth));
   }
@@ -67,7 +67,7 @@ void FrameBuffer::Bind(const glm::vec2 &pWidthHeight) {
 }
 
 void FrameBuffer::Bind(uint32_t pWidth, uint32_t pHeight) {
-  Bind(m_ID, pWidth, pHeight);
+  Bind(mID, pWidth, pHeight);
 }
 
 void FrameBuffer::Bind(uint32_t pID, const glm::vec2 &pWidthHeight) {

@@ -22,11 +22,11 @@
 
 #include "Renderer.h"
 
+#include "Application.h"
 #include "System/Clock.h"
 #include "System/GUI/GUILayer.h"
 #include "Repository.h"
 #include "./Geometry/Shapes2D.h"
-
 
 Renderer *Renderer::s_Instance = nullptr;
 
@@ -43,13 +43,33 @@ Renderer *Renderer::Access() {
   return s_Instance;
 }
 
-/**
- * Constructor, handles creation of a default shader.
- */
 Renderer::Renderer() {
+  s_Instance = this;
+}
 
+/**
+ * Constructor, handles creation of the renderer
+ */
+void Renderer::Create() {
+
+
+
+  // Uniform Buffers ---------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
+  mUniformBuffers.Matrices.Create("Matrices", {sizeof(MatricesUniformBuffer), MatricesUniformBuffer()});
+  mUniformBuffers.Lighting.Create("Lighting", {sizeof(LightingUniformBuffer), LightingUniformBuffer()});
+
+  // Default Shader ----------------------------------------------------------------------------------------------------
+  Shader shader;
+  shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/default.vertex.glsl");
+  shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/default.fragment.glsl");
+  shader.Create();
+  Renderer::RegisterUniformBuffersToShader(shader.ID());
+  Repository::Get()->AddShader("Default", shader);
+
+
   // Post Processing Set-Up --------------------------------------------------------------------------------------------
+  // -------------------------------------------------------------------------------------------------------------------
 
   // Shader
   Shader ppShader;
@@ -64,7 +84,6 @@ Renderer::Renderer() {
   mScreenVAO.SetLayout();
   mScreenIBO.Create(Rectangle::Indices());
 
-  // Framebuffer
   auto dims = Window::GetDimensions();
   int width, height;
 
@@ -76,9 +95,6 @@ Renderer::Renderer() {
     std::abort();
   }
   Window::ToggleFramebufferUsage(true); // TODO: Needed?
-
-  // End Post Processing Set-Up ----------------------------------------------------------------------------------------
-  // -------------------------------------------------------------------------------------------------------------------
 }
 
 /**
@@ -92,6 +108,49 @@ void Renderer::Draw() {
 
   ptr->mPrimaryFBO.Bind(windowXY);
 
+  // Setup Uniform Buffer ----------------------------------------------------------------------------------------------
+  // -------------------------------------------------------------------------------------------------------------------
+
+  // Matrices --------------------------------
+  ptr->mUniformBuffers.Matrices.Bind();
+
+  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
+                                 offsetof(MatricesUniformBuffer, View),
+                                 sizeof(glm::mat4),
+                                 glm::value_ptr(ptr->camera.GetView())))
+  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
+                                 offsetof(MatricesUniformBuffer, Projection),
+                                 sizeof(glm::mat4),
+                                 glm::value_ptr(ptr->camera.GetProjection())))
+  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
+                                 offsetof(MatricesUniformBuffer, ViewProjection),
+                                 sizeof(glm::mat4),
+                                 glm::value_ptr(ptr->camera.GetProjectionView())))
+
+  // Lighting --------------------------------
+  ptr->mUniformBuffers.Lighting.Bind();
+
+  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
+                                 offsetof(LightingUniformBuffer, SkyColor),
+                                 sizeof(glm::vec3),
+                                 glm::value_ptr(ptr->mLightSettings.SkyColor)))
+  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
+                                 offsetof(LightingUniformBuffer, AmbientStrength),
+                                 sizeof(float),
+                                 &ptr->mLightSettings.AmbientStrength))
+  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
+                                 offsetof(LightingUniformBuffer, SunColor),
+                                 sizeof(glm::vec3),
+                                 glm::value_ptr(ptr->mLightSettings.SunColor)))
+  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
+                                 offsetof(LightingUniformBuffer, SpecularStrength),
+                                 sizeof(float),
+                                 &ptr->mLightSettings.SpecularStrength))
+  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
+                                 offsetof(LightingUniformBuffer, SunPosition),
+                                 sizeof(glm::vec3),
+                                 glm::value_ptr(ptr->mLightSettings.SunPosition)))
+
   // Render Scene To FBO -----------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
 
@@ -103,21 +162,14 @@ void Renderer::Draw() {
     Shader *shader = Repository::Get()->GetShader(instance.ShaderID); // Default Shader
     shader->Bind();
 
+
     shader->Float("u_Time", Clock::ElapsedTime);
     shader->Float("u_DeltaTime", Clock::DeltaTime);
 
-    shader->Mat4("u_View", ptr->camera.GetView());
-    shader->Mat4("u_ViewProjection", ptr->camera.GetProjectionView());
-    shader->Vec3("u_SunPosition", ptr->mLightSettings.SunPosition);
-    shader->Vec3("u_SunColor", ptr->mLightSettings.SunColor);
-    shader->Float("u_AmbientStrength", ptr->mLightSettings.AmbientStrength);
-    shader->Float("u_SpecularStrength", ptr->mLightSettings.SpecularStrength);
     shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
     shader->Bool("u_ApplyFog", ptr->mSettings.ApplyFog);
     shader->Float("u_Density", ptr->mSettings.FogDensity);
     shader->Float("u_Gradient", ptr->mSettings.FogGradient);
-    shader->Vec3("u_SkyColor", ptr->mSettings.ClearColor);
-
 
     // Get Components
     Mesh *mesh = Repository::Get()->GetMesh(instance.MeshID);
@@ -133,6 +185,9 @@ void Renderer::Draw() {
 
     // Upload Material
     material->SubmitAsUniform(shader);
+
+    // Simulation Draw Setup
+    Application::GetSimulation()->OnDraw(shader);
 
     // Do draw
     mesh->Bind();
@@ -190,7 +245,7 @@ void Renderer::OnGUI() {
 
     // General ---------------------------------------------------------------------------------------------------------
     ImGui::Text("General");
-    ImGui::ColorEdit3("Clear Color", &ptr->mSettings.ClearColor.x);
+    ImGui::ColorEdit3("Clear Color", &ptr->mLightSettings.SkyColor.x);
     if (ImGui::Button("Toggle Wire-frame")) {
       Renderer::ToggleWireframeRendering();
     }
@@ -239,7 +294,7 @@ void Renderer::Begin() {
 
   Renderer::Access()->camera.Update(1.0);
 
-  glm::vec3 C = s_Instance->mSettings.ClearColor;
+  glm::vec3 C = s_Instance->mLightSettings.SkyColor;
   glClearColor(C.x, C.y, C.z, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -250,6 +305,12 @@ void Renderer::Begin() {
  */
 void Renderer::End() {
   glfwSwapBuffers(Window::sWindow);
+}
+
+// TODO: Doc
+void Renderer::RegisterUniformBuffersToShader(uint32_t pShaderID) {
+  s_Instance->mUniformBuffers.Matrices.PerShaderBinding(pShaderID);
+  s_Instance->mUniformBuffers.Lighting.PerShaderBinding(pShaderID);
 }
 
 /**
@@ -272,4 +333,5 @@ void Renderer::SetWireframeRendering(bool pTo) {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
   }
 }
+
 

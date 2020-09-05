@@ -27,7 +27,7 @@
 
 class IndexBuffer {
  private:
-  unsigned int id;
+  unsigned int mID;
 
  public:
   IndexBuffer();

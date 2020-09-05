@@ -28,7 +28,7 @@
 class FrameBuffer {
 
  private:
-  uint32_t m_ID{0};
+  uint32_t mID{0};
   uint32_t aColor;
   uint32_t aDepth;
 
@@ -44,8 +44,8 @@ class FrameBuffer {
   void Bind(uint32_t pID, const glm::vec2 &pWidthHeight);
   void Bind(uint32_t pID, uint32_t pWidth, uint32_t pHeight);
 
-  inline uint32_t GetID() { return m_ID; }
-  inline void SetID(uint32_t to) { m_ID = to; }
+  inline uint32_t GetID() { return mID; }
+  inline void SetID(uint32_t to) { mID = to; }
   inline uint32_t GetColorAttachmentID() { return aColor; }
   inline void SetColorAttachmentID(uint32_t to) { aColor = to; }
 

@@ -33,11 +33,11 @@ class PerlinTerrainSim : public Simulation {
   Terrain mTerrain;       // Perlin Terrain object
 
  public:
-  ~PerlinTerrainSim() override;
+  ~PerlinTerrainSim() override {};
   void OnCreate() override;
   void OnUpdate() override {};
   void OnFixedUpdate(const double &pStep) override {};
-  void OnPreDraw() override {};
+  void OnDraw(Shader *pShader) override {};
   void OnDestroy() override {};
   void OnGUI() override;
 };

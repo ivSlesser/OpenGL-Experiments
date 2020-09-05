@@ -21,13 +21,31 @@
 // SOFTWARE.
 
 
-#include "DrawHandler.h"
-#include "Framework/Renderer.h"
+#pragma once
 
-void DrawHandler::Indexed(unsigned int pIndexCount) {
-    CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, pIndexCount, GL_UNSIGNED_INT, 0));
-}
+#include "Common.h"
 
-void DrawHandler::IndexedInstance(unsigned int pIndexCount, unsigned int pInstanceCount) {
-  CHECK_GL_ERROR(glDrawElementsInstanced(GL_TRIANGLES, pIndexCount, GL_UNSIGNED_INT, 0, pInstanceCount));
-}
+struct UniformBufferContents {
+};
+
+struct UniformBufferData {
+    uint32_t ContentsSizeInBytes{0};
+    UniformBufferContents Contents;
+};
+
+class UniformBuffer {
+ private:
+  static uint32_t sBindingSlotIncrementor;
+  const char *mName;
+  uint32_t mBindingSlot;
+  uint32_t mID;
+
+ public:
+  UniformBuffer();
+  virtual ~UniformBuffer() {};
+  void Create(const std::string &pName, const UniformBufferData &pData);
+  void Destroy();
+
+  void PerShaderBinding(uint32_t pShaderID);
+  void Bind();
+};

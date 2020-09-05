@@ -41,50 +41,77 @@
 #include "Framework/GL/VertexBuffer.h"
 #include "Framework/GL/IndexBuffer.h"
 #include "Framework/GL/FrameBuffer.h"
+#include "Framework/GL/UniformBuffer.h"
 #include "Framework/GL/Shader.h"
+
+struct MatricesUniformBuffer : public UniformBufferContents {
+  glm::mat4 View{1.0f};                 // View Matrix
+  glm::mat4 Projection{1.0f};           // Projection Matrix
+  glm::mat4 ViewProjection{1.0f};       // View * Projection Matrix
+};
+
+struct LightingUniformBuffer : public UniformBufferContents {
+  glm::vec3 SkyColor{0.474f};     // Clear color for the buffer swap routine.
+  float AmbientStrength{0.2f};              // Ambient lighting strength
+  glm::vec3 SunColor{1.0f};         // Sun (global light) color
+  float SpecularStrength{0.5f};             // Specular highlight strength
+  glm::vec3 SunPosition{1000.0f};   // Sun (global light position
+};
 
 class Renderer {
 
  private:
   static Renderer *s_Instance;
 
+  // Rendering Statistics ----------------------------------------------------------------------------------------------
   struct RenderingStatistics {
     uint32_t Calls = 0;
     uint32_t Vertices = 0;
     uint32_t Indices = 0;
-  } mStatistics;                            // Collected statistics for the renderer.
+  } mStatistics;                              // Collected statistics for the renderer.
 
+  // Rendering Settings ------------------------------------------------------------------------------------------------
   struct RenderingSettings {
-    bool IsWireframeEnabled{false};         // Is the wire-frame mode enabled?
-    glm::vec3 ClearColor{0.474f};   // Clear color for the buffer swap routine.
-    bool ApplyFog{true};                    // Should apply fog effect?
-    float FogDensity{0.0035f};              // How thick the fog is. Greater means lower visibility.
-    float FogGradient{5.0f};                // How quickly visibility decreases. Greater means smaller view distance.
+    bool IsWireframeEnabled{false};           // Is the wire-frame mode enabled?
+    bool ApplyFog{true};                      // Should apply fog effect?
+    float FogDensity{0.0035f};                // How thick the fog is. Greater means lower visibility.
+    float FogGradient{5.0f};                  // How quickly visibility decreases. Greater means smaller view distance.
 
-  } mSettings;                              // Rendering settings
+  } mSettings;                                // Rendering settings
 
+  // Lighting Settings -------------------------------------------------------------------------------------------------
   struct LightingSettings {
-    glm::vec3 SunColor{1.0f};       // Sun (global light) color
-    glm::vec3 SunPosition{1000.0f}; // Sun (global light position
-    float AmbientStrength{0.2f};            // Ambient lighting strength
-    float SpecularStrength{0.5f};           // Specular highlight strength
+    glm::vec3 SkyColor{0.474f};     // Clear color for the buffer swap routine.
+    glm::vec3 SunColor{1.0f};         // Sun (global light) color
+    glm::vec3 SunPosition{1000.0f};   // Sun (global light position
+    float AmbientStrength{0.2f};              // Ambient lighting strength
+    float SpecularStrength{0.5f};             // Specular highlight strength
 
-  } mLightSettings;                         // Lighting settings
+  } mLightSettings;                           // Lighting settings
 
+  // Post Processing Settings ------------------------------------------------------------------------------------------
   struct PostProcessingSettings {
-    bool ApplyGreyscale{false};             // Should apply greyscale effect?
-    bool ApplyInvert{false};                // Should apply inversion effect?
-    float ContrastStrength{1.0f};           // Strength of contrast effect
+    bool ApplyGreyscale{false};               // Should apply greyscale effect?
+    bool ApplyInvert{false};                  // Should apply inversion effect?
+    float ContrastStrength{1.0f};             // Strength of contrast effect
 
-  } mPPSettings;                            // Post processing settings.
+  } mPPSettings;                              // Post processing settings.
 
-  uint32_t mPostProcessingShaderID{0};      // Post processing shader ID
-  VertexArray mScreenVAO;                   // Output VAO for Post processing rectangle.
-  VertexBuffer mScreenVBO;                  // Output VBO for Post processing rectangle.
-  IndexBuffer mScreenIBO;                   // Output IBO for Post processing rectangle.
-  FrameBuffer mPrimaryFBO;                  // Primary Framebuffer for rendering.
+  // Uniform Buffers ---------------------------------------------------------------------------------------------------
+  struct UniformBuffers {
+    UniformBuffer Matrices;                   // Matrix Uniform Buffer
+    UniformBuffer Lighting;                   // Lighting Uniform Buffer
 
-  PerspectiveCamera camera;                 // Camera (Will refactor into repo)
+  } mUniformBuffers;                          // Post processing settings.
+
+  // Variables ---------------------------------------------------------------------------------------------------------
+  uint32_t mPostProcessingShaderID{0};        // Post processing shader ID
+  VertexArray mScreenVAO;                     // Output VAO for Post processing rectangle.
+  VertexBuffer mScreenVBO;                    // Output VBO for Post processing rectangle.
+  IndexBuffer mScreenIBO;                     // Output IBO for Post processing rectangle.
+  FrameBuffer mPrimaryFBO;                    // Primary Framebuffer for rendering.
+
+  PerspectiveCamera camera;                   // Camera (Will refactor into repo)
 
 
   // Texture Related ---------------------------------------------------------------------------------------------------
@@ -97,11 +124,14 @@ class Renderer {
 
  public:
   static Renderer *Access();
+
+  void Create();
   static void Begin();
   static void End();
   static void Draw();
   static void OnGUI();
 
+  static void RegisterUniformBuffersToShader(uint32_t pShaderID);
   static void ToggleWireframeRendering();
   static void SetWireframeRendering(bool pTo);
 

@@ -28,14 +28,12 @@
 class VertexBuffer {
 
  private:
-  unsigned int id;
+  unsigned int mID;
 
  public:
   VertexBuffer();
   virtual ~VertexBuffer() {};
-  void Create(const std::vector<Vertex> &data);
+  void Create(const std::vector<Vertex> &pData);
   void Destroy();
-
   void Bind();
-
 };

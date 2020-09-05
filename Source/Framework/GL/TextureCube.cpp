@@ -27,14 +27,14 @@
 #include "Framework/Renderer.h"
 
 TextureCube::~TextureCube() {
-  CHECK_GL_ERROR(glDeleteTextures(1, &m_ID));
+  CHECK_GL_ERROR(glDeleteTextures(1, &mID));
 }
 
 bool TextureCube::Init(std::vector<const char *> pFaces) {
-  if (m_ID == 0) {
-    CHECK_GL_ERROR(glGenTextures(1, &m_ID));
+  if (mID == 0) {
+    CHECK_GL_ERROR(glGenTextures(1, &mID));
   }
-  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_CUBE_MAP, m_ID));
+  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_CUBE_MAP, mID));
 
   int width, height, nrChannels;
   stbi_set_flip_vertically_on_load(false);
@@ -62,6 +62,6 @@ bool TextureCube::Init(std::vector<const char *> pFaces) {
 
 void TextureCube::Bind() {
   CHECK_GL_ERROR(glActiveTexture(GL_TEXTURE0));
-  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_CUBE_MAP, m_ID));
+  CHECK_GL_ERROR(glBindTexture(GL_TEXTURE_CUBE_MAP, mID));
 
 }

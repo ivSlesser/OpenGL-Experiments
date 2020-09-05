@@ -25,7 +25,6 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "Externals/tiny_obj_loader.h"
 #include "Framework/Renderer.h"
-#include "Framework/GL/DrawHandler.h"
 
 MultiModel::~MultiModel() {
   Clear();
@@ -74,14 +73,14 @@ void MultiModel::Render(Shader &pShader, bool pInstanced, unsigned int pInstance
     m->SubmitAsUniform(pShader, i++);
   }
 
-  for (Mesh *m : m_Meshes) {
-    m->Bind();
-    if (pInstanced) {
-      DrawHandler::IndexedInstance(m->IndexCount, pInstanceCount);
-    } else {
-      DrawHandler::Indexed(m->IndexCount);
-    }
-  }
+//  for (Mesh *m : m_Meshes) {
+//    m->Bind();
+//    if (pInstanced) {
+//      DrawHandler::IndexedInstance(m->IndexCount, pInstanceCount);
+//    } else {
+//      DrawHandler::Indexed(m->IndexCount);
+//    }
+//  }
 }
 
 bool MultiModel::LoadAsInstanced(const char *file, const std::vector<glm::mat4> &pMatrices) {

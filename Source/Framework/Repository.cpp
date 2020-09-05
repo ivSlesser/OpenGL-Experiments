@@ -22,6 +22,7 @@
 
 #include "Repository.h"
 #include "System/GUI/GUILayer.h"
+#include "./Renderer.h"
 
 Repository *Repository::sInstance = nullptr;
 
@@ -32,15 +33,6 @@ Repository *Repository::sInstance = nullptr;
  */
 bool Repository::Create() {
   Repository::sInstance = this;
-
-  // Default Shader ----------------------------------------------------------------------------------------------------
-  Shader shader;
-  shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/default.vertex.glsl");
-  shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/default.fragment.glsl");
-  if (!shader.Create()) {
-    return false;
-  }
-  AddShader("Default", shader);
 
   // Default Material --------------------------------------------------------------------------------------------------
   AddMaterial(Material());

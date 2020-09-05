@@ -36,6 +36,9 @@
 
 class Application {
 
+ public:
+  static Application *Instance;
+
  private:
   Clock mClock;                         // Engine clock
   Repository mRepository;               // Repository for framework components
@@ -45,12 +48,13 @@ class Application {
 
  public:
   void Run();
+  inline static Simulation *GetSimulation() { return Instance->mSimulation; }
 
  private:
   void Create();
   void Destroy();
-
   void OnGUI();
+
 
   /**
    * Helper function to select a simulation, performing creation, destruction
@@ -60,6 +64,7 @@ class Application {
   template<typename T>
   void SelectSimulation() {
     if (mSimulation != nullptr) {
+      mRepository.ClearInstancesAndTransforms();
       mSimulation->OnDestroy();
       delete mSimulation;
     }

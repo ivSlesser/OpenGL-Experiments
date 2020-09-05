@@ -25,19 +25,16 @@
 #include "../../Framework/Geometry/Shapes2D.h"
 #include "../../Framework/Geometry/Shapes3D.h"
 #include "Externals/ImGUI.hpp"
-
-GerstnerWaveSim::~GerstnerWaveSim() {
-
-}
+#include "Framework/Renderer.h"
 
 void GerstnerWaveSim::OnCreate() {
-
   // Shader
-  Shader ppShader;
-  ppShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/Gerstner/gerstner.vertex.glsl");
-  ppShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Gerstner/gerstner.fragment.glsl");
-  ppShader.Create();
-  mGerstnerShaderID = Repository::Get()->AddShader("Gerstner-Waves", ppShader);
+  Shader shader;
+  shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/Gerstner/gerstner.vertex.glsl");
+  shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/Gerstner/gerstner.fragment.glsl");
+  shader.Create();
+  Renderer::RegisterUniformBuffersToShader(shader.ID());
+  uint32_t gerstnerShaderID = Repository::Get()->AddShader("Gerstner-Waves", shader);
 
   // Material
   Material sea;
@@ -49,31 +46,17 @@ void GerstnerWaveSim::OnCreate() {
   p.Create(glm::vec2(100.0f), 2.0f);
 
   Mesh planeMesh;
-  planeMesh.Create("Water Plane", p.Vertices(), p.Indices());
+  planeMesh.Create("Gerstner Plane", p.Vertices(), p.Indices());
   uint32_t plane = Repository::Get()->AddMesh(planeMesh);
   Transform t;
   t.SetRotate({-10.0f, 0.0f, 0.0f});
-  mInstances.push_back(Repository::Get()->AddInstance(plane, t, seaMaterialID, mGerstnerShaderID));
+  mInstances.push_back(Repository::Get()->AddInstance(plane, t, seaMaterialID, gerstnerShaderID));
 }
 
-void GerstnerWaveSim::OnUpdate() {
-}
-
-void GerstnerWaveSim::OnFixedUpdate(const double &pStep) {
-
-}
-
-void GerstnerWaveSim::OnPreDraw() {
-  Shader *shader = Repository::Get()->GetShader(mGerstnerShaderID);
-  shader->Bind();
-
-  shader->Vec4("u_Wave0", mWave0);
-  shader->Vec4("u_Wave1", mWave1);
-  shader->Vec4("u_Wave2", mWave2);
-}
-
-void GerstnerWaveSim::OnDestroy() {
-
+void GerstnerWaveSim::OnDraw(Shader *pShader) {
+  pShader->Vec4("u_Wave0", mWave0);
+  pShader->Vec4("u_Wave1", mWave1);
+  pShader->Vec4("u_Wave2", mWave2);
 }
 
 void GerstnerWaveSim::OnGUI() {
@@ -96,12 +79,11 @@ void GerstnerWaveSim::OnGUI() {
   {
     // TODO: Reset Material
     ImGui::Text("Materials");
-    for(int i = 0; i < mInstances.size(); ++i) {
+    for (int i = 0; i < mInstances.size(); ++i) {
       Material *material = Repository::Get()->GetMaterial(Repository::Get()->GetInstance(mInstances[i])->MaterialID);
       material->DisplayWithGUI(i);
       ImGui::NewLine();
     }
   }
-
 }
 
