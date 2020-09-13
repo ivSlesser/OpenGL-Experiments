@@ -79,14 +79,6 @@ void Renderer::Create() {
   mPostProcessingShaderID = Repository::Get()->AddShader("Post-Processing", ppShader);
   mPostActionShaderID = mPostProcessingShaderID;
 
-  // Depth Processing Shader
-  Shader dShader;
-  dShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/PostProcessing/pp.vertex.glsl");
-  dShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/PostProcessing/pp.fragment.glsl");
-  dShader.Create();
-  Renderer::RegisterUniformBuffersToShader(dShader.ID());
-  mDepthShaderID = Repository::Get()->AddShader("Depth Post Processing", dShader);
-
   // Display rectangle
   mScreenVAO.Bind();
   mScreenVBO.Create(Rectangle::Vertices());

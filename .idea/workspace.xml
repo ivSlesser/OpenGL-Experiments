@@ -14,27 +14,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/depth.fragment.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/Gerstner/gerstner.fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/Gerstner/gerstner.fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/Gerstner/gerstner.vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/Gerstner/gerstner.vertex.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/pp.fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/pp.fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/pp.vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/pp.vertex.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/default.fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/default.fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Shaders/default.vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Shaders/default.vertex.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Application.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/Shader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/UniformBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/UniformBuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/GL/UniformBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/GL/UniformBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Shaders/PostProcessing/depth.fragment.glsl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +170,7 @@
       <workItem from="1599286622190" duration="9252000" />
       <workItem from="1599318570976" duration="36000" />
       <workItem from="1599982867086" duration="1730000" />
-      <workItem from="1599990319410" duration="2892000" />
+      <workItem from="1599990319410" duration="3039000" />
     </task>
     <servers />
   </component>
@@ -227,7 +210,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/Framework/Renderer.h</url>
-          <line>167</line>
+          <line>166</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>

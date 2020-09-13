@@ -113,7 +113,6 @@ class Renderer {
 
   // Variables ---------------------------------------------------------------------------------------------------------
   uint32_t mPostProcessingShaderID{0};        // Post processing shader ID
-  uint32_t mDepthShaderID{0};                 // Depth shader ID
   uint32_t mPostActionShaderID{0};            // Post draw action shader ID
 
   VertexArray mScreenVAO;                     // Output VAO for Post processing rectangle.
