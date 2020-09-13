@@ -6,6 +6,27 @@ layout (location = 2) in vec3 a_Normals;
 
 out vec2 v_TexCoords;
 
+layout (std140) uniform General {
+    vec3 SkyColor;
+    float AmbientStrength;
+    vec3 SunColor;
+    float SpecularStrength;
+    vec3 SunPosition;
+    float Time;
+    float DeltaTime;
+} general;
+
+layout (std140) uniform Camera {
+    mat4 View;
+    mat4 Projection;
+    mat4 ViewProjection;
+    vec3 Position;
+    float Near;
+    vec3 Front;
+    float Far;
+    vec3 Up;
+} camera;
+
 void main()
 {
     gl_Position = vec4(a_Pos.x, a_Pos.y, 0.0, 1.0);

@@ -121,6 +121,7 @@ void Shader::Bind() {
  * @return                  True if succeeded.
  */
 bool Shader::CompileShader(const char *pPath, int &pID) {
+
   std::ifstream shaderFile(pPath);
 
   if (shaderFile.fail()) {

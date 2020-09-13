@@ -53,11 +53,10 @@ Renderer::Renderer() {
  */
 void Renderer::Create() {
 
-
-
   // Uniform Buffers ---------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
-  mUniformBuffers.General.Create("General", {sizeof(GeneralUniformBuffer), GeneralUniformBuffer()});
+  mUniformBuffers.GeneralUBO.Create("General", {sizeof(GeneralUniformBuffer), GeneralUniformBuffer()});
+  mUniformBuffers.CameraUBO.Create("Camera", {sizeof(CameraUniformBuffer), CameraUniformBuffer()});
 
   // Default Shader ----------------------------------------------------------------------------------------------------
   Shader shader;
@@ -71,12 +70,22 @@ void Renderer::Create() {
   // Post Processing Set-Up --------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
 
-  // Shader
+  // Post Processing Shader
   Shader ppShader;
   ppShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/PostProcessing/pp.vertex.glsl");
   ppShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/PostProcessing/pp.fragment.glsl");
   ppShader.Create();
+  Renderer::RegisterUniformBuffersToShader(ppShader.ID());
   mPostProcessingShaderID = Repository::Get()->AddShader("Post-Processing", ppShader);
+  mPostActionShaderID = mPostProcessingShaderID;
+
+  // Depth Processing Shader
+  Shader dShader;
+  dShader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/PostProcessing/pp.vertex.glsl");
+  dShader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/PostProcessing/pp.fragment.glsl");
+  dShader.Create();
+  Renderer::RegisterUniformBuffersToShader(dShader.ID());
+  mDepthShaderID = Repository::Get()->AddShader("Depth Post Processing", dShader);
 
   // Display rectangle
   mScreenVAO.Bind();
@@ -108,22 +117,6 @@ void Renderer::Draw() {
 
   ptr->mPrimaryFBO.Bind(windowXY);
 
-  // Setup Uniform Buffer ----------------------------------------------------------------------------------------------
-  // -------------------------------------------------------------------------------------------------------------------
-
-  // General UBO ------------------------------
-  ptr->mUniformBuffers.General.Bind();
-  GeneralUniformBuffer *mPtr = BufferUtils::MapBuffer<GeneralUniformBuffer>(GL_UNIFORM_BUFFER, GL_READ_WRITE);
-  mPtr->View = ptr->camera.GetView();
-  mPtr->Projection = ptr->camera.GetProjection();
-  mPtr->ViewProjection = ptr->camera.GetProjectionView();
-  mPtr->SkyColor = ptr->mLightSettings.SkyColor;
-  mPtr->AmbientStrength = ptr->mLightSettings.AmbientStrength;
-  mPtr->SunColor = ptr->mLightSettings.SunColor;
-  mPtr->SpecularStrength = ptr->mLightSettings.SpecularStrength;
-  mPtr->SunPosition = ptr->mLightSettings.SunPosition;
-  BufferUtils::UnmapBuffer(GL_UNIFORM_BUFFER);
-
   // Render Scene To FBO -----------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
 
@@ -134,9 +127,6 @@ void Renderer::Draw() {
     // TODO: Shader will be a map!
     Shader *shader = Repository::Get()->GetShader(instance.ShaderID); // Default Shader
     shader->Bind();
-
-    shader->Float("u_Time", Clock::ElapsedTime);
-    shader->Float("u_DeltaTime", Clock::DeltaTime);
 
     shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
     shader->Bool("u_ApplyFog", ptr->mSettings.ApplyFog);
@@ -185,7 +175,7 @@ void Renderer::Draw() {
   ptr->mPrimaryFBO.Bind(0, windowXY);
   ptr->mPrimaryFBO.BindColorAttachment();
 
-  Shader *ppShader = Repository::Get()->GetShader(ptr->mPostProcessingShaderID); // Default Shader
+  Shader *ppShader = Repository::Get()->GetShader(ptr->mPostActionShaderID); // Default Shader
   ppShader->Bind();
 
   ppShader->Bool("u_Greyscale", ptr->mPPSettings.ApplyGreyscale);
@@ -260,15 +250,46 @@ void Renderer::OnGUI() {
  * as resetting statistics, clearing buffers etc.
  */
 void Renderer::Begin() {
+
+  auto ptr = Renderer::Access();
+
   DEBUG_ONLY(s_Instance->mStatistics.Calls = 0)
   DEBUG_ONLY(s_Instance->mStatistics.Vertices = 0)
   DEBUG_ONLY(s_Instance->mStatistics.Indices = 0)
 
-  Renderer::Access()->camera.Update(1.0);
+  ptr->camera.Update(1.0);
 
   glm::vec3 C = s_Instance->mLightSettings.SkyColor;
   glClearColor(C.x, C.y, C.z, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  // Setup Uniform Buffer ----------------------------------------------------------------------------------------------
+  // -------------------------------------------------------------------------------------------------------------------
+
+  // General UBO ------------------------------
+  ptr->mUniformBuffers.GeneralUBO.Bind();
+  GeneralUniformBuffer *mPtr = BufferUtils::MapBuffer<GeneralUniformBuffer>(GL_UNIFORM_BUFFER, GL_READ_WRITE);
+  mPtr->SkyColor = ptr->mLightSettings.SkyColor;
+  mPtr->AmbientStrength = ptr->mLightSettings.AmbientStrength;
+  mPtr->SunColor = ptr->mLightSettings.SunColor;
+  mPtr->SpecularStrength = ptr->mLightSettings.SpecularStrength;
+  mPtr->SunPosition = ptr->mLightSettings.SunPosition;
+  mPtr->Time = Clock::ElapsedTime;
+  mPtr->DeltaTime = Clock::DeltaTime;
+  BufferUtils::UnmapBuffer(GL_UNIFORM_BUFFER);
+
+  // Camera UBO -------------------------------
+  ptr->mUniformBuffers.CameraUBO.Bind();
+  CameraUniformBuffer *cPtr = BufferUtils::MapBuffer<CameraUniformBuffer>(GL_UNIFORM_BUFFER, GL_READ_WRITE);
+  cPtr->View = ptr->camera.GetView();
+  cPtr->Projection = ptr->camera.GetProjection();
+  cPtr->ViewProjection = ptr->camera.GetProjectionView();
+  cPtr->Position = ptr->camera.GetPosition();
+  cPtr->Near = ptr->camera.Near();
+  cPtr->Front = ptr->camera.GetFront();
+  cPtr->Far = ptr->camera.Far();
+  cPtr->Up = ptr->camera.GetUp();
+  BufferUtils::UnmapBuffer(GL_UNIFORM_BUFFER);
 }
 
 /**
@@ -281,7 +302,8 @@ void Renderer::End() {
 
 // TODO: Doc
 void Renderer::RegisterUniformBuffersToShader(uint32_t pShaderID) {
-  s_Instance->mUniformBuffers.General.PerShaderBinding(pShaderID);
+  s_Instance->mUniformBuffers.GeneralUBO.PerShaderBinding(pShaderID);
+  s_Instance->mUniformBuffers.CameraUBO.PerShaderBinding(pShaderID);
 }
 
 /**

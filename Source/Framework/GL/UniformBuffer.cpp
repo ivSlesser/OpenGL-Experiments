@@ -46,7 +46,7 @@ void UniformBuffer::Bind() {
  * @param pData             Data to populate into the buffer.
  */
 void UniformBuffer::Create(const std::string &pName, const UniformBufferData &pData) {
-  mName = pName.c_str();
+  mName = pName;
   mBindingSlot = sBindingSlotIncrementor++;
   CHECK_GL_ERROR(glBindBuffer(GL_UNIFORM_BUFFER, mID));
   CHECK_GL_ERROR(glBindBufferBase(GL_UNIFORM_BUFFER, mBindingSlot, mID));
@@ -62,8 +62,9 @@ void UniformBuffer::Destroy() {
 
 // TODO: Doc
 void UniformBuffer::PerShaderBinding(uint32_t pShaderID) {
+  std::cout << mName << std::endl;
   CHECK_GL_ERROR(glBindBuffer(GL_UNIFORM_BUFFER, mID));
-  uint32_t uniformBlockID = glGetUniformBlockIndex(pShaderID, mName);
+  uint32_t uniformBlockID = glGetUniformBlockIndex(pShaderID, mName.c_str());
   CHECK_GL_ERROR(glUniformBlockBinding(pShaderID, uniformBlockID, mBindingSlot));
 }
 

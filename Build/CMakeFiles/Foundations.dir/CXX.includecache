@@ -1908,29 +1908,9 @@ Common.h
 Framework/Geometry/Shapes3D.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Components/Terrain/Framework/Geometry/Shapes3D.h
 
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.cpp
-Camera.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
-
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
 Common.h
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/Common.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/OrthographicCamera.cpp
-OrthographicCamera.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/OrthographicCamera.h
-System/Window.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/System/Window.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/OrthographicCamera.h
-Camera.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
-
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.cpp
-PerspectiveCamera.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.h
-System/Window.h
-/Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/System/Window.h
 
 /Users/Lifefyle/Projects/Personal/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.h
 Camera.h

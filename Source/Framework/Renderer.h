@@ -45,14 +45,24 @@
 #include "Framework/GL/Shader.h"
 
 struct GeneralUniformBuffer : public UniformBufferContents {
-  glm::mat4 View{1.0f};                 // View Matrix
-  glm::mat4 Projection{1.0f};           // Projection Matrix
-  glm::mat4 ViewProjection{1.0f};       // View * Projection Matrix
-  glm::vec3 SkyColor{0.474f};     // Clear color for the buffer swap routine.
-  float AmbientStrength{0.2f};              // Ambient lighting strength
-  glm::vec3 SunColor{1.0f};         // Sun (global light) color
-  float SpecularStrength{0.5f};             // Specular highlight strength
-  glm::vec3 SunPosition{1000.0f};   // Sun (global light position
+  glm::vec3 SkyColor{0.474f};           // Clear color for the buffer swap routine.
+  float AmbientStrength{0.2f};                  // Ambient lighting strength
+  glm::vec3 SunColor{1.0f};             // Sun (global light) color
+  float SpecularStrength{0.5f};                 // Specular highlight strength
+  glm::vec3 SunPosition{1000.0f};       // Sun (global light position
+  float Time;                                   // Time elapsed
+  float DeltaTime;                              // Delta Time
+};
+
+struct CameraUniformBuffer : public UniformBufferContents {
+  glm::mat4 View{1.0f};                     // View Matrix
+  glm::mat4 Projection{1.0f};               // Projection Matrix
+  glm::mat4 ViewProjection{1.0f};           // View * Projection Matrix
+  glm::vec3 Position;                           // Camera Position
+  float Near;                                   // Camera Near Plane
+  glm::vec3 Front;                              // Camera Front Vector
+  float Far;                                    // Camera Far Plane
+  glm::vec3 Up;                                 // Camera Up Vector
 };
 
 class Renderer {
@@ -78,7 +88,7 @@ class Renderer {
 
   // Lighting Settings -------------------------------------------------------------------------------------------------
   struct LightingSettings {
-    glm::vec3 SkyColor{0.474f};     // Clear color for the buffer swap routine.
+    glm::vec3 SkyColor{0.474f};       // Clear color for the buffer swap routine.
     glm::vec3 SunColor{1.0f};         // Sun (global light) color
     glm::vec3 SunPosition{1000.0f};   // Sun (global light position
     float AmbientStrength{0.2f};              // Ambient lighting strength
@@ -96,11 +106,16 @@ class Renderer {
 
   // Uniform Buffers ---------------------------------------------------------------------------------------------------
   struct UniformBuffers {
-    UniformBuffer General;                    // General Uniform Buffer
+    UniformBuffer GeneralUBO;                 // General Uniform Buffer
+    UniformBuffer CameraUBO;                  // Camera Uniform Buffer
+
   } mUniformBuffers;                          // Post processing settings.
 
   // Variables ---------------------------------------------------------------------------------------------------------
   uint32_t mPostProcessingShaderID{0};        // Post processing shader ID
+  uint32_t mDepthShaderID{0};                 // Depth shader ID
+  uint32_t mPostActionShaderID{0};            // Post draw action shader ID
+
   VertexArray mScreenVAO;                     // Output VAO for Post processing rectangle.
   VertexBuffer mScreenVBO;                    // Output VBO for Post processing rectangle.
   IndexBuffer mScreenIBO;                     // Output IBO for Post processing rectangle.

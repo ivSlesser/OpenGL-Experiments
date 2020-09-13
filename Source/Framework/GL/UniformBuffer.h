@@ -36,7 +36,7 @@ struct UniformBufferData {
 class UniformBuffer {
  private:
   static uint32_t sBindingSlotIncrementor;
-  const char *mName;
+  std::string mName;
   uint32_t mBindingSlot;
   uint32_t mID;
 

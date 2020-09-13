@@ -9,28 +9,31 @@ out vec2 v_TexCoords;
 out vec3 v_Normals;
 out float v_Visibility;
 
-layout (std140) uniform Matrices
-{
-    mat4 View;
-    mat4 Projection;
-    mat4 ViewProjection;
-};
-
-layout (std140) uniform Lighting
-{
+layout (std140) uniform General {
     vec3 SkyColor;
     float AmbientStrength;
     vec3 SunColor;
     float SpecularStrength;
     vec3 SunPosition;
-};
+    float Time;
+    float DeltaTime;
+} general;
+
+layout (std140) uniform Camera {
+    mat4 View;
+    mat4 Projection;
+    mat4 ViewProjection;
+    vec3 Position;
+    float Near;
+    vec3 Front;
+    float Far;
+    vec3 Up;
+} camera;
 
 uniform mat4 u_Model;
 uniform bool u_ApplyFog;
 uniform float u_Density;
 uniform float u_Gradient;
-uniform float u_Time;
-uniform float u_DeltaTime;
 
 uniform vec4 u_Wave0;
 uniform vec4 u_Wave1;
@@ -52,7 +55,7 @@ void main()
 
     vec4 worldPosition = u_Model * vec4(p, 1.0);
 
-    gl_Position = ViewProjection * worldPosition;
+    gl_Position = camera.ViewProjection * worldPosition;
     v_FragmentPosition = worldPosition.xyz;
     v_TexCoords = a_TexCoords;
     v_Normals = normalize(cross(binormal, tangent));
@@ -60,7 +63,7 @@ void main()
     // Fog -----------------------------------------------------------------
     v_Visibility = 1.0;
     if (u_ApplyFog) {
-        vec4 posRelativeToCam = View * worldPosition;
+        vec4 posRelativeToCam = camera.View * worldPosition;
         float distance = length(posRelativeToCam.xyz);
         v_Visibility = exp(-pow((distance * u_Density), u_Gradient));
         v_Visibility = clamp(v_Visibility, 0.0, 1.0);
@@ -74,7 +77,7 @@ vec3 GerstnerWave (vec4 wave, vec3 p, inout vec3 tangent, inout vec3 binormal) {
     float k = 2 * PI / wave.w;// Wavelength
     float c = sqrt(9.8 / k);// Phase speed
     vec2 d = normalize(wave.xy);// Normalized wave direction
-    float f = k * (dot(d, p.xz) - c * u_Time);// Wave slope
+    float f = k * (dot(d, p.xz) - c * general.Time);// Wave slope
     float a = steepness / k;// Amplitude
 
     tangent += vec3(
@@ -92,6 +95,6 @@ vec3 GerstnerWave (vec4 wave, vec3 p, inout vec3 tangent, inout vec3 binormal) {
     return vec3(
     d.x * (a * cos(f)),
     a * sin(f),
-    d.y * (a * cos(f)) + sin(u_Time)
+    d.y * (a * cos(f)) + sin(general.Time)
     );
 }

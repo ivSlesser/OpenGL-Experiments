@@ -8,19 +8,25 @@ in vec3 v_Normals;
 in float v_Visibility;
 
 layout (std140) uniform General {
-    mat4 View;
-    mat4 Projection;
-    mat4 ViewProjection;
     vec3 SkyColor;
     float AmbientStrength;
     vec3 SunColor;
     float SpecularStrength;
     vec3 SunPosition;
+    float Time;
+    float DeltaTime;
 } general;
 
-uniform vec3 u_CameraPosition;
-uniform float u_Time;
-uniform float u_DeltaTime;
+layout (std140) uniform Camera {
+    mat4 View;
+    mat4 Projection;
+    mat4 ViewProjection;
+    vec3 Position;
+    float Near;
+    vec3 Front;
+    float Far;
+    vec3 Up;
+} camera;
 
 uniform sampler2D u_Texture0;
 
@@ -45,7 +51,7 @@ void main()
     vec3 Diffuse = diff * general.SunColor * u_Material.Diffuse;
 
     // SPECULAR
-    vec3 viewDirection = normalize(u_CameraPosition - v_FragmentPosition);
+    vec3 viewDirection = normalize(camera.Position - v_FragmentPosition);
     vec3 reflectDirection = reflect(-lightDirection, nnormal);
     float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), u_Material.Shine);
     vec3 Specular = general.SpecularStrength * spec * general.SunColor * u_Material.Specular;
