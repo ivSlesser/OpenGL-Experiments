@@ -40,6 +40,9 @@ class Camera {
   float speed = 0.5f; /**< Camera movement speed. */
   float sensitivity = 0.3f; /**< Camera rotational sensitivity. */
 
+  float near = 0.1f;
+  float far = 100000.0f;
+
  public:
   Camera() {};
 
@@ -48,7 +51,7 @@ class Camera {
   virtual void Update(double dt);
   virtual bool OnInput(double dt = 1.0) { return false; }
 
-  // Matrices ----------------------------------------------------------------------------------------------------------
+  // General ----------------------------------------------------------------------------------------------------------
   inline const glm::mat4 &GetView() const { return view; }
   inline const glm::mat4 &GetProjection() const { return projection; }
   inline const glm::mat4 &GetProjectionView() const { return projection_view; }
@@ -86,4 +89,6 @@ class Camera {
   // Other -------------------------------------------------------------------------------------------------------------
   inline const glm::vec3 &GetFront() const { return front; }
   inline const glm::vec3 &GetUp() const { return up; }
+  inline const float Near() const { return near; }
+  inline const float Far() const { return far; }
 };

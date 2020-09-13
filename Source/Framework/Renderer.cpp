@@ -57,8 +57,7 @@ void Renderer::Create() {
 
   // Uniform Buffers ---------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
-  mUniformBuffers.Matrices.Create("Matrices", {sizeof(MatricesUniformBuffer), MatricesUniformBuffer()});
-  mUniformBuffers.Lighting.Create("Lighting", {sizeof(LightingUniformBuffer), LightingUniformBuffer()});
+  mUniformBuffers.General.Create("General", {sizeof(GeneralUniformBuffer), GeneralUniformBuffer()});
 
   // Default Shader ----------------------------------------------------------------------------------------------------
   Shader shader;
@@ -112,22 +111,17 @@ void Renderer::Draw() {
   // Setup Uniform Buffer ----------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
 
-  // Matrices --------------------------------
-  ptr->mUniformBuffers.Matrices.Bind();
-  MatricesUniformBuffer *mPtr = BufferUtils::MapBuffer<MatricesUniformBuffer>(GL_UNIFORM_BUFFER, GL_READ_WRITE);
+  // General UBO ------------------------------
+  ptr->mUniformBuffers.General.Bind();
+  GeneralUniformBuffer *mPtr = BufferUtils::MapBuffer<GeneralUniformBuffer>(GL_UNIFORM_BUFFER, GL_READ_WRITE);
   mPtr->View = ptr->camera.GetView();
   mPtr->Projection = ptr->camera.GetProjection();
   mPtr->ViewProjection = ptr->camera.GetProjectionView();
-  BufferUtils::UnmapBuffer(GL_UNIFORM_BUFFER);
-
-  // Lighting --------------------------------
-  ptr->mUniformBuffers.Lighting.Bind();
-  LightingUniformBuffer *lPtr = BufferUtils::MapBuffer<LightingUniformBuffer>(GL_UNIFORM_BUFFER, GL_READ_WRITE);
-  lPtr->SkyColor = ptr->mLightSettings.SkyColor;
-  lPtr->AmbientStrength = ptr->mLightSettings.AmbientStrength;
-  lPtr->SunColor = ptr->mLightSettings.SunColor;
-  lPtr->SpecularStrength = ptr->mLightSettings.SpecularStrength;
-  lPtr->SunPosition = ptr->mLightSettings.SunPosition;
+  mPtr->SkyColor = ptr->mLightSettings.SkyColor;
+  mPtr->AmbientStrength = ptr->mLightSettings.AmbientStrength;
+  mPtr->SunColor = ptr->mLightSettings.SunColor;
+  mPtr->SpecularStrength = ptr->mLightSettings.SpecularStrength;
+  mPtr->SunPosition = ptr->mLightSettings.SunPosition;
   BufferUtils::UnmapBuffer(GL_UNIFORM_BUFFER);
 
   // Render Scene To FBO -----------------------------------------------------------------------------------------------
@@ -287,8 +281,7 @@ void Renderer::End() {
 
 // TODO: Doc
 void Renderer::RegisterUniformBuffersToShader(uint32_t pShaderID) {
-  s_Instance->mUniformBuffers.Matrices.PerShaderBinding(pShaderID);
-  s_Instance->mUniformBuffers.Lighting.PerShaderBinding(pShaderID);
+  s_Instance->mUniformBuffers.General.PerShaderBinding(pShaderID);
 }
 
 /**

@@ -44,13 +44,10 @@
 #include "Framework/GL/UniformBuffer.h"
 #include "Framework/GL/Shader.h"
 
-struct MatricesUniformBuffer : public UniformBufferContents {
+struct GeneralUniformBuffer : public UniformBufferContents {
   glm::mat4 View{1.0f};                 // View Matrix
   glm::mat4 Projection{1.0f};           // Projection Matrix
   glm::mat4 ViewProjection{1.0f};       // View * Projection Matrix
-};
-
-struct LightingUniformBuffer : public UniformBufferContents {
   glm::vec3 SkyColor{0.474f};     // Clear color for the buffer swap routine.
   float AmbientStrength{0.2f};              // Ambient lighting strength
   glm::vec3 SunColor{1.0f};         // Sun (global light) color
@@ -99,9 +96,7 @@ class Renderer {
 
   // Uniform Buffers ---------------------------------------------------------------------------------------------------
   struct UniformBuffers {
-    UniformBuffer Matrices;                   // Matrix Uniform Buffer
-    UniformBuffer Lighting;                   // Lighting Uniform Buffer
-
+    UniformBuffer General;                    // General Uniform Buffer
   } mUniformBuffers;                          // Post processing settings.
 
   // Variables ---------------------------------------------------------------------------------------------------------

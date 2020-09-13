@@ -111,7 +111,7 @@ void Application::OnGUI() {
     if (ImGui::Button("1. Simple Geometry")) { SelectSimulation<SimpleGeometrySim>(); }
     if (ImGui::Button("2. Perlin Terrain")) { SelectSimulation<PerlinTerrainSim>(); }
     if (ImGui::Button("3. Marching Cubes Terrain")) { SelectSimulation<MarchingCubesSim>(); }
-    if (ImGui::Button("4. Gerstner Waves")) { SelectSimulation<GerstnerWaveSim>(); }
+//    if (ImGui::Button("4. Gerstner Waves")) { SelectSimulation<GerstnerWaveSim>(); }
   }
 
   ImGui::End();

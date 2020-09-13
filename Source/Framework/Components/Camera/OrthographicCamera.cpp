@@ -53,6 +53,6 @@ void OrthographicCamera::UpdateProjectionView() {
   float zoom = 1.0f;
 
   view = glm::lookAt(position, position + front, up);
-  projection = glm::ortho(-aspect * zoom, aspect * zoom, -zoom, zoom, -1.0f, 1.0f);
+  projection = glm::ortho(-aspect * zoom, aspect * zoom, -zoom, zoom, near, far);
   projection_view = projection * view;
 }

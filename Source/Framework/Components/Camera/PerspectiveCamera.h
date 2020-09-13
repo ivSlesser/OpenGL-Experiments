@@ -29,8 +29,6 @@ class PerspectiveCamera : public Camera {
 
  private:
   float fov = 45.0f;
-  float near = 0.1f;
-  float far = 100000.0f;
 
   // -------------------------------------------------------------------------------------------------------------------
 
