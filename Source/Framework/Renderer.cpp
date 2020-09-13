@@ -27,6 +27,7 @@
 #include "System/GUI/GUILayer.h"
 #include "Repository.h"
 #include "./Geometry/Shapes2D.h"
+#include "Framework/GL/BufferUtils.h"
 
 Renderer *Renderer::s_Instance = nullptr;
 
@@ -113,43 +114,21 @@ void Renderer::Draw() {
 
   // Matrices --------------------------------
   ptr->mUniformBuffers.Matrices.Bind();
-
-  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
-                                 offsetof(MatricesUniformBuffer, View),
-                                 sizeof(glm::mat4),
-                                 glm::value_ptr(ptr->camera.GetView())))
-  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
-                                 offsetof(MatricesUniformBuffer, Projection),
-                                 sizeof(glm::mat4),
-                                 glm::value_ptr(ptr->camera.GetProjection())))
-  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
-                                 offsetof(MatricesUniformBuffer, ViewProjection),
-                                 sizeof(glm::mat4),
-                                 glm::value_ptr(ptr->camera.GetProjectionView())))
+  MatricesUniformBuffer *mPtr = BufferUtils::MapBuffer<MatricesUniformBuffer>(GL_UNIFORM_BUFFER, GL_READ_WRITE);
+  mPtr->View = ptr->camera.GetView();
+  mPtr->Projection = ptr->camera.GetProjection();
+  mPtr->ViewProjection = ptr->camera.GetProjectionView();
+  BufferUtils::UnmapBuffer(GL_UNIFORM_BUFFER);
 
   // Lighting --------------------------------
   ptr->mUniformBuffers.Lighting.Bind();
-
-  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
-                                 offsetof(LightingUniformBuffer, SkyColor),
-                                 sizeof(glm::vec3),
-                                 glm::value_ptr(ptr->mLightSettings.SkyColor)))
-  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
-                                 offsetof(LightingUniformBuffer, AmbientStrength),
-                                 sizeof(float),
-                                 &ptr->mLightSettings.AmbientStrength))
-  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
-                                 offsetof(LightingUniformBuffer, SunColor),
-                                 sizeof(glm::vec3),
-                                 glm::value_ptr(ptr->mLightSettings.SunColor)))
-  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
-                                 offsetof(LightingUniformBuffer, SpecularStrength),
-                                 sizeof(float),
-                                 &ptr->mLightSettings.SpecularStrength))
-  CHECK_GL_ERROR(glBufferSubData(GL_UNIFORM_BUFFER,
-                                 offsetof(LightingUniformBuffer, SunPosition),
-                                 sizeof(glm::vec3),
-                                 glm::value_ptr(ptr->mLightSettings.SunPosition)))
+  LightingUniformBuffer *lPtr = BufferUtils::MapBuffer<LightingUniformBuffer>(GL_UNIFORM_BUFFER, GL_READ_WRITE);
+  lPtr->SkyColor = ptr->mLightSettings.SkyColor;
+  lPtr->AmbientStrength = ptr->mLightSettings.AmbientStrength;
+  lPtr->SunColor = ptr->mLightSettings.SunColor;
+  lPtr->SpecularStrength = ptr->mLightSettings.SpecularStrength;
+  lPtr->SunPosition = ptr->mLightSettings.SunPosition;
+  BufferUtils::UnmapBuffer(GL_UNIFORM_BUFFER);
 
   // Render Scene To FBO -----------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
@@ -161,7 +140,6 @@ void Renderer::Draw() {
     // TODO: Shader will be a map!
     Shader *shader = Repository::Get()->GetShader(instance.ShaderID); // Default Shader
     shader->Bind();
-
 
     shader->Float("u_Time", Clock::ElapsedTime);
     shader->Float("u_DeltaTime", Clock::DeltaTime);

@@ -15,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Framework/Components/Camera/PerspectiveCamera.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Framework/Components/Material.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Framework/Components/Transform.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Framework/GL/BufferUtils.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Framework/GL/FrameBuffer.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Framework/GL/IndexBuffer.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Framework/GL/Shader.cpp.o"
