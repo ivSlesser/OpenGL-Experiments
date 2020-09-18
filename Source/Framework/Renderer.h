@@ -45,19 +45,19 @@
 #include "Framework/GL/Shader.h"
 
 struct GeneralUniformBuffer : public UniformBufferContents {
-  glm::vec3 SkyColor{0.474f};           // Clear color for the buffer swap routine.
-  float AmbientStrength{0.2f};                  // Ambient lighting strength
-  glm::vec3 SunColor{1.0f};             // Sun (global light) color
+  glm::vec3 SkyColor{0.474f};            // Clear color for the buffer swap routine.
+  float AmbientStrength{0.32f};                 // Ambient lighting strength
+  glm::vec3 SunColor{1.0f};              // Sun (global light) color
   float SpecularStrength{0.5f};                 // Specular highlight strength
-  glm::vec3 SunPosition{1000.0f};       // Sun (global light position
+  glm::vec3 SunPosition{500.0f};         // Sun (global light position
   float Time;                                   // Time elapsed
   float DeltaTime;                              // Delta Time
 };
 
 struct CameraUniformBuffer : public UniformBufferContents {
-  glm::mat4 View{1.0f};                     // View Matrix
-  glm::mat4 Projection{1.0f};               // Projection Matrix
-  glm::mat4 ViewProjection{1.0f};           // View * Projection Matrix
+  glm::mat4 View{1.0f};                      // View Matrix
+  glm::mat4 Projection{1.0f};                // Projection Matrix
+  glm::mat4 ViewProjection{1.0f};            // View * Projection Matrix
   glm::vec3 Position;                           // Camera Position
   float Near;                                   // Camera Near Plane
   glm::vec3 Front;                              // Camera Front Vector
@@ -72,42 +72,42 @@ class Renderer {
 
   // Rendering Statistics ----------------------------------------------------------------------------------------------
   struct RenderingStatistics {
-    uint32_t Calls = 0;
-    uint32_t Vertices = 0;
-    uint32_t Indices = 0;
+	uint32_t Calls = 0;
+	uint32_t Vertices = 0;
+	uint32_t Indices = 0;
   } mStatistics;                              // Collected statistics for the renderer.
 
   // Rendering Settings ------------------------------------------------------------------------------------------------
   struct RenderingSettings {
-    bool IsWireframeEnabled{false};           // Is the wire-frame mode enabled?
-    bool ApplyFog{true};                      // Should apply fog effect?
-    float FogDensity{0.0035f};                // How thick the fog is. Greater means lower visibility.
-    float FogGradient{5.0f};                  // How quickly visibility decreases. Greater means smaller view distance.
+	bool IsWireframeEnabled{false};           // Is the wire-frame mode enabled?
+	bool ApplyFog{true};                      // Should apply fog effect?
+	float FogDensity{0.0035f};                // How thick the fog is. Greater means lower visibility.
+	float FogGradient{5.0f};                  // How quickly visibility decreases. Greater means smaller view distance.
 
   } mSettings;                                // Rendering settings
 
   // Lighting Settings -------------------------------------------------------------------------------------------------
   struct LightingSettings {
-    glm::vec3 SkyColor{0.474f};       // Clear color for the buffer swap routine.
-    glm::vec3 SunColor{1.0f};         // Sun (global light) color
-    glm::vec3 SunPosition{1000.0f};   // Sun (global light position
-    float AmbientStrength{0.2f};              // Ambient lighting strength
-    float SpecularStrength{0.5f};             // Specular highlight strength
+	glm::vec3 SkyColor{0.474f};       // Clear color for the buffer swap routine.
+	glm::vec3 SunColor{1.0f};         // Sun (global light) color
+	glm::vec3 SunPosition{1000.0f};   // Sun (global light position
+	float AmbientStrength{0.2f};              // Ambient lighting strength
+	float SpecularStrength{0.5f};             // Specular highlight strength
 
   } mLightSettings;                           // Lighting settings
 
   // Post Processing Settings ------------------------------------------------------------------------------------------
   struct PostProcessingSettings {
-    bool ApplyGreyscale{false};               // Should apply greyscale effect?
-    bool ApplyInvert{false};                  // Should apply inversion effect?
-    float ContrastStrength{1.0f};             // Strength of contrast effect
+	bool ApplyGreyscale{false};               // Should apply greyscale effect?
+	bool ApplyInvert{false};                  // Should apply inversion effect?
+	float ContrastStrength{1.0f};             // Strength of contrast effect
 
   } mPPSettings;                              // Post processing settings.
 
   // Uniform Buffers ---------------------------------------------------------------------------------------------------
   struct UniformBuffers {
-    UniformBuffer GeneralUBO;                 // General Uniform Buffer
-    UniformBuffer CameraUBO;                  // Camera Uniform Buffer
+	UniformBuffer GeneralUBO;                 // General Uniform Buffer
+	UniformBuffer CameraUBO;                  // Camera Uniform Buffer
 
   } mUniformBuffers;                          // Post processing settings.
 
@@ -150,9 +150,9 @@ class Renderer {
    * Utility function to clear all OpenGL errors.
    */
   static void ClearGLError() {
-    unsigned errorCode;
-    while ((errorCode = glGetError()) != GL_NO_ERROR) {
-    }
+	unsigned errorCode;
+	while ((errorCode = glGetError()) != GL_NO_ERROR) {
+	}
   }
 
   /**
@@ -162,10 +162,10 @@ class Renderer {
    * @param msg             [Optional] Message to prepend to error check output.
    */
   static void CheckGLError(std::string msg = "") {
-    auto res = glGetError();
-    if (res != 0) {
-      std::cout << msg << " -> " << res << std::endl;
-    }
+	auto res = glGetError();
+	if (res != 0) {
+	  std::cout << msg << " -> " << res << std::endl;
+	}
   }
 
  private:
