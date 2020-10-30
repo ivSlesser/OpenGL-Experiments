@@ -24,7 +24,14 @@
 #include "Terrain.h"
 #include "Math/Random/Perlin.h"
 
-// TODO: Doc
+/**
+ * Create a terrain object from a given size and density.
+ * Terrain height is derived from an implementation of Perlin noise.
+ * Generates the vertices, indices and normals for the object.
+ *
+ * @param pSize             Amount of vertices on the (X, Z) axes
+ * @param pDensity          Density, determines terrain dimensions (pSize * pDensity)
+ */
 void Terrain::Create(const glm::vec2 &pSize, float pDensity) {
   mSize = pSize;
 

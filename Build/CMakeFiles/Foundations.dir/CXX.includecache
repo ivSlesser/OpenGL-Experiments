@@ -1824,37 +1824,37 @@ Externals/ImGUI.hpp
 Common.h
 ../Source/System/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Application.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Application.cpp
 Application.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Application.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Application.h
 Simulations/SimpleGeometry/SimpleGeometrySim.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h
 Simulations/GerstnerWave/GerstnerWaveSim.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/GerstnerWaveSim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/GerstnerWaveSim.h
 Simulations/PerlinTerrain/PerlinTerrainSim.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/PerlinTerrainSim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/PerlinTerrainSim.h
 Simulations/MarchingCubes/MarchingCubesSim.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/MarchingCubesSim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/MarchingCubesSim.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Application.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Application.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Common.h
 Framework/Repository.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
 Framework/Simulation.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
 System/Clock.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Clock.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Clock.h
 System/Window.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Window.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Window.h
 System/GUI/GUILayer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/GUI/GUILayer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/GUI/GUILayer.h
 Framework/Components/Transform.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Common.h
 algorithm
 -
 array
@@ -1930,51 +1930,51 @@ glad/glad.h
 GLFW/glfw3.h
 -
 glm/glm.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/glm/glm.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/glm/glm.hpp
 glm/gtc/matrix_transform.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/glm/gtc/matrix_transform.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/glm/gtc/matrix_transform.hpp
 glm/gtc/type_ptr.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/glm/gtc/type_ptr.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/glm/gtc/type_ptr.hpp
 glm/gtc/random.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/glm/gtc/random.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/glm/gtc/random.hpp
 glm/gtx/euler_angles.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/glm/gtx/euler_angles.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/glm/gtx/euler_angles.hpp
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Marcher.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Marcher.cpp
 Marcher.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Marcher.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Marcher.h
 Tables.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Tables.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Tables.h
 System/GUI/GUILayer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/System/GUI/GUILayer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/System/GUI/GUILayer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Marcher.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Marcher.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Common.h
 Framework/Geometry/Shapes3D.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Framework/Geometry/Shapes3D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Framework/Geometry/Shapes3D.h
 Framework/Geometry/Vertex.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Framework/Geometry/Vertex.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Framework/Geometry/Vertex.h
 Math/Random/Perlin.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Math/Random/Perlin.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Math/Random/Perlin.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Tables.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Tables.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Marching Cubes/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Terrain/Terrain.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Terrain/Terrain.cpp
 Terrain.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Terrain/Terrain.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Terrain/Terrain.h
 Math/Random/Perlin.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Terrain/Math/Random/Perlin.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Terrain/Math/Random/Perlin.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Terrain/Terrain.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Terrain/Terrain.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Terrain/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Terrain/Common.h
 Framework/Geometry/Shapes3D.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Terrain/Framework/Geometry/Shapes3D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Terrain/Framework/Geometry/Shapes3D.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/glad.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/glad.cpp
 stdio.h
 -
 stdlib.h
@@ -1982,7 +1982,7 @@ stdlib.h
 string.h
 -
 glad/glad.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/glad/glad.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/glad/glad.h
 windows.h
 -
 winapifamily.h
@@ -1990,15 +1990,15 @@ winapifamily.h
 dlfcn.h
 -
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imconfig.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imconfig.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.cpp
 stb_image.h
 -
 imgui.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
 imgui_internal.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_internal.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_internal.h
 ctype.h
 -
 stdio.h
@@ -2008,7 +2008,7 @@ stddef.h
 stdint.h
 -
 imstb_sprintf.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_sprintf.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_sprintf.h
 Windows.h
 -
 windows.h
@@ -2018,11 +2018,11 @@ TargetConditionals.h
 Carbon/Carbon.h
 -
 imgui_user.inl
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_user.inl
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_user.inl
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
 imconfig.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imconfig.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imconfig.h
 float.h
 -
 stdarg.h
@@ -2036,11 +2036,11 @@ assert.h
 stdint.h
 -
 imgui_user.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_user.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_user.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_demo.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_demo.cpp
 imgui.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
 ctype.h
 -
 limits.h
@@ -2056,11 +2056,11 @@ stddef.h
 stdint.h
 -
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_draw.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_draw.cpp
 imgui.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
 imgui_internal.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_internal.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_internal.h
 stdio.h
 -
 alloca.h
@@ -2070,15 +2070,15 @@ malloc.h
 stdlib.h
 -
 imstb_rectpack.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_rectpack.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_rectpack.h
 imstb_truetype.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_truetype.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_truetype.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_glfw.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_glfw.cpp
 imgui.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
 imgui_impl_glfw.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_glfw.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_glfw.h
 GLFW/glfw3.h
 -
 GLFW/glfw3native.h
@@ -2086,13 +2086,13 @@ GLFW/glfw3native.h
 imm.h
 -
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_glfw.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_glfw.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_opengl3.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_opengl3.cpp
 imgui.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
 imgui_impl_opengl3.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_opengl3.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_opengl3.h
 stdio.h
 -
 stddef.h
@@ -2100,7 +2100,7 @@ stddef.h
 stdint.h
 -
 TargetConditionals.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/TargetConditionals.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/TargetConditionals.h
 GLES2/gl2.h
 -
 OpenGLES/ES3/gl.h
@@ -2114,9 +2114,9 @@ GL/glew.h
 glad/glad.h
 -
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_opengl3.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_impl_opengl3.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_internal.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_internal.h
 stdio.h
 -
 stdlib.h
@@ -2126,13 +2126,13 @@ math.h
 limits.h
 -
 imstb_textedit.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_textedit.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_textedit.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_widgets.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_widgets.cpp
 imgui.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui.h
 imgui_internal.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_internal.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imgui_internal.h
 ctype.h
 -
 stddef.h
@@ -2140,25 +2140,25 @@ stddef.h
 stdint.h
 -
 imstb_textedit.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_textedit.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_textedit.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_rectpack.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_rectpack.h
 stdlib.h
 -
 assert.h
 -
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_textedit.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_textedit.h
 string.h
 -
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_truetype.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/imstb_truetype.h
 stb_truetype.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/stb_truetype.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/stb_truetype.h
 stdio.h
 -
 stb_truetype.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/imgui/stb_truetype.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/imgui/stb_truetype.h
 math.h
 -
 math.h
@@ -2178,13 +2178,13 @@ string.h
 string.h
 -
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/stb_image.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/stb_image.cpp
 stb_image.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/stb_image.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/stb_image.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/stb_image.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/stb_image.h
 stb_image.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Externals/stb_image.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Externals/stb_image.h
 stdio.h
 -
 stdlib.h
@@ -2214,369 +2214,369 @@ intrin.h
 arm_neon.h
 -
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.cpp
 Camera.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/OrthographicCamera.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/OrthographicCamera.cpp
 OrthographicCamera.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/OrthographicCamera.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/OrthographicCamera.h
 System/Window.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/System/Window.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/System/Window.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/OrthographicCamera.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/OrthographicCamera.h
 Camera.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.cpp
 PerspectiveCamera.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.h
 System/Window.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/System/Window.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/System/Window.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.h
 Camera.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/Camera.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Material.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Material.cpp
 Material.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Material.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Material.h
 sstream
 -
 System/GUI/GUILayer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/System/GUI/GUILayer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/System/GUI/GUILayer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Material.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Material.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Common.h
 Framework/GL/Shader.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Framework/GL/Shader.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Framework/GL/Shader.h
 random
 -
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.cpp
 Transform.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/BufferUtils.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/BufferUtils.cpp
 BufferUtils.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/BufferUtils.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/BufferUtils.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/BufferUtils.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/BufferUtils.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/FrameBuffer.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/FrameBuffer.cpp
 FrameBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/FrameBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/FrameBuffer.h
 System/Window.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/System/Window.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/System/Window.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/FrameBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/FrameBuffer.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/IndexBuffer.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/IndexBuffer.cpp
 IndexBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/IndexBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/IndexBuffer.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/IndexBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/IndexBuffer.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Shader.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Shader.cpp
 Shader.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Shader.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Shader.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Shader.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Shader.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Texture.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Texture.cpp
 Texture.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Texture.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Texture.h
 Externals/stb_image.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Externals/stb_image.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Externals/stb_image.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Texture.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Texture.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/TextureCube.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/TextureCube.cpp
 TextureCube.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/TextureCube.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/TextureCube.h
 Externals/stb_image.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Externals/stb_image.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Externals/stb_image.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/TextureCube.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/TextureCube.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/UniformBuffer.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/UniformBuffer.cpp
 UniformBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/UniformBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/UniformBuffer.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/UniformBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/UniformBuffer.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexArray.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexArray.cpp
 VertexArray.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexArray.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexArray.h
 Framework/Geometry/Vertex.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Geometry/Vertex.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Geometry/Vertex.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexArray.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexArray.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexBuffer.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexBuffer.cpp
 VertexBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexBuffer.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/VertexBuffer.h
 Framework/Geometry/Vertex.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Geometry/Vertex.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/GL/Framework/Geometry/Vertex.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Mesh.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Mesh.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
 Framework/GL/VertexArray.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Framework/GL/VertexArray.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Framework/GL/VertexArray.h
 Framework/GL/VertexBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Framework/GL/VertexBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Framework/GL/VertexBuffer.h
 Framework/GL/IndexBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Framework/GL/IndexBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Framework/GL/IndexBuffer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.cpp
 Shapes2D.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
 ./Vertex.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Vertex.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Vertex.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.cpp
 Shapes3D.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
 ./Vertex.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Vertex.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Vertex.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Vertex.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Vertex.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Renderer.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Renderer.cpp
 Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Renderer.h
 Application.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Application.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Application.h
 System/Clock.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/System/Clock.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/System/Clock.h
 System/GUI/GUILayer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/System/GUI/GUILayer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/System/GUI/GUILayer.h
 Repository.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
 ./Geometry/Shapes2D.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
 Framework/GL/BufferUtils.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/BufferUtils.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/BufferUtils.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Renderer.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Common.h
 System/Window.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/System/Window.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/System/Window.h
 ./Components/Camera/PerspectiveCamera.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Camera/PerspectiveCamera.h
 Framework/Components/Transform.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/Components/Transform.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/Components/Transform.h
 Framework/GL/Texture.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/Texture.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/Texture.h
 Framework/GL/VertexArray.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/VertexArray.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/VertexArray.h
 Framework/GL/VertexBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/VertexBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/VertexBuffer.h
 Framework/GL/IndexBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/IndexBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/IndexBuffer.h
 Framework/GL/FrameBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/FrameBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/FrameBuffer.h
 Framework/GL/UniformBuffer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/UniformBuffer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/UniformBuffer.h
 Framework/GL/Shader.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/Shader.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/Shader.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Repository.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Repository.cpp
 Repository.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
 System/GUI/GUILayer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/System/GUI/GUILayer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/System/GUI/GUILayer.h
 ./Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Common.h
 ./Components/Transform.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Transform.h
 ./Components/Material.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Components/Material.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Components/Material.h
 Framework/GL/Texture.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/Texture.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/Texture.h
 Framework/GL/Shader.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/Shader.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Framework/GL/Shader.h
 ./Geometry/Mesh.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Mesh.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Mesh.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Simulation.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Simulation.cpp
 Simulation.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Common.h
 ./Repository.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Repository.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Math/Random/Perlin.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Math/Random/Perlin.cpp
 Perlin.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Math/Random/Perlin.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Math/Random/Perlin.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Math/Random/Perlin.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Math/Random/Perlin.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Math/Random/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Math/Random/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Math/Random/Random.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Math/Random/Random.cpp
 Random.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Math/Random/Random.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Math/Random/Random.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Math/Random/Random.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Math/Random/Random.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Math/Random/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Math/Random/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/GerstnerWaveSim.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/GerstnerWaveSim.cpp
 GerstnerWaveSim.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/GerstnerWaveSim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/GerstnerWaveSim.h
 ../../Framework/Geometry/Shapes2D.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
 ../../Framework/Geometry/Shapes3D.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.h
 Externals/ImGUI.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/Externals/ImGUI.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/Externals/ImGUI.hpp
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/GerstnerWaveSim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/GerstnerWaveSim.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/GerstnerWave/Common.h
 ../../Framework/Simulation.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/MarchingCubesSim.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/MarchingCubesSim.cpp
 MarchingCubesSim.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/MarchingCubesSim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/MarchingCubesSim.h
 Externals/ImGUI.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/Externals/ImGUI.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/Externals/ImGUI.hpp
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/MarchingCubesSim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/MarchingCubesSim.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/Common.h
 Framework/Simulation.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/Framework/Simulation.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/Framework/Simulation.h
 Components/Marching Cubes/Marcher.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/Components/Marching Cubes/Marcher.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/MarchingCubes/Components/Marching Cubes/Marcher.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/PerlinTerrainSim.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/PerlinTerrainSim.cpp
 PerlinTerrainSim.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/PerlinTerrainSim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/PerlinTerrainSim.h
 Externals/ImGUI.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/Externals/ImGUI.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/Externals/ImGUI.hpp
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/PerlinTerrainSim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/PerlinTerrainSim.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/PerlinTerrain/Common.h
 ../../Framework/Simulation.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
 ../../Components/Terrain/Terrain.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Components/Terrain/Terrain.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Components/Terrain/Terrain.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp
 SimpleGeometrySim.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h
 ../../Framework/Geometry/Shapes2D.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes2D.h
 ../../Framework/Geometry/Shapes3D.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Geometry/Shapes3D.h
 Externals/ImGUI.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/Externals/ImGUI.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/Externals/ImGUI.hpp
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/SimpleGeometrySim.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Simulations/SimpleGeometry/Common.h
 ../../Framework/Simulation.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Framework/Simulation.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Clock.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Clock.cpp
 Clock.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Clock.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Clock.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Clock.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Clock.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/GUI/GUILayer.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/GUI/GUILayer.cpp
 GUILayer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/GUI/GUILayer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/GUI/GUILayer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/GUI/GUILayer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/GUI/GUILayer.h
 vector
 -
 Externals/ImGUI.hpp
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/GUI/Externals/ImGUI.hpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/GUI/Externals/ImGUI.hpp
 ../Window.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Window.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Window.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Window.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Window.cpp
 Window.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Window.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Window.h
 Framework/Renderer.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Framework/Renderer.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Framework/Renderer.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Window.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Window.h
 Common.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/System/Common.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/System/Common.h
 
-/Users/ivs/Projects/Graphics-Scratchpad/Source/main.cpp
+/Users/islesser/Projects/Graphics-Scratchpad/Source/main.cpp
 Application.h
-/Users/ivs/Projects/Graphics-Scratchpad/Source/Application.h
+/Users/islesser/Projects/Graphics-Scratchpad/Source/Application.h
 

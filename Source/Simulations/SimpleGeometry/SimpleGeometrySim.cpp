@@ -163,7 +163,6 @@ void SimpleGeometrySim::OnGUI() {
 
   // Material ----------------------------------------------------------------------------------------------------------
   {
-    // TODO: Reset Material
     ImGui::Text("Materials");
 
     for(int i = 0; i < mInstances.size(); ++i) {

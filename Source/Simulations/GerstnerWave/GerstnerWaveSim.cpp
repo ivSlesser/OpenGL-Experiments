@@ -77,7 +77,6 @@ void GerstnerWaveSim::OnGUI() {
 
   // Material ----------------------------------------------------------------------------------------------------------
   {
-    // TODO: Reset Material
     ImGui::Text("Materials");
     for (int i = 0; i < mInstances.size(); ++i) {
       Material *material = Repository::Get()->GetMaterial(Repository::Get()->GetInstance(mInstances[i])->MaterialID);

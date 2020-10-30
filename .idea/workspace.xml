@@ -16,13 +16,15 @@
     <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CompilerIdC/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CompilerIdC/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CompilerIdCXX/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CompilerIdCXX/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CompilerIdC/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/3.15.5/CompilerIdCXX/a.out" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
@@ -47,6 +49,7 @@
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/Libraries/glad/src/glad.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/Libraries/glad/src/glad.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/cmake_install.cmake" afterDir="false" />
@@ -63,6 +66,7 @@
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/init.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/init.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/input.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/input.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/monitor.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/monitor.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o" afterDir="false" />
@@ -73,10 +77,16 @@
       <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/Marching Cubes/Tables.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Components/Marching Cubes/Tables.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/Terrain/Terrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Components/Terrain/Terrain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Simulations/GerstnerWave/GerstnerWaveSim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/GerstnerWave/GerstnerWaveSim.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Simulations/MarchingCubes/MarchingCubesSim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/MarchingCubes/MarchingCubesSim.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Simulations/PerlinTerrain/PerlinTerrainSim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/PerlinTerrain/PerlinTerrainSim.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,9 +121,15 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
@@ -134,30 +150,28 @@
       <recent name="$PROJECT_DIR$/Source/Framework/GL" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="CMake Application.Foundations">
-    <configuration name="Foundations" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Foundations" TARGET_NAME="Foundations" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/Build/Foundations">
+    <configuration name="Foundations" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Foundations" TARGET_NAME="Foundations" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/Build/Foundations">
       <method v="2" />
     </configuration>
-    <configuration name="glad" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Foundations" TARGET_NAME="glad" CONFIG_NAME="Debug">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="glfw" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Foundations" TARGET_NAME="glfw" CONFIG_NAME="Debug">
+    <configuration name="glad" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Foundations" TARGET_NAME="glad" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="glfw" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Foundations" TARGET_NAME="glfw" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
@@ -166,6 +180,7 @@
       <item itemvalue="CMake Application.glfw" />
     </list>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -229,11 +244,12 @@
       <workItem from="1599982867086" duration="1730000" />
       <workItem from="1599990319410" duration="3039000" />
       <workItem from="1600410277120" duration="390000" />
+      <workItem from="1604078250788" duration="848000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -250,13 +266,26 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1604078544476">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1604078544476" />
+    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1604078541328">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1604078541328" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1604078981082">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1604078981082" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

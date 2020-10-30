@@ -23,8 +23,6 @@
 
 #pragma once
 
-// TODO: Ability to replace mesh.
-
 #include "Common.h"
 
 #include "./Components/Transform.h"
@@ -91,6 +89,8 @@ class Repository {
   Mesh *GetMesh(uint32_t pID);
   bool MeshExists(const std::string &pName);
   void ClearMeshes();
+  void ReplaceMesh(const std::string &pName, const Mesh &pMesh);
+  void ReplaceMesh(uint32_t pID, const Mesh &pMesh);
 
   // Instances ---------------------------------------------------------------------------------------------------------
 

@@ -25,9 +25,7 @@
 
 #include "Common.h"
 
-class Tables {
-
- public:
+struct Tables {
   static glm::vec3 Corners[];
   static int Edges[12][2];
   static int Triangles[256][16];

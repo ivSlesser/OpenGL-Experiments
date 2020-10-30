@@ -182,6 +182,35 @@ void Repository::ClearMeshes() {
   mMeshesMap.clear();
 }
 
+/**
+ * Replace an existing mesh by name, destroying the original mesh.
+ *
+ * @param pName               Name of mesh to replace
+ * @param pMesh               Mesh to replace with
+ */
+void Repository::ReplaceMesh(const std::string &pName, const Mesh &pMesh) {
+    if (MeshExists(pName)) {
+        uint32_t ID = mMeshesMap[pName];
+        mMeshes[ID].Destroy();
+        mMeshes[ID] = pMesh;
+    }
+}
+
+/**
+ * Replace an existing mesh by ID, destroying the original mesh.
+ *
+ * @param pID
+ * @param pMesh
+ */
+void Repository::ReplaceMesh(uint32_t pID, const Mesh &pMesh) {
+    try {
+        mMeshes[pID].Destroy();
+        mMeshes[pID] = pMesh;
+    } catch (const std::exception &e) {
+        // Handle
+    }
+}
+
 // ---------------------------------------------------------------------------------------------------------------------
 // Instances -----------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------
@@ -388,6 +417,8 @@ void Repository::ClearShaders() {
   mShaders.clear();
   mShadersMap.clear();
 }
+
+
 
 
 
