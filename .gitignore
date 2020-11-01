@@ -3,6 +3,7 @@
 /.vs
 /.vscode
 /cmake-build-debug
+/cmake_build_debug
 
 # XCode
 **/*.xc*

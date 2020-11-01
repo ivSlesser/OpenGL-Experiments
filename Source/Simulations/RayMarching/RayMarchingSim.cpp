@@ -21,41 +21,29 @@
 // SOFTWARE.
 
 
-#include "RayMarchingModule.h"
+#include "RayMarchingSim.h"
 
-#include "Graphics/Quad.h"
-#include "System/Window.h"
+#include "../../Framework/Geometry/Shapes2D.h"
+#include "../../Framework/Geometry/Shapes3D.h"
+#include "Externals/ImGUI.hpp"
+#include "Framework/Renderer.h"
 
-void RayMarchingModule::OnInit(Camera &p_Camera) {
-  m_Overrides[0] = true;
-  p_Camera.SetAndUpdatePosition({0.0f, 0.0f, 3.0f});
+void RayMarchingSim::OnCreate() {
+  // Shader
+  Shader shader;
+  shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/RayMarch/ray.vertex.glsl");
+  shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/RayMarch/ray.fragment.glsl");
+  shader.Create();
+  Renderer::RegisterUniformBuffersToShader(shader.ID());
+  uint32_t rayShaderID = Repository::Get()->AddShader("Ray-Marching", shader);
 
-  // Create vertices
-  std::vector<Vertex> vertices = Quad::Vertices(0.0f, 0.0f, 1.0f, 1.0f);
-  m_VAO.Bind();
-  m_VBO.Init(vertices);
-  m_VAO.SetLayout();
-
-  // Create indices
-  std::vector<unsigned> indices = Quad::Indices();
-  m_IBO.Init(indices);
-
-  m_Shader.AddStage(GL_VERTEX_SHADER, "Resources/Shaders/RayMarch/ray.vertex.glsl");
-  m_Shader.AddStage(GL_FRAGMENT_SHADER, "Resources/Shaders/RayMarch/ray.fragment.glsl");
-  m_Shader.Compile();
+  // Screen Quad
+  Mesh rectangleMesh;
+  rectangleMesh.Create("Screen Quad", Rectangle::Vertices(), Rectangle::Indices());
+  uint32_t rectangle = Repository::Get()->AddMesh(rectangleMesh);
+  mInstances.push_back(Repository::Get()->AddInstance(rectangle, Transform(), 0, rayShaderID));
 }
 
-void RayMarchingModule::OnUpdate(double dt) {
+void RayMarchingSim::OnGUI() {
 
-}
-
-void RayMarchingModule::OnDraw(Transform &p_Transform, const Camera &p_Camera) {
-  m_Shader.Bind();
-  m_VAO.Bind();
-  m_IBO.Bind();
-
-  m_Shader.Vec2("u_Resolution", Window::GetDimensions());
-  m_Shader.Float("u_Time", (float)glfwGetTime());
-
-  glDrawElements(GL_TRIANGLES, Quad::IndexCount(), GL_UNSIGNED_INT, 0);
 }

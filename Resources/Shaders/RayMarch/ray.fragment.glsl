@@ -2,15 +2,34 @@
 
 out vec4 FragColor;
 
-in vec4 v_Color;
 in vec2 v_TexCoords;
 
-uniform vec2 u_Resolution;
-uniform float  u_Time;
+layout (std140) uniform General {
+   vec3 SkyColor;
+   float AmbientStrength;
+   vec3 SunColor;
+   float SpecularStrength;
+   vec3 SunPosition;
+   float Time;
+   float DeltaTime;
+} general;
+
+layout (std140) uniform Camera {
+   mat4 View;
+   mat4 Projection;
+   mat4 ViewProjection;
+   vec3 Position;
+   float Near;
+   vec3 Front;
+   float Far;
+   vec3 Up;
+} camera;
 
 #define MAX_STEPS 100
 #define MAX_DIST 100.
-#define SURF_DIST .01
+#define SURF_DIST 0.01
+
+const vec2 u_Resolution = vec2(1366, 768);
 
 float GetDist(vec3 p);
 float RayMarch(vec3 ro, vec3 rd);
@@ -38,14 +57,10 @@ void main()
    FragColor = vec4(col, 1.0);
 }
 
-   #define MAX_STEPS 100
-   #define MAX_DIST 100.
-   #define SURF_DIST .01
-
 float GetDist(vec3 p) {
    vec4 s = vec4(0, 1, 6, 1);
 
-   float sphereDist =  length(p-s.xyz)-s.w;
+   float sphereDist =  length(p - s.xyz) - s.w;
    float planeDist = p.y;
 
    float d = min(sphereDist, planeDist);
@@ -53,13 +68,13 @@ float GetDist(vec3 p) {
 }
 
 float RayMarch(vec3 ro, vec3 rd) {
-   float dO=0.;
+   float dO = 0.0;
 
-   for(int i=0; i<MAX_STEPS; i++) {
-      vec3 p = ro + rd*dO;
+   for(int i = 0; i < MAX_STEPS; i++) {
+      vec3 p = ro + rd * dO;
       float dS = GetDist(p);
       dO += dS;
-      if(dO>MAX_DIST || dS<SURF_DIST) break;
+      if(dO > MAX_DIST || dS < SURF_DIST) break;
    }
 
    return dO;
@@ -67,25 +82,25 @@ float RayMarch(vec3 ro, vec3 rd) {
 
 vec3 GetNormal(vec3 p) {
    float d = GetDist(p);
-   vec2 e = vec2(.01, 0);
+   vec2 e = vec2(0.01, 0);
 
    vec3 n = d - vec3(
-   GetDist(p-e.xyy),
-   GetDist(p-e.yxy),
-   GetDist(p-e.yyx));
+   GetDist(p - e.xyy),
+   GetDist(p - e.yxy),
+   GetDist(p - e.yyx));
 
    return normalize(n);
 }
 
 float GetLight(vec3 p) {
    vec3 lightPos = vec3(0, 5, 6);
-   lightPos.xz += vec2(sin(u_Time), cos(u_Time))*2.;
-   vec3 l = normalize(lightPos-p);
+   lightPos.xz += vec2(sin(general.Time), cos(general.Time))*2.;
+   vec3 l = normalize(lightPos - p);
    vec3 n = GetNormal(p);
 
-   float dif = clamp(dot(n, l), 0., 1.);
-   float d = RayMarch(p+n*SURF_DIST*2., l);
-   if(d<length(lightPos-p)) dif *= .1;
+   float dif = clamp(dot(n, l), 0.0, 1.0);
+   float d = RayMarch(p + n * SURF_DIST * 2.0, l);
+   if(d < length(lightPos - p)) dif *= 0.1;
 
    return dif;
 }

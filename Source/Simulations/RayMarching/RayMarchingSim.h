@@ -24,52 +24,17 @@
 #pragma once
 
 #include "Common.h"
+#include "../../Framework/Simulation.h"
 
-#include "System/Module.h"
-#include "Framework/GL/Shader.h"
-#include "../../Model.h"
-#include "../../MultiModel.h"
-
-#include "Elements/Terrain.h"
-
-#include "Framework/GL/VertexArray.h"
-#include "Framework/GL/VertexBuffer.h"
-#include "Framework/GL/IndexBuffer.h"
-#include "Framework/GL/TextureCube.h"
-#include "Graphics/Plane.h"
-
-class TerrainSceneModule : public Module {
+class RayMarchingSim : public Simulation {
 
  private:
-  Shader m_Shader;
-  Shader m_ModelShader;
-  Shader m_SkyShader;
-
-  MultiModel m_MultiModel;
-  int m_NumInstances;
-
-  Terrain m_Terrain;
-  VertexArray m_VAO;
-  VertexBuffer m_VBO;
-  IndexBuffer m_IBO;
-
-  VertexArray m_CubeVAO;
-  VertexBuffer m_CubeVBO;
-  IndexBuffer m_CubeIBO;
-
-  Texture *m_Grass;
-  TextureCube *m_SkyTexture;
-
-  float m_TilingFactor = 200.0f;
-
  public:
-  TerrainSceneModule() {}
-
-  virtual void OnInit(Camera &p_Camera) override;
-  virtual void OnUpdate(double dt = 1.0) override;
-  void OnDestroy() override;
-  virtual void OnGUI() override;
-  virtual void OnDraw(Transform &p_Transform, const Camera &p_Camera) override;
-
- private:
+  ~RayMarchingSim() override {};
+  void OnCreate() override;
+  void OnUpdate() override {};
+  void OnFixedUpdate(const double &pStep) override {};
+  void OnDraw(Shader *pShader) override {};
+  void OnDestroy() override {};
+  void OnGUI() override;
 };

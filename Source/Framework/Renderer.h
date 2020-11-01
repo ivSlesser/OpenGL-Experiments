@@ -88,9 +88,9 @@ class Renderer {
 
   // Lighting Settings -------------------------------------------------------------------------------------------------
   struct LightingSettings {
-	glm::vec3 SkyColor{0.474f};       // Clear color for the buffer swap routine.
-	glm::vec3 SunColor{1.0f};         // Sun (global light) color
-	glm::vec3 SunPosition{1000.0f};   // Sun (global light position
+	glm::vec3 SkyColor{0.474f};       		  // Clear color for the buffer swap routine.
+	glm::vec3 SunColor{1.0f};         		  // Sun (global light) color
+	glm::vec3 SunPosition{1000.0f};   		  // Sun (global light position
 	float AmbientStrength{0.2f};              // Ambient lighting strength
 	float SpecularStrength{0.5f};             // Specular highlight strength
 
@@ -121,13 +121,6 @@ class Renderer {
   FrameBuffer mPrimaryFBO;                    // Primary Framebuffer for rendering.
 
   PerspectiveCamera camera;                   // Camera (Will refactor into repo)
-
-
-  // Texture Related ---------------------------------------------------------------------------------------------------
-
-  // TODO: Add Textures To Repo
-//  Texture cat_texture = Texture("Resources/Textures/cat.jpg");
-//  Texture ref_texture = Texture("Resources/Textures/Debug.png");
 
   // -------------------------------------------------------------------------------------------------------------------
 

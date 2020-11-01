@@ -60,7 +60,12 @@ void UniformBuffer::Destroy() {
   CHECK_GL_ERROR(glDeleteBuffers(1, &mID));
 }
 
-// TODO: Doc
+/**
+ * Performs shader specific binding for this uniform buffer, binding the slot in the shader to this
+ * buffer.
+ *
+ * @param pShaderID			ID of the shader to bind to.
+ */
 void UniformBuffer::PerShaderBinding(uint32_t pShaderID) {
   std::cout << mName << std::endl;
   CHECK_GL_ERROR(glBindBuffer(GL_UNIFORM_BUFFER, mID));

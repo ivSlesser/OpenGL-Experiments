@@ -25,6 +25,7 @@
 #include "Simulations/GerstnerWave/GerstnerWaveSim.h"
 #include "Simulations/PerlinTerrain/PerlinTerrainSim.h"
 #include "Simulations/MarchingCubes/MarchingCubesSim.h"
+#include "Simulations/RayMarching/RayMarchingSim.h"
 
 Application *Application::Instance = nullptr;
 
@@ -112,6 +113,7 @@ void Application::OnGUI() {
     if (ImGui::Button("2. Perlin Terrain")) { SelectSimulation<PerlinTerrainSim>(); }
     if (ImGui::Button("3. Marching Cubes Terrain")) { SelectSimulation<MarchingCubesSim>(); }
     if (ImGui::Button("4. Gerstner Waves")) { SelectSimulation<GerstnerWaveSim>(); }
+	if (ImGui::Button("5. Ray Marching")) { SelectSimulation<RayMarchingSim>(); }
   }
 
   ImGui::End();

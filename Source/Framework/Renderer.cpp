@@ -67,6 +67,18 @@ void Renderer::Create() {
   Repository::Get()->AddShader("Default", shader);
 
 
+  // Textures  ---------------------------------------------------------------------------------------------------------
+  // -------------------------------------------------------------------------------------------------------------------
+  Texture cat_texture;
+  std::string cat = "Cat";
+  cat_texture.Create(cat);
+  Repository::Get()->AddTexture(cat_texture);
+
+  Texture ref_texture;
+  std::string debug = "Debug";
+  ref_texture.Create(debug);
+  Repository::Get()->AddTexture(ref_texture);
+
   // Post Processing Set-Up --------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
 
@@ -95,7 +107,7 @@ void Renderer::Create() {
   if (!mPrimaryFBO.Create(width, height)) {
     std::abort();
   }
-  Window::ToggleFramebufferUsage(true); // TODO: Needed?
+  Window::ToggleFramebufferUsage(true);
 }
 
 /**
@@ -292,7 +304,11 @@ void Renderer::End() {
   glfwSwapBuffers(Window::sWindow);
 }
 
-// TODO: Doc
+/**
+ * Registers a uniform buffer to the shader, identified by it's ID.
+ *
+ * @param pShaderID			Shader to attach the buffer to.
+ */
 void Renderer::RegisterUniformBuffersToShader(uint32_t pShaderID) {
   s_Instance->mUniformBuffers.GeneralUBO.PerShaderBinding(pShaderID);
   s_Instance->mUniformBuffers.CameraUBO.PerShaderBinding(pShaderID);
@@ -308,7 +324,7 @@ void Renderer::ToggleWireframeRendering() {
 /**
  * Set the wire-frame rendering mode to the specified value.
  *
- * @param pTo       Boolean value to set to.
+ * @param pTo      		 	Boolean value to set to.
  */
 void Renderer::SetWireframeRendering(bool pTo) {
   s_Instance->mSettings.IsWireframeEnabled = pTo;
