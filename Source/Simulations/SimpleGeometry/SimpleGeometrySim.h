@@ -48,7 +48,7 @@ class SimpleGeometrySim : public Simulation {
   void OnUpdate() override;
   void OnDraw(Shader *pShader) override {};
   void OnDestroy() override;
-  void OnGUI() override;
+  bool OnGUI() override;
 
  private:
   void SetSelection(Selection pSelection);

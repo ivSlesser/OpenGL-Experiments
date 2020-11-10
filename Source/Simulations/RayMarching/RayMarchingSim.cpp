@@ -44,6 +44,6 @@ void RayMarchingSim::OnCreate() {
   mInstances.push_back(Repository::Get()->AddInstance(rectangle, Transform(), 0, rayShaderID));
 }
 
-void RayMarchingSim::OnGUI() {
+bool RayMarchingSim::OnGUI() {
 
 }

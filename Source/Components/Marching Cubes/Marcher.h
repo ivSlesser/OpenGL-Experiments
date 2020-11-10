@@ -62,7 +62,7 @@ class Marcher : public Plane {
   void March(int pConfigIndex);
 
   int VertForIndice(glm::vec3 vert);
-  void OnGUI();
+  bool OnGUI();
 
  private:
   void CellOperation(float pCube[], const glm::vec3 &pPosition);

@@ -32,7 +32,7 @@ void PerlinTerrainSim::OnCreate() {
   mInstances.push_back(Repository::Get()->AddInstance(terrain, Transform()));
 }
 
-void PerlinTerrainSim::OnGUI() {
+bool PerlinTerrainSim::OnGUI() {
 
   // Material ----------------------------------------------------------------------------------------------------------
   {

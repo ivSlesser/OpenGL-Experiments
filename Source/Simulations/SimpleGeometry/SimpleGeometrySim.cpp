@@ -79,7 +79,7 @@ void SimpleGeometrySim::SetSelection(Selection pSelection) {
 /**
  * Handles display of simulation values and controls.
  */
-void SimpleGeometrySim::OnGUI() {
+bool SimpleGeometrySim::OnGUI() {
 
   // Selection ---------------------------------------------------------------------------------------------------------
   {
@@ -87,37 +87,37 @@ void SimpleGeometrySim::OnGUI() {
 
     if (ImGui::Button("Triangle")) {
       SetSelection(Selection::TRIANGLE);
-      return;
+	  return true;
     }
 
     if (ImGui::Button("Rectangle")) {
       SetSelection(Selection::RECTANGLE);
-      return;
+	  return true;
     }
 
     if (ImGui::Button("Polygon")) {
       SetSelection(Selection::POLYGON);
-      return;
+	  return true;
     }
 
     if (ImGui::Button("Cube (Smooth)")) {
       SetSelection(Selection::CUBE);
-      return;
+	  return true;
     }
 
     if (ImGui::Button("Cube (Flat)")) {
       SetSelection(Selection::CUBEFLAT);
-      return;
+	  return true;
     }
 
     if (ImGui::Button("Plane")) {
       SetSelection(Selection::PLANE);
-      return;
+	  return true;
     }
 
     if (ImGui::Button("OBJ Model")) {
       SetSelection(Selection::MODEL);
-      return;
+      return true;
     }
     ImGui::NewLine();
   }

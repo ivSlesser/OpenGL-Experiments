@@ -40,5 +40,5 @@ class Simulation {
   virtual void OnFixedUpdate(const double &pStep) = 0;
   virtual void OnDraw(Shader *pShader) = 0;
   virtual void OnDestroy() = 0;
-  virtual void OnGUI() = 0;
+  virtual bool OnGUI() = 0;
 };

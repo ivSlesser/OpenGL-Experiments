@@ -31,25 +31,28 @@ void MarchingCubesSim::OnCreate() {
   CreateMarchedMesh();
 }
 
-void MarchingCubesSim::OnGUI() {
+bool MarchingCubesSim::OnGUI() {
 
   // Marcher -----------------------------------------------------------------------------------------------------------
   {
-    ImGui::Text("Marcher");
-    if (ImGui::Button("Generate")) {
-      CreateMarchedMesh();
-    }
-    mMarcher.OnGUI();
+	ImGui::Text("Marcher");
+	if (ImGui::Button("Generate")) {
+	  CreateMarchedMesh();
+	}
+
+	if (mMarcher.OnGUI()) {
+	  CreateMarchedMesh();
+	}
   }
 
   // Material ----------------------------------------------------------------------------------------------------------
   {
-    ImGui::Text("Materials");
-    for (int i = 0; i < mInstances.size(); ++i) {
-      Material *material = Repository::Get()->GetMaterial(Repository::Get()->GetInstance(mInstances[i])->MaterialID);
-      material->DisplayWithGUI(i);
-      ImGui::NewLine();
-    }
+	ImGui::Text("Materials");
+	for (int i = 0; i < mInstances.size(); ++i) {
+	  Material *material = Repository::Get()->GetMaterial(Repository::Get()->GetInstance(mInstances[i])->MaterialID);
+	  material->DisplayWithGUI(i);
+	  ImGui::NewLine();
+	}
   }
 }
 

@@ -40,6 +40,6 @@ class GerstnerWaveSim : public Simulation {
   void OnFixedUpdate(const double &pStep) override {};
   void OnDraw(Shader *pShader) override;
   void OnDestroy() override {};
-  void OnGUI() override;
+  bool OnGUI() override;
 
 };

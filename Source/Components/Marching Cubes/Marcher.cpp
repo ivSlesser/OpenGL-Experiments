@@ -231,22 +231,42 @@ void Marcher::March(int pConfigIndex) {
   }
 }
 
-void Marcher::OnGUI() {
-  ImGui::Checkbox("Smoothing?", &mSmoothing);
-  ImGui::Checkbox("Flat Shading?", &mFlatShading);
-
-  ImGui::DragFloat("Mesh Density", &mDensity, 1.0f, 1.0f, 20.0f);
-
-  ImGui::DragFloat("Threshold", &mThreshold, 0.01f, -1.0f, 1.0f);
-  ImGui::DragInt("Octaves", &mOctaves, 1, 1, 10);
-  ImGui::DragFloat("Persistence", &mPersistence, 0.01f, 0.01f, 3.0f);
-
-  ImGui::DragFloat("Frequency", &mFrequency, 0.1f, -128.0f, 128.0f);
-  ImGui::DragFloat("Amplitude", &mAmplitude, 0.1f, -128.0f, 128.0f);
-  ImGui::DragFloat("Surface", &mSurface, 1.0f, 0.0f, 12.0f);
-
-  ImGui::DragFloat3("Frequency Scale", &mFrequencyScale.x, 0.01f, 0.01f, 1.5f);
-  ImGui::DragFloat3("Scale", &mScale.x, 0.001f, 0.001f, 3.0f);
+bool Marcher::OnGUI() {
+  bool changes = false;
+  if (ImGui::Checkbox("Smoothing?", &mSmoothing)) {
+  	changes = true;
+  }
+  if (ImGui::Checkbox("Flat Shading?", &mFlatShading)) {
+    changes = true;
+  }
+  if (ImGui::DragFloat("Mesh Density", &mDensity, 1.0f, 1.0f, 20.0f)) {
+    changes = true;
+  }
+  if (ImGui::DragFloat("Threshold", &mThreshold, 0.01f, -1.0f, 1.0f)) {
+    changes = true;
+  }
+  if (ImGui::DragInt("Octaves", &mOctaves, 1, 1, 10)) {
+    changes = true;
+  }
+  if (ImGui::DragFloat("Persistence", &mPersistence, 0.01f, 0.01f, 3.0f)) {
+    changes = true;
+  }
+  if (ImGui::DragFloat("Frequency", &mFrequency, 0.1f, -128.0f, 128.0f)) {
+    changes = true;
+  }
+  if (ImGui::DragFloat("Amplitude", &mAmplitude, 0.1f, -128.0f, 128.0f)) {
+    changes = true;
+  }
+  if (ImGui::DragFloat("Surface", &mSurface, 1.0f, 0.0f, 12.0f)) {
+    changes = true;
+  }
+  if (ImGui::DragFloat3("Frequency Scale", &mFrequencyScale.x, 0.01f, 0.01f, 1.5f)) {
+	changes = true;
+  }
+  if (ImGui::DragFloat3("Scale", &mScale.x, 0.001f, 0.001f, 3.0f)) {
+    changes = true;
+  }
+  return changes;
 }
 
 

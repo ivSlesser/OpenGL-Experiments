@@ -59,7 +59,7 @@ void GerstnerWaveSim::OnDraw(Shader *pShader) {
   pShader->Vec4("u_Wave2", mWave2);
 }
 
-void GerstnerWaveSim::OnGUI() {
+bool GerstnerWaveSim::OnGUI() {
   ImGui::Text("Wave 0");
   ImGui::DragFloat2("Direction 0", &mWave0.x, 0.1f, -1.0f, 1.0f, "%.2f");
   ImGui::DragFloat("Wavelength 0", &mWave0.w, 0.1f, 0.0f, 100.0f, "%.2f");
