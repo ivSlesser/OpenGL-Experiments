@@ -32,41 +32,41 @@ Repository *Repository::sInstance = nullptr;
  * @return      True if succeeded.
  */
 bool Repository::Create() {
-  Repository::sInstance = this;
+    Repository::sInstance = this;
 
-  // Default Material --------------------------------------------------------------------------------------------------
-  AddMaterial(Material());
+    // Default Material --------------------------------------------------------------------------------------------------
+    AddMaterial(Material());
 
-  // Default Texture ---------------------------------------------------------------------------------------------------
-  Texture defaultTexture;
-  defaultTexture.Create((std::string &) "Default");
-  AddTexture(defaultTexture);
+    // Default Texture ---------------------------------------------------------------------------------------------------
+    Texture defaultTexture;
+    defaultTexture.Create((std::string &) "Default");
+    AddTexture(defaultTexture);
 
-  return true;
+    return true;
 }
 
 /**
  * Destroys the repository and all stored data.
  */
 void Repository::Destroy() {
-  Repository::sInstance = nullptr;
-  ClearAll();
+    Repository::sInstance = nullptr;
+    ClearAll();
 }
 
 /**
  * Displays the repository data and controls.
  */
 void Repository::OnGUI() {
-  ImGui::Begin("Repository");
-  {
-    ImGui::Text("Meshes: %d", (int) mMeshes.size());
-    ImGui::Text("Instances: %d", (int) mInstances.size());
-    ImGui::Text("Transform: %d", (int) mTransforms.size());
-    ImGui::Text("Materials: %d", (int) mMaterials.size());
-    ImGui::Text("Textures: %d", (int) mTextures.size());
-    ImGui::Text("Shaders: %d", (int) mShaders.size());
-  }
-  ImGui::End();
+    ImGui::Begin("Repository");
+    {
+        ImGui::Text("Meshes: %d", (int) mMeshes.size());
+        ImGui::Text("Instances: %d", (int) mInstances.size());
+        ImGui::Text("Transform: %d", (int) mTransforms.size());
+        ImGui::Text("Materials: %d", (int) mMaterials.size());
+        ImGui::Text("Textures: %d", (int) mTextures.size());
+        ImGui::Text("Shaders: %d", (int) mShaders.size());
+    }
+    ImGui::End();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -77,20 +77,20 @@ void Repository::OnGUI() {
  * Calls the clear functions for each type of stored object.
  */
 void Repository::ClearAll() {
-  ClearMeshes();
-  ClearInstances();
-  ClearTransforms();
-  ClearMaterials();
-  ClearTextures();
-  ClearShaders();
+    ClearMeshes();
+    ClearInstances();
+    ClearTransforms();
+    ClearMaterials();
+    ClearTextures();
+    ClearShaders();
 }
 
 /**
  * Clears the stored instances and transforms.
  */
 void Repository::ClearInstancesAndTransforms() {
-  ClearInstances();
-  ClearTransforms();
+    ClearInstances();
+    ClearTransforms();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -105,15 +105,15 @@ void Repository::ClearInstancesAndTransforms() {
  * @return                  ID of the added mesh, or the ID of an existing mesh.
  */
 uint32_t Repository::AddMesh(const Mesh &pMesh) {
-  // Check that the name doesn't already exist.
-  if (MeshExists(pMesh.Name)) {
-    return GetMeshID(pMesh.Name);
-  }
+    // Check that the name doesn't already exist.
+    if (MeshExists(pMesh.Name)) {
+        return GetMeshID(pMesh.Name);
+    }
 
-  // Add the mesh to the vector and the map.
-  mMeshesMap[pMesh.Name] = mMeshes.size();
-  mMeshes.push_back(pMesh);
-  return mMeshes.size() - 1;
+    // Add the mesh to the vector and the map.
+    mMeshesMap[pMesh.Name] = mMeshes.size();
+    mMeshes.push_back(pMesh);
+    return mMeshes.size() - 1;
 }
 
 /**
@@ -123,11 +123,11 @@ uint32_t Repository::AddMesh(const Mesh &pMesh) {
  * @return                  A Mesh pointer, or nullptr if it doesn't exist.
  */
 Mesh *Repository::GetMesh(const std::string &pName) {
-  // Check that the name exists.
-  if (!MeshExists(pName)) {
-    return nullptr;
-  }
-  return GetMesh(mMeshesMap[pName]);
+    // Check that the name exists.
+    if (!MeshExists(pName)) {
+        return nullptr;
+    }
+    return GetMesh(mMeshesMap[pName]);
 }
 
 /**
@@ -138,11 +138,11 @@ Mesh *Repository::GetMesh(const std::string &pName) {
  * @throws std::invalid_argument    Thrown if a mesh doesn't exist with that name.
  */
 uint32_t Repository::GetMeshID(const std::string &pName) {
-  // Check that the name exists.
-  if (!MeshExists(pName)) {
-    throw std::invalid_argument("Mesh does not exist in the repository");
-  }
-  return mMeshesMap[pName];
+    // Check that the name exists.
+    if (!MeshExists(pName)) {
+        throw std::invalid_argument("Mesh does not exist in the repository");
+    }
+    return mMeshesMap[pName];
 }
 
 /**
@@ -152,11 +152,11 @@ uint32_t Repository::GetMeshID(const std::string &pName) {
  * @return                  A Mesh pointer, or nullptr if it doesn't exist.
  */
 Mesh *Repository::GetMesh(uint32_t pID) {
-  try {
-    return &mMeshes[pID];
-  } catch (const std::exception &e) {
-    return nullptr;
-  }
+    try {
+        return &mMeshes[pID];
+    } catch (const std::exception &e) {
+        return nullptr;
+    }
 }
 
 /**
@@ -166,7 +166,7 @@ Mesh *Repository::GetMesh(uint32_t pID) {
  * @return                  True if the mesh exists in the repository.
  */
 bool Repository::MeshExists(const std::string &pName) {
-  return mMeshesMap.count(pName) > 0;
+    return mMeshesMap.count(pName) > 0;
 }
 
 /**
@@ -174,12 +174,12 @@ bool Repository::MeshExists(const std::string &pName) {
  */
 void Repository::ClearMeshes() {
 
-  for (Mesh &mesh : mMeshes) {
-    mesh.Destroy();
-  }
+    for (Mesh &mesh : mMeshes) {
+        mesh.Destroy();
+    }
 
-  mMeshes.clear();
-  mMeshesMap.clear();
+    mMeshes.clear();
+    mMeshesMap.clear();
 }
 
 /**
@@ -222,27 +222,29 @@ uint32_t Repository::AddInstance(int32_t pMeshID,
                                  uint32_t pMaterialID,
                                  uint32_t pShaderID,
                                  uint32_t pTextureID) {
-  // TODO: Make this a map. <RenderingType, <Texture, <MeshID, <Material, Transform>>> also add shader?
-  RenderingInstance instance;
-  instance.MeshID = pMeshID;
-  instance.MaterialID = pMaterialID;
-  instance.ShaderID = pShaderID;
-  instance.TextureID = pTextureID;
-  instance.TransformID = AddTransform(pTransform);
-  mInstances.push_back(instance);
-  return mInstances.size() - 1;
+    // TODO: Make this a map. <RenderingType, <Texture, <MeshID, <Material, Transform>>> also add shader?
+    RenderingInstance instance;
+    instance.MeshID = pMeshID;
+    instance.MaterialID = pMaterialID;
+    instance.ShaderID = pShaderID;
+    instance.TextureID = pTextureID;
+    instance.TransformID = AddTransform(pTransform);
+    mInstancesMap[pShaderID].push_back(instance);
+    mInstances.push_back(&mInstancesMap[pShaderID].back());
+    return mInstances.size() - 1;
 }
 
 RenderingInstance *Repository::GetInstance(uint32_t pID) {
-  try {
-    return &mInstances[pID];
-  } catch (const std::exception &e) {
-    return nullptr;
-  }
+    try {
+        return mInstances[pID];
+    } catch (const std::exception &e) {
+        return nullptr;
+    }
 }
 
 void Repository::ClearInstances() {
-  mInstances.clear();
+    mInstances.clear();
+    mInstancesMap.clear();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -250,28 +252,28 @@ void Repository::ClearInstances() {
 // ---------------------------------------------------------------------------------------------------------------------
 
 uint32_t Repository::AddTransform(const Transform &pTransform) {
-  mTransforms.push_back(pTransform);
-  return mTransforms.size() - 1;
+    mTransforms.push_back(pTransform);
+    return mTransforms.size() - 1;
 }
 
 Transform *Repository::GetTransform(uint32_t pID) {
-  try {
-    return &mTransforms[pID];
-  } catch (const std::exception &e) {
-    return nullptr;
-  }
+    try {
+        return &mTransforms[pID];
+    } catch (const std::exception &e) {
+        return nullptr;
+    }
 }
 
 Transform *Repository::GetTransformForInstance(uint32_t pInstanceID) {
-  try {
-    return GetTransform(GetInstance(pInstanceID)->TransformID);
-  } catch (const std::exception &e) {
-    return nullptr;
-  }
+    try {
+        return GetTransform(GetInstance(pInstanceID)->TransformID);
+    } catch (const std::exception &e) {
+        return nullptr;
+    }
 }
 
 void Repository::ClearTransforms() {
-  mTransforms.clear();
+    mTransforms.clear();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -279,48 +281,48 @@ void Repository::ClearTransforms() {
 // ---------------------------------------------------------------------------------------------------------------------
 
 uint32_t Repository::AddMaterial(const Material &pMaterial) {
-  // Check that the name doesn't already exist.
-  if (MaterialExists(pMaterial.Name)) {
-    return GetMaterialID(pMaterial.Name);
-  }
+    // Check that the name doesn't already exist.
+    if (MaterialExists(pMaterial.Name)) {
+        return GetMaterialID(pMaterial.Name);
+    }
 
-  // Add the material to the vector and the map.
-  mMaterialsMap[pMaterial.Name] = mMaterials.size();
-  mMaterials.push_back(pMaterial);
-  return mMaterials.size() - 1;
+    // Add the material to the vector and the map.
+    mMaterialsMap[pMaterial.Name] = mMaterials.size();
+    mMaterials.push_back(pMaterial);
+    return mMaterials.size() - 1;
 }
 
 Material *Repository::GetMaterial(const std::string &pName) {
-  // Check that the name exists.
-  if (!MaterialExists(pName)) {
-    return nullptr;
-  }
-  return GetMaterial(mMaterialsMap[pName]);
+    // Check that the name exists.
+    if (!MaterialExists(pName)) {
+        return nullptr;
+    }
+    return GetMaterial(mMaterialsMap[pName]);
 }
 
 uint32_t Repository::GetMaterialID(const std::string &pName) {
-  // Check that the name exists.
-  if (!MaterialExists(pName)) {
-    throw std::invalid_argument("Material does not exist in the repository");
-  }
-  return mMaterialsMap[pName];
+    // Check that the name exists.
+    if (!MaterialExists(pName)) {
+        throw std::invalid_argument("Material does not exist in the repository");
+    }
+    return mMaterialsMap[pName];
 }
 
 Material *Repository::GetMaterial(uint32_t pID) {
-  try {
-    return &mMaterials[pID];
-  } catch (const std::exception &e) {
-    return nullptr;
-  }
+    try {
+        return &mMaterials[pID];
+    } catch (const std::exception &e) {
+        return nullptr;
+    }
 }
 
 bool Repository::MaterialExists(const std::string &pName) {
-  return mMaterialsMap.count(pName) > 0;
+    return mMaterialsMap.count(pName) > 0;
 }
 
 void Repository::ClearMaterials() {
-  mMaterials.clear();
-  mMaterialsMap.clear();
+    mMaterials.clear();
+    mMaterialsMap.clear();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -328,49 +330,49 @@ void Repository::ClearMaterials() {
 // ---------------------------------------------------------------------------------------------------------------------
 
 uint32_t Repository::AddTexture(const Texture &pTexture) {
-  // Check that the name doesn't already exist.
-  if (TextureExists(pTexture.Name())) {
-    // It already exists, we won't allow duplicates.
-    return GetTextureID(pTexture.Name());
-  }
+    // Check that the name doesn't already exist.
+    if (TextureExists(pTexture.Name())) {
+        // It already exists, we won't allow duplicates.
+        return GetTextureID(pTexture.Name());
+    }
 
-  // Add the material to the vector and the map.
-  mTexturesMap[pTexture.Name()] = mTextures.size();
-  mTextures.push_back(pTexture);
-  return mTextures.size() - 1;
+    // Add the material to the vector and the map.
+    mTexturesMap[pTexture.Name()] = mTextures.size();
+    mTextures.push_back(pTexture);
+    return mTextures.size() - 1;
 }
 
 Texture *Repository::GetTexture(const std::string &pName) {
-  // Check that the name exists.
-  if (!TextureExists(pName)) {
-    return nullptr;
-  }
-  return GetTexture(mTexturesMap[pName]);
+    // Check that the name exists.
+    if (!TextureExists(pName)) {
+        return nullptr;
+    }
+    return GetTexture(mTexturesMap[pName]);
 }
 
 uint32_t Repository::GetTextureID(const std::string &pName) {
-  // Check that the name exists.
-  if (!TextureExists(pName)) {
-    throw std::invalid_argument("Texture does not exist in the repository");
-  }
-  return mTexturesMap[pName];
+    // Check that the name exists.
+    if (!TextureExists(pName)) {
+        throw std::invalid_argument("Texture does not exist in the repository");
+    }
+    return mTexturesMap[pName];
 }
 
 Texture *Repository::GetTexture(uint32_t pID) {
-  try {
-    return &mTextures[pID];
-  } catch (const std::exception &e) {
-    return nullptr;
-  }
+    try {
+        return &mTextures[pID];
+    } catch (const std::exception &e) {
+        return nullptr;
+    }
 }
 
 bool Repository::TextureExists(const std::string &pName) {
-  return mTexturesMap.count(pName) > 0;
+    return mTexturesMap.count(pName) > 0;
 }
 
 void Repository::ClearTextures() {
-  mTextures.clear();
-  mTexturesMap.clear();
+    mTextures.clear();
+    mTexturesMap.clear();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -378,44 +380,44 @@ void Repository::ClearTextures() {
 // ---------------------------------------------------------------------------------------------------------------------
 
 uint32_t Repository::AddShader(const std::string &pName, const Shader &pShader) {
-  if (ShaderExists(pName)) {
-    return GetShaderID(pName);
-  }
-  // Add the material to the vector and the map.
-  mShadersMap[pName] = mShaders.size();
-  mShaders.push_back(pShader);
-  return mShaders.size() - 1;
+    if (ShaderExists(pName)) {
+        return GetShaderID(pName);
+    }
+    // Add the material to the vector and the map.
+    mShadersMap[pName] = mShaders.size();
+    mShaders.push_back(pShader);
+    return mShaders.size() - 1;
 }
 
 Shader *Repository::GetShader(const std::string &pName) {
-  if (!ShaderExists(pName)) {
-    return nullptr;
-  }
-  return GetShader(mShadersMap[pName]);
+    if (!ShaderExists(pName)) {
+        return nullptr;
+    }
+    return GetShader(mShadersMap[pName]);
 }
 
 uint32_t Repository::GetShaderID(const std::string &pName) {
-  if (!ShaderExists(pName)) {
-    throw std::invalid_argument("Shader does not exist in the repository");
-  }
-  return mShadersMap[pName];
+    if (!ShaderExists(pName)) {
+        throw std::invalid_argument("Shader does not exist in the repository");
+    }
+    return mShadersMap[pName];
 }
 
 Shader *Repository::GetShader(uint32_t pID) {
-  try {
-    return &mShaders[pID];
-  } catch (const std::exception &e) {
-    return nullptr;
-  }
+    try {
+        return &mShaders[pID];
+    } catch (const std::exception &e) {
+        return nullptr;
+    }
 }
 
 bool Repository::ShaderExists(const std::string &pName) {
-  return mShadersMap.count(pName) > 0;
+    return mShadersMap.count(pName) > 0;
 }
 
 void Repository::ClearShaders() {
-  mShaders.clear();
-  mShadersMap.clear();
+    mShaders.clear();
+    mShadersMap.clear();
 }
 
 

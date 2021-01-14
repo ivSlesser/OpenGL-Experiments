@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Foundations" targetName="Foundations" />
-      <config projectName="Foundations" targetName="glad" />
       <config projectName="Foundations" targetName="glfw" />
+      <config projectName="Foundations" targetName="glad" />
+      <config projectName="Foundations" targetName="Foundations" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -13,7 +13,66 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="" />
+    <list default="true" id="181d2f44-89f2-449f-b975-7986f96f1bbc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/glad.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/glad.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_demo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_demo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_draw.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_draw.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_glfw.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_glfw.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_opengl3.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_impl_opengl3.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_widgets.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/imgui/imgui_widgets.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/stb_image.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/Externals/stb_image.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/System/Window.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/Source/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Foundations.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/Libraries/glad/src/glad.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/Libraries/glad/src/glad.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/CMakeFiles/glad.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Foundations" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Foundations" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/context.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/context.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/init.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/init.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/input.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/input.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/monitor.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/monitor.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/window.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/CMakeFiles/glfw.dir/window.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Libraries/glfw/src/libglfw3.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Build/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/libglad.a" beforeDir="false" afterPath="$PROJECT_DIR$/Build/libglad.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Framework/Repository.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Framework/Repository.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -200,26 +259,50 @@
     </state>
     <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1604078544476" />
     <state x="948" y="277" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1604215506150" />
-    <state width="2512" height="405" key="GridCell.Tab.0.bottom" timestamp="1604216048833">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="1398" height="452" key="GridCell.Tab.0.bottom" timestamp="1610637770372">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="452" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1610637770372" />
     <state width="2512" height="405" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1604216048833" />
-    <state width="2512" height="405" key="GridCell.Tab.0.center" timestamp="1604216048832">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="1398" height="452" key="GridCell.Tab.0.center" timestamp="1610637770371">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="452" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1610637770371" />
     <state width="2512" height="405" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1604216048832" />
-    <state width="2512" height="405" key="GridCell.Tab.0.left" timestamp="1604216048831">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="1398" height="452" key="GridCell.Tab.0.left" timestamp="1610637770370">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="452" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1610637770370" />
     <state width="2512" height="405" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1604216048831" />
-    <state width="2512" height="405" key="GridCell.Tab.0.right" timestamp="1604216048832">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="1398" height="452" key="GridCell.Tab.0.right" timestamp="1610637770371">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="452" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1610637770371" />
     <state width="2512" height="405" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1604216048832" />
-    <state x="743" y="131" width="1074" height="1176" key="find.popup" timestamp="1604215502730">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="1398" height="452" key="GridCell.Tab.1.bottom" timestamp="1610637770374">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1604078541328" />
+    <state width="1398" height="452" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1610637770374" />
+    <state width="1398" height="452" key="GridCell.Tab.1.center" timestamp="1610637770373">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="452" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1610637770373" />
+    <state width="1398" height="452" key="GridCell.Tab.1.left" timestamp="1610637770372">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="452" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1610637770372" />
+    <state width="1398" height="452" key="GridCell.Tab.1.right" timestamp="1610637770373">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="452" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1610637770373" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1610636906481">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1610636906481" />
+    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1610638004797">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1610638004797" />
     <state x="743" y="131" width="1074" height="1176" key="find.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1604215502730" />
     <state x="684" y="314" width="1192" height="1082" key="search.everywhere.popup" timestamp="1604216128093">
       <screen x="0" y="0" width="2560" height="1440" />

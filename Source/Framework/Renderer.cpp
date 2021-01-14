@@ -124,12 +124,10 @@ void Renderer::Draw() {
   // Render Scene To FBO -----------------------------------------------------------------------------------------------
   // -------------------------------------------------------------------------------------------------------------------
 
-  const std::vector<RenderingInstance> &instances = Repository::Get()->GetAllRenderingInstances();
+  const auto &instanceMap = Repository::Get()->GetInstanceMap();
 
-  for (const RenderingInstance &instance : instances) {
-
-    // TODO: Shader will be a map!
-    Shader *shader = Repository::Get()->GetShader(instance.ShaderID); // Default Shader
+  for (auto const& [key, val] : instanceMap) {
+    Shader *shader = Repository::Get()->GetShader(key); // Default Shader
     shader->Bind();
 
     shader->Vec3("u_CameraPosition", ptr->camera.GetPosition());
@@ -137,35 +135,37 @@ void Renderer::Draw() {
     shader->Float("u_Density", ptr->mSettings.FogDensity);
     shader->Float("u_Gradient", ptr->mSettings.FogGradient);
 
-    // Get Components
-    Mesh *mesh = Repository::Get()->GetMesh(instance.MeshID);
-    Transform *transform = Repository::Get()->GetTransform(instance.TransformID);
-    Material *material = Repository::Get()->GetMaterial(instance.MaterialID);
-    Texture *texture = Repository::Get()->GetTexture(instance.TextureID); // TODO: Also need to check for alpha.
+    for (const RenderingInstance &instance : val) {
+        // Get Components
+        Mesh *mesh = Repository::Get()->GetMesh(instance.MeshID);
+        Transform *transform = Repository::Get()->GetTransform(instance.TransformID);
+        Material *material = Repository::Get()->GetMaterial(instance.MaterialID);
+        Texture *texture = Repository::Get()->GetTexture(instance.TextureID); // TODO: Also need to check for alpha.
 
-    // Bind Texture
-    texture->Bind();
+        // Bind Texture
+        texture->Bind();
 
-    // Upload Model Matrix
-    shader->Mat4("u_Model", transform->Transformation());
+        // Upload Model Matrix
+        shader->Mat4("u_Model", transform->Transformation());
 
-    // Upload Material
-    material->SubmitAsUniform(shader);
+        // Upload Material
+        material->SubmitAsUniform(shader);
 
-    // Simulation Draw Setup
-    Application::GetSimulation()->OnDraw(shader);
+        // Simulation Draw Setup
+        Application::GetSimulation()->OnDraw(shader);
 
-    // Do draw
-    mesh->Bind();
+        // Do draw
+        mesh->Bind();
 
-    DEBUG_ONLY(s_Instance->mStatistics.Calls++)
+        DEBUG_ONLY(s_Instance->mStatistics.Calls++)
 
-    if (mesh->IndexCount != 0) {
-      DEBUG_ONLY(s_Instance->mStatistics.Indices += mesh->IndexCount)
-      CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, mesh->IndexCount, GL_UNSIGNED_INT, 0));
-    } else {
-      DEBUG_ONLY(s_Instance->mStatistics.Vertices += mesh->VertexCount)
-      CHECK_GL_ERROR(glDrawArrays(GL_TRIANGLES, 0, mesh->VertexCount));
+        if (mesh->IndexCount != 0) {
+            DEBUG_ONLY(s_Instance->mStatistics.Indices += mesh->IndexCount)
+            CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES, mesh->IndexCount, GL_UNSIGNED_INT, 0));
+        } else {
+            DEBUG_ONLY(s_Instance->mStatistics.Vertices += mesh->VertexCount)
+            CHECK_GL_ERROR(glDrawArrays(GL_TRIANGLES, 0, mesh->VertexCount));
+        }
     }
   }
 

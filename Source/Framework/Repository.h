@@ -33,103 +33,139 @@
 #include "./Geometry/Mesh.h"
 
 struct RenderingInstance {
-  uint32_t MeshID;                                // ID of the mesh for this instance
-  uint32_t TransformID;                           // ID of the transform for this instance
-  uint32_t MaterialID;                            // ID of the material for this instance
-  uint32_t TextureID;                             // ID of the texture for this instance
-  uint32_t ShaderID;                              // ID of the shader for this instance
+    uint32_t MeshID;                                // ID of the mesh for this instance
+    uint32_t TransformID;                           // ID of the transform for this instance
+    uint32_t MaterialID;                            // ID of the material for this instance
+    uint32_t TextureID;                             // ID of the texture for this instance
+    uint32_t ShaderID;                              // ID of the shader for this instance
 };
 
 enum RenderType {
-  SOLID, TRANSPARENT
+    SOLID, TRANSPARENT
 };
 
 class Repository {
 
- private:
-  static Repository *sInstance;                   // Singleton instance
+private:
+    static Repository *sInstance;                   // Singleton instance
 
-  // Meshes ------------------------------------------------------------------------------------------------------------
-  std::vector<Mesh> mMeshes;                      // Mesh storage
-  std::map<std::string, uint32_t> mMeshesMap;     // Mesh lookup map
+    // Meshes ------------------------------------------------------------------------------------------------------------
+    std::vector<Mesh> mMeshes;                      // Mesh storage
+    std::map<std::string, uint32_t> mMeshesMap;     // Mesh lookup map
 
-  // Instances ---------------------------------------------------------------------------------------------------------
-  std::vector<RenderingInstance> mInstances;      // Instance storage
+    // Instances ---------------------------------------------------------------------------------------------------------
+    std::vector<RenderingInstance*> mInstances;      // Instance storage
+    std::map<uint32_t, std::vector<RenderingInstance>> mInstancesMap;
 
-  // Transforms --------------------------------------------------------------------------------------------------------
-  std::vector<Transform> mTransforms;             // Transform storage
+    // Transforms --------------------------------------------------------------------------------------------------------
+    std::vector<Transform> mTransforms;             // Transform storage
 
-  // Materials ---------------------------------------------------------------------------------------------------------
-  std::vector<Material> mMaterials;               // Material storage
-  std::map<std::string, uint32_t> mMaterialsMap;  // Material lookup map
+    // Materials ---------------------------------------------------------------------------------------------------------
+    std::vector<Material> mMaterials;               // Material storage
+    std::map<std::string, uint32_t> mMaterialsMap;  // Material lookup map
 
-  // Textures ----------------------------------------------------------------------------------------------------------
-  std::vector<Texture> mTextures;                 // Texture storage
-  std::map<std::string, uint32_t> mTexturesMap;   // Texture lookup map
+    // Textures ----------------------------------------------------------------------------------------------------------
+    std::vector<Texture> mTextures;                 // Texture storage
+    std::map<std::string, uint32_t> mTexturesMap;   // Texture lookup map
 
-  // Shaders -----------------------------------------------------------------------------------------------------------
-  std::vector<Shader> mShaders;                   // Shader storage
-  std::map<std::string, uint32_t> mShadersMap;    // Shader lookup map
+    // Shaders -----------------------------------------------------------------------------------------------------------
+    std::vector<Shader> mShaders;                   // Shader storage
+    std::map<std::string, uint32_t> mShadersMap;    // Shader lookup map
 
- public:
-  inline static Repository *Get() { return sInstance; };
-  bool Create();
-  void Destroy();
-  void OnGUI();
+public:
+    inline static Repository *Get() { return sInstance; };
 
-  // General -----------------------------------------------------------------------------------------------------------
-  void ClearAll();
-  void ClearInstancesAndTransforms();
+    bool Create();
 
-  // Meshes ------------------------------------------------------------------------------------------------------------
+    void Destroy();
 
-  uint32_t AddMesh(const Mesh &pMesh);
-  Mesh *GetMesh(const std::string &pName);
-  uint32_t GetMeshID(const std::string &pName);
-  Mesh *GetMesh(uint32_t pID);
-  bool MeshExists(const std::string &pName);
-  void ClearMeshes();
-  void ReplaceMesh(const std::string &pName, const Mesh &pMesh);
-  void ReplaceMesh(uint32_t pID, const Mesh &pMesh);
+    void OnGUI();
 
-  // Instances ---------------------------------------------------------------------------------------------------------
+    // General -----------------------------------------------------------------------------------------------------------
+    void ClearAll();
 
-  uint32_t AddInstance(int32_t pMeshID, const Transform &pTransform, uint32_t pMaterialID = 0, uint32_t pShaderID = 0, uint32_t pTextureID = 0);
-  RenderingInstance *GetInstance(uint32_t pID);
-  inline const std::vector<RenderingInstance> &GetAllRenderingInstances() const { return mInstances; }
-  void ClearInstances();
+    void ClearInstancesAndTransforms();
 
-  // Transforms --------------------------------------------------------------------------------------------------------
+    // Meshes ------------------------------------------------------------------------------------------------------------
 
-  uint32_t AddTransform(const Transform &pTransform = Transform());
-  Transform *GetTransform(uint32_t pID);
-  Transform *GetTransformForInstance(uint32_t pInstanceID);
-  void ClearTransforms();
+    uint32_t AddMesh(const Mesh &pMesh);
 
-  // Materials ---------------------------------------------------------------------------------------------------------
+    Mesh *GetMesh(const std::string &pName);
 
-  uint32_t AddMaterial(const Material &pMaterial);
-  Material *GetMaterial(const std::string &pName);
-  uint32_t GetMaterialID(const std::string &pName);
-  Material *GetMaterial(uint32_t pID = 0);
-  bool MaterialExists(const std::string &pName);
-  void ClearMaterials();
+    uint32_t GetMeshID(const std::string &pName);
 
-  // Textures ----------------------------------------------------------------------------------------------------------
+    Mesh *GetMesh(uint32_t pID);
 
-  uint32_t AddTexture(const Texture &pTexture);
-  Texture *GetTexture(const std::string &pName);
-  uint32_t GetTextureID(const std::string &pName);
-  Texture *GetTexture(uint32_t pID = 0);
-  bool TextureExists(const std::string &pName);
-  void ClearTextures();
+    bool MeshExists(const std::string &pName);
 
-  // Shaders ----------------------------------------------------------------------------------------------------------
+    void ClearMeshes();
 
-  uint32_t AddShader(const std::string &pName, const Shader &pShader);
-  Shader *GetShader(const std::string &pName);
-  uint32_t GetShaderID(const std::string &pName);
-  Shader *GetShader(uint32_t pID = 0);
-  bool ShaderExists(const std::string &pName);
-  void ClearShaders();
+    void ReplaceMesh(const std::string &pName, const Mesh &pMesh);
+
+    void ReplaceMesh(uint32_t pID, const Mesh &pMesh);
+
+    // Instances ---------------------------------------------------------------------------------------------------------
+
+    uint32_t AddInstance(int32_t pMeshID, const Transform &pTransform, uint32_t pMaterialID = 0, uint32_t pShaderID = 0,
+                         uint32_t pTextureID = 0);
+
+    RenderingInstance *GetInstance(uint32_t pID);
+
+    inline const std::map<uint32_t, std::vector<RenderingInstance>> &GetInstanceMap() const { return mInstancesMap; }
+
+    inline const std::vector<RenderingInstance*> &GetAllRenderingInstances() const { return mInstances; }
+
+    void ClearInstances();
+
+    // Transforms --------------------------------------------------------------------------------------------------------
+
+    uint32_t AddTransform(const Transform &pTransform = Transform());
+
+    Transform *GetTransform(uint32_t pID);
+
+    Transform *GetTransformForInstance(uint32_t pInstanceID);
+
+    void ClearTransforms();
+
+    // Materials ---------------------------------------------------------------------------------------------------------
+
+    uint32_t AddMaterial(const Material &pMaterial);
+
+    Material *GetMaterial(const std::string &pName);
+
+    uint32_t GetMaterialID(const std::string &pName);
+
+    Material *GetMaterial(uint32_t pID = 0);
+
+    bool MaterialExists(const std::string &pName);
+
+    void ClearMaterials();
+
+    // Textures ----------------------------------------------------------------------------------------------------------
+
+    uint32_t AddTexture(const Texture &pTexture);
+
+    Texture *GetTexture(const std::string &pName);
+
+    uint32_t GetTextureID(const std::string &pName);
+
+    Texture *GetTexture(uint32_t pID = 0);
+
+    bool TextureExists(const std::string &pName);
+
+    void ClearTextures();
+
+    // Shaders ----------------------------------------------------------------------------------------------------------
+
+    uint32_t AddShader(const std::string &pName, const Shader &pShader);
+
+    Shader *GetShader(const std::string &pName);
+
+    uint32_t GetShaderID(const std::string &pName);
+
+    Shader *GetShader(uint32_t pID = 0);
+
+    bool ShaderExists(const std::string &pName);
+
+    void ClearShaders();
 };
