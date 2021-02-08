@@ -36,6 +36,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Foundations.dir/Source/Simulations/PerlinTerrain/PerlinTerrainSim.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Simulations/RayMarching/RayMarchingSim.cpp.o"
   "CMakeFiles/Foundations.dir/Source/Simulations/SimpleGeometry/SimpleGeometrySim.cpp.o"
+  "CMakeFiles/Foundations.dir/Source/Simulations/ToonShading/ToonShadingSim.cpp.o"
   "CMakeFiles/Foundations.dir/Source/System/Clock.cpp.o"
   "CMakeFiles/Foundations.dir/Source/System/GUI/GUILayer.cpp.o"
   "CMakeFiles/Foundations.dir/Source/System/Window.cpp.o"

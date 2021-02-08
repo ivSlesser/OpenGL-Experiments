@@ -22,8 +22,8 @@
 
 #include "SimpleGeometrySim.h"
 #include "../../Framework/Geometry/Shapes2D.h"
-#include "../../Framework/Geometry/Shapes3D.h"
 #include "Externals/ImGUI.hpp"
+#include "../../Framework/Geometry/Shapes3D.h"
 
 /**
  * Handles creation of the simulation, initially creating a triangle primitive
