@@ -29,12 +29,14 @@
 class ToonShadingSim : public Simulation {
 
  private:
+	glm::vec3 mThresholds = glm::vec3(0.25f, 0.5f, 0.95f);
+  	glm::vec3 mColorDampers = glm::vec3(0.125f, 0.25f, 0.5f);
 
  public:
   void OnCreate() override;
   void OnFixedUpdate(const double &pStep) override {};
   void OnUpdate() override;
-  void OnDraw(Shader *pShader) override {};
+  void OnDraw(Shader *pShader) override;
   void OnDestroy() override;
   bool OnGUI() override;
 

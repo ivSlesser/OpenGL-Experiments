@@ -63,4 +63,12 @@ bool ToonShadingSim::OnGUI() {
 	  ImGui::NewLine();
 	}
   }
+
+  ImGui::DragFloat3("Thresholds", &mThresholds.x, 0.01f, 0.0f, 1.0f, "%.3f");
+  ImGui::DragFloat3("Color Damping", &mColorDampers.x, 0.01f, 0.0f, 1.0f, "%.3f");
+}
+
+void ToonShadingSim::OnDraw(Shader *pShader) {
+  pShader->Vec3("uThresholds", mThresholds);
+  pShader->Vec3("uColorDampers", mColorDampers);
 }

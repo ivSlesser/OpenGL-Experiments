@@ -39,6 +39,9 @@ struct Material {
 
 uniform Material u_Material;
 
+uniform vec3 uThresholds;
+uniform vec3 uColorDampers;
+
 void main()
 {
     vec4 Lighting = vec4(u_Material.Diffuse, 1.0f);
@@ -47,14 +50,14 @@ void main()
     vec3 lightDirection = normalize(general.SunPosition - v_FragmentPosition);
     float intensity = dot(lightDirection, nnormal);
 
-    if (intensity > 0.95) {
+    if (intensity > uThresholds.z) {
         // Do nothing!
-    } else if (intensity > 0.5) {
-        Lighting = vec4(u_Material.Diffuse * 0.5f, 1.0);
-    }  else if (intensity > 0.25) {
-        Lighting = vec4(u_Material.Diffuse * 0.25f, 1.0);
+    } else if (intensity > uThresholds.y) {
+        Lighting = vec4(u_Material.Diffuse * uColorDampers.z, 1.0);
+    }  else if (intensity > uThresholds.x) {
+        Lighting = vec4(u_Material.Diffuse * uColorDampers.y, 1.0);
     } else {
-        Lighting = vec4(u_Material.Diffuse * 0.125f, 1.0);
+        Lighting = vec4(u_Material.Diffuse * uColorDampers.x, 1.0);
     }
 
     FragColor = texture(u_Texture0, v_TexCoords) * Lighting;
